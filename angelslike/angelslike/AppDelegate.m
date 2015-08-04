@@ -20,8 +20,11 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor getHexColor:@"#ff6969"]];
     
+    self.window = [[UIWindow alloc]
+                   initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     MainViewController *vc = [[MainViewController alloc]init];
-    [self.window addSubview:vc.view];
+    self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     return YES;
 }

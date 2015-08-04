@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
+#import "NetWork.h"
+#import "MainCell.h"
+#import "HeaderDefiner.h"
+
+@interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+@property (strong,nonatomic) UITableView *tableView;
+@property (strong,nonatomic) NSMutableArray *result;
+@property (strong,nonatomic) NSString *cdn;
 
 @end

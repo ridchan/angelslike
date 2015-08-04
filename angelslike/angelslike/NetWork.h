@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NetWork : NSObject
+typedef void(^NetWorkBlock)(id Obj);
+
+@interface NetWork : NSObject{
+    NSOperationQueue *queue;
+}
+
+
++(instancetype)shared;
+
+-(void)startQuery:(NSString *)link info:(NSDictionary *)info completeBlock:(NetWorkBlock)block;
 
 @end
