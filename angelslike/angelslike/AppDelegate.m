@@ -17,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor getHexColor:@"#ff6969"]];
+    
+    MainViewController *vc = [[MainViewController alloc]init];
+    [self.window addSubview:vc.view];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
