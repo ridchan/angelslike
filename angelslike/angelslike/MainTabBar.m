@@ -60,6 +60,7 @@
 - (instancetype)init{
     if (self = [super init]) {
         self.canSelected = YES;
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -74,6 +75,11 @@
 
 @synthesize selectIndex = _selectIndex;
 
+-(void)addTarget:(id)target action:(SEL)action{
+    tar = target;
+    act = action;
+}
+
 -(void)tabItemClick:(UITapGestureRecognizer *)recognizer{
     MTabBarItem *item = (MTabBarItem *)recognizer.view;
     if (item.canSelected == NO) return;
@@ -82,6 +88,9 @@
         [lastItem setColor:[UIColor getHexColor:@"8A8A8A"]];
 
         self.selectIndex = item.tag - indexOffset;
+        if ([tar respondsToSelector:act]) {
+            [tar performSelector:act withObject:[NSNumber numberWithInteger:self.selectIndex]];
+        }
     }
 }
 
@@ -94,7 +103,7 @@
 
 -(instancetype)init{
     if (self = [super init]) {
-        self.frame = CGRectMake(0, ScreenHeight - BarHeight, ScreenWidth, BarHeight);
+        self.frame = CGRectMake(0, ScreenHeight, ScreenWidth, BarHeight);
         UIWindow *window = nil;
         id<UIApplicationDelegate> delegate = [[UIApplication sharedApplication] delegate];
         if ([delegate respondsToSelector:@selector(window)])

@@ -31,7 +31,7 @@
     
     UILabel *rightTitle = [[UILabel alloc ] init ];
     rightTitle.frame = CGRectMake(self.frame.size.width / 2, 0, self.frame.size.width / 2, self.frame.size.height);
-    rightTitle.text = @"竟抽专区";
+    rightTitle.text = @"竞抽专区";
     rightTitle.textAlignment = NSTextAlignmentCenter;
     rightTitle.font = [UIFont boldSystemFontOfSize:12];
     [self addSubview:rightTitle];

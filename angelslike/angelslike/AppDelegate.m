@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    [[UINavigationBar appearance] setBackgroundColor:[UIColor getHexColor:@"#ff6969"]];
+
     [[UINavigationBar appearance] setBarTintColor:[UIColor getHexColor:@"ff6969"]];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                  [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
@@ -27,15 +27,21 @@
     self.window = [[UIWindow alloc]
                    initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    MainViewController *vc = [[MainViewController alloc]init];
-    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
+    MainViewController *vc1 = [[MainViewController alloc]init];
+    UINavigationController *nvc1 = [[UINavigationController alloc]initWithRootViewController:vc1];
+//    nvc1.title = @"1";
     
-    UITabBarController *tbc = [[UITabBarController alloc]init];
-    tbc.viewControllers = @[nvc];
+    CouViewController *vc2 = [[CouViewController alloc]init];
+    UINavigationController *nvc2 = [[UINavigationController alloc]initWithRootViewController:vc2];
+//    nvc2.title = @"2";
+    
+    TabBarViewController *tbc = [[TabBarViewController alloc]init];
+    tbc.viewControllers = @[nvc1,nvc2];
+
     self.window.rootViewController = tbc;
     [self.window makeKeyAndVisible];
     
-    MainTabBar *tb = [[MainTabBar alloc]init];
+//    MainTabBar *tb = [[MainTabBar alloc]init];
     return YES;
 }
 

@@ -10,6 +10,8 @@
 #import "UIColor+HexColor.h"
 #import "MainViewController.h"
 #import "MainTabBar.h"
+#import "TabBarViewController.h"
+#import "CouViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

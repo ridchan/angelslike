@@ -48,6 +48,8 @@
 		27DD240B1B7061A000C61546 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD240A1B7061A000C61546 /* ImageDownloader.m */; };
 		27DD240E1B70639B00C61546 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD240D1B70639B00C61546 /* NetWork.m */; };
 		27E0FFFB1B71A4B6003707B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FFFA1B71A4B6003707B3 /* Default-568h@2x.png */; };
+		2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4D41BE1B72870400AA314E /* CouViewController.m */; };
+		2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +140,10 @@
 		27DD240D1B70639B00C61546 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		27DD240F1B70682000C61546 /* HeaderDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderDefiner.h; sourceTree = "<group>"; };
 		27E0FFFA1B71A4B6003707B3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2E4D41BD1B72870400AA314E /* CouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouViewController.h; sourceTree = "<group>"; };
+		2E4D41BE1B72870400AA314E /* CouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouViewController.m; sourceTree = "<group>"; };
+		2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +245,7 @@
 				27DD24001B70592D00C61546 /* 自定义控件 */,
 				27DD23FC1B7057E100C61546 /* 常用类 */,
 				27DD23F81B70562400C61546 /* 主页 */,
+				2E4D41BC1B72867D00AA314E /* 凑分子 */,
 				27DD23D61B70514700C61546 /* AppDelegate.h */,
 				27DD23D71B70514700C61546 /* AppDelegate.m */,
 				27DD23D91B70514700C61546 /* ViewController.h */,
@@ -281,6 +288,8 @@
 			children = (
 				27DD23F91B70565700C61546 /* MainViewController.h */,
 				27DD23FA1B70565700C61546 /* MainViewController.m */,
+				2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */,
+				2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */,
 			);
 			name = "主页";
 			sourceTree = "<group>";
@@ -328,6 +337,15 @@
 				27BA81481B71B671005B527B /* UIImage+RTTint.m */,
 			);
 			name = "第三方";
+			sourceTree = "<group>";
+		};
+		2E4D41BC1B72867D00AA314E /* 凑分子 */ = {
+			isa = PBXGroup;
+			children = (
+				2E4D41BD1B72870400AA314E /* CouViewController.h */,
+				2E4D41BE1B72870400AA314E /* CouViewController.m */,
+			);
+			name = "凑分子";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +470,7 @@
 				27BA81701B71C6A6005B527B /* NSData+ImageContentType.m in Sources */,
 				27BA81491B71B671005B527B /* UIImage+RTTint.m in Sources */,
 				27BA81761B71C6A6005B527B /* SDWebImageManager.m in Sources */,
+				2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */,
 				27BA81741B71C6A6005B527B /* SDWebImageDownloader.m in Sources */,
 				27BA817D1B71C6A6005B527B /* UIImageView+WebCache.m in Sources */,
 				27BA817C1B71C6A6005B527B /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -463,6 +482,7 @@
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
 				27BA81811B71EA77005B527B /* LoadMoreTableView.m in Sources */,
 				27BA81731B71C6A6005B527B /* SDWebImageDecoder.m in Sources */,
+				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,
 				27BA81841B71F80E005B527B /* Banner.m in Sources */,
 				27BA817E1B71C6A6005B527B /* UIView+WebCacheOperation.m in Sources */,
 				272B6DB01B70A73F006CCFE6 /* UIImageView+NetWork.m in Sources */,
