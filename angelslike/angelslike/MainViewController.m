@@ -17,28 +17,54 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor getHexColor:@"F1F0F6"];
+    
+    scrolerHeight = ScreenWidth * 9 / 16;
+    cellHeight = (ScreenWidth - 10) * 9 / 20 + 5;
+    
     [self initailSetting];
-    __block MainViewController *tempSelf = self;
-
-    [[NetWork shared] startQuery:@"http://www.angelslike.com/json/getList" info:@{@"type":@"list_theme",@"page":@"1",@"sort":@"new"} completeBlock:^(id Obj) {
-        NSArray *rs = [[Obj objectForKey:@"data"] objectForKey:@"list"];
-        tempSelf.cdn = [Obj objectForKey:@"cdn"];
-        if ([rs count] > 0){
-            [tempSelf.result addObjectsFromArray:rs];
-            [tempSelf.tableView reloadData];
-        }
-    }];
-
+    
+    [self loadMoreData:nil];
+    
     // Do any additional setup after loading the view.
 }
 
+-(void)loadMoreData:(id)obj{
+    __block MainViewController *tempSelf = self;
+    NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
+    [[NetWork shared] startQuery:ListLink
+                            info:@{@"type":@"list_theme",@"page":nPage,@"sort":@"new"}
+                   completeBlock:^(id Obj) {
+                       NSArray *rs = [[Obj objectForKey:@"data"] objectForKey:@"list"];
+                       NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
+                        tempSelf.cdn = [Obj objectForKey:@"cdn"];
+                        if ([rs count] > 0){
+                            tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
+                            tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
+                            [tempSelf.result addObjectsFromArray:rs];
+                            [tempSelf.tableView reloadData];
+                        }
+                       [tempSelf.tableView loadDataEnd];
+    }];
+}
+
 -(void)initailSetting{
+    self.navigationItem.title = @"天使礼客";
     self.result = [NSMutableArray array];
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.currentPage = 0;
+    self.tableView.totalPage = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    [self.tableView addTarget:self action:@selector(loadMoreData:)];
     [self.view addSubview:self.tableView];
+    
+    scroller =  [[ImageScroller alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, scrolerHeight)];
+    [scroller start:SliderLink];
+    
+    banner = [[Banner alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 60)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,19 +85,61 @@
 #pragma mark -
 #pragma mark table view method
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identify = @"Cell";
-    MainCell *cell = [[MainCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+
+{
     
-    NSDictionary *info = [self.result objectAtIndex:indexPath.row];
-    NSString *link = [self.cdn stringByAppendingPathComponent:[info objectForKey:@"img"]];
-    [cell setImageView:link];
-    [cell setName:[info objectForKey:@"title"]];
-    return cell;
+    // 下拉到最底部时显示更多数据
+    
+    if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height)))
+    {
+        [self.tableView loadDataBegin];
+    }
+    
+    
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Slider"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Slider"];
+            [cell addSubview:scroller];
+            cell.backgroundColor =  [UIColor clearColor];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
+
+        return cell;
+    }else if (indexPath.row == 1){
+        UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"Banner"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Banner"];
+            [cell addSubview:banner];
+            cell.backgroundColor =  [UIColor clearColor];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
+        
+        return cell;
+        
+    }else{
+        static NSString *identify = @"Cell";
+        MainCell *cell = (MainCell *)(MainCell *)[tableView dequeueReusableCellWithIdentifier:identify];
+        if (cell == nil) {
+            cell = [[MainCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+            cell.backgroundColor =  [UIColor clearColor];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
+        
+        NSDictionary *info = [self.result objectAtIndex:indexPath.row - 2];
+        NSString *link = [self.cdn stringByAppendingPathComponent:[info objectForKey:@"img"]];
+        [cell setImageView:link];
+        [cell setName:[info objectForKey:@"title"]];
+        return cell;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.result count];
+    return  [self.result count] == 0?0:[self.result count] + 2;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -79,8 +147,15 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 150;
+    if (indexPath.row == 0) {
+        return scrolerHeight ;// banner  16:9
+    }else if(indexPath.row == 1) {
+        return 70;
+    }else{
+        return cellHeight ;
+    }
 }
+
 
 
 @end

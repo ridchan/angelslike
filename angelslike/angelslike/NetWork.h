@@ -17,6 +17,7 @@ typedef void(^NetWorkBlock)(id Obj);
 
 +(instancetype)shared;
 
+-(NSOperationQueue *)GetQueue;
 -(void)startQuery:(NSString *)link info:(NSDictionary *)info completeBlock:(NetWorkBlock)block;
 
 @end

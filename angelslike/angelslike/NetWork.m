@@ -22,6 +22,10 @@
     return shareInstance;
 }
 
+-(NSOperationQueue *)GetQueue{
+    return queue;
+}
+
 -(instancetype)init{
     self = [super init];
     queue = [[NSOperationQueue alloc]init];

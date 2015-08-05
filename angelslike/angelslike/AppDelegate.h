@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIColor+HexColor.h"
 #import "MainViewController.h"
+#import "MainTabBar.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

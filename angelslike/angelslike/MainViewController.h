@@ -10,11 +10,20 @@
 
 #import "NetWork.h"
 #import "MainCell.h"
+#import "ImageScroller.h"
+#import "LoadMoreTableView.h"
 #import "HeaderDefiner.h"
+#import "Banner.h"
 
-@interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property (strong,nonatomic) UITableView *tableView;
+@interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    ImageScroller *scroller;
+    Banner *banner;
+    CGFloat scrolerHeight ;
+    CGFloat cellHeight;
+}
+
+@property (strong,nonatomic) LoadMoreTableView *tableView;
 @property (strong,nonatomic) NSMutableArray *result;
 @property (strong,nonatomic) NSString *cdn;
 

@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NetWork.h"
+#import "UIImageView+WebCache.h"
 
 
 @interface MainCell : UITableViewCell{
     UIImageView *imageView;
     UILabel *nameLabel;
+    CAGradientLayer *layer;
 }
 
 -(void) setImageView:(NSString *)link;

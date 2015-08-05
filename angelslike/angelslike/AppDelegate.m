@@ -18,14 +18,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[UINavigationBar appearance] setTintColor:[UIColor getHexColor:@"#ff6969"]];
+//    [[UINavigationBar appearance] setBackgroundColor:[UIColor getHexColor:@"#ff6969"]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor getHexColor:@"ff6969"]];
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                 [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                                 [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:17.0], NSFontAttributeName, nil]];
     
     self.window = [[UIWindow alloc]
                    initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MainViewController *vc = [[MainViewController alloc]init];
-    self.window.rootViewController = vc;
+    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
+    
+    UITabBarController *tbc = [[UITabBarController alloc]init];
+    tbc.viewControllers = @[nvc];
+    self.window.rootViewController = tbc;
     [self.window makeKeyAndVisible];
+    
+    MainTabBar *tb = [[MainTabBar alloc]init];
     return YES;
 }
 

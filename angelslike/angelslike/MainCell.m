@@ -7,6 +7,7 @@
 //
 
 #import "MainCell.h"
+#define margin 5
 
 
 @implementation MainCell
@@ -20,6 +21,7 @@
     
     if (!nameLabel) {
         nameLabel = [[UILabel alloc]init];
+        nameLabel.font = [UIFont systemFontOfSize:14];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.textColor = [UIColor whiteColor];
         [self addSubview:nameLabel];
@@ -31,14 +33,16 @@
 
 -(void)setImageView:(NSString *)link{
     NSString *newlink = [NSString stringWithFormat:@"http://%@",link];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:newlink]];
-    NSOperationQueue *queue = [[NSOperationQueue alloc]init];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            imageView.image = [[UIImage alloc]initWithData:data];
-        });
-        
+    
+    __block UIImageView *tempSelf = imageView;
+    [imageView sd_setImageWithURL:[NSURL URLWithString:newlink] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        tempSelf.alpha = 0.2;
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+        [UIView animateWithDuration:0.3 animations:^{
+            tempSelf.alpha = 1.0;
+        }];
     }];
+
 }
 
 -(void)setName:(NSString *)name{
@@ -46,20 +50,42 @@
 }
 
 -(void)setConner:(UIImageView *)control{
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:control.bounds
-                                                   byRoundingCorners:UIRectCornerAllCorners
-                                                         cornerRadii:CGSizeMake(5.0, 5.0)];
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame         =  control.bounds;
-    maskLayer.path          = maskPath.CGPath;
-    control.layer.mask         = maskLayer;
+    control.layer.cornerRadius = 5;
+    control.layer.masksToBounds = YES;
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:control.bounds
+//                                                   byRoundingCorners:UIRectCornerAllCorners
+//                                                         cornerRadii:CGSizeMake(5.0, 5.0)];
+//    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+//    maskLayer.frame         =  control.bounds;
+//    maskLayer.path          = maskPath.CGPath;
+//    control.layer.mask         = maskLayer;
 }
+
+- (CAGradientLayer *)shadowAsInverse
+{
+    CAGradientLayer *newShadow = [[CAGradientLayer alloc] init] ;
+    CGRect newShadowFrame = CGRectMake(0, 0, self.frame.size.width - margin * 2, 30 - 5);
+    newShadow.frame = newShadowFrame;
+    newShadow.cornerRadius = 5;
+    newShadow.masksToBounds = YES;
+    //添加渐变的颜色组合
+    newShadow.colors = [NSArray arrayWithObjects:(id)[UIColor clearColor].CGColor,(id)[UIColor lightGrayColor].CGColor,nil];
+    return newShadow;
+}
+
+
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height  - 5);
+    imageView.frame = CGRectMake(margin, 0, self.frame.size.width - margin * 2, self.frame.size.height  - 5);
     [self setConner:imageView];
-    nameLabel.frame =  CGRectMake(0, self.frame.size.height - 30, self.frame.size.width, 30 - 5);
+    nameLabel.frame =  CGRectMake(margin, self.frame.size.height - 30, self.frame.size.width - margin * 2, 30 - 5);
+    if (!layer) {
+        layer = [self shadowAsInverse];
+        [nameLabel.layer addSublayer:layer];
+        [nameLabel setNeedsDisplay];
+    }
+
 }
 
 @end

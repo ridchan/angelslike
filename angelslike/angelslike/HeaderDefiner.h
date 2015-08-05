@@ -14,4 +14,7 @@
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
-#endif
+#define SliderLink @"http://www.angelslike.com/json/getslider"
+#define ListLink @"http://www.angelslike.com/json/getlist"
+
+#endif//
