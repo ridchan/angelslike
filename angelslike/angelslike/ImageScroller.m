@@ -8,6 +8,50 @@
 
 #import "ImageScroller.h"
 
+
+
+@implementation DotPageControl
+
+-(void)initial{
+    UIGraphicsBeginImageContext(CGSizeMake(40, 40));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 2.0);
+    CGContextStrokeEllipseInRect(context, CGRectMake(0, 0, 40, 40));
+    _activeImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+}
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self =  [super initWithFrame:frame]) {
+        [self initial];
+    }
+    return self;
+}
+
+
+- (void)updateDots
+{
+//    for (int i = 0; i< [self.subviews count]; i++) {
+//        UIView* dot = [self.subviews objectAtIndex:i];
+//        [dot.layer ]
+//            if (i == self.currentPage){
+//                dot.image = _activeImage;
+//            }
+//            else
+//                dot.image = _inactiveImage;
+//        }
+//
+//    }
+}
+
+- (void)setCurrentPage:(NSInteger)currentPage
+{
+    [super setCurrentPage:currentPage];
+    [self updateDots];
+}
+
+@end
+
 @implementation ImageScroller
 
 
@@ -22,12 +66,25 @@
         
         _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, frame.size.height / 5 * 4, frame.size.width, frame.size.height / 5)];
         _pageControl.hidesForSinglePage = YES;
+        _pageControl.currentPageIndicatorTintColor = [UIColor colorWithPatternImage:[self dotImage]];
+        _pageControl.pageIndicatorTintColor =  [UIColor whiteColor];
         tar = nil;
         [self addSubview:_pageControl];
         
     }
     
     return self;
+}
+
+-(UIImage *)dotImage{
+    UIGraphicsBeginImageContext(CGSizeMake(7, 7));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextSetLineWidth(context, 2.0);
+    CGContextStrokeEllipseInRect(context, CGRectMake(0, 0, 7, 7));
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    return image;
+    
 }
 
 // 图片自动循环

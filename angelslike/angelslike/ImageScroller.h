@@ -11,6 +11,15 @@
 #import "NetWork.h"
 #import "UIImageView+WebCache.h"
 
+
+@interface DotPageControl : UIPageControl{
+    UIImage *_activeImage;
+    UIImage *_inactiveImage;
+}
+
+
+@end
+
 @interface ImageScroller : UIView<UIScrollViewDelegate>{
     UIScrollView *_scrollView;
     UIPageControl *_pageControl;
