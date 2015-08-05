@@ -24,10 +24,20 @@
         _pageControl.hidesForSinglePage = YES;
         tar = nil;
         [self addSubview:_pageControl];
+        
     }
     
     return self;
 }
+
+// 图片自动循环
+
+-(void)runBanner{
+    [_scrollView scrollRectToVisible:CGRectMake(_scrollView.frame.size.width + _scrollView.contentOffset.x , 0, _scrollView.frame.size.width, _scrollView.frame.size.height) animated:YES];
+    [self scrollViewDidEndDecelerating:_scrollView];
+}
+
+//按连接获取循环图片数据
 
 -(void)start:(NSString *)link{
     __block ImageScroller *tempSelf = self;
@@ -48,6 +58,7 @@
     }];
 }
 
+//按数据设置图片
 
 -(void)startDownload{
     if ([self.infos count] > 0) {
@@ -75,11 +86,15 @@
         _pageControl.numberOfPages = [self.infos count] - 2;
         _scrollView.contentSize = CGSizeMake(self.frame.size.width * [self.infos count], 1);
         [_scrollView scrollRectToVisible:CGRectMake(_scrollView.frame.size.width , 0, _scrollView.frame.size.width, _scrollView.frame.size.height) animated:NO];
+        
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(runBanner) userInfo:nil repeats:YES];
     }
     
 
     
 }
+
+//图片点击
 
 -(void)imageViewTap:(UITapGestureRecognizer *)recognizer{
     UIImageView *imageView = (UIImageView *)recognizer.view;
@@ -89,6 +104,8 @@
 }
 
 
+//监听点击调用事件
+
 -(void)addTarget:(id)target selector:(SEL)selector{
     tar = target;
     sel = selector;
@@ -96,6 +113,8 @@
 
 
 #pragma mark -
+
+// delegate 委托事件
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     NSInteger idx = lrintf(scrollView.contentOffset.x / scrollView.frame.size.width);
