@@ -17,10 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor getHexColor:@"F1F0F6"];
     
     scrolerHeight = ScreenWidth * 9 / 16;
-    cellHeight = (ScreenWidth - 10) * 9 / 20 + 5;
+    cellHeight = (ScreenWidth - MainCellMargin * 2) * 9 / 20 + MainCellGap; // 20:9
     
     [self initailSetting];
     

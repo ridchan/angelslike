@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HeaderDefiner.h"
 #import "NetWork.h"
 #import "UIImageView+WebCache.h"
 

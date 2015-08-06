@@ -47,7 +47,13 @@
 		27DD24041B705C8400C61546 /* MainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD24031B705C8400C61546 /* MainCell.m */; };
 		27DD240B1B7061A000C61546 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD240A1B7061A000C61546 /* ImageDownloader.m */; };
 		27DD240E1B70639B00C61546 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD240D1B70639B00C61546 /* NetWork.m */; };
-		27E0FFFB1B71A4B6003707B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FFFA1B71A4B6003707B3 /* Default-568h@2x.png */; };
+		27EA99FE1B72F4A3003559C0 /* CouCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA99FD1B72F4A3003559C0 /* CouCell.m */; };
+		27EA9A021B72F662003559C0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA9A011B72F662003559C0 /* BaseViewController.m */; };
+		27EA9A081B7313C6003559C0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A071B7313C6003559C0 /* Default-568h@2x.png */; };
+		27EA9A0C1B731777003559C0 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA9A0B1B731777003559C0 /* SearchViewController.m */; };
+		27EA9A0E1B731AE7003559C0 /* iconfont-houtui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A0D1B731AE7003559C0 /* iconfont-houtui@2x.png */; };
+		27EA9A111B733208003559C0 /* DropDownList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA9A101B733208003559C0 /* DropDownList.m */; };
+		27EA9A131B7335FA003559C0 /* tbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A121B7335FA003559C0 /* tbg.png */; };
 		2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4D41BE1B72870400AA314E /* CouViewController.m */; };
 		2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */; };
 /* End PBXBuildFile section */
@@ -139,7 +145,17 @@
 		27DD240C1B70639B00C61546 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		27DD240D1B70639B00C61546 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		27DD240F1B70682000C61546 /* HeaderDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderDefiner.h; sourceTree = "<group>"; };
-		27E0FFFA1B71A4B6003707B3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		27EA99FC1B72F4A3003559C0 /* CouCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouCell.h; sourceTree = "<group>"; };
+		27EA99FD1B72F4A3003559C0 /* CouCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouCell.m; sourceTree = "<group>"; };
+		27EA9A001B72F662003559C0 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		27EA9A011B72F662003559C0 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		27EA9A071B7313C6003559C0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		27EA9A0A1B731777003559C0 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		27EA9A0B1B731777003559C0 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		27EA9A0D1B731AE7003559C0 /* iconfont-houtui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-houtui@2x.png"; sourceTree = "<group>"; };
+		27EA9A0F1B733208003559C0 /* DropDownList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownList.h; sourceTree = "<group>"; };
+		27EA9A101B733208003559C0 /* DropDownList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownList.m; sourceTree = "<group>"; };
+		27EA9A121B7335FA003559C0 /* tbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tbg.png; sourceTree = "<group>"; };
 		2E4D41BD1B72870400AA314E /* CouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouViewController.h; sourceTree = "<group>"; };
 		2E4D41BE1B72870400AA314E /* CouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouViewController.m; sourceTree = "<group>"; };
 		2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
@@ -168,6 +184,8 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				27EA9A121B7335FA003559C0 /* tbg.png */,
+				27EA9A0D1B731AE7003559C0 /* iconfont-houtui@2x.png */,
 				27BA81851B71FAFB005B527B /* iconfont-icon83.png */,
 				27BA813D1B71AB1B005B527B /* iconfont-jia.png */,
 				27BA81331B71AADF005B527B /* iconfont-cfz.png */,
@@ -244,8 +262,10 @@
 				27DD24011B70593C00C61546 /* 第三方 */,
 				27DD24001B70592D00C61546 /* 自定义控件 */,
 				27DD23FC1B7057E100C61546 /* 常用类 */,
+				27EA99FF1B72F629003559C0 /* 基本配置类 */,
 				27DD23F81B70562400C61546 /* 主页 */,
 				2E4D41BC1B72867D00AA314E /* 凑分子 */,
+				27EA9A091B73174E003559C0 /* 搜索页 */,
 				27DD23D61B70514700C61546 /* AppDelegate.h */,
 				27DD23D71B70514700C61546 /* AppDelegate.m */,
 				27DD23D91B70514700C61546 /* ViewController.h */,
@@ -259,7 +279,7 @@
 		27DD23D21B70514700C61546 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				27E0FFFA1B71A4B6003707B3 /* Default-568h@2x.png */,
+				27EA9A071B7313C6003559C0 /* Default-568h@2x.png */,
 				27DD23D31B70514700C61546 /* Info.plist */,
 				27DD23D41B70514700C61546 /* main.m */,
 			);
@@ -286,10 +306,10 @@
 		27DD23F81B70562400C61546 /* 主页 */ = {
 			isa = PBXGroup;
 			children = (
+				27DD24021B705C8400C61546 /* MainCell.h */,
+				27DD24031B705C8400C61546 /* MainCell.m */,
 				27DD23F91B70565700C61546 /* MainViewController.h */,
 				27DD23FA1B70565700C61546 /* MainViewController.m */,
-				2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */,
-				2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */,
 			);
 			name = "主页";
 			sourceTree = "<group>";
@@ -297,6 +317,7 @@
 		27DD23FC1B7057E100C61546 /* 常用类 */ = {
 			isa = PBXGroup;
 			children = (
+				27DD240F1B70682000C61546 /* HeaderDefiner.h */,
 				27DD23FD1B70584700C61546 /* UIColor+HexColor.h */,
 				27DD23FE1B70584700C61546 /* UIColor+HexColor.m */,
 				272B6DAE1B70A73F006CCFE6 /* UIImageView+NetWork.h */,
@@ -305,7 +326,6 @@
 				27DD240A1B7061A000C61546 /* ImageDownloader.m */,
 				27DD240C1B70639B00C61546 /* NetWork.h */,
 				27DD240D1B70639B00C61546 /* NetWork.m */,
-				27DD240F1B70682000C61546 /* HeaderDefiner.h */,
 				27BA81421B71B508005B527B /* UIImage+Color.h */,
 				27BA81431B71B508005B527B /* UIImage+Color.m */,
 			);
@@ -315,8 +335,6 @@
 		27DD24001B70592D00C61546 /* 自定义控件 */ = {
 			isa = PBXGroup;
 			children = (
-				27DD24021B705C8400C61546 /* MainCell.h */,
-				27DD24031B705C8400C61546 /* MainCell.m */,
 				272B6DAB1B709CF0006CCFE6 /* ImageScroller.h */,
 				272B6DAC1B709CF1006CCFE6 /* ImageScroller.m */,
 				27BA813F1B71ABA3005B527B /* MainTabBar.h */,
@@ -325,6 +343,8 @@
 				27BA81831B71F80E005B527B /* Banner.m */,
 				27BA817F1B71EA77005B527B /* LoadMoreTableView.h */,
 				27BA81801B71EA77005B527B /* LoadMoreTableView.m */,
+				27EA9A0F1B733208003559C0 /* DropDownList.h */,
+				27EA9A101B733208003559C0 /* DropDownList.m */,
 			);
 			name = "自定义控件";
 			sourceTree = "<group>";
@@ -339,9 +359,31 @@
 			name = "第三方";
 			sourceTree = "<group>";
 		};
+		27EA99FF1B72F629003559C0 /* 基本配置类 */ = {
+			isa = PBXGroup;
+			children = (
+				27EA9A001B72F662003559C0 /* BaseViewController.h */,
+				27EA9A011B72F662003559C0 /* BaseViewController.m */,
+				2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */,
+				2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */,
+			);
+			name = "基本配置类";
+			sourceTree = "<group>";
+		};
+		27EA9A091B73174E003559C0 /* 搜索页 */ = {
+			isa = PBXGroup;
+			children = (
+				27EA9A0A1B731777003559C0 /* SearchViewController.h */,
+				27EA9A0B1B731777003559C0 /* SearchViewController.m */,
+			);
+			name = "搜索页";
+			sourceTree = "<group>";
+		};
 		2E4D41BC1B72867D00AA314E /* 凑分子 */ = {
 			isa = PBXGroup;
 			children = (
+				27EA99FC1B72F4A3003559C0 /* CouCell.h */,
+				27EA99FD1B72F4A3003559C0 /* CouCell.m */,
 				2E4D41BD1B72870400AA314E /* CouViewController.h */,
 				2E4D41BE1B72870400AA314E /* CouViewController.m */,
 			);
@@ -397,6 +439,7 @@
 				TargetAttributes = {
 					27DD23CE1B70514700C61546 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = BXS8PTL5GM;
 					};
 					27DD23E71B70514700C61546 = {
 						CreatedOnToolsVersion = 6.4;
@@ -428,10 +471,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27EA9A0E1B731AE7003559C0 /* iconfont-houtui@2x.png in Resources */,
 				27BA813B1B71AADF005B527B /* iconfont-shouye.png in Resources */,
-				27E0FFFB1B71A4B6003707B3 /* Default-568h@2x.png in Resources */,
 				27BA81381B71AADF005B527B /* iconfont-cfz.png in Resources */,
+				27EA9A131B7335FA003559C0 /* tbg.png in Resources */,
 				27BA81391B71AADF005B527B /* iconfont-fenlei.png in Resources */,
+				27EA9A081B7313C6003559C0 /* Default-568h@2x.png in Resources */,
 				27BA813E1B71AB1B005B527B /* iconfont-jia.png in Resources */,
 				27BA813C1B71AADF005B527B /* iconfont-wode.png in Resources */,
 				27DD23E01B70514700C61546 /* Images.xcassets in Resources */,
@@ -472,12 +517,16 @@
 				27BA81761B71C6A6005B527B /* SDWebImageManager.m in Sources */,
 				2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */,
 				27BA81741B71C6A6005B527B /* SDWebImageDownloader.m in Sources */,
+				27EA99FE1B72F4A3003559C0 /* CouCell.m in Sources */,
 				27BA817D1B71C6A6005B527B /* UIImageView+WebCache.m in Sources */,
 				27BA817C1B71C6A6005B527B /* UIImageView+HighlightedWebCache.m in Sources */,
+				27EA9A0C1B731777003559C0 /* SearchViewController.m in Sources */,
 				27BA816F1B71C6A6005B527B /* MKAnnotationView+WebCache.m in Sources */,
+				27EA9A111B733208003559C0 /* DropDownList.m in Sources */,
 				27BA81791B71C6A6005B527B /* UIImage+GIF.m in Sources */,
 				27DD23FB1B70565700C61546 /* MainViewController.m in Sources */,
 				27BA81771B71C6A6005B527B /* SDWebImagePrefetcher.m in Sources */,
+				27EA9A021B72F662003559C0 /* BaseViewController.m in Sources */,
 				27BA81781B71C6A6005B527B /* UIButton+WebCache.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
 				27BA81811B71EA77005B527B /* LoadMoreTableView.m in Sources */,
@@ -592,6 +641,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = angelslike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -603,6 +653,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = angelslike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

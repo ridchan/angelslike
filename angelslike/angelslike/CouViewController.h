@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+#import "LoadMoreTableView.h"
+#import "CouCell.h"
+#import "SearchViewController.h"
 
-@interface CouViewController : UIViewController
+@interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+
+@property (strong,nonatomic) LoadMoreTableView *tableView;
+@property (strong,nonatomic) NSMutableArray *result;
+@property (strong,nonatomic) NSString *cdn;
 
 @end

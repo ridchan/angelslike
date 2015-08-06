@@ -64,7 +64,7 @@
 - (CAGradientLayer *)shadowAsInverse
 {
     CAGradientLayer *newShadow = [[CAGradientLayer alloc] init] ;
-    CGRect newShadowFrame = CGRectMake(0, 0, self.frame.size.width - margin * 2, 30 - 5);
+    CGRect newShadowFrame = CGRectMake(0, 0, self.frame.size.width - MainCellMargin * 2, 30);
     newShadow.frame = newShadowFrame;
     newShadow.cornerRadius = 5;
     newShadow.masksToBounds = YES;
@@ -77,9 +77,9 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    imageView.frame = CGRectMake(margin, 0, self.frame.size.width - margin * 2, self.frame.size.height  - 5);
+    imageView.frame = CGRectMake(MainCellMargin, 0, self.frame.size.width - MainCellMargin * 2, self.frame.size.height  - MainCellGap);
     [self setConner:imageView];
-    nameLabel.frame =  CGRectMake(margin, self.frame.size.height - 30, self.frame.size.width - margin * 2, 30 - 5);
+    nameLabel.frame =  CGRectMake(MainCellMargin, self.frame.size.height - 30 - MainCellGap, self.frame.size.width - MainCellMargin * 2, 30);
     if (!layer) {
         layer = [self shadowAsInverse];
         [nameLabel.layer addSublayer:layer];

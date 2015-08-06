@@ -137,6 +137,9 @@
         [item addGestureRecognizer:tap];
         [self addSubview:item];
     }
+    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 1)];
+    line.backgroundColor = [UIColor getHexColor:@"e0e0e0"];
+    [self addSubview:line];
     self.selectIndex = 0;
 }
 

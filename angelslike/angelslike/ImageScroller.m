@@ -103,12 +103,15 @@
 
     [NSURLConnection sendAsynchronousRequest:request queue:[[NetWork shared]GetQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            if (obj) {
-                tempSelf.cdn = [obj objectForKey:@"cdn"];
-                tempSelf.infos = [obj objectForKey:@"data"];
-                [tempSelf startDownload];
+            if (data) {
+                id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                if (obj) {
+                    tempSelf.cdn = [obj objectForKey:@"cdn"];
+                    tempSelf.infos = [obj objectForKey:@"data"];
+                    [tempSelf startDownload];
+                }
             }
+
         });
         
         

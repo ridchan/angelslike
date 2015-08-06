@@ -14,9 +14,10 @@
 #import "LoadMoreTableView.h"
 #import "HeaderDefiner.h"
 #import "Banner.h"
+#import "BaseViewController.h"
 
 
-@interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface MainViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
     ImageScroller *scroller;
     Banner *banner;
     CGFloat scrolerHeight ;
