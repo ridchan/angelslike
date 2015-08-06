@@ -30,14 +30,19 @@
     
     MainViewController *vc1 = [[MainViewController alloc]init];
     UINavigationController *nvc1 = [[UINavigationController alloc]initWithRootViewController:vc1];
-//    nvc1.title = @"1";
+
     
     CouViewController *vc2 = [[CouViewController alloc]init];
     UINavigationController *nvc2 = [[UINavigationController alloc]initWithRootViewController:vc2];
-//    nvc2.title = @"2";
+    
+    UINavigationController *nvc3 = [[UINavigationController alloc]init];//空白页
+    
+    CategoryViewController *vc4 = [[CategoryViewController alloc]init];
+    UINavigationController *nvc4 = [[UINavigationController alloc]initWithRootViewController:vc4];
+
     
     TabBarViewController *tbc = [[TabBarViewController alloc]init];
-    tbc.viewControllers = @[nvc1,nvc2];
+    tbc.viewControllers = @[nvc1,nvc2,nvc3,nvc4];
 
     self.window.rootViewController = tbc;
     [self.window makeKeyAndVisible];

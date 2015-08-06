@@ -12,6 +12,7 @@
 #import "MainTabBar.h"
 #import "TabBarViewController.h"
 #import "CouViewController.h"
+#import "CategoryViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
