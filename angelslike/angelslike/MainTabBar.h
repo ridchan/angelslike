@@ -23,11 +23,14 @@
 @end
 
 @interface MainTabBar : UIView{
-
+    id tar;
+    SEL act;
 }
 
 @property (nonatomic) NSInteger selectIndex;
 @property (nonatomic) NSInteger lastIndex;
+
+-(void)addTarget:(id)target action:(SEL)action;
 
 
 @end
