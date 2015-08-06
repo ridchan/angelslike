@@ -14,6 +14,7 @@
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 #define FontWS(s) [UIFont systemFontOfSize:s]
+#define RGBA(r,g,b,a) [UIColor colorWithRed:(float)(r/255.0f)green:(float)(g / 255.0f) blue:(float)(b / 255.0f)alpha:a]
 
 
 #define SliderLink @"http://www.angelslike.com/json/getslider"
@@ -23,8 +24,9 @@
 #define MainCellMargin 10
 #define MainCellGap 15
 // margin 凑分子
-#define CouCellMargin 10
+#define CouCellMargin 0
 #define CouCellGap 10
+#define CouCellHeight 115
 
 
 #endif//

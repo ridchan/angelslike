@@ -11,11 +11,16 @@
 #import "LoadMoreTableView.h"
 #import "CouCell.h"
 #import "SearchViewController.h"
+#import "MXPullDownMenu.h"
 
-@interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UISearchBarDelegate>{
+    MXPullDownMenu *downMenu;
+    UISearchBar *_searchBar;
+}
 
 @property (strong,nonatomic) LoadMoreTableView *tableView;
 @property (strong,nonatomic) NSMutableArray *result;
 @property (strong,nonatomic) NSString *cdn;
+@property (strong,nonatomic) NSMutableDictionary *searchInfo;
 
 @end

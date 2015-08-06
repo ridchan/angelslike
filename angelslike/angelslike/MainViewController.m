@@ -84,19 +84,26 @@
 #pragma mark -
 #pragma mark table view method
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-
-{
-    
-    // 下拉到最底部时显示更多数据
-    
-    if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height)))
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height - 20)))
     {
         [self.tableView loadDataBegin];
     }
-    
-    
 }
+
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+//
+//{
+//    
+//    // 下拉到最底部时显示更多数据
+//    
+//    if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height)))
+//    {
+//        [self.tableView loadDataBegin];
+//    }
+//    
+//    
+//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {

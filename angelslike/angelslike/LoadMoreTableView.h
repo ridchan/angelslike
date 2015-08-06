@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HeaderDefiner.h"
 
 @interface LoadMoreTableView : UITableView<UIScrollViewDelegate>{
     id tar;

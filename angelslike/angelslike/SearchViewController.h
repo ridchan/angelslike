@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 
 @interface SearchViewController : BaseViewController<UISearchBarDelegate>{
-    UISearchBar *searchBar;
+    UISearchBar *_searchBar;
 }
 
 @end

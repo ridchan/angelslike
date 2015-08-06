@@ -23,7 +23,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [searchBar becomeFirstResponder];
+    [_searchBar becomeFirstResponder];
 }
 
 -(void)initialSetting{
@@ -32,18 +32,36 @@
     self.navigationItem.rightBarButtonItem = rightButton;
 
     
-    searchBar  = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 100, 28)];
-    searchBar.barStyle = UIBarStyleDefault;
-    searchBar.backgroundColor = [UIColor clearColor];
-    searchBar.tintColor = [UIColor clearColor];
-    searchBar.delegate  = self;
+    _searchBar  = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 100, 28)];
+    _searchBar.barStyle = UIBarStyleDefault;
+    _searchBar.backgroundColor = [UIColor clearColor];
+    _searchBar.tintColor = [UIColor clearColor];
+    _searchBar.delegate  = self;
     self.navigationItem.titleView.backgroundColor = [UIColor clearColor];
-    self.navigationItem.titleView = searchBar;
+    self.navigationItem.titleView = _searchBar;
     
 //    [self.navigationItem.backBarButtonItem setTitle:@""];
     [self.navigationItem setHidesBackButton:YES];
     
     
+}
+
+
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [_searchBar resignFirstResponder];
+    [self.navigationItem setHidesBackButton:NO];
+}
+
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    _searchBar.frame =  CGRectMake(0, 0, 100, 28);
+    [self.navigationItem setHidesBackButton:YES];
+    return YES;
+}
+
+-(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    [self.navigationItem setHidesBackButton:NO];
+    return YES;
 }
 
 

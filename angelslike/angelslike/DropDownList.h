@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HeaderDefiner.h"
 
-@interface DropDownList : UIView
+@interface ListItem : NSObject
+
+@property(nonatomic,strong) NSString *name;
+@property(nonatomic,strong) NSString *value;
+
+@end
+
+@interface DropDownList : UIView<UITableViewDelegate,UITableViewDataSource>{
+    id tar;
+    SEL act;
+}
+
+@property(nonatomic,strong) NSArray *titles;
+@property(nonatomic,strong) NSArray *listItems;
+
+-(void)addTarget:(id)target action:(SEL)action;
 
 @end

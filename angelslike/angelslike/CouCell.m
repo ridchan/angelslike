@@ -14,10 +14,9 @@
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self =  [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        UIView *v = [[UIView alloc]initWithFrame:CGRectMake(CouCellMargin, 0, ScreenWidth - CouCellMargin * 2, 115)];
-        v.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-        v.layer.shadowOffset = CGSizeMake(1, 1);
-        v.layer.shadowOpacity = 0.2;
+        UIView *v = [[UIView alloc]initWithFrame:CGRectMake(CouCellMargin, 0, ScreenWidth - CouCellMargin * 2, CouCellHeight)];
+        v.layer.borderWidth = 0.5;
+        v.layer.borderColor = [UIColor getHexColor:@"e0e0e0"].CGColor;
         v.backgroundColor = [UIColor whiteColor];
         [self addSubview:v];
         if (!imageView) {
@@ -56,6 +55,7 @@
             dayLabel = [[UILabel alloc]initWithFrame:CGRectMake(CouCellMargin + 75, 70, ScreenWidth - CouCellMargin * 2 - 75, 20)];
             dayLabel.backgroundColor = [UIColor clearColor];
             dayLabel.font = FontWS(11);
+            dayLabel.textColor = RGBA(0.0, 0.0, 0.0, 0.6);
             [self addSubview:dayLabel];
         }
         
@@ -63,11 +63,12 @@
             targetLabel = [[UILabel alloc]initWithFrame:CGRectMake(CouCellMargin + 75, 90, ScreenWidth - CouCellMargin * 2 - 75, 20)];
             targetLabel.backgroundColor = [UIColor clearColor];
             targetLabel.font = FontWS(11);
+            targetLabel.textColor = RGBA(0.0, 0.0, 0.0, 0.6);
             [self addSubview:targetLabel];
         }
         
         if (!statuLabel) {
-            statuLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth - 50 - CouCellMargin * 2, 90, 50, 22)];
+            statuLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth - 60 - CouCellMargin * 2, 90, 50, 22)];
             statuLabel.backgroundColor = [UIColor clearColor];
             statuLabel.font = FontWS(10);
             statuLabel.textAlignment = NSTextAlignmentCenter;
@@ -92,8 +93,14 @@
 
 -(void)setInfo:(NSDictionary *)info{
     _info = info;
+    
     [imageView sd_setImageWithURL:[NSURL URLWithString:[info objectForKey:@"img"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
+//        if (image) {
+//            NSLog(@"图片加载成功 %@",[info objectForKey:@"name"]);
+//        }else {
+//            NSLog(@"图片加载失败 %@  %@",error,imageURL);
+//        }
     }];
     companyLabel.text = [info objectForKey:@"name"];
     nameLabel.text = [info objectForKey:@"title"];

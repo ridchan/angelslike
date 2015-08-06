@@ -35,7 +35,7 @@
     self.tableFooterView = nil;
 
     if (_currentPage < _totalPage) {
-        UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.bounds.size.width, 40.0f)];
+//        UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.bounds.size.width, 40.0f)];
         
 //        UILabel *loadMoreText = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 116.0f, 40.0f)];
 //        
@@ -48,7 +48,7 @@
 //        [tableFooterView addSubview:loadMoreText];
         
         
-        self.tableFooterView = tableFooterView;
+//        self.tableFooterView = tableFooterView;
     }
     
 
@@ -86,6 +86,7 @@
         self.bLoading = YES;
         
         UIActivityIndicatorView *tableFooterActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(75.0f, 10.0f, 20.0f, 20.0f)];
+        tableFooterActivityIndicator.center = CGPointMake(ScreenWidth / 2, 20);
         
         [tableFooterActivityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
         
