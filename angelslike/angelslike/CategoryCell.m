@@ -16,7 +16,7 @@
     if (self = [super initWithFrame:frame]) {
         //
         imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,frame.size.width, frame.size.width)];
-        label = [[UILabel alloc]initWithFrame:CGRectMake(0, frame.size.width + 10, frame.size.width, 20)];
+        label = [[UILabel alloc]initWithFrame:CGRectMake(0, frame.size.width + 2, frame.size.width, 20)];
         label.font = FontWS(9);
         label.textAlignment = NSTextAlignmentCenter;
         label.backgroundColor = [UIColor clearColor];
@@ -40,6 +40,7 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
+
     CGFloat gap = 6;
     CGFloat width = (self.frame.size.width - gap * 10) / 5;
     
@@ -49,18 +50,25 @@
     v.backgroundColor = [UIColor whiteColor];
     [self addSubview:v];
     
-    if (!titleLabel) {
-        titleLabel = [[UILabel alloc]init];
-        titleLabel.backgroundColor = [UIColor greenColor];
-        titleLabel.textColor = [UIColor blackColor];
-        [self addSubview:titleLabel];
-    }
-    titleLabel.frame = CGRectMake(0, 0, 200, 30);
+    
+    titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 200, 30)];
+
+    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.font = FontWS(11);
+    titleLabel.frame = CGRectMake(10, 0, 200, 30);
     titleLabel.text = self.title;
+    [self addSubview:titleLabel];
+
+
+    
+    
+//    [self addSubview:titleLabel];
     
     
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 30, self.frame.size.width, self.frame.size.height - 40)];
-
+    scrollView.backgroundColor = [UIColor clearColor];
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:scrollView];
     
     for (int i  = 0 ; i < [self.buttonInfos count] ; i ++){

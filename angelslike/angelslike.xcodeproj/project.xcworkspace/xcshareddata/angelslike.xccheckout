@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>1562D2B3-D2FB-439A-BA2A-2A58C3C96134</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>angelslike</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>40A0200E1992EAB1317545A99FB52050AE036173</key>
 		<string>https://github.com/ridchan/angelslike.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>angelslike/angelslike.xcodeproj/project.xcworkspace</string>
+	<string>angelslike/angelslike.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>40A0200E1992EAB1317545A99FB52050AE036173</key>

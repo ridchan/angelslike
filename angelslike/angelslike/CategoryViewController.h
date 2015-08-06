@@ -13,5 +13,6 @@
 @interface CategoryViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong,nonatomic) LoadMoreTableView *tableView;
+@property (strong,nonatomic) NSDictionary *infos;
 
 @end
