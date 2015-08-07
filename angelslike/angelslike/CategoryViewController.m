@@ -83,6 +83,7 @@
     UISegmentedControl *seg = [[UISegmentedControl alloc]initWithItems:@[@"礼物分类",@"主题分类"]];
     seg.tintColor = [UIColor whiteColor];
     seg.selectedSegmentIndex = 0;
+    [seg addTarget:self action:@selector(viewChange:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = seg;
     
     //搜索按钮
@@ -90,9 +91,40 @@
     barButtonItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = barButtonItem;
     
+    self.tvc = [[ThemeViewController alloc]init];
+    self.tvc.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+    [self.view addSubview:self.tvc.view];
+    self.tvc.view.hidden = YES;
 }
 
 #pragma mark -
+
+-(void)viewChange:(UISegmentedControl *)sender{
+    
+    [UIView beginAnimations:nil context:nil];
+    //持续时间
+    [UIView setAnimationDuration:.5];
+    //在出动画的时候减缓速度
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    //添加动画开始及结束的代理
+    [UIView setAnimationDelegate:self];
+//    [UIView setAnimationWillStartSelector:@selector(begin)];
+//    [UIView setAnimationDidStopSelector:@selector(stopAni)];
+    //动画效果
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
+//    [self.view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+    
+    
+    if (sender.selectedSegmentIndex == 0) {
+        self.tvc.view.hidden = YES;
+        [self.view sendSubviewToBack:self.tvc.view];
+    }else{
+        self.tvc.view.hidden = NO;
+        [self.view bringSubviewToFront:self.tvc.view];
+    }
+    
+    [UIView commitAnimations];
+}
 
 -(void)searchClick:(id)sender{
     
@@ -111,9 +143,10 @@
         cell = [[CategoryCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         cell.backgroundColor =  [UIColor clearColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        cell.title = [@[@"对象",@"场合",@"价格",@"个性",@"品类"] objectAtIndex:indexPath.row];
+        cell.buttonInfos = [self.infos objectForKey:cell.title];
     }
-    cell.title = [@[@"对象",@"场合",@"价格",@"个性",@"品类"] objectAtIndex:indexPath.row];
-    cell.buttonInfos = [self.infos objectForKey:cell.title];
+
     
     return cell;
     
@@ -128,7 +161,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120;
+    return CatCellHeight + CatCellGap;
 }
 
 @end

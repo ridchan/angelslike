@@ -16,6 +16,7 @@
     UIImageView *imageView;
     UILabel *nameLabel;
     CAGradientLayer *layer;
+    CALayer *imgLayer;
 }
 
 -(void) setImageView:(NSString *)link;

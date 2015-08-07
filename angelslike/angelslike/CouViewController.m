@@ -28,7 +28,7 @@
     self.searchInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"list_cou",@"type",
                                                                         @"new",@"sort",nil];
     //顶部配置
-    UISegmentedControl *seg = [[UISegmentedControl alloc]initWithItems:@[@"谁在凑分子",@"我的凑分子"]];
+    seg = [[UISegmentedControl alloc]initWithItems:@[@"谁在凑分子",@"我的凑分子"]];
     seg.tintColor = [UIColor whiteColor];
     seg.selectedSegmentIndex = 0;
     self.navigationItem.titleView = seg;
@@ -46,6 +46,8 @@
     _searchBar.delegate  = self;
 
 
+//    searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:_searchBar contentsController:self];
+    
     
     //    [self.navigationItem.backBarButtonItem setTitle:@""];
     [self.navigationItem setHidesBackButton:YES];
@@ -80,6 +82,7 @@
     __block CouViewController *tempSelf = self;
     NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
     [self.searchInfo setObject:nPage forKey:@"page"];
+    [self.searchInfo setObject:_searchBar.text forKey:@"key"];
     
     [[NetWork shared] startQuery:ListLink
                             info:self.searchInfo
@@ -97,10 +100,43 @@
                    }];
 }
 
+
+-(void)backClick:(id)sender{
+    
+    self.navigationItem.titleView = seg;
+
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
+    barButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    
+    _searchBar.text = @"";
+    [self reloadData];
+}
+
 -(void)searchClick:(id)sender{
-//    self.navigationItem.titleView = _searchBar;
-    SearchViewController *vc = [[SearchViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+
+    self.navigationItem.titleView = _searchBar;
+    [_searchBar becomeFirstResponder];
+
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backClick:)];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    
+}
+
+-(void)reloadData{
+    //重新加载数据
+    [self.result removeAllObjects];
+    self.tableView.currentPage = 0;
+    [self loadMoreData:nil];
+}
+
+#pragma mark -
+#pragma mark search bar
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [_searchBar resignFirstResponder];
+    [self reloadData];
 }
 
 #pragma mark -
@@ -111,9 +147,8 @@
     NSArray *valueArr = @[@[@"",@"1",@"2",@"3",@"4"],@[@"",@"9",@"10"],@[@"new",@"hot",@"costly"]];
     NSString *value =  [[valueArr objectAtIndex:column] objectAtIndex:row];
     [self.searchInfo setObject:value forKey:[keyArr objectAtIndex:column]];
-    self.tableView.currentPage = 0;
-    [self.result removeAllObjects];
-    [self loadMoreData:nil];
+ 
+    [self reloadData];
 }
 
 

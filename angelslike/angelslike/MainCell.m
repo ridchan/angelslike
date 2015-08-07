@@ -80,10 +80,16 @@
     imageView.frame = CGRectMake(MainCellMargin, 0, self.frame.size.width - MainCellMargin * 2, self.frame.size.height  - MainCellGap);
     [self setConner:imageView];
     nameLabel.frame =  CGRectMake(MainCellMargin, self.frame.size.height - 30 - MainCellGap, self.frame.size.width - MainCellMargin * 2, 30);
-    if (!layer) {
-        layer = [self shadowAsInverse];
-        [nameLabel.layer addSublayer:layer];
-        [nameLabel setNeedsDisplay];
+//    if (!layer) {
+//        layer = [self shadowAsInverse];
+//        [nameLabel.layer addSublayer:layer];
+//        [nameLabel setNeedsDisplay];
+//    }
+    if (!imgLayer) {
+        imgLayer = [CALayer layer];
+        imgLayer.frame = CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height);
+        imgLayer.contents = (id)[UIImage imageNamed:@"tbg"].CGImage;
+        [imageView.layer addSublayer:imgLayer];
     }
 
 }

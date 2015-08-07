@@ -19,7 +19,7 @@
     
     
     scrolerHeight = ScreenWidth * 9 / 16;
-    cellHeight = (ScreenWidth - MainCellMargin * 2) * 9 / 20 + MainCellGap; // 20:9
+    cellHeight = (ScreenWidth - MainCellMargin * 2) * 49 / 108 + MainCellGap; // 108:49
     
     [self initailSetting];
     

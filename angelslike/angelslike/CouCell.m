@@ -14,11 +14,14 @@
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self =  [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        UIView *v = [[UIView alloc]initWithFrame:CGRectMake(CouCellMargin, 0, ScreenWidth - CouCellMargin * 2, CouCellHeight)];
-        v.layer.borderWidth = 0.5;
-        v.layer.borderColor = [UIColor getHexColor:@"e0e0e0"].CGColor;
-        v.backgroundColor = [UIColor whiteColor];
-        [self addSubview:v];
+        if (!bg) {
+            bg = [[UIView alloc]initWithFrame:CGRectMake(CouCellMargin, 0, ScreenWidth - CouCellMargin * 2, CouCellHeight)];
+            bg.layer.borderWidth = 0.5;
+            bg.layer.borderColor = [UIColor getHexColor:@"e0e0e0"].CGColor;
+            bg.backgroundColor = [UIColor whiteColor];
+            [self addSubview:bg];
+        }
+
         if (!imageView) {
             imageView = [[UIImageView alloc]initWithFrame:CGRectMake(CouCellMargin + 5, 15, 63, 63)];
             imageView.layer.cornerRadius = 5;
@@ -68,7 +71,7 @@
         }
         
         if (!statuLabel) {
-            statuLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth - 60 - CouCellMargin * 2, 90, 50, 22)];
+            statuLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth - 60 - CouCellMargin * 2, 80, 50, 22)];
             statuLabel.backgroundColor = [UIColor clearColor];
             statuLabel.font = FontWS(10);
             statuLabel.textAlignment = NSTextAlignmentCenter;
@@ -79,6 +82,13 @@
             statuLabel.layer.borderColor = statuLabel.textColor.CGColor;
             [self addSubview:statuLabel];
         }
+        
+        if (!progress) {
+            progress = [[UILabel alloc]initWithFrame:CGRectMake(0, bg.frame.size.height - 2, 0, 2)];
+            progress.backgroundColor = [UIColor getHexColor:@"ff6969"];
+            [bg addSubview:progress];
+        }
+        
         
     }
     return self;
@@ -117,6 +127,12 @@
     targetLabel.text = [NSString stringWithFormat:@"目标 %@ 份 | 已凑 %@ 份",[info objectForKey:@"copies"],[info objectForKey:@"currentcopies"]];
     
     statuLabel.text = [info objectForKey:@"status"];
+    
+
+    CGFloat p = [[info objectForKey:@"currentcopies"] doubleValue] / [[info objectForKey:@"copies"] doubleValue] * bg.frame.size.width;
+
+    progress.frame = CGRectMake(progress.frame.origin.x, progress.frame.origin.y, p, 2);
+
 }
 
 @end

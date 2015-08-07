@@ -20,6 +20,8 @@
     UILabel *dayLabel;//价格 ，剩余
     UILabel *targetLabel;//凑目标
     UILabel *statuLabel;
+    UIView *progress;
+    UIView *bg;
     
 }
 

@@ -39,10 +39,13 @@
     
     CategoryViewController *vc4 = [[CategoryViewController alloc]init];
     UINavigationController *nvc4 = [[UINavigationController alloc]initWithRootViewController:vc4];
+    
+    MineViewController *vc5 = [[MineViewController alloc]init];
+    UINavigationController *nvc5 = [[UINavigationController alloc]initWithRootViewController:vc5];
 
     
     TabBarViewController *tbc = [[TabBarViewController alloc]init];
-    tbc.viewControllers = @[nvc1,nvc2,nvc3,nvc4];
+    tbc.viewControllers = @[nvc1,nvc2,nvc3,nvc4,nvc5];
 
     self.window.rootViewController = tbc;
     [self.window makeKeyAndVisible];

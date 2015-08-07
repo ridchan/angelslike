@@ -54,6 +54,15 @@
 		27EA9A0E1B731AE7003559C0 /* iconfont-houtui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A0D1B731AE7003559C0 /* iconfont-houtui@2x.png */; };
 		27EA9A111B733208003559C0 /* DropDownList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA9A101B733208003559C0 /* DropDownList.m */; };
 		27EA9A131B7335FA003559C0 /* tbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A121B7335FA003559C0 /* tbg.png */; };
+		27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EED2551B7462B1009F2DD2 /* MineViewController.m */; };
+		27EED2661B7480C2009F2DD2 /* MineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EED2651B7480C2009F2DD2 /* MineCell.m */; };
+		27EED26E1B7489F7009F2DD2 /* mine_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EED2681B7489F7009F2DD2 /* mine_01.png */; };
+		27EED26F1B7489F7009F2DD2 /* mine_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EED2691B7489F7009F2DD2 /* mine_02.png */; };
+		27EED2701B7489F7009F2DD2 /* mine_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EED26A1B7489F7009F2DD2 /* mine_03.png */; };
+		27EED2711B7489F7009F2DD2 /* mine_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EED26B1B7489F7009F2DD2 /* mine_04.png */; };
+		27EED2721B7489F7009F2DD2 /* mine_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EED26C1B7489F7009F2DD2 /* mine_05.png */; };
+		27EED2741B748D90009F2DD2 /* mine_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EED2731B748D90009F2DD2 /* mine_00.png */; };
+		27EED2771B7495B1009F2DD2 /* ThemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EED2761B7495B1009F2DD2 /* ThemeViewController.m */; };
 		27EFB2121B734C9800A14872 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EFB2111B734C9800A14872 /* arrow.png */; };
 		27EFB2151B73518D00A14872 /* MXPullDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFB2141B73518D00A14872 /* MXPullDownMenu.m */; };
 		27EFB2191B73737C00A14872 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EFB2181B73737C00A14872 /* CategoryViewController.m */; };
@@ -195,6 +204,18 @@
 		27EA9A0F1B733208003559C0 /* DropDownList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownList.h; sourceTree = "<group>"; };
 		27EA9A101B733208003559C0 /* DropDownList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownList.m; sourceTree = "<group>"; };
 		27EA9A121B7335FA003559C0 /* tbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tbg.png; sourceTree = "<group>"; };
+		27EED2541B7462B1009F2DD2 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		27EED2551B7462B1009F2DD2 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		27EED2641B7480C2009F2DD2 /* MineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCell.h; sourceTree = "<group>"; };
+		27EED2651B7480C2009F2DD2 /* MineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCell.m; sourceTree = "<group>"; };
+		27EED2681B7489F7009F2DD2 /* mine_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_01.png; sourceTree = "<group>"; };
+		27EED2691B7489F7009F2DD2 /* mine_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_02.png; sourceTree = "<group>"; };
+		27EED26A1B7489F7009F2DD2 /* mine_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_03.png; sourceTree = "<group>"; };
+		27EED26B1B7489F7009F2DD2 /* mine_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_04.png; sourceTree = "<group>"; };
+		27EED26C1B7489F7009F2DD2 /* mine_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_05.png; sourceTree = "<group>"; };
+		27EED2731B748D90009F2DD2 /* mine_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_00.png; sourceTree = "<group>"; };
+		27EED2751B7495B1009F2DD2 /* ThemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeViewController.h; sourceTree = "<group>"; };
+		27EED2761B7495B1009F2DD2 /* ThemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeViewController.m; sourceTree = "<group>"; };
 		27EFB2111B734C9800A14872 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		27EFB2131B73518D00A14872 /* MXPullDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPullDownMenu.h; sourceTree = "<group>"; };
 		27EFB2141B73518D00A14872 /* MXPullDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXPullDownMenu.m; sourceTree = "<group>"; };
@@ -265,6 +286,7 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				27EED2571B7464E1009F2DD2 /* Mine */,
 				27EFB2691B73971000A14872 /* Category */,
 				27EFB2111B734C9800A14872 /* arrow.png */,
 				27EA9A121B7335FA003559C0 /* tbg.png */,
@@ -350,6 +372,7 @@
 				2E4D41BC1B72867D00AA314E /* 凑分子 */,
 				27EA9A091B73174E003559C0 /* 搜索页 */,
 				27EFB2161B73735500A14872 /* 分类页 */,
+				27EED2531B746278009F2DD2 /* 我的页 */,
 				27DD23D61B70514700C61546 /* AppDelegate.h */,
 				27DD23D71B70514700C61546 /* AppDelegate.m */,
 				27DD23D91B70514700C61546 /* ViewController.h */,
@@ -465,6 +488,30 @@
 			name = "搜索页";
 			sourceTree = "<group>";
 		};
+		27EED2531B746278009F2DD2 /* 我的页 */ = {
+			isa = PBXGroup;
+			children = (
+				27EED2641B7480C2009F2DD2 /* MineCell.h */,
+				27EED2651B7480C2009F2DD2 /* MineCell.m */,
+				27EED2541B7462B1009F2DD2 /* MineViewController.h */,
+				27EED2551B7462B1009F2DD2 /* MineViewController.m */,
+			);
+			name = "我的页";
+			sourceTree = "<group>";
+		};
+		27EED2571B7464E1009F2DD2 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				27EED2731B748D90009F2DD2 /* mine_00.png */,
+				27EED2681B7489F7009F2DD2 /* mine_01.png */,
+				27EED2691B7489F7009F2DD2 /* mine_02.png */,
+				27EED26A1B7489F7009F2DD2 /* mine_03.png */,
+				27EED26B1B7489F7009F2DD2 /* mine_04.png */,
+				27EED26C1B7489F7009F2DD2 /* mine_05.png */,
+			);
+			name = Mine;
+			sourceTree = "<group>";
+		};
 		27EFB2161B73735500A14872 /* 分类页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +519,8 @@
 				27EFB21D1B737ED600A14872 /* CategoryCell.m */,
 				27EFB2171B73737C00A14872 /* CategoryViewController.h */,
 				27EFB2181B73737C00A14872 /* CategoryViewController.m */,
+				27EED2751B7495B1009F2DD2 /* ThemeViewController.h */,
+				27EED2761B7495B1009F2DD2 /* ThemeViewController.m */,
 			);
 			name = "分类页";
 			sourceTree = "<group>";
@@ -617,6 +666,8 @@
 				27EFB2121B734C9800A14872 /* arrow.png in Resources */,
 				27EFB22E1B73966800A14872 /* duixiang_03.png in Resources */,
 				27EFB2561B73970100A14872 /* jiage_04.png in Resources */,
+				27EED2701B7489F7009F2DD2 /* mine_03.png in Resources */,
+				27EED26E1B7489F7009F2DD2 /* mine_01.png in Resources */,
 				27EFB23E1B7396E700A14872 /* changhe_05.png in Resources */,
 				27EFB2671B73970900A14872 /* pinglei_07.png in Resources */,
 				27BA81381B71AADF005B527B /* iconfont-cfz.png in Resources */,
@@ -635,7 +686,9 @@
 				27EFB2301B73966800A14872 /* duixiang_05.png in Resources */,
 				27EFB2391B7396E700A14872 /* changhe_00.png in Resources */,
 				27EFB2321B73966800A14872 /* duixiang_07.png in Resources */,
+				27EED2721B7489F7009F2DD2 /* mine_05.png in Resources */,
 				27EFB2491B7396F600A14872 /* gexin_03.png in Resources */,
+				27EED2711B7489F7009F2DD2 /* mine_04.png in Resources */,
 				27EFB22D1B73966800A14872 /* duixiang_02.png in Resources */,
 				27EA9A081B7313C6003559C0 /* Default-568h@2x.png in Resources */,
 				27EFB2311B73966800A14872 /* duixiang_06.png in Resources */,
@@ -651,10 +704,12 @@
 				27EFB2601B73970900A14872 /* pinglei_00.png in Resources */,
 				27EFB2541B73970100A14872 /* jiage_02.png in Resources */,
 				27EFB2681B73970900A14872 /* pinglei_08.png in Resources */,
+				27EED26F1B7489F7009F2DD2 /* mine_02.png in Resources */,
 				27EFB24A1B7396F600A14872 /* gexin_04.png in Resources */,
 				27EFB23B1B7396E700A14872 /* changhe_02.png in Resources */,
 				27BA81861B71FAFB005B527B /* iconfont-icon83.png in Resources */,
 				27EFB2651B73970900A14872 /* pinglei_05.png in Resources */,
+				27EED2741B748D90009F2DD2 /* mine_00.png in Resources */,
 				27EFB24C1B7396F600A14872 /* gexin_06.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,7 +730,9 @@
 			files = (
 				27DD23DB1B70514700C61546 /* ViewController.m in Sources */,
 				27BA817B1B71C6A6005B527B /* UIImage+WebP.m in Sources */,
+				27EED2661B7480C2009F2DD2 /* MineCell.m in Sources */,
 				27EFB2151B73518D00A14872 /* MXPullDownMenu.m in Sources */,
+				27EED2771B7495B1009F2DD2 /* ThemeViewController.m in Sources */,
 				27DD23D81B70514700C61546 /* AppDelegate.m in Sources */,
 				27DD24041B705C8400C61546 /* MainCell.m in Sources */,
 				27DD23FF1B70584700C61546 /* UIColor+HexColor.m in Sources */,
@@ -710,6 +767,7 @@
 				27BA81811B71EA77005B527B /* LoadMoreTableView.m in Sources */,
 				27BA81731B71C6A6005B527B /* SDWebImageDecoder.m in Sources */,
 				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,
+				27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */,
 				27BA81841B71F80E005B527B /* Banner.m in Sources */,
 				27BA817E1B71C6A6005B527B /* UIView+WebCacheOperation.m in Sources */,
 				272B6DB01B70A73F006CCFE6 /* UIImageView+NetWork.m in Sources */,

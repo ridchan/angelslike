@@ -9,10 +9,12 @@
 #import "BaseViewController.h"
 #import "LoadMoreTableView.h"
 #import "CategoryCell.h"
+#import "ThemeViewController.h"
 
 @interface CategoryViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong,nonatomic) LoadMoreTableView *tableView;
 @property (strong,nonatomic) NSDictionary *infos;
+@property (strong,nonatomic) ThemeViewController *tvc;
 
 @end

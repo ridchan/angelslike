@@ -21,9 +21,11 @@
 
 @interface CategoryCell : UITableViewCell{
     UILabel *titleLabel;
+    UIScrollView *_scrollView;
 }
 
 @property(nonatomic,strong) NSArray *buttonInfos;
 @property(nonatomic,strong) NSString *title;
+
 
 @end

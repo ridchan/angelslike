@@ -38,47 +38,72 @@
 
 @implementation CategoryCell
 
--(void)layoutSubviews{
-    [super layoutSubviews];
+@synthesize buttonInfos = _buttonInfos;
+@synthesize title = _title;
 
-    CGFloat gap = 6;
-    CGFloat width = (self.frame.size.width - gap * 10) / 5;
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        //
+        [self initialSetting];
+    }
     
-    UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0 , 0, self.frame.size.width, self.frame.size.height - 10)];
+    return self;
+}
+
+-(void)setButtonInfos:(NSArray *)buttonInfos{
+    _buttonInfos = buttonInfos;
+    CGFloat gap = 6;
+    CGFloat width = (ScreenWidth - CatCellMargin * 2 - gap * 10) / 5;
+    
+    [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    for (int i  = 0 ; i < [_buttonInfos count] ; i ++){
+        CellItem *item = [[CellItem alloc]initWithFrame:CGRectMake(gap + (gap * 2 + width) * i, 0, width, _scrollView.frame.size.height)];
+        item.info = [_buttonInfos objectAtIndex:i];
+        [_scrollView addSubview:item];
+        _scrollView.contentSize = CGSizeMake(item.frame.origin.x + item.frame.size.width + gap, 1);
+    }
+}
+
+-(void)setTitle:(NSString *)title{
+    _title = title;
+    titleLabel.text = _title;
+}
+
+
+-(void)initialSetting{
+
+    
+    UIView *v = [[UIView alloc]initWithFrame:CGRectMake(CatCellMargin , 0, ScreenWidth - CatCellMargin * 2, CatCellHeight)];
     v.layer.borderWidth = 0.5;
     v.layer.borderColor = [UIColor getHexColor:@"e0e0e0"].CGColor;
     v.backgroundColor = [UIColor whiteColor];
     [self addSubview:v];
     
     
-    titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 200, 30)];
-
+    titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(CatCellMargin + 10, 0, 200, 30)];
+    
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = FontWS(11);
-    titleLabel.frame = CGRectMake(10, 0, 200, 30);
-    titleLabel.text = self.title;
+    
     [self addSubview:titleLabel];
+    
+    
+    
+    
+    //    [self addSubview:titleLabel];
+    
+    
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 30, v.frame.size.width, v.frame.size.height - 30)];
+    _scrollView.backgroundColor = [UIColor clearColor];
+    _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    [self addSubview:_scrollView];
+    
 
+}
 
-    
-    
-//    [self addSubview:titleLabel];
-    
-    
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 30, self.frame.size.width, self.frame.size.height - 40)];
-    scrollView.backgroundColor = [UIColor clearColor];
-    scrollView.showsVerticalScrollIndicator = NO;
-    scrollView.showsHorizontalScrollIndicator = NO;
-    [self addSubview:scrollView];
-    
-    for (int i  = 0 ; i < [self.buttonInfos count] ; i ++){
-        CellItem *item = [[CellItem alloc]initWithFrame:CGRectMake(gap + (gap * 2 + width) * i, 0, width, scrollView.frame.size.height)];
-        item.info = [self.buttonInfos objectAtIndex:i];
-        [scrollView addSubview:item];
-        scrollView.contentSize = CGSizeMake(item.frame.origin.x + item.frame.size.width, 1);
-    }
-    
-    
+-(void)layoutSubviews{
+    [super layoutSubviews];
 }
 
 

@@ -16,6 +16,8 @@
 @interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UISearchBarDelegate>{
     MXPullDownMenu *downMenu;
     UISearchBar *_searchBar;
+    UISegmentedControl *seg;
+    UISearchDisplayController *searchDisplayController;
 }
 
 @property (strong,nonatomic) LoadMoreTableView *tableView;

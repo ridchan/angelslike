@@ -28,5 +28,11 @@
 #define CouCellGap 10
 #define CouCellHeight 115
 
+// margin 分类
+#define CatCellMargin 0
+#define CatCellGap 10
+#define CatCellHeight 115
+
+
 
 #endif//
