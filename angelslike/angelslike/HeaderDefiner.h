@@ -33,6 +33,8 @@
 #define CatCellGap 10
 #define CatCellHeight 115
 
+#import "NSDictionary_IngoreNull.h"
+
 
 
 #endif//

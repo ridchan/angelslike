@@ -104,34 +104,36 @@
 -(void)setInfo:(NSDictionary *)info{
     _info = info;
     
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[info objectForKey:@"img"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [imageView sd_setImageWithURL:[NSURL URLWithString:[info strForKey:@"img"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
 //        if (image) {
-//            NSLog(@"图片加载成功 %@",[info objectForKey:@"name"]);
+//            NSLog(@"图片加载成功 %@",[info strForKey:@"name"]);
 //        }else {
 //            NSLog(@"图片加载失败 %@  %@",error,imageURL);
 //        }
     }];
-    companyLabel.text = [info objectForKey:@"name"];
-    nameLabel.text = [info objectForKey:@"title"];
-    pnameLabel.text = [NSString stringWithFormat:@"[凑什么]%@",[info objectForKey:@"pname"]];
+    companyLabel.text = [info strForKey:@"name"];
+    nameLabel.text = [info strForKey:@"title"];
+    pnameLabel.text = [NSString stringWithFormat:@"[凑什么]%@",[info strForKey:@"pname"]];
 
-    NSString *price = [NSString stringWithFormat:@"%0.2f",[[info objectForKey:@"price"] doubleValue] / [[info objectForKey:@"copies"] doubleValue]];
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"每份: %@ 元  %@",price,[info objectForKey:@"outday"]]];
+    NSString *price = [NSString stringWithFormat:@"%0.2f",[[info strForKey:@"price"] doubleValue] / [[info strForKey:@"copies"] doubleValue]];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"每份: %@ 元  %@",price,[info strForKey:@"outday"]]];
     NSRange range = NSMakeRange([@"每份: " length],[price length]);
     
     [str addAttribute:NSForegroundColorAttributeName value:[UIColor getHexColor:@"FA9E47"] range:range];
     [str addAttribute:NSFontAttributeName value:FontWS(dayLabel.font.pointSize + 3) range:range];
     dayLabel.attributedText = str;
     
-    targetLabel.text = [NSString stringWithFormat:@"目标 %@ 份 | 已凑 %@ 份",[info objectForKey:@"copies"],[info objectForKey:@"currentcopies"]];
+    targetLabel.text = [NSString stringWithFormat:@"目标 %@ 份 | 已凑 %@ 份",[info strForKey:@"copies"],[info strForKey:@"currentcopies"]];
     
-    statuLabel.text = [info objectForKey:@"status"];
+    statuLabel.text = [info strForKey:@"status"];
     
+    if ([[info strForKey:@"copies"] doubleValue] > 0) {
+        CGFloat p = [[info strForKey:@"currentcopies"] doubleValue] / [[info strForKey:@"copies"] doubleValue] * bg.frame.size.width;
+        
+        progress.frame = CGRectMake(progress.frame.origin.x, progress.frame.origin.y, p, 2);
+    }
 
-    CGFloat p = [[info objectForKey:@"currentcopies"] doubleValue] / [[info objectForKey:@"copies"] doubleValue] * bg.frame.size.width;
-
-    progress.frame = CGRectMake(progress.frame.origin.x, progress.frame.origin.y, p, 2);
 
 }
 
