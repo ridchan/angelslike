@@ -10,6 +10,7 @@
 #import "UIImageView+NetWork.h"
 #import "NetWork.h"
 #import "UIImageView+WebCache.h"
+#import "HeaderDefiner.h"
 
 
 @interface DotPageControl : UIPageControl{

@@ -105,14 +105,12 @@
     //持续时间
     [UIView setAnimationDuration:.5];
     //在出动画的时候减缓速度
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     //添加动画开始及结束的代理
     [UIView setAnimationDelegate:self];
-//    [UIView setAnimationWillStartSelector:@selector(begin)];
-//    [UIView setAnimationDidStopSelector:@selector(stopAni)];
     //动画效果
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
-//    [self.view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+//    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
+
     
     
     if (sender.selectedSegmentIndex == 0) {

@@ -32,7 +32,7 @@
         
         [self hideRealTabBar];
         tabbar = [[MainTabBar alloc]init];
-        [tabbar addTarget:self action:@selector(customerTabBarClick:)];
+        tabbar.delegate = self;
         
         [self bringCustomTabBarToFront];
         hasLoaded = YES;
@@ -41,13 +41,29 @@
     
 }
 
--(void)setSelectedIndex:(NSUInteger)selectedIndex{
-    [super setSelectedIndex:selectedIndex];
+-(BOOL)tabbarShouldTap:(MTabBarItem *)item atIndex:(NSInteger)index{
+    if (index == 2) {
+        return NO;
+    }else if(index == 4){
+        LoginViewController *lvc = [[LoginViewController alloc]init];
+        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:lvc];
+        [self presentViewController:nvc animated:YES completion:NULL];
+        return NO;
+    }
+    return YES;
 }
 
--(void)customerTabBarClick:(NSNumber *)number{
-    [self setSelectedIndex:[number integerValue]];
+-(void)tabbarTap:(MTabBarItem *)item atIndex:(NSInteger)index{
+    [self setSelectedIndex:index];
 }
+
+-(void)setSelectedIndex:(NSUInteger)selectedIndex{
+    [super setSelectedIndex:selectedIndex];
+    
+}
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     

@@ -106,7 +106,7 @@
             if (data) {
                 id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
                 if (obj) {
-                    tempSelf.cdn = [obj objectForKey:@"cdn"];
+                    tempSelf.cdn = ImageLink;// [obj objectForKey:@"cdn"];
                     tempSelf.infos = [obj objectForKey:@"data"];
                     [tempSelf startDownload];
                 }
@@ -135,7 +135,7 @@
             imageView.tag = i + 1;
             [_scrollView addSubview:imageView];
             
-            [imageView sd_setImageWithURL:[NSURL URLWithString:[[NSString stringWithFormat:@"http://%@",self.cdn] stringByAppendingPathComponent:[info objectForKey:@"img"]]]];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:[self.cdn stringByAppendingPathComponent:[info objectForKey:@"img"]]]];
             
             UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap:)];
             [imageView addGestureRecognizer:recognizer];

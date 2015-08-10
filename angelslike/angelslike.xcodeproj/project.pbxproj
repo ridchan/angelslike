@@ -47,6 +47,23 @@
 		27DD24041B705C8400C61546 /* MainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD24031B705C8400C61546 /* MainCell.m */; };
 		27DD240B1B7061A000C61546 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD240A1B7061A000C61546 /* ImageDownloader.m */; };
 		27DD240E1B70639B00C61546 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD240D1B70639B00C61546 /* NetWork.m */; };
+		27E6ADE51B7855EA008CE686 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADE41B7855EA008CE686 /* LoginViewController.m */; };
+		27E6ADFD1B785658008CE686 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27E6ADE71B785658008CE686 /* IQKeyboardManager.bundle */; };
+		27E6ADFE1B785658008CE686 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADE91B785658008CE686 /* IQKeyboardManager.m */; };
+		27E6ADFF1B785658008CE686 /* IQSegmentedNextPrevious.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADED1B785658008CE686 /* IQSegmentedNextPrevious.m */; };
+		27E6AE001B785658008CE686 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADEF1B785658008CE686 /* IQTextView.m */; };
+		27E6AE011B785658008CE686 /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADF11B785658008CE686 /* IQTitleBarButtonItem.m */; };
+		27E6AE021B785658008CE686 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADF31B785658008CE686 /* IQToolbar.m */; };
+		27E6AE031B785658008CE686 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADF61B785658008CE686 /* NSArray+Sort.m */; };
+		27E6AE041B785658008CE686 /* UIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADF81B785658008CE686 /* UIView+Hierarchy.m */; };
+		27E6AE051B785658008CE686 /* UIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADFA1B785658008CE686 /* UIView+IQKeyboardToolbar.m */; };
+		27E6AE061B785658008CE686 /* UIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADFC1B785658008CE686 /* UIWindow+Hierarchy.m */; };
+		27E6AE081B785915008CE686 /* logo_160.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E6AE071B785915008CE686 /* logo_160.png */; };
+		27E6AE0B1B785B49008CE686 /* RCRoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6AE0A1B785B49008CE686 /* RCRoundButton.m */; };
+		27E6AE0E1B787C30008CE686 /* iconfont-suo.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E6AE0C1B787C30008CE686 /* iconfont-suo.png */; };
+		27E6AE0F1B787C30008CE686 /* iconfont-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E6AE0D1B787C30008CE686 /* iconfont-user.png */; };
+		27E6AE111B787F25008CE686 /* iconfont-shouji.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E6AE101B787F25008CE686 /* iconfont-shouji.png */; };
+		27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6AE131B78861C008CE686 /* RegisterViewController.m */; };
 		27EA99FE1B72F4A3003559C0 /* CouCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA99FD1B72F4A3003559C0 /* CouCell.m */; };
 		27EA9A021B72F662003559C0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA9A011B72F662003559C0 /* BaseViewController.m */; };
 		27EA9A081B7313C6003559C0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A071B7313C6003559C0 /* Default-568h@2x.png */; };
@@ -198,6 +215,38 @@
 		27DD240C1B70639B00C61546 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		27DD240D1B70639B00C61546 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		27DD240F1B70682000C61546 /* HeaderDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderDefiner.h; sourceTree = "<group>"; };
+		27E6ADE31B7855EA008CE686 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		27E6ADE41B7855EA008CE686 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		27E6ADE71B785658008CE686 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		27E6ADE81B785658008CE686 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		27E6ADE91B785658008CE686 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
+		27E6ADEA1B785658008CE686 /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		27E6ADEB1B785658008CE686 /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		27E6ADEC1B785658008CE686 /* IQSegmentedNextPrevious.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQSegmentedNextPrevious.h; sourceTree = "<group>"; };
+		27E6ADED1B785658008CE686 /* IQSegmentedNextPrevious.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSegmentedNextPrevious.m; sourceTree = "<group>"; };
+		27E6ADEE1B785658008CE686 /* IQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		27E6ADEF1B785658008CE686 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
+		27E6ADF01B785658008CE686 /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		27E6ADF11B785658008CE686 /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTitleBarButtonItem.m; sourceTree = "<group>"; };
+		27E6ADF21B785658008CE686 /* IQToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		27E6ADF31B785658008CE686 /* IQToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQToolbar.m; sourceTree = "<group>"; };
+		27E6ADF41B785658008CE686 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		27E6ADF51B785658008CE686 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
+		27E6ADF61B785658008CE686 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
+		27E6ADF71B785658008CE686 /* UIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Hierarchy.h"; sourceTree = "<group>"; };
+		27E6ADF81B785658008CE686 /* UIView+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Hierarchy.m"; sourceTree = "<group>"; };
+		27E6ADF91B785658008CE686 /* UIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		27E6ADFA1B785658008CE686 /* UIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
+		27E6ADFB1B785658008CE686 /* UIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Hierarchy.h"; sourceTree = "<group>"; };
+		27E6ADFC1B785658008CE686 /* UIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		27E6AE071B785915008CE686 /* logo_160.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_160.png; sourceTree = "<group>"; };
+		27E6AE091B785B49008CE686 /* RCRoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRoundButton.h; sourceTree = "<group>"; };
+		27E6AE0A1B785B49008CE686 /* RCRoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCRoundButton.m; sourceTree = "<group>"; };
+		27E6AE0C1B787C30008CE686 /* iconfont-suo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-suo.png"; sourceTree = "<group>"; };
+		27E6AE0D1B787C30008CE686 /* iconfont-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-user.png"; sourceTree = "<group>"; };
+		27E6AE101B787F25008CE686 /* iconfont-shouji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-shouji.png"; sourceTree = "<group>"; };
+		27E6AE121B78861C008CE686 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		27E6AE131B78861C008CE686 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		27EA99FC1B72F4A3003559C0 /* CouCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouCell.h; sourceTree = "<group>"; };
 		27EA99FD1B72F4A3003559C0 /* CouCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouCell.m; sourceTree = "<group>"; };
 		27EA9A001B72F662003559C0 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -312,6 +361,10 @@
 				27BA81341B71AADF005B527B /* iconfont-fenlei.png */,
 				27BA81361B71AADF005B527B /* iconfont-shouye.png */,
 				27BA81371B71AADF005B527B /* iconfont-wode.png */,
+				27E6AE071B785915008CE686 /* logo_160.png */,
+				27E6AE0D1B787C30008CE686 /* iconfont-user.png */,
+				27E6AE0C1B787C30008CE686 /* iconfont-suo.png */,
+				27E6AE101B787F25008CE686 /* iconfont-shouji.png */,
 			);
 			name = "图标";
 			sourceTree = "<group>";
@@ -384,6 +437,7 @@
 				27DD24001B70592D00C61546 /* 自定义控件 */,
 				27DD23FC1B7057E100C61546 /* 常用类 */,
 				27EA99FF1B72F629003559C0 /* 基本配置类 */,
+				27E6ADE21B7855CD008CE686 /* 登陆页 */,
 				27DD23F81B70562400C61546 /* 主页 */,
 				2E4D41BC1B72867D00AA314E /* 凑分子 */,
 				27EA9A091B73174E003559C0 /* 搜索页 */,
@@ -440,9 +494,9 @@
 		27DD23FC1B7057E100C61546 /* 常用类 */ = {
 			isa = PBXGroup;
 			children = (
+				27DD240F1B70682000C61546 /* HeaderDefiner.h */,
 				2E7147971B75C0330063FA07 /* NSDictionary_IngoreNull.h */,
 				2E7147981B75C0330063FA07 /* NSDictionary_IngoreNull.m */,
-				27DD240F1B70682000C61546 /* HeaderDefiner.h */,
 				27DD23FD1B70584700C61546 /* UIColor+HexColor.h */,
 				27DD23FE1B70584700C61546 /* UIColor+HexColor.m */,
 				272B6DAE1B70A73F006CCFE6 /* UIImageView+NetWork.h */,
@@ -470,6 +524,8 @@
 				27BA81801B71EA77005B527B /* LoadMoreTableView.m */,
 				27EA9A0F1B733208003559C0 /* DropDownList.h */,
 				27EA9A101B733208003559C0 /* DropDownList.m */,
+				27E6AE091B785B49008CE686 /* RCRoundButton.h */,
+				27E6AE0A1B785B49008CE686 /* RCRoundButton.m */,
 			);
 			name = "自定义控件";
 			sourceTree = "<group>";
@@ -477,6 +533,7 @@
 		27DD24011B70593C00C61546 /* 第三方 */ = {
 			isa = PBXGroup;
 			children = (
+				27E6ADE61B785646008CE686 /* IQKeyBoard */,
 				27BA814D1B71C68F005B527B /* SDWebImage */,
 				27BA81471B71B671005B527B /* UIImage+RTTint.h */,
 				27BA81481B71B671005B527B /* UIImage+RTTint.m */,
@@ -484,6 +541,46 @@
 				27EFB2141B73518D00A14872 /* MXPullDownMenu.m */,
 			);
 			name = "第三方";
+			sourceTree = "<group>";
+		};
+		27E6ADE21B7855CD008CE686 /* 登陆页 */ = {
+			isa = PBXGroup;
+			children = (
+				27E6ADE31B7855EA008CE686 /* LoginViewController.h */,
+				27E6ADE41B7855EA008CE686 /* LoginViewController.m */,
+				27E6AE121B78861C008CE686 /* RegisterViewController.h */,
+				27E6AE131B78861C008CE686 /* RegisterViewController.m */,
+			);
+			name = "登陆页";
+			sourceTree = "<group>";
+		};
+		27E6ADE61B785646008CE686 /* IQKeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				27E6ADE71B785658008CE686 /* IQKeyboardManager.bundle */,
+				27E6ADE81B785658008CE686 /* IQKeyboardManager.h */,
+				27E6ADE91B785658008CE686 /* IQKeyboardManager.m */,
+				27E6ADEA1B785658008CE686 /* IQKeyboardManagerConstants.h */,
+				27E6ADEB1B785658008CE686 /* IQKeyboardManagerConstantsInternal.h */,
+				27E6ADEC1B785658008CE686 /* IQSegmentedNextPrevious.h */,
+				27E6ADED1B785658008CE686 /* IQSegmentedNextPrevious.m */,
+				27E6ADEE1B785658008CE686 /* IQTextView.h */,
+				27E6ADEF1B785658008CE686 /* IQTextView.m */,
+				27E6ADF01B785658008CE686 /* IQTitleBarButtonItem.h */,
+				27E6ADF11B785658008CE686 /* IQTitleBarButtonItem.m */,
+				27E6ADF21B785658008CE686 /* IQToolbar.h */,
+				27E6ADF31B785658008CE686 /* IQToolbar.m */,
+				27E6ADF41B785658008CE686 /* KeyboardManager.h */,
+				27E6ADF51B785658008CE686 /* NSArray+Sort.h */,
+				27E6ADF61B785658008CE686 /* NSArray+Sort.m */,
+				27E6ADF71B785658008CE686 /* UIView+Hierarchy.h */,
+				27E6ADF81B785658008CE686 /* UIView+Hierarchy.m */,
+				27E6ADF91B785658008CE686 /* UIView+IQKeyboardToolbar.h */,
+				27E6ADFA1B785658008CE686 /* UIView+IQKeyboardToolbar.m */,
+				27E6ADFB1B785658008CE686 /* UIWindow+Hierarchy.h */,
+				27E6ADFC1B785658008CE686 /* UIWindow+Hierarchy.m */,
+			);
+			name = IQKeyBoard;
 			sourceTree = "<group>";
 		};
 		27EA99FF1B72F629003559C0 /* 基本配置类 */ = {
@@ -701,13 +798,16 @@
 				27EFB2561B73970100A14872 /* jiage_04.png in Resources */,
 				27EED2701B7489F7009F2DD2 /* mine_03.png in Resources */,
 				27EED26E1B7489F7009F2DD2 /* mine_01.png in Resources */,
+				27E6AE0E1B787C30008CE686 /* iconfont-suo.png in Resources */,
 				27EFB23E1B7396E700A14872 /* changhe_05.png in Resources */,
 				27EFB2671B73970900A14872 /* pinglei_07.png in Resources */,
 				27BA81381B71AADF005B527B /* iconfont-cfz.png in Resources */,
 				27EFB2481B7396F600A14872 /* gexin_02.png in Resources */,
 				27EA9A131B7335FA003559C0 /* tbg.png in Resources */,
+				27E6AE081B785915008CE686 /* logo_160.png in Resources */,
 				27BA81391B71AADF005B527B /* iconfont-fenlei.png in Resources */,
 				27EFB2471B7396F600A14872 /* gexin_01.png in Resources */,
+				27E6AE111B787F25008CE686 /* iconfont-shouji.png in Resources */,
 				27EFB2531B73970100A14872 /* jiage_01.png in Resources */,
 				27EFB24B1B7396F600A14872 /* gexin_05.png in Resources */,
 				27EFB22B1B73966800A14872 /* duixiang_00.png in Resources */,
@@ -738,10 +838,12 @@
 				27EFB2541B73970100A14872 /* jiage_02.png in Resources */,
 				27EFB2681B73970900A14872 /* pinglei_08.png in Resources */,
 				27EED26F1B7489F7009F2DD2 /* mine_02.png in Resources */,
+				27E6AE0F1B787C30008CE686 /* iconfont-user.png in Resources */,
 				27EFB24A1B7396F600A14872 /* gexin_04.png in Resources */,
 				27EFB23B1B7396E700A14872 /* changhe_02.png in Resources */,
 				27BA81861B71FAFB005B527B /* iconfont-icon83.png in Resources */,
 				27EFB2651B73970900A14872 /* pinglei_05.png in Resources */,
+				27E6ADFD1B785658008CE686 /* IQKeyboardManager.bundle in Resources */,
 				27EED2741B748D90009F2DD2 /* mine_00.png in Resources */,
 				27EFB24C1B7396F600A14872 /* gexin_06.png in Resources */,
 			);
@@ -766,13 +868,18 @@
 				27BA817B1B71C6A6005B527B /* UIImage+WebP.m in Sources */,
 				27EED2661B7480C2009F2DD2 /* MineCell.m in Sources */,
 				27EFB2151B73518D00A14872 /* MXPullDownMenu.m in Sources */,
+				27E6AE021B785658008CE686 /* IQToolbar.m in Sources */,
 				27EED2771B7495B1009F2DD2 /* ThemeViewController.m in Sources */,
 				27DD23D81B70514700C61546 /* AppDelegate.m in Sources */,
+				27E6AE041B785658008CE686 /* UIView+Hierarchy.m in Sources */,
 				27DD24041B705C8400C61546 /* MainCell.m in Sources */,
 				27DD23FF1B70584700C61546 /* UIColor+HexColor.m in Sources */,
 				272B6DAD1B709CF1006CCFE6 /* ImageScroller.m in Sources */,
 				27DD23D51B70514700C61546 /* main.m in Sources */,
+				27E6ADE51B7855EA008CE686 /* LoginViewController.m in Sources */,
+				27E6AE011B785658008CE686 /* IQTitleBarButtonItem.m in Sources */,
 				2E7A78C21B77CA79004A58AB /* RMViewController.m in Sources */,
+				27E6AE001B785658008CE686 /* IQTextView.m in Sources */,
 				2E7A78B91B77CA5B004A58AB /* ProgressView.m in Sources */,
 				27BA81751B71C6A6005B527B /* SDWebImageDownloaderOperation.m in Sources */,
 				27BA81411B71ABA3005B527B /* MainTabBar.m in Sources */,
@@ -780,20 +887,26 @@
 				27DD240B1B7061A000C61546 /* ImageDownloader.m in Sources */,
 				27DD240E1B70639B00C61546 /* NetWork.m in Sources */,
 				2E7A78BF1B77CA65004A58AB /* RMDownloadIndicator.m in Sources */,
+				27E6AE051B785658008CE686 /* UIView+IQKeyboardToolbar.m in Sources */,
 				27BA81441B71B508005B527B /* UIImage+Color.m in Sources */,
 				27BA81721B71C6A6005B527B /* SDWebImageCompat.m in Sources */,
 				27BA81701B71C6A6005B527B /* NSData+ImageContentType.m in Sources */,
+				27E6AE031B785658008CE686 /* NSArray+Sort.m in Sources */,
 				27BA81491B71B671005B527B /* UIImage+RTTint.m in Sources */,
 				27BA81761B71C6A6005B527B /* SDWebImageManager.m in Sources */,
+				27E6AE061B785658008CE686 /* UIWindow+Hierarchy.m in Sources */,
 				2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */,
+				27E6AE0B1B785B49008CE686 /* RCRoundButton.m in Sources */,
 				27BA81741B71C6A6005B527B /* SDWebImageDownloader.m in Sources */,
 				27EA99FE1B72F4A3003559C0 /* CouCell.m in Sources */,
 				27BA817D1B71C6A6005B527B /* UIImageView+WebCache.m in Sources */,
 				27EFB2191B73737C00A14872 /* CategoryViewController.m in Sources */,
+				27E6ADFE1B785658008CE686 /* IQKeyboardManager.m in Sources */,
 				27BA817C1B71C6A6005B527B /* UIImageView+HighlightedWebCache.m in Sources */,
 				27EA9A0C1B731777003559C0 /* SearchViewController.m in Sources */,
 				27BA816F1B71C6A6005B527B /* MKAnnotationView+WebCache.m in Sources */,
 				27EA9A111B733208003559C0 /* DropDownList.m in Sources */,
+				27E6ADFF1B785658008CE686 /* IQSegmentedNextPrevious.m in Sources */,
 				27BA81791B71C6A6005B527B /* UIImage+GIF.m in Sources */,
 				2E7A78BE1B77CA65004A58AB /* RMDisplayLabel.m in Sources */,
 				27DD23FB1B70565700C61546 /* MainViewController.m in Sources */,
@@ -805,6 +918,7 @@
 				27BA81811B71EA77005B527B /* LoadMoreTableView.m in Sources */,
 				27BA81731B71C6A6005B527B /* SDWebImageDecoder.m in Sources */,
 				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,
+				27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */,
 				27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */,
 				27BA81841B71F80E005B527B /* Banner.m in Sources */,
 				27BA817E1B71C6A6005B527B /* UIView+WebCacheOperation.m in Sources */,

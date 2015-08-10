@@ -14,6 +14,7 @@
 #import "CouViewController.h"
 #import "CategoryViewController.h"
 #import "MineViewController.h"
+#import "IQKeyboardManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

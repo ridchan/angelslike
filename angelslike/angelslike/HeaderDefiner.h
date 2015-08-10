@@ -19,6 +19,8 @@
 
 #define SliderLink @"http://www.angelslike.com/json/getslider"
 #define ListLink @"http://www.angelslike.com/json/getlist"
+#define ImageLink @"http://img1.angelslike.com/"
+#define LoginUrl @"http://www.angelslike.com/json/login/"
 
 // margin 首页
 #define MainCellMargin 10
@@ -34,6 +36,8 @@
 #define CatCellHeight 115
 
 #import "NSDictionary_IngoreNull.h"
+#import "RCRoundButton.h"
+
 
 
 

@@ -22,15 +22,22 @@
 
 @end
 
-@interface MainTabBar : UIView{
-    id tar;
-    SEL act;
-}
+@protocol MainTabBarDelgate <NSObject>
 
+-(BOOL)tabbarShouldTap:(MTabBarItem *)item atIndex:(NSInteger)index;
+-(void)tabbarTap:(MTabBarItem *)item atIndex:(NSInteger)index;
+
+
+
+@end
+
+@interface MainTabBar : UIView
+
+@property (nonatomic) id<MainTabBarDelgate> delegate;
 @property (nonatomic) NSInteger selectIndex;
 @property (nonatomic) NSInteger lastIndex;
 
--(void)addTarget:(id)target action:(SEL)action;
+
 
 
 @end

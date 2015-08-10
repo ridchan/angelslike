@@ -74,24 +74,22 @@
 
 
 @synthesize selectIndex = _selectIndex;
-
--(void)addTarget:(id)target action:(SEL)action{
-    tar = target;
-    act = action;
-}
+@synthesize delegate = _delegate;
 
 -(void)tabItemClick:(UITapGestureRecognizer *)recognizer{
     MTabBarItem *item = (MTabBarItem *)recognizer.view;
-    if (item.canSelected == NO) return;
-    if (item.tag - indexOffset != self.selectIndex) {
-        MTabBarItem *lastItem = (MTabBarItem *)[self viewWithTag:self.selectIndex + indexOffset];
-        [lastItem setColor:[UIColor getHexColor:@"8A8A8A"]];
-
-        self.selectIndex = item.tag - indexOffset;
-        if ([tar respondsToSelector:act]) {
-            [tar performSelector:act withObject:[NSNumber numberWithInteger:self.selectIndex]];
+    
+    if (_delegate) {
+        if ([_delegate tabbarShouldTap:item atIndex:item.tag - indexOffset]) {
+            MTabBarItem *lastItem = (MTabBarItem *)[self viewWithTag:self.selectIndex + indexOffset];
+            [lastItem setColor:[UIColor getHexColor:@"8A8A8A"]];
+            
+            self.selectIndex = item.tag - indexOffset;
+            
+            [_delegate tabbarTap:item atIndex:item.tag - indexOffset];
         }
     }
+
 }
 
 -(void)setSelectIndex:(NSInteger)selectIndex{

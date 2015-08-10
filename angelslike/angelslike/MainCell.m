@@ -32,10 +32,10 @@
 }
 
 -(void)setImageView:(NSString *)link{
-    NSString *newlink = [NSString stringWithFormat:@"http://%@",link];
+//    NSString *newlink = [NSString stringWithFormat:@"http://%@",link];
     
     __block UIImageView *tempSelf = imageView;
-    [imageView sd_setImageWithURL:[NSURL URLWithString:newlink] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [imageView sd_setImageWithURL:[NSURL URLWithString:link] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         tempSelf.alpha = 0.2;
         [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
         [UIView animateWithDuration:0.3 animations:^{

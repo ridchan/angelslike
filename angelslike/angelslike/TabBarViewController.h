@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MainTabBar.h"
 #import "HeaderDefiner.h"
+#import "LoginViewController.h"
 
-@interface TabBarViewController : UITabBarController{
+@interface TabBarViewController : UITabBarController<MainTabBarDelgate>{
     MainTabBar *tabbar;
 }
 
