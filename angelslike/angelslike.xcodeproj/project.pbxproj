@@ -128,6 +128,7 @@
 		27F65D0D1B79D67900EDE656 /* TextFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F65D0C1B79D67900EDE656 /* TextFieldValidator.m */; };
 		27F65D101B79DA6900EDE656 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F65D0E1B79DA6900EDE656 /* error.png */; };
 		27F65D111B79DA6900EDE656 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F65D0F1B79DA6900EDE656 /* error@2x.png */; };
+		2E4B00F61B7A6D37004349BB /* RCHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4B00F51B7A6D37004349BB /* RCHub.m */; };
 		2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4D41BE1B72870400AA314E /* CouViewController.m */; };
 		2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */; };
 		2E7147991B75C0330063FA07 /* NSDictionary_IngoreNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7147981B75C0330063FA07 /* NSDictionary_IngoreNull.m */; };
@@ -334,6 +335,8 @@
 		27F65D0C1B79D67900EDE656 /* TextFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldValidator.m; sourceTree = "<group>"; };
 		27F65D0E1B79DA6900EDE656 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		27F65D0F1B79DA6900EDE656 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
+		2E4B00F41B7A6D37004349BB /* RCHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCHub.h; sourceTree = "<group>"; };
+		2E4B00F51B7A6D37004349BB /* RCHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCHub.m; sourceTree = "<group>"; };
 		2E4D41BD1B72870400AA314E /* CouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouViewController.h; sourceTree = "<group>"; };
 		2E4D41BE1B72870400AA314E /* CouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouViewController.m; sourceTree = "<group>"; };
 		2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
@@ -541,6 +544,8 @@
 		27DD24001B70592D00C61546 /* 自定义控件 */ = {
 			isa = PBXGroup;
 			children = (
+				2E4B00F41B7A6D37004349BB /* RCHub.h */,
+				2E4B00F51B7A6D37004349BB /* RCHub.m */,
 				272B6DAB1B709CF0006CCFE6 /* ImageScroller.h */,
 				272B6DAC1B709CF1006CCFE6 /* ImageScroller.m */,
 				27BA813F1B71ABA3005B527B /* MainTabBar.h */,
@@ -966,6 +971,7 @@
 				27BA816F1B71C6A6005B527B /* MKAnnotationView+WebCache.m in Sources */,
 				27EA9A111B733208003559C0 /* DropDownList.m in Sources */,
 				27E6ADFF1B785658008CE686 /* IQSegmentedNextPrevious.m in Sources */,
+				2E4B00F61B7A6D37004349BB /* RCHub.m in Sources */,
 				27BA81791B71C6A6005B527B /* UIImage+GIF.m in Sources */,
 				2E7A78BE1B77CA65004A58AB /* RMDisplayLabel.m in Sources */,
 				27DD23FB1B70565700C61546 /* MainViewController.m in Sources */,
