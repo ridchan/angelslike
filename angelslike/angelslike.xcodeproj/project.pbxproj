@@ -119,6 +119,15 @@
 		27EFB2661B73970900A14872 /* pinglei_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EFB25D1B73970800A14872 /* pinglei_06.png */; };
 		27EFB2671B73970900A14872 /* pinglei_07.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EFB25E1B73970900A14872 /* pinglei_07.png */; };
 		27EFB2681B73970900A14872 /* pinglei_08.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EFB25F1B73970900A14872 /* pinglei_08.png */; };
+		27F65CFC1B798D7C00EDE656 /* ProductlistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F65CFB1B798D7C00EDE656 /* ProductlistViewController.m */; };
+		27F65D011B799DD400EDE656 /* 01-引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27F65CFE1B799DD400EDE656 /* 01-引导页.jpg */; };
+		27F65D021B799DD400EDE656 /* 02-引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27F65CFF1B799DD400EDE656 /* 02-引导页.jpg */; };
+		27F65D031B799DD400EDE656 /* 03-引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27F65D001B799DD400EDE656 /* 03-引导页.jpg */; };
+		27F65D061B799FB100EDE656 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F65D051B799FB100EDE656 /* UserInfo.m */; };
+		27F65D0A1B79A5E300EDE656 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F65D091B79A5E300EDE656 /* GuideViewController.m */; };
+		27F65D0D1B79D67900EDE656 /* TextFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F65D0C1B79D67900EDE656 /* TextFieldValidator.m */; };
+		27F65D101B79DA6900EDE656 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F65D0E1B79DA6900EDE656 /* error.png */; };
+		27F65D111B79DA6900EDE656 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F65D0F1B79DA6900EDE656 /* error@2x.png */; };
 		2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4D41BE1B72870400AA314E /* CouViewController.m */; };
 		2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */; };
 		2E7147991B75C0330063FA07 /* NSDictionary_IngoreNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7147981B75C0330063FA07 /* NSDictionary_IngoreNull.m */; };
@@ -312,6 +321,19 @@
 		27EFB25D1B73970800A14872 /* pinglei_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinglei_06.png; sourceTree = "<group>"; };
 		27EFB25E1B73970900A14872 /* pinglei_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinglei_07.png; sourceTree = "<group>"; };
 		27EFB25F1B73970900A14872 /* pinglei_08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinglei_08.png; sourceTree = "<group>"; };
+		27F65CFA1B798D7C00EDE656 /* ProductlistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductlistViewController.h; sourceTree = "<group>"; };
+		27F65CFB1B798D7C00EDE656 /* ProductlistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductlistViewController.m; sourceTree = "<group>"; };
+		27F65CFE1B799DD400EDE656 /* 01-引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "01-引导页.jpg"; sourceTree = "<group>"; };
+		27F65CFF1B799DD400EDE656 /* 02-引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "02-引导页.jpg"; sourceTree = "<group>"; };
+		27F65D001B799DD400EDE656 /* 03-引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "03-引导页.jpg"; sourceTree = "<group>"; };
+		27F65D041B799FB100EDE656 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		27F65D051B799FB100EDE656 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		27F65D081B79A5E300EDE656 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		27F65D091B79A5E300EDE656 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		27F65D0B1B79D67800EDE656 /* TextFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldValidator.h; sourceTree = "<group>"; };
+		27F65D0C1B79D67900EDE656 /* TextFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldValidator.m; sourceTree = "<group>"; };
+		27F65D0E1B79DA6900EDE656 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
+		27F65D0F1B79DA6900EDE656 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
 		2E4D41BD1B72870400AA314E /* CouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouViewController.h; sourceTree = "<group>"; };
 		2E4D41BE1B72870400AA314E /* CouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouViewController.m; sourceTree = "<group>"; };
 		2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
@@ -350,6 +372,8 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				27F65D0E1B79DA6900EDE656 /* error.png */,
+				27F65D0F1B79DA6900EDE656 /* error@2x.png */,
 				27EED2571B7464E1009F2DD2 /* Mine */,
 				27EFB2691B73971000A14872 /* Category */,
 				27EFB2111B734C9800A14872 /* arrow.png */,
@@ -437,6 +461,7 @@
 				27DD24001B70592D00C61546 /* 自定义控件 */,
 				27DD23FC1B7057E100C61546 /* 常用类 */,
 				27EA99FF1B72F629003559C0 /* 基本配置类 */,
+				27F65CFD1B799DBF00EDE656 /* 引导页 */,
 				27E6ADE21B7855CD008CE686 /* 登陆页 */,
 				27DD23F81B70562400C61546 /* 主页 */,
 				2E4D41BC1B72867D00AA314E /* 凑分子 */,
@@ -507,6 +532,8 @@
 				27DD240D1B70639B00C61546 /* NetWork.m */,
 				27BA81421B71B508005B527B /* UIImage+Color.h */,
 				27BA81431B71B508005B527B /* UIImage+Color.m */,
+				27F65D041B799FB100EDE656 /* UserInfo.h */,
+				27F65D051B799FB100EDE656 /* UserInfo.m */,
 			);
 			name = "常用类";
 			sourceTree = "<group>";
@@ -533,6 +560,8 @@
 		27DD24011B70593C00C61546 /* 第三方 */ = {
 			isa = PBXGroup;
 			children = (
+				27F65D0B1B79D67800EDE656 /* TextFieldValidator.h */,
+				27F65D0C1B79D67900EDE656 /* TextFieldValidator.m */,
 				27E6ADE61B785646008CE686 /* IQKeyBoard */,
 				27BA814D1B71C68F005B527B /* SDWebImage */,
 				27BA81471B71B671005B527B /* UIImage+RTTint.h */,
@@ -630,6 +659,7 @@
 		27EFB2161B73735500A14872 /* 分类页 */ = {
 			isa = PBXGroup;
 			children = (
+				27F65CF91B798D0A00EDE656 /* 产品列表 */,
 				27EFB21C1B737ED600A14872 /* CategoryCell.h */,
 				27EFB21D1B737ED600A14872 /* CategoryCell.m */,
 				27EFB2171B73737C00A14872 /* CategoryViewController.h */,
@@ -680,6 +710,27 @@
 				27EFB2381B7396E700A14872 /* changhe_05.png */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		27F65CF91B798D0A00EDE656 /* 产品列表 */ = {
+			isa = PBXGroup;
+			children = (
+				27F65CFA1B798D7C00EDE656 /* ProductlistViewController.h */,
+				27F65CFB1B798D7C00EDE656 /* ProductlistViewController.m */,
+			);
+			name = "产品列表";
+			sourceTree = "<group>";
+		};
+		27F65CFD1B799DBF00EDE656 /* 引导页 */ = {
+			isa = PBXGroup;
+			children = (
+				27F65CFE1B799DD400EDE656 /* 01-引导页.jpg */,
+				27F65CFF1B799DD400EDE656 /* 02-引导页.jpg */,
+				27F65D001B799DD400EDE656 /* 03-引导页.jpg */,
+				27F65D081B79A5E300EDE656 /* GuideViewController.h */,
+				27F65D091B79A5E300EDE656 /* GuideViewController.m */,
+			);
+			name = "引导页";
 			sourceTree = "<group>";
 		};
 		2E4D41BC1B72867D00AA314E /* 凑分子 */ = {
@@ -802,6 +853,7 @@
 				27EFB23E1B7396E700A14872 /* changhe_05.png in Resources */,
 				27EFB2671B73970900A14872 /* pinglei_07.png in Resources */,
 				27BA81381B71AADF005B527B /* iconfont-cfz.png in Resources */,
+				27F65D021B799DD400EDE656 /* 02-引导页.jpg in Resources */,
 				27EFB2481B7396F600A14872 /* gexin_02.png in Resources */,
 				27EA9A131B7335FA003559C0 /* tbg.png in Resources */,
 				27E6AE081B785915008CE686 /* logo_160.png in Resources */,
@@ -809,8 +861,10 @@
 				27EFB2471B7396F600A14872 /* gexin_01.png in Resources */,
 				27E6AE111B787F25008CE686 /* iconfont-shouji.png in Resources */,
 				27EFB2531B73970100A14872 /* jiage_01.png in Resources */,
+				27F65D101B79DA6900EDE656 /* error.png in Resources */,
 				27EFB24B1B7396F600A14872 /* gexin_05.png in Resources */,
 				27EFB22B1B73966800A14872 /* duixiang_00.png in Resources */,
+				27F65D031B799DD400EDE656 /* 03-引导页.jpg in Resources */,
 				27EFB22C1B73966800A14872 /* duixiang_01.png in Resources */,
 				27EFB2461B7396F600A14872 /* gexin_00.png in Resources */,
 				27EFB2661B73970900A14872 /* pinglei_06.png in Resources */,
@@ -832,6 +886,8 @@
 				27EFB22F1B73966800A14872 /* duixiang_04.png in Resources */,
 				27EFB2641B73970900A14872 /* pinglei_04.png in Resources */,
 				27EFB2521B73970100A14872 /* jiage_00.png in Resources */,
+				27F65D011B799DD400EDE656 /* 01-引导页.jpg in Resources */,
+				27F65D111B79DA6900EDE656 /* error@2x.png in Resources */,
 				27EFB2631B73970900A14872 /* pinglei_03.png in Resources */,
 				27EFB2611B73970900A14872 /* pinglei_01.png in Resources */,
 				27EFB2601B73970900A14872 /* pinglei_00.png in Resources */,
@@ -865,11 +921,13 @@
 			files = (
 				27DD23DB1B70514700C61546 /* ViewController.m in Sources */,
 				2E7147991B75C0330063FA07 /* NSDictionary_IngoreNull.m in Sources */,
+				27F65D061B799FB100EDE656 /* UserInfo.m in Sources */,
 				27BA817B1B71C6A6005B527B /* UIImage+WebP.m in Sources */,
 				27EED2661B7480C2009F2DD2 /* MineCell.m in Sources */,
 				27EFB2151B73518D00A14872 /* MXPullDownMenu.m in Sources */,
 				27E6AE021B785658008CE686 /* IQToolbar.m in Sources */,
 				27EED2771B7495B1009F2DD2 /* ThemeViewController.m in Sources */,
+				27F65D0A1B79A5E300EDE656 /* GuideViewController.m in Sources */,
 				27DD23D81B70514700C61546 /* AppDelegate.m in Sources */,
 				27E6AE041B785658008CE686 /* UIView+Hierarchy.m in Sources */,
 				27DD24041B705C8400C61546 /* MainCell.m in Sources */,
@@ -891,6 +949,7 @@
 				27BA81441B71B508005B527B /* UIImage+Color.m in Sources */,
 				27BA81721B71C6A6005B527B /* SDWebImageCompat.m in Sources */,
 				27BA81701B71C6A6005B527B /* NSData+ImageContentType.m in Sources */,
+				27F65D0D1B79D67900EDE656 /* TextFieldValidator.m in Sources */,
 				27E6AE031B785658008CE686 /* NSArray+Sort.m in Sources */,
 				27BA81491B71B671005B527B /* UIImage+RTTint.m in Sources */,
 				27BA81761B71C6A6005B527B /* SDWebImageManager.m in Sources */,
@@ -915,6 +974,7 @@
 				27EFB21E1B737ED600A14872 /* CategoryCell.m in Sources */,
 				27BA81781B71C6A6005B527B /* UIButton+WebCache.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
+				27F65CFC1B798D7C00EDE656 /* ProductlistViewController.m in Sources */,
 				27BA81811B71EA77005B527B /* LoadMoreTableView.m in Sources */,
 				27BA81731B71C6A6005B527B /* SDWebImageDecoder.m in Sources */,
 				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,

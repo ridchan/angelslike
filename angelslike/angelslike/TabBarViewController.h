@@ -10,6 +10,7 @@
 #import "MainTabBar.h"
 #import "HeaderDefiner.h"
 #import "LoginViewController.h"
+#import "GuideViewController.h"
 
 @interface TabBarViewController : UITabBarController<MainTabBarDelgate>{
     MainTabBar *tabbar;

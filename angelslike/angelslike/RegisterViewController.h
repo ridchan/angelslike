@@ -7,8 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "TextFieldValidator.h"
 
-@interface RegisterViewController : BaseViewController
+@interface RegisterViewController : BaseViewController<UITextFieldDelegate>{
+    RCRoundButton *registButton;
+}
 
 @property(nonatomic,strong) NSArray *infos;
 

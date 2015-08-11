@@ -81,8 +81,7 @@
     
     if (_delegate) {
         if ([_delegate tabbarShouldTap:item atIndex:item.tag - indexOffset]) {
-            MTabBarItem *lastItem = (MTabBarItem *)[self viewWithTag:self.selectIndex + indexOffset];
-            [lastItem setColor:[UIColor getHexColor:@"8A8A8A"]];
+
             
             self.selectIndex = item.tag - indexOffset;
             
@@ -93,9 +92,13 @@
 }
 
 -(void)setSelectIndex:(NSInteger)selectIndex{
+    
+    MTabBarItem *lastItem = (MTabBarItem *)[self viewWithTag:_selectIndex + indexOffset];
+    [lastItem setColor:[UIColor getHexColor:@"8A8A8A"]];
+    
     _selectIndex = selectIndex;
     
-    MTabBarItem *item = (MTabBarItem *)[self viewWithTag:selectIndex + indexOffset];
+    MTabBarItem *item = (MTabBarItem *)[self viewWithTag:_selectIndex + indexOffset];
     [item setColor:[UIColor getHexColor:@"ff6969"]];
 }
 

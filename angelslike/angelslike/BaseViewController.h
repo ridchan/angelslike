@@ -13,8 +13,10 @@
 
 @interface BaseViewController : UIViewController
 
--(void)setTextFieldAttribute:(UITextField *)textField img:(NSString *)imgName bottom:(BOOL)bottom;
+-(void)setTextFieldAttribute:(UITextField *)textField img:(NSString *)imgName bottom:(NSInteger)txtType;
 
--(CAShapeLayer *)createBound:(CGRect)rect bottom:(BOOL)bottom;
+-(CAShapeLayer *)createBound:(CGRect)rect bottom:(NSInteger)txtType;
+
+-(void)showMessage:(NSString *)msg;
 
 @end

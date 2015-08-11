@@ -8,10 +8,13 @@
 
 #import "BaseViewController.h"
 #import "RegisterViewController.h"
+#import "TabBarViewController.h"
 
 @interface LoginViewController : BaseViewController
 
 @property(nonatomic,strong) UITextField *nameField;
 @property(nonatomic,strong) UITextField *psdField;
+
+@property(nonatomic,weak) UITabBarController *bvc;
 
 @end

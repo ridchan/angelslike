@@ -14,6 +14,11 @@
 
 @implementation TabBarViewController
 
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+}
+
 - (void)viewDidAppear:(BOOL)animated{
     static BOOL hasLoaded = NO;
     if (!hasLoaded) {
@@ -33,19 +38,33 @@
         [self hideRealTabBar];
         tabbar = [[MainTabBar alloc]init];
         tabbar.delegate = self;
+
         
-        [self bringCustomTabBarToFront];
+        if ([UserInfo shared].loadGuide) {
+            GuideViewController *gvc = [[GuideViewController alloc]init];
+            [self presentViewController:gvc animated:NO completion:NULL];
+        }
+        
         hasLoaded = YES;
     }
+    
+    [self bringCustomTabBarToFront];
+    
     [super viewDidAppear:animated];
     
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self hideCustomTabBar];
 }
 
 -(BOOL)tabbarShouldTap:(MTabBarItem *)item atIndex:(NSInteger)index{
     if (index == 2) {
         return NO;
-    }else if(index == 4){
+    }else if(index == 4 & [UserInfo shared].info == nil){
         LoginViewController *lvc = [[LoginViewController alloc]init];
+        lvc.bvc = self;
         UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:lvc];
         [self presentViewController:nvc animated:YES completion:NULL];
         return NO;
@@ -58,8 +77,8 @@
 }
 
 -(void)setSelectedIndex:(NSUInteger)selectedIndex{
+    [tabbar setSelectIndex:selectedIndex];
     [super setSelectedIndex:selectedIndex];
-    
 }
 
 
@@ -89,10 +108,8 @@
 
 //将自定义的tabbar显示出来
 - (void)bringCustomTabBarToFront{
-    [self performSelector:@selector(hideRealTabBar)];
-//    if (isHome) {
-//        [self customTabBar];
-//    }
+//    [self performSelector:@selector(hideRealTabBar)];
+
     [UIView animateWithDuration:0.35 animations:^{
         tabbar.frame = CGRectMake(0, ScreenHeight - 49, ScreenWidth, 49);
         
@@ -101,7 +118,7 @@
 
 //隐藏自定义tabbar
 - (void)hideCustomTabBar{
-    [self performSelector:@selector(hideRealTabBar)];
+//    [self performSelector:@selector(hideRealTabBar)];
     [UIView animateWithDuration:0.35 animations:^{
         tabbar.frame = CGRectMake(0, ScreenHeight, ScreenWidth, 49);
     }];
