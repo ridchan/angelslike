@@ -424,7 +424,7 @@
     UITableView *tableView = [UITableView new];
     
     tableView.frame = CGRectMake(point.x, point.y, self.frame.size.width, 0);
-    tableView.rowHeight = 36;
+    tableView.rowHeight = 40;
     
     return tableView;
 }

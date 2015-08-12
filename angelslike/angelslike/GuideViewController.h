@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
-@interface GuideViewController : BaseViewController<UIScrollViewDelegate>
+@interface GuideViewController : BaseViewController<UIScrollViewDelegate>{
+    UIButton *skipButton;
+}
 
 @end

@@ -14,7 +14,13 @@
 
 @interface RCHub : UIView
 
+@property(nonatomic,strong) UIWindow *window;
+@property(nonatomic,strong) UIView *bview;
+
 -(void)startAnimation;
 -(void)stopAnimation;
++(void)show;
++(void)dismiss;
++(instancetype)shared;
 
 @end

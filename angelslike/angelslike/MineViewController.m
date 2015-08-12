@@ -24,7 +24,8 @@
     
     self.navigationItem.title = @"我的";
     
-    self.infos = @[@[@{@"Name":@"我的凑分子",@"IMG":@"mine_00"},
+    self.infos = @[@[@{@"Name":@"用户信息"}],
+                   @[@{@"Name":@"我的凑分子",@"IMG":@"mine_00"},
                      @{@"Name":@"我购买的礼物",@"IMG":@"mine_01"},
                      @{@"Name":@"我的关注",@"IMG":@"mine_02"}
                      ],
@@ -45,17 +46,49 @@
 #pragma mark -
 #pragma mark table view delegate
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    static NSString *identify = @"Cell";
-    MineCell *cell = (MineCell *) [tableView dequeueReusableCellWithIdentifier:identify];
-    if (cell == nil) {
-        cell = [[MineCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 0.01;
+    }else{
+        return 2.0;
     }
-    NSDictionary *info = [[self.infos objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.info = info;
-    
-    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return 200;
+    }else{
+        return 44;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SendAuthReq *req = [[SendAuthReq alloc]init];
+    req.scope = @"snsapi_userinfo";
+    req.state = @"angelslike";
+    [WXApi sendReq:req];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        UserInfoCell *cell = (UserInfoCell *)[tableView dequeueReusableCellWithIdentifier:@"UserCell"];
+        if (cell == nil) {
+            cell = [[UserInfoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UserCell"];
+        }
+        
+        cell.info = [UserInfo shared].info;
+        return cell;
+    }else{
+        static NSString *identify = @"Cell";
+        MineCell *cell = (MineCell *) [tableView dequeueReusableCellWithIdentifier:identify];
+        if (cell == nil) {
+            cell = [[MineCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        }
+        NSDictionary *info = [[self.infos objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        cell.info = info;
+        
+        return cell;
+    }
     
 }
 

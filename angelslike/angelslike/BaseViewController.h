@@ -19,4 +19,6 @@
 
 -(void)showMessage:(NSString *)msg;
 
+-(void)reSizeImage:(NSMutableString *)result;
+
 @end

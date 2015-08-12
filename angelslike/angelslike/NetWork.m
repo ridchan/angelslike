@@ -50,10 +50,13 @@
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
+
+            NSError *error;
             if (data == nil) 
                 block(nil);
             else
-                block([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil]);
+                block([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error]);
+
         });
         
         

@@ -22,6 +22,7 @@
 #define ImageLink @"http://img1.angelslike.com"
 #define LoginUrl @"http://www.angelslike.com/json/login"
 #define RegistUrl @"http://www.angelslike.com/json/register"
+#define CouDetailUrl @"http://www.angelslike.com/items.html"
 
 // margin 首页
 #define MainCellMargin 10

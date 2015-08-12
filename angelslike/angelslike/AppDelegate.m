@@ -8,30 +8,30 @@
 
 #import "AppDelegate.h"
 
+#define WXAppID @"wxcb123955cc21a093" //@"wx808df514e9cb4fc0"  公众平台
+#define WXAppSecret @"e1f09700641778a0f00cd2f3b56f2862" // @"72113780a6d46096850d1a93ee5addb3" 公众平台
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
+-(void)initialSetting{
     [[IQKeyboardManager sharedManager] setShouldToolbarUsesTextFieldTintColor:YES];
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor getHexColor:@"ff6969"]];
     [[UINavigationBar appearance]  setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                 [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
-                                                 [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:17.0], NSFontAttributeName, nil]];
+                                                           [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                                           [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:17.0], NSFontAttributeName, nil]];
     
     self.window = [[UIWindow alloc]
                    initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MainViewController *vc1 = [[MainViewController alloc]init];
     UINavigationController *nvc1 = [[UINavigationController alloc]initWithRootViewController:vc1];
-
+    
     
     CouViewController *vc2 = [[CouViewController alloc]init];
     UINavigationController *nvc2 = [[UINavigationController alloc]initWithRootViewController:vc2];
@@ -43,16 +43,45 @@
     
     MineViewController *vc5 = [[MineViewController alloc]init];
     UINavigationController *nvc5 = [[UINavigationController alloc]initWithRootViewController:vc5];
-
+    
     
     TabBarViewController *tbc = [[TabBarViewController alloc]init];
     tbc.viewControllers = @[nvc1,nvc2,nvc3,nvc4,nvc5];
-
+    
     self.window.rootViewController = tbc;
     [self.window makeKeyAndVisible];
-    
-//    MainTabBar *tb = [[MainTabBar alloc]init];
+}
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    [WXApi registerApp:WXAppID];
+
+    [self initialSetting];
+
     return YES;
+}
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+-(void)onReq:(BaseReq *)req{
+    NSLog(@"req %@",req);
+}
+
+-(void)onResp:(BaseResp *)resp{
+    SendAuthResp *sendResp = (SendAuthResp *)resp;
+    NSString *link = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WXAppID,WXAppSecret,sendResp.code];
+    [[NetWork shared]startQuery:link info:nil completeBlock:^(id Obj) {
+        NSLog(@"obj %@",Obj);
+    }];
+    
+    NSLog(@"resp %@",sendResp.code);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

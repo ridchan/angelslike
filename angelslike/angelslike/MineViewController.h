@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 #import "MineCell.h"
+#import "UserInfoCell.h"
+#import "UserInfo.h"
+#import "WXApi.h"
 
 @interface MineViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 

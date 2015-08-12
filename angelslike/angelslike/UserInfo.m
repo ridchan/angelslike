@@ -22,7 +22,7 @@
     return shareInstance;
 }
 
--(void)setInfo:(UserInfo *)info{
+-(void)setInfo:(NSMutableDictionary *)info{
     _info = [info mutableCopy];
     if (_info) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:_info options:NSJSONWritingPrettyPrinted error:nil];
@@ -30,11 +30,11 @@
     }
 }
 
--(UserInfo *)info{
-//    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"UserInfo"]) {
-//        NSData *data = [[NSUserDefaults standardUserDefaults]objectForKey:@"UserInfo"];
-//        return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-//    }
+-(NSMutableDictionary *)info{
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"UserInfo"]) {
+        NSData *data = [[NSUserDefaults standardUserDefaults]objectForKey:@"UserInfo"];
+        return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    }
     return nil;
 }
 
@@ -53,7 +53,7 @@
     NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     [def setObject:app_Version forKey:@"Version"];
     
-    return YES;// ![lastVersion isEqualToString:app_Version];
+    return ![lastVersion isEqualToString:app_Version];
 //    float curVersion = [ap]
     
 }

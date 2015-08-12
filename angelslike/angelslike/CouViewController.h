@@ -12,6 +12,7 @@
 #import "CouCell.h"
 #import "SearchViewController.h"
 #import "MXPullDownMenu.h"
+#import "CouDetailViewController.h"
 
 @interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UISearchBarDelegate>{
     MXPullDownMenu *downMenu;

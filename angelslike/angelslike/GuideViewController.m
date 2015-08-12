@@ -30,12 +30,33 @@
     scrollView.contentSize = CGSizeMake(ScreenWidth * [pages count], 1);
     
     [self.view addSubview:scrollView];
+    
+    skipButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    skipButton.frame = CGRectMake((ScreenWidth - 80) / 2 , ScreenHeight - 120, 80, 30);
+    [skipButton setTitle:@"立即体验" forState:UIControlStateNormal];
+    [skipButton setTitleColor:[UIColor getHexColor:@"F88F19"] forState:UIControlStateNormal];
+    [skipButton addTarget:self action:@selector(skipNext:) forControlEvents:UIControlEventTouchUpInside];
+    skipButton.layer.borderWidth = 1;
+    skipButton.layer.masksToBounds = YES;
+    skipButton.layer.cornerRadius = 3;
+    skipButton.layer.borderColor = [UIColor getHexColor:@"F88F19"].CGColor;
+    skipButton.hidden = YES;
+    [self.view addSubview:skipButton];
+}
+
+-(void)skipNext:(id)sender{
+    [self dismissViewControllerAnimated:NO completion:NULL];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.x - ScreenWidth / 4 >  scrollView.contentSize.width - scrollView.frame.size.width) {
-        [self dismissViewControllerAnimated:NO completion:NULL];
+    if (scrollView.contentOffset.x < scrollView.contentSize.width - scrollView.frame.size.width) {
+        skipButton.hidden = YES;
+
+    }else{
+        skipButton.hidden = NO;
+
     }
+
 }
 
 @end

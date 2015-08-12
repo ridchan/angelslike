@@ -27,6 +27,8 @@
     
     self.searchInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"list_cou",@"type",
                                                                         @"new",@"sort",nil];
+
+    self.navigationItem.title = @"凑分子";
     //顶部配置
     seg = [[UISegmentedControl alloc]initWithItems:@[@"谁在凑分子",@"我的凑分子"]];
     seg.tintColor = [UIColor whiteColor];
@@ -169,6 +171,13 @@
 //    NSLog(@"return %@",downMenu);
 //    return downMenu;
 //}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    CouDetailViewController *vc = [[CouDetailViewController alloc]init];
+    vc.info = [self.result objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
