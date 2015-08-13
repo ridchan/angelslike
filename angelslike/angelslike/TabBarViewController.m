@@ -54,6 +54,8 @@
     
 }
 
+
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self hideCustomTabBar];
@@ -93,7 +95,7 @@
 
 //隐藏真实tabbar
 - (void)hideRealTabBar{
-    
+    self.tabBar.hidden = YES;
     for(UIView *view in self.view.subviews){
         if([view isKindOfClass:[UITabBar class]]){
             view.hidden = YES;
@@ -108,8 +110,7 @@
 
 //将自定义的tabbar显示出来
 - (void)bringCustomTabBarToFront{
-//    [self performSelector:@selector(hideRealTabBar)];
-
+    [self performSelector:@selector(hideRealTabBar)];
     [UIView animateWithDuration:0.35 animations:^{
         tabbar.frame = CGRectMake(0, ScreenHeight - 49, ScreenWidth, 49);
         
@@ -118,7 +119,7 @@
 
 //隐藏自定义tabbar
 - (void)hideCustomTabBar{
-//    [self performSelector:@selector(hideRealTabBar)];
+    [self performSelector:@selector(hideRealTabBar)];
     [UIView animateWithDuration:0.35 animations:^{
         tabbar.frame = CGRectMake(0, ScreenHeight, ScreenWidth, 49);
     }];

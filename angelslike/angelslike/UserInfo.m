@@ -11,6 +11,7 @@
 @implementation UserInfo
 
 @synthesize info = _info;
+@synthesize wxInfo = _wxInfo;
 
 +(UserInfo *)shared{
     static UserInfo *shareInstance = nil ;
@@ -20,6 +21,20 @@
     });
     
     return shareInstance;
+}
+
+-(void)setWxInfo:(NSDictionary *)wxInfo{
+    _wxInfo = [wxInfo mutableCopy];
+    if (_wxInfo) {
+        [[NSUserDefaults standardUserDefaults] setObject:_wxInfo forKey:@"WeiXinInfo"];
+    }
+}
+
+-(NSDictionary *)wxInfo{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"WeiXinInfo"]) {
+        return [[NSUserDefaults standardUserDefaults]objectForKey:@"WeiXinInfo"];
+    }
+    return nil;
 }
 
 -(void)setInfo:(NSMutableDictionary *)info{

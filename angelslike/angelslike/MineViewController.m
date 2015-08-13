@@ -31,7 +31,7 @@
                      ],
                    @[@{@"Name":@"达人专区",@"IMG":@"mine_03"},
                      @{@"Name":@"邀请朋友",@"IMG":@"mine_04"},
-                     @{@"Name":@"设置",@"IMG":@"mine_05"}
+                     @{@"Name":@"设置",@"IMG":@"mine_05",@"Action":@"settingClick:"}
                      ]
                    ];
     
@@ -41,6 +41,11 @@
     [self.view addSubview:self.tableView];
     [self.tableView reloadData];
     
+}
+
+-(void)settingClick:(id)sender{
+    SettingViewController *vc = [[SettingViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark -
@@ -63,10 +68,15 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    SendAuthReq *req = [[SendAuthReq alloc]init];
-    req.scope = @"snsapi_userinfo";
-    req.state = @"angelslike";
-    [WXApi sendReq:req];
+//    SendAuthReq *req = [[SendAuthReq alloc]init];
+//    req.scope = @"snsapi_userinfo";
+//    req.state = @"angelslike";
+//    [WXApi sendReq:req];
+    NSDictionary *info = [[self.infos objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if ([self respondsToSelector:NSSelectorFromString([info strForKey:@"Action"])]) {
+        [self performSelector:NSSelectorFromString([info strForKey:@"Action"]) withObject:nil];
+    }
+
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -40,6 +40,9 @@
 #import "NSDictionary_IngoreNull.h"
 #import "RCRoundButton.h"
 #import "UserInfo.h"
+#import "UIColor+HexColor.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+RTTint.h"
 
 
 

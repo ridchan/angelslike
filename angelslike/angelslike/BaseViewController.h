@@ -21,4 +21,7 @@
 
 -(void)reSizeImage:(NSMutableString *)result;
 
+-(void)hideTabBar;
+-(void)showTabbar;
+
 @end

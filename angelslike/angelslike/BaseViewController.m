@@ -15,6 +15,13 @@
     self.view.backgroundColor = [UIColor getHexColor:@"F1F0F6"];
 }
 
+-(void)hideTabBar{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideCustomTabBar" object:nil];
+}
+
+-(void)showTabbar{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"bringCustomTabBarToFront" object:nil];
+}
 
 
 - (NSMutableAttributedString *)filterLinkWithContent:(NSString *)content {

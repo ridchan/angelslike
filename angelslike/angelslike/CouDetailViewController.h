@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "CouDetail.h"
 
-@interface CouDetailViewController : BaseViewController<UIWebViewDelegate>
+@interface CouDetailViewController : BaseViewController
 
 @property(nonatomic,strong) NSDictionary *info;
+
+@property(nonatomic,strong) UITableView *tableView;
+
+@property(nonatomic,strong) NSDictionary *result;
 
 @end

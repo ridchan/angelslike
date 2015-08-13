@@ -25,6 +25,7 @@
 
 -(void)initialSetting{
     
+
     self.searchInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"list_cou",@"type",
                                                                         @"new",@"sort",nil];
 
@@ -176,6 +177,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CouDetailViewController *vc = [[CouDetailViewController alloc]init];
     vc.info = [self.result objectAtIndex:indexPath.row];
+    [vc setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

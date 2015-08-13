@@ -11,6 +11,7 @@
 #import "UserInfoCell.h"
 #import "UserInfo.h"
 #import "WXApi.h"
+#import "SettingViewController.h"
 
 @interface MineViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 

@@ -16,5 +16,6 @@
 @property(nonatomic,strong) NSString *uid;
 @property(nonatomic,strong) NSMutableDictionary *info;//用户信息
 @property(nonatomic) BOOL loadGuide;//是否载入引导页
+@property(nonatomic,strong) NSDictionary *wxInfo;
 
 @end
