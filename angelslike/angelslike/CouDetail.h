@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
 #import "CouProduct.h"
+#import "CouProcess.h"
 
 @interface DayLabel : UILabel
 
@@ -27,7 +28,7 @@
 
 @end
 
-@interface CouDetail : UIView<UIWebViewDelegate,CouProductDelegate>{
+@interface CouDetail : UIView<UIWebViewDelegate,CouProductDelegate,UIScrollViewDelegate>{
     UIScrollView *scView;
     
     UIImageView *imageView;
@@ -50,6 +51,7 @@
     UIWebView *_webView;
     
     CouProduct *cp;
+    CouProcess *process;
 }
 
 @property(nonatomic,strong) NSDictionary *info;
