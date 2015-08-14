@@ -27,6 +27,8 @@
     _wxInfo = [wxInfo mutableCopy];
     if (_wxInfo) {
         [[NSUserDefaults standardUserDefaults] setObject:_wxInfo forKey:@"WeiXinInfo"];
+    }else{
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"WeiXinInfo"];
     }
 }
 
@@ -42,6 +44,8 @@
     if (_info) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:_info options:NSJSONWritingPrettyPrinted error:nil];
         [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"UserInfo"];
+    }else{
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UserInfo"];
     }
 }
 

@@ -11,11 +11,18 @@
 
 @implementation RCRoundButton
 
+
 -(void)setFrame:(CGRect)frame{
     [super setFrame:frame];
+    CGFloat radii = 5.0;
+    if (self.radio > 0) {
+        radii = self.radio;
+        self.layer.borderWidth = 1.0;
+        self.layer.cornerRadius = radii;
+    }
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
                                                    byRoundingCorners:UIRectCornerAllCorners
-                                                         cornerRadii:CGSizeMake(5.0, 5.0)];
+                                                         cornerRadii:CGSizeMake(radii, radii)];
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
     maskLayer.frame         = self.bounds;
     maskLayer.path          = maskPath.CGPath;

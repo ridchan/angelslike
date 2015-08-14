@@ -104,7 +104,6 @@
 -(void)setInfo:(NSDictionary *)info{
     _info = info;
     
-    NSLog(@"cou cell %@",NSStringFromCGRect(self.frame));
     [imageView sd_setImageWithURL:[NSURL URLWithString:[info strForKey:@"img"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
     }];

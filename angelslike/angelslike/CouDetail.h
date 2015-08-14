@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
+#import "CouProduct.h"
 
 @interface DayLabel : UILabel
 
@@ -26,7 +27,7 @@
 
 @end
 
-@interface CouDetail : UIView<UIWebViewDelegate>{
+@interface CouDetail : UIView<UIWebViewDelegate,CouProductDelegate>{
     UIScrollView *scView;
     
     UIImageView *imageView;
@@ -39,12 +40,16 @@
     UILabel *priceLabel;
     UILabel *totalLabel;
     
-    UIWebView *_webView;
+    
     
     IconView *iconView;
     
     DayLabel *daylabel;
     UILabel *titlelabel;
+    
+    UIWebView *_webView;
+    
+    CouProduct *cp;
 }
 
 @property(nonatomic,strong) NSDictionary *info;

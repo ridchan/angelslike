@@ -10,4 +10,6 @@
 
 @interface RCRoundButton : UIButton
 
+@property(nonatomic) float radio;
+
 @end

@@ -35,30 +35,30 @@
         UIColor *color = RGBA(0, 0, 0, 0.6);
         
         self.backgroundColor = [UIColor clearColor];
-        imgView1 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, iconr, iconr)];
+        imgView1 = [[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
         imgView1.image = [[UIImage imageNamed:@"iconfont-wodexiangqingyanjing"] rt_tintedImageWithColor:color];
         imgView1.contentMode = UIViewContentModeScaleAspectFit;
 
         
-        imgView2 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, iconr, iconr)];
+        imgView2 = [[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
         imgView2.image = [[UIImage imageNamed:@"iconfont-fenxiang"] rt_tintedImageWithColor:color];
         imgView2.contentMode = UIViewContentModeScaleAspectFit;
         
-        imgView3 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, iconr, iconr)];
+        imgView3 = [[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
         imgView3.image = [[UIImage imageNamed:@"iconfont-zhuanfa"] rt_tintedImageWithColor:color];
         imgView3.contentMode = UIViewContentModeScaleAspectFit;
         
-        label1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, iconr, iconr)];
+        label1 = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
         label1.backgroundColor = [UIColor clearColor];
         label1.textColor = color;
         label1.font = FontWS(9);
         
-        label2 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, iconr, iconr)];
+        label2 = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
         label2.backgroundColor = [UIColor clearColor];
         label2.textColor = color;
         label2.font = FontWS(9);
         
-        label3 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, iconr, iconr)];
+        label3 = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
         label3.backgroundColor = [UIColor clearColor];
         label3.textColor = color;
         label3.font = FontWS(9);
@@ -79,6 +79,8 @@
     CGSize size2 = [share sizeWithAttributes:@{NSFontAttributeName:FontWS(9)}];
     CGSize size1 = [views sizeWithAttributes:@{NSFontAttributeName:FontWS(9)}];
     
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
     label3.text = forward;
     label3.frame = CGRectMake(self.frame.size.width - size3.width, 0, size3.width, iconr);
     imgView3.frame = CGRectMake(label3.frame.origin.x - iconr - iconGap, 0, iconr, iconr);
@@ -90,7 +92,7 @@
     label1.text = views;
     label1.frame = CGRectMake(imgView2.frame.origin.x - size1.width - iconGap, 0, size1.width,iconr);
     imgView1.frame = CGRectMake(label1.frame.origin.x - iconr - iconGap, 0, iconr, iconr);
-    
+    [UIView commitAnimations];
     
     
 }
@@ -179,16 +181,10 @@
         CALayer *line2 = [self lineLayer:CGPointMake(0, 110)];
         [scView.layer addSublayer:line2];
         
-        
-        
-        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 160, frame.size.width , frame.size.height - 160)];
-        _webView.delegate = self;
-        _webView.scalesPageToFit = NO;
-        [scView addSubview:_webView];
-        
-        
         iconView = [[IconView alloc]initWithFrame:CGRectMake(frame.size.width - 200, 5, 195, 20)];
+        iconView.hidden = YES;
         [scView addSubview:iconView];
+        
         
         //
         daylabel = [[DayLabel alloc] initWithFrame:CGRectMake(0, 120, 60, 30)];
@@ -198,23 +194,60 @@
         daylabel.textAlignment = NSTextAlignmentCenter;
         [scView addSubview:daylabel];
         
-        titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 120, frame.size.width - 80, 45)];
+        titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 120, frame.size.width - 85, 45)];
         titlelabel.backgroundColor = [UIColor clearColor];
         titlelabel.font = [UIFont boldSystemFontOfSize:15];
         titlelabel.numberOfLines = 2;
         [scView addSubview:titlelabel];
+        //
+        
+        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 160, frame.size.width , 1)];//frame.size.height - 160)];
+        _webView.delegate = self;
+        _webView.scalesPageToFit = NO;
+        _webView.scrollView.scrollEnabled = NO;
+        [scView addSubview:_webView];
+        
+        
+
+        
+        
+        cp = [[CouProduct alloc]initWithFrame:CGRectMake(0, 165, frame.size.width, 1)];
+        cp.hidden = YES;
+        cp.delegate = self;
+        [scView addSubview:cp];
     }
     
     return self;
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
+    CGRect rect = webView.frame;
     if (webView.scrollView.contentSize.height > webView.frame.size.height) {
-        CGRect rect = webView.frame;
+        
         webView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, webView.scrollView.contentSize.height);
-        scView.contentSize = CGSizeMake(1, rect.origin.y + webView.scrollView.contentSize.height);
+        cp.frame = CGRectMake(cp.frame.origin.x, webView.frame.origin.y + webView.frame.size.height , cp.frame.size.width, cp.frame.size.height);
+        scView.contentSize = CGSizeMake(1, cp.frame.origin.y + cp.frame.size.height);
+    }else{
+        NSString *htmlHeight = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"];
+        webView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, [htmlHeight floatValue]);
+        cp.frame = CGRectMake(cp.frame.origin.x, webView.frame.origin.y + webView.frame.size.height , cp.frame.size.width, cp.frame.size.height);
+        scView.contentSize = CGSizeMake(1, cp.frame.origin.y + cp.frame.size.height);
     }
 }
+
+#pragma mark -
+#pragma mark delegate
+
+-(void)beResize:(CGRect)rect{
+    [self webViewDidFinishLoad:_webView];
+}
+
+-(void)checkButtonClick:(id)sender{
+    
+}
+
+#pragma mark -
+
 
 -(NSMutableAttributedString *)setColorText:(NSString *)str range:(NSRange)range{
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:str];
@@ -246,6 +279,7 @@
     timeEndLabel.text = [NSString stringWithFormat:@"结束时间:%@",[_info strForKey:@"endtime"]];
     statuLabel.text = [_info strForKey:@"nowstatus"];
     
+    iconView.hidden = NO;
     [iconView setFavitor:[_info strForKey:@"forwarding"] share:[_info strForKey:@"share"] views:[_info strForKey:@"views"]];
     
     NSString *str1 = [NSString stringWithFormat:@"目标"];
@@ -255,12 +289,12 @@
     
     str1 = [NSString stringWithFormat:@"每份"];
     if ([_info floatForKey:@"copies"] > 0) {
-        str2 = [NSString stringWithFormat:@"￥%0.2f元",[_info floatForKey:@"price"] / [_info floatForKey:@"copies"]];
+        str2 = [NSString stringWithFormat:@"￥%0.2f元",[_info floatForKey:@"everyprice"]];// / [_info floatForKey:@"copies"]];
         priceLabel.attributedText = [self setColorText:[NSString stringWithFormat:@"%@%@",str1,str2] range:NSMakeRange([str1 length] , [str2 length])];
     }
 
     
-    str1 = [NSString stringWithFormat:@"共"];
+    str1 = [NSString stringWithFormat:@"共 "];
     str2 = [NSString stringWithFormat:@"%@份",[_info strForKey:@"copies"]];
     totalLabel.attributedText = [self setColorText:[NSString stringWithFormat:@"%@%@",str1,str2] range:NSMakeRange([str1 length], [str2 length])];
     
@@ -268,11 +302,19 @@
     daylabel.text = [[[_info strForKey:@"outday"] stringByReplacingOccurrencesOfString:@"<font>" withString:@""] stringByReplacingOccurrencesOfString:@"</font>" withString:@""];
     titlelabel.text = [_info strForKey:@"title"];
     
+    if ([_info intForKey:@"type"] == 1) {
+        cp.hidden = NO;
+        [cp setImg:[_info strForKey:@"pimg"] name:[_info strForKey:@"pname"]  price:[_info strForKey:@"pprice"]  content:[_info strForKey:@"pcontent"] ];
+    }
+    
+
+    
     if ([[_info strForKey:@"content"] length] > 0) {
         NSMutableString *rss = [NSMutableString stringWithString:[_info strForKey:@"content"]];
         [self reSizeImage:rss];
         [_webView loadHTMLString:rss baseURL:[NSURL URLWithString:@"http://www.angelslike.com"]];
     }
+    
     
     
     

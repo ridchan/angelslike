@@ -39,7 +39,9 @@
 }
 
 -(void)logoutClick:(id)sender{
-    
+    [UserInfo shared].info = nil;
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController.tabBarController setSelectedIndex:0];
 }
 
 
