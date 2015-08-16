@@ -106,11 +106,6 @@
     
     [imageView sd_setImageWithURL:[NSURL URLWithString:[info strForKey:@"img"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
-//        if (image) {
-//            NSLog(@"图片加载成功 %@",[info strForKey:@"name"]);
-//        }else {
-//            NSLog(@"图片加载失败 %@  %@",error,imageURL);
-//        }
     }];
     companyLabel.text = [info strForKey:@"name"];
     nameLabel.text = [info strForKey:@"title"];
