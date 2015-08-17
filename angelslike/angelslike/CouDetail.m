@@ -320,8 +320,8 @@
         [_webView loadHTMLString:rss baseURL:[NSURL URLWithString:@"http://www.angelslike.com"]];
     }
     
-    [process setTarget:[NSString stringWithFormat:@"目标%@份",[_info strForKey:@"copies"]]
-              complete:[NSString stringWithFormat:@"已完成%@份",[_info strForKey:@"currentcopies"]]
+    [process setTarget:[_info strForKey:@"copies"]
+              complete:[_info strForKey:@"currentcopies"]
      ];
     
     
@@ -349,11 +349,11 @@
                 if (pngEnd.location < jpgEnd.location) {
                     loc = pngEnd.location;
                     //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%d",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
+                    [arr addObject:[NSString stringWithFormat:@"%ld",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
                 }else{
                     loc = jpgEnd.location;
                     //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%d",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
+                    [arr addObject:[NSString stringWithFormat:@"%ld",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
                 }
                 
                 

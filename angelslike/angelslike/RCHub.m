@@ -37,12 +37,29 @@
 }
 
 +(void)show{
-
+    [[RCHub shared] startAnimation];
 }
 
 
 +(void)dismiss{
+    [[RCHub shared] stopAnimation];
+}
+
++(void)showMsg:(NSString *)msg{
     
+}
+
+-(void)startAnimation{
+    for (int i  = 0  ; i < [self.layers count] ; i ++){
+        CALayer *layer = (CALayer *)[self.layers objectAtIndex:i];
+        [layer addAnimation:[self scaleAnimation:i * 0.3] forKey:[NSString stringWithFormat:@"%d",i]];
+    }
+    [self.window addSubview:self];
+    
+}
+
+-(void)stopAnimation{
+    [self removeFromSuperview];
 }
 
 -(instancetype) init{
@@ -60,10 +77,23 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
+        
+
+        
         self.bview =  [[UIView alloc]initWithFrame:CGRectMake(0, -100, 100, 100)];
-        self.bview.backgroundColor = [UIColor lightGrayColor];
+        self.bview.backgroundColor = [UIColor clearColor];
         self.bview.center = CGPointMake([[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2);
+        
+        
+        UIView *bg = [[UIView alloc]initWithFrame:self.bview.frame];
+        bg.backgroundColor = [UIColor blackColor];
+        bg.alpha = 0.6;
+        bg.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+        bg.layer.shadowOffset = CGSizeMake(1.0, 1.0);
+        bg.layer.masksToBounds = YES;
+        bg.layer.cornerRadius = 5.0;
+        [self addSubview:bg];
         [self addSubview:self.bview];
 //        [self buildView];
         [self initialSacleSetting:self.bview];
@@ -105,17 +135,17 @@
 
 -(void)initialSacleSetting:(UIView *)bv{
     
+    self.layers = [NSMutableArray array];
     
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
         float width = bv.frame.size.width / 4;
         NSMutableArray *pointsArr = [NSMutableArray array];
         for (int i = 0 ; i < 3 ; i ++){
             CGPoint point = CGPointMake(width * (i + 1), bv.frame.size.height / 2);
             [pointsArr addObject:[NSValue valueWithCGPoint:point]];
         }
-        NSArray *colors = @[[UIColor redColor],[UIColor greenColor],[UIColor blueColor]];
+        NSArray *colors = @[[UIColor whiteColor],[UIColor whiteColor],[UIColor whiteColor]];
 
         
         CALayer *layer = [CALayer new];
@@ -124,12 +154,14 @@
         layer.position = [[pointsArr objectAtIndex:0] CGPointValue];
         layer.cornerRadius = PW / 2;
         layer.masksToBounds = YES;
+        layer.name = @"1";
         
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [layer addAnimation:[self scaleAnimation:0.0] forKey:@"1"];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [layer addAnimation:[self scaleAnimation:0.0] forKey:@"1"];
             [bv.layer addSublayer:layer];
-        });
+//        });
+        
+        [self.layers addObject:layer];
         
         
         CALayer *layer1 = [CALayer new];
@@ -137,12 +169,14 @@
         layer1.frame = CGRectMake(0, 0, PW , PW);
         layer1.position = [[pointsArr objectAtIndex:1] CGPointValue];
         layer1.cornerRadius = PW / 2;
+        layer1.name = @"2";
         layer1.masksToBounds = YES;
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [layer1 addAnimation:[self scaleAnimation:0.2] forKey:@"2"];
+        [self.layers addObject:layer1];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [layer1 addAnimation:[self scaleAnimation:0.2] forKey:@"2"];
             [bv.layer addSublayer:layer1];
-        });
+//        });
         
         
         CALayer *layer2 = [CALayer new];
@@ -151,14 +185,18 @@
         layer2.position = [[pointsArr objectAtIndex:2] CGPointValue];
         layer2.cornerRadius = PW / 2;
         layer2.masksToBounds = YES;
+        layer2.name = @"3";
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [layer2 addAnimation:[self scaleAnimation:0.4] forKey:@"3"];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [layer2 addAnimation:[self scaleAnimation:0.4] forKey:@"3"];
             [bv.layer addSublayer:layer2];
-        });
+//        });
+    
+        [self.layers addObject:layer2];
         
+        runningIdx = 0;
 
-    });
+//    });
 
 }
 
@@ -193,14 +231,26 @@
     }
 }
 
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    if (flag) {
+        runningIdx ++;
+        if (runningIdx > 2)  runningIdx = 0;
+        CALayer *layer = [self.layers objectAtIndex:runningIdx];
+        [layer addAnimation:[self scaleAnimation:0.0] forKey:[NSString stringWithFormat:@"%ld",runningIdx]];
+    }
+}
+
 -(CABasicAnimation *)scaleAnimation:(float)duration{
     CABasicAnimation *an = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    an.duration = 0.5;
+    an.duration = 0.6;
     an.repeatCount = 9999;
-    an.autoreverses = YES;
+    an.autoreverses = YES ;
+//    an.beginTime = duration;
     an.timeOffset = duration;
-    an.fromValue = [NSNumber numberWithFloat:0.5];
+    
+    an.fromValue = [NSNumber numberWithFloat:0.6];
     an.toValue = [NSNumber numberWithFloat:1.0];
+//    [an setDelegate:self];
     
     
     return an;
@@ -242,13 +292,7 @@
     return an;
 }
 
--(void)startAnimation{
-    
-}
 
--(void)stopAnimation{
-    
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.

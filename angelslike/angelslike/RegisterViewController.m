@@ -102,29 +102,56 @@
     
     
     
-    [textField addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
-    [textField1 addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
-    [textField2 addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
-    [textField3 addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
-    [textField4 addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
+    [textField addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField1 addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField2 addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField3 addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField4 addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
     
     registButton = [RCRoundButton buttonWithType:UIButtonTypeCustom];
     registButton.frame = CGRectMake(ButtonMargin, 64 + 45 * [self.infos count] + ButtonGap * 2, ScreenWidth - ButtonMargin * 2, 40);
     registButton.tag = 6;
     [registButton setTitle:@"注册" forState:UIControlStateNormal];
-    registButton.backgroundColor = [UIColor lightGrayColor];// [UIColor getHexColor:@"F85C85"];
+    registButton.backgroundColor = [UIColor lightGrayColor];
     [registButton addTarget:self action:@selector(registButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     registButton.enabled = NO;
     [self.view addSubview:registButton];
+    
+    
 }
 
--(void)valueChange{
-    BOOL b = YES;
-    for (int i = 0 ; i < [self.infos count] ; i ++){
-        TextFieldValidator *textField = (TextFieldValidator *)[self.view viewWithTag:i + 1];
-        b = b & [textField validate];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+-(void)valueChange:(UITextField *)textField{
+    static BOOL b1 = NO,b2 = NO, b3 = NO, b4 = NO;
+//    for (int i = 0 ; i < [self.infos count] ; i ++){
+//        TextFieldValidator *textField = (TextFieldValidator *)[self.view viewWithTag:i + 1];
+//        b = b & [textField validate];
+//    }
+    
+    if (textField.tag == 1) {
+        TextFieldValidator *tf = (TextFieldValidator *)textField;
+        b1 = [tf validate];
     }
-    if (b) {
+    
+    if (textField.tag == 2) {
+        TextFieldValidator *tf = (TextFieldValidator *)textField;
+        b2 = [tf validate];
+    }
+    
+    if (textField.tag == 3) {
+        TextFieldValidator *tf = (TextFieldValidator *)textField;
+        b3 = [tf validate];
+    }
+    
+    if (textField.tag == 4) {
+        TextFieldValidator *tf = (TextFieldValidator *)textField;
+        b4 = [tf validate];
+    }
+    
+    if (b1 & b2 & b3 & b4) {
         registButton.enabled = YES;
         registButton.backgroundColor = [UIColor getHexColor:@"F85C85"];
     }else{

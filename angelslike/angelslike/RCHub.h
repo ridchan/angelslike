@@ -12,14 +12,18 @@
     
 @end
 
-@interface RCHub : UIView
+@interface RCHub : UIView{
+    NSUInteger runningIdx;
+}
 
 @property(nonatomic,strong) UIWindow *window;
 @property(nonatomic,strong) UIView *bview;
+@property(nonatomic,strong) NSMutableArray *layers;
 
 -(void)startAnimation;
 -(void)stopAnimation;
 +(void)show;
++(void)showMsg:(NSString *)msg;
 +(void)dismiss;
 +(instancetype)shared;
 

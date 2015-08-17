@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "RegisterViewController.h"
 #import "TabBarViewController.h"
+#import "WXApi.h"
 
 @interface LoginViewController : BaseViewController
 

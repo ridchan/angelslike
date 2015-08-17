@@ -23,6 +23,7 @@
 #define LoginUrl @"http://www.angelslike.com/json/login"
 #define RegistUrl @"http://www.angelslike.com/json/register"
 #define CouDetailUrl @"http://www.angelslike.com/items.html"
+#define AppLoginUrl @"http://www.angelslike.com/json/applogin" //微信登陆接口 unionid
 
 // margin 首页
 #define MainCellMargin 10
@@ -43,6 +44,8 @@
 #import "UIColor+HexColor.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+RTTint.h"
+
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
 
 

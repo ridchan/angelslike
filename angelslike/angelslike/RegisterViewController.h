@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "TextFieldValidator.h"
+#import "RCHub.h"
 
 @interface RegisterViewController : BaseViewController<UITextFieldDelegate>{
     RCRoundButton *registButton;

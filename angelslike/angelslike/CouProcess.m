@@ -33,9 +33,10 @@
         label2.font = FontWS(11);
         
         progress = [[ProgressView alloc]initWithFrame:CGRectMake(ScreenWidth / 2 - 40, 45 , 80, 80)];
-        progress.percent = 0.35;
+        
         progress.arcBackColor = [UIColor getHexColor:@"f2f2f2"];
         progress.arcUnfinishColor = [UIColor getHexColor:@"fa7a7a"];
+        progress.arcFinishColor  = [UIColor getHexColor:@"fa7a7a"];
         [self addSubview:progress];
         
         [self addSubview:img1];
@@ -49,12 +50,20 @@
 
 
 -(void)setTarget:(NSString *)target complete:(NSString *)complete{
-    CGSize size1 = [target sizeWithAttributes:@{NSFontAttributeName:label1.font}];
-    CGSize size2 = [target sizeWithAttributes:@{NSFontAttributeName:label2.font}];
-    label1.text = target;
-    label2.text = complete;
+
+    label1.text = [NSString stringWithFormat:@"目标%@份",target];
+    label2.text = [NSString stringWithFormat:@"已完成%@份",complete];
+    
+    CGSize size1 = [label1.text sizeWithAttributes:@{NSFontAttributeName:label1.font}];
+    CGSize size2 = [label2.text sizeWithAttributes:@{NSFontAttributeName:label2.font}];
+    
     img1.center = CGPointMake(label1.center.x - size1.width / 2 - 10,label1.center.y);
     img2.center = CGPointMake(label2.center.x - size2.width / 2 - 10,label2.center.y);
+    
+    if ([target floatValue] > 0) {
+        progress.percent = [complete floatValue] / [target floatValue];
+    }
+    
 }
 
 -(CAShapeLayer *)vlineLayer:(CGPoint)position{

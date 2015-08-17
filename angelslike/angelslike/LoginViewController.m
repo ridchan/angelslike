@@ -57,6 +57,20 @@
     loginButton.backgroundColor = [UIColor getHexColor:@"F85C85"];
     [loginButton addTarget:self action:@selector(loginButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginButton];
+    
+    UIButton *wxButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [wxButton setImage:[UIImage imageNamed:@"wechat-icon-168"] forState:UIControlStateNormal];
+    [wxButton addTarget:self action:@selector(wxloginClick:) forControlEvents:UIControlEventTouchUpInside];
+    wxButton.frame = CGRectMake(0, 0, 50, 50);
+    wxButton.center = CGPointMake(ScreenWidth / 2, loginButton.frame.origin.y + loginButton.frame.size.height + ButtonGap + 25);
+    [self.view addSubview:wxButton];
+}
+
+-(void)wxloginClick:(id)sender{
+    SendAuthReq *req = [[SendAuthReq alloc]init];
+    req.scope = @"snsapi_userinfo";
+    req.state = @"angelslike";
+    [WXApi sendReq:req];
 }
 
 

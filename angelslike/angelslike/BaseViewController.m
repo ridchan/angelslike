@@ -23,6 +23,35 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"bringCustomTabBarToFront" object:nil];
 }
 
+-(void)showNetworkError:(BOOL)err{
+    if (err) {
+        if (![self.view viewWithTag:9999]) {
+            UIView *vg = [[UIView alloc]initWithFrame:self.view.frame];
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(refreshClick:)];
+            [vg addGestureRecognizer:tap];
+            vg.tag = 9999;
+            
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, vg.frame.size.width, vg.frame.size.height)];
+            label.text = @"重新加载";
+            
+            [vg addSubview:label];
+//            UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+//            imageView.image = [UIImage imageNamed:@"Refresh_icon"];
+//            imageView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+//            [vg addSubview:imageView];
+            [self.view addSubview:vg];
+        }
+    }else{
+        [[self.view viewWithTag:9999] removeFromSuperview];
+    }
+
+
+}
+
+-(void)refreshClick:(id)sender{
+    
+}
+
 
 - (NSMutableAttributedString *)filterLinkWithContent:(NSString *)content {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:content];
@@ -190,11 +219,11 @@
                 if (pngEnd.location < jpgEnd.location) {
                     loc = pngEnd.location;
                     //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%d",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
+                    [arr addObject:[NSString stringWithFormat:@"%ld",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
                 }else{
                     loc = jpgEnd.location;
                     //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%d",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
+                    [arr addObject:[NSString stringWithFormat:@"%ld",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
                 }
  
                 

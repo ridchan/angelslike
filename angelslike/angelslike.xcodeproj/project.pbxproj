@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		272B6DAD1B709CF1006CCFE6 /* ImageScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B6DAC1B709CF1006CCFE6 /* ImageScroller.m */; };
 		272B6DB01B70A73F006CCFE6 /* UIImageView+NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B6DAF1B70A73F006CCFE6 /* UIImageView+NetWork.m */; };
+		27685A681B818CDB005234B0 /* wechat-icon-168.png in Resources */ = {isa = PBXBuildFile; fileRef = 27685A671B818CDB005234B0 /* wechat-icon-168.png */; };
+		27685A6A1B81E00A005234B0 /* Refresh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27685A691B81E00A005234B0 /* Refresh_icon.png */; };
 		27BA81381B71AADF005B527B /* iconfont-cfz.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA81331B71AADF005B527B /* iconfont-cfz.png */; };
 		27BA81391B71AADF005B527B /* iconfont-fenlei.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA81341B71AADF005B527B /* iconfont-fenlei.png */; };
 		27BA813B1B71AADF005B527B /* iconfont-shouye.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA81361B71AADF005B527B /* iconfont-shouye.png */; };
@@ -174,6 +176,8 @@
 		272B6DAC1B709CF1006CCFE6 /* ImageScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScroller.m; sourceTree = "<group>"; };
 		272B6DAE1B70A73F006CCFE6 /* UIImageView+NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NetWork.h"; sourceTree = "<group>"; };
 		272B6DAF1B70A73F006CCFE6 /* UIImageView+NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+NetWork.m"; sourceTree = "<group>"; };
+		27685A671B818CDB005234B0 /* wechat-icon-168.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat-icon-168.png"; sourceTree = "<group>"; };
+		27685A691B81E00A005234B0 /* Refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Refresh_icon.png; sourceTree = "<group>"; };
 		27BA81331B71AADF005B527B /* iconfont-cfz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-cfz.png"; sourceTree = "<group>"; };
 		27BA81341B71AADF005B527B /* iconfont-fenlei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-fenlei.png"; sourceTree = "<group>"; };
 		27BA81361B71AADF005B527B /* iconfont-shouye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-shouye.png"; sourceTree = "<group>"; };
@@ -431,6 +435,8 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				27685A691B81E00A005234B0 /* Refresh_icon.png */,
+				27685A671B818CDB005234B0 /* wechat-icon-168.png */,
 				27EAFA9A1B7B063400DF60E9 /* my-bg.png */,
 				27F65D0E1B79DA6900EDE656 /* error.png */,
 				27F65D0F1B79DA6900EDE656 /* error@2x.png */,
@@ -991,6 +997,7 @@
 				27EA453F1B7DD30E004851A2 /* iconfont-wancheng.png in Resources */,
 				27EFB2521B73970100A14872 /* jiage_00.png in Resources */,
 				27F65D011B799DD400EDE656 /* 01-引导页.jpg in Resources */,
+				27685A681B818CDB005234B0 /* wechat-icon-168.png in Resources */,
 				27EAFA9B1B7B063400DF60E9 /* my-bg.png in Resources */,
 				27F65D111B79DA6900EDE656 /* error@2x.png in Resources */,
 				27EFB2631B73970900A14872 /* pinglei_03.png in Resources */,
@@ -1003,6 +1010,7 @@
 				27EFB24A1B7396F600A14872 /* gexin_04.png in Resources */,
 				27EFB23B1B7396E700A14872 /* changhe_02.png in Resources */,
 				27BA81861B71FAFB005B527B /* iconfont-icon83.png in Resources */,
+				27685A6A1B81E00A005234B0 /* Refresh_icon.png in Resources */,
 				27EADA741B7C3A670084D648 /* iconfont-woyaotixian.png in Resources */,
 				27EFB2651B73970900A14872 /* pinglei_05.png in Resources */,
 				27E6ADFD1B785658008CE686 /* IQKeyboardManager.bundle in Resources */,
