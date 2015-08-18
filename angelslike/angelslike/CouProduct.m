@@ -63,7 +63,7 @@
     
     layer.path = path.CGPath;
     layer.lineWidth = 0.5;
-    layer.strokeColor = [UIColor lightGrayColor].CGColor;
+    layer.strokeColor = RGBA(178,177,182,.9).CGColor;
     layer.fillColor = [UIColor clearColor].CGColor;
     layer.position = position;
     return layer;

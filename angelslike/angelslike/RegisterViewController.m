@@ -33,22 +33,21 @@
 }
 
 
-
+-(void)popViewController:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(void)initialSetting{
     
     self.navigationItem.title = @"用户注册";
     
-//    for (int i = 0 ; i < [self.infos count] ; i ++){
-//        NSDictionary *info = [self.infos objectAtIndex:i];
-//        UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(ButtonMargin, 64 + ButtonGap + 45 * i, ScreenWidth - ButtonMargin * 2, 45)];
-//        textField.tag = i + 1;
-//        textField.placeholder = [info strForKey:@"Name"];
-//        textField.secureTextEntry = [[info strForKey:@"Type"] isEqualToString:@"Password"];
-//        [self setTextFieldAttribute:textField img:[info strForKey:@"IMG"] bottom:(i == [self.infos count] -1)];
-//        [self.view addSubview:textField];
-//        
-//    }
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 22, 22);
+    [button setImage:[UIImage imageNamed:@"iconfont-houtui"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(popViewController:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = backItem;
+
     
     TextFieldValidator *textField = [[TextFieldValidator alloc]initWithFrame:CGRectMake(ButtonMargin, 64 + ButtonGap + 45 * 0, ScreenWidth - ButtonMargin * 2, 45)];
     textField.tag = 1;

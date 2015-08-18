@@ -29,7 +29,6 @@
 
 -(double)floatForKey:(id)aKey{
 	if ([self objectForKey:(id)aKey] && !([self objectForKey:(id)aKey]==[NSNull null])) {
-        NSLog(@"float %f",[[self objectForKey:aKey] doubleValue]);
 		return [[self objectForKey:aKey] doubleValue];
 	}else {
 		return 0.0;

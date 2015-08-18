@@ -81,6 +81,7 @@
     
     //顶部配置
     UISegmentedControl *seg = [[UISegmentedControl alloc]initWithItems:@[@"礼物分类",@"主题分类"]];
+    seg.frame = CGRectMake(0, 6 , 200, 32);
     seg.tintColor = [UIColor whiteColor];
     seg.selectedSegmentIndex = 0;
     [seg addTarget:self action:@selector(viewChange:) forControlEvents:UIControlEventValueChanged];

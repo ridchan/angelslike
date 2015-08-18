@@ -28,21 +28,29 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)refreshClick:(id)sender{
+    [scroller start:SliderLink];
+    [self loadMoreData:nil];
+}
+
 -(void)loadMoreData:(id)obj{
     __block MainViewController *tempSelf = self;
     NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
     [[NetWork shared] startQuery:ListLink
                             info:@{@"type":@"list_theme",@"page":nPage,@"sort":@"new"}
                    completeBlock:^(id Obj) {
-                       NSArray *rs = [[Obj objectForKey:@"data"] objectForKey:@"list"];
-                       NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
-                       tempSelf.cdn = ImageLink;// [Obj objectForKey:@"cdn"];
-                        if ([rs count] > 0){
-                            tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
-                            tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
-                            [tempSelf.result addObjectsFromArray:rs];
-                            [tempSelf.tableView reloadData];
-                        }
+                       [tempSelf  showNetworkError:[Obj intForKey:@"status"] == 0];
+                       if ([Obj intForKey:@"status"] == 1) {
+                           NSArray *rs = [[Obj objectForKey:@"data"] objectForKey:@"list"];
+                           NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
+                           tempSelf.cdn = ImageLink;// [Obj objectForKey:@"cdn"];
+                           if ([rs count] > 0){
+                               tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
+                               tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
+                               [tempSelf.result addObjectsFromArray:rs];
+                               [tempSelf.tableView reloadData];
+                           }
+                       }
                        [tempSelf.tableView loadDataEnd];
     }];
 }

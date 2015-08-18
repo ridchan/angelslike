@@ -130,15 +130,20 @@
         
         for (int i = 0 ; i < [self.infos count] ;  i ++){
             NSDictionary *info  = [self.infos objectAtIndex:i];
-            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width * i, 0, self.frame.size.width, self.frame.size.height)];
-            imageView.userInteractionEnabled = YES;
-            imageView.tag = i + 1;
-            [_scrollView addSubview:imageView];
+            
+            UIImageView *imageView = (UIImageView *)[self viewWithTag:i + 1];
+            if (!imageView){
+                imageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width * i, 0, self.frame.size.width, self.frame.size.height)];
+                imageView.userInteractionEnabled = YES;
+                imageView.tag = i + 1;
+                [_scrollView addSubview:imageView];
+                UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap:)];
+                [imageView addGestureRecognizer:recognizer];
+            }
             
             [imageView sd_setImageWithURL:[NSURL URLWithString:[self.cdn stringByAppendingPathComponent:[info objectForKey:@"img"]]]];
             
-            UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap:)];
-            [imageView addGestureRecognizer:recognizer];
+
         }
 
 

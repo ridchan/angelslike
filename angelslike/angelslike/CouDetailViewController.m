@@ -65,8 +65,22 @@
     v.tag = 99;
     [self.view addSubview:v];
     
+    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 25, 25);
+    [button setImage:[UIImage imageNamed:@"iconfont-houtui"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = barItem;
+    self.navigationItem.title = @"凑分子";
     [self refreshClick:nil];
 
+}
+
+-(void)backClick:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)refreshClick:(id)sender{

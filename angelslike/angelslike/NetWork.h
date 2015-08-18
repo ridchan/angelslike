@@ -21,5 +21,6 @@ typedef void(^NetWorkBlock)(id Obj);
 -(NSOperationQueue *)GetQueue;
 -(void)startQuery:(NSString *)link info:(NSDictionary *)info completeBlock:(NetWorkBlock)block;
 -(void)query:(NSString *)link info:(NSDictionary *)info block:(NetWorkBlock)block lock:(BOOL)lock;
+@property(nonatomic) NSUInteger currentThreads;
 
 @end

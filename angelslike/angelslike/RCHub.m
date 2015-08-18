@@ -8,7 +8,7 @@
 
 #import "RCHub.h"
 
-#define PW 20 // point width
+#define PW 12 // point width
 
 @implementation RoundHub
 
@@ -145,7 +145,7 @@
             CGPoint point = CGPointMake(width * (i + 1), bv.frame.size.height / 2);
             [pointsArr addObject:[NSValue valueWithCGPoint:point]];
         }
-        NSArray *colors = @[[UIColor whiteColor],[UIColor whiteColor],[UIColor whiteColor]];
+        NSArray *colors = @[[UIColor redColor],[UIColor greenColor],[UIColor blueColor]];
 
         
         CALayer *layer = [CALayer new];
@@ -248,7 +248,7 @@
 //    an.beginTime = duration;
     an.timeOffset = duration;
     
-    an.fromValue = [NSNumber numberWithFloat:0.6];
+    an.fromValue = [NSNumber numberWithFloat:0.1];
     an.toValue = [NSNumber numberWithFloat:1.0];
 //    [an setDelegate:self];
     

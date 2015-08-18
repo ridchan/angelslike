@@ -14,11 +14,13 @@
 #import "MXPullDownMenu.h"
 #import "CouDetailViewController.h"
 
-@interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UISearchBarDelegate>{
+@interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UITextFieldDelegate>{
     MXPullDownMenu *downMenu;
     UISearchBar *_searchBar;
     UISegmentedControl *seg;
     UISearchDisplayController *searchDisplayController;
+    UINavigationBar *_navBar;
+    UITextField *_textField;
 }
 
 @property (strong,nonatomic) LoadMoreTableView *tableView;

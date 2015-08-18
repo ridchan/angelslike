@@ -43,8 +43,6 @@
         
         [loadMoreText setFont:[UIFont fontWithName:@"Helvetica Neue" size:14]];
         
-//        [loadMoreText setText:@"上拉显示更多数据"];
-        
         [tableFooterView addSubview:loadMoreText];
         
         

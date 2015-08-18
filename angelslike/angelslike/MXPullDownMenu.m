@@ -55,9 +55,9 @@
     if (self) {
         
         self.frame = CGRectMake(0, 0, 320, 36);
-        self.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-        self.layer.shadowOffset = CGSizeMake(1, 1);
-        self.layer.shadowOpacity = 0.2;
+//        self.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+//        self.layer.shadowOffset = CGSizeMake(1, 1);
+//        self.layer.shadowOpacity = 0.2;
         
         _menuColor = [UIColor colorWithRed:164.0/255.0 green:166.0/255.0 blue:169.0/255.0 alpha:1.0];
         
@@ -111,6 +111,8 @@
          
         _currentSelectedMenudIndex = -1;
         _show = NO;
+        
+        [self.layer addSublayer:[self lineLayer:CGPointMake(0, self.frame.size.height  -  1)]];
     }
     return self;
 }
@@ -334,6 +336,21 @@
 
 
 #pragma mark - drawing
+
+-(CAShapeLayer *)lineLayer:(CGPoint)position{
+    CAShapeLayer *layer = [CAShapeLayer new];
+    UIBezierPath *path = [UIBezierPath new];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(ScreenWidth, 0)];
+    
+    
+    layer.path = path.CGPath;
+    layer.lineWidth = 0.5;
+    layer.strokeColor = RGBA(178,177,182,.9).CGColor;
+    layer.fillColor = [UIColor clearColor].CGColor;
+    layer.position = position;
+    return layer;
+}
 
 
 - (CAShapeLayer *)creatBottomLineWithColor:(UIColor *)color

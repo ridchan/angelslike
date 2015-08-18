@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
+#define reloadTag 9999
+
 @implementation BaseViewController
 
 -(void)viewDidLoad{
@@ -25,14 +27,17 @@
 
 -(void)showNetworkError:(BOOL)err{
     if (err) {
-        if (![self.view viewWithTag:9999]) {
+        if (![self.view viewWithTag:reloadTag]) {
             UIView *vg = [[UIView alloc]initWithFrame:self.view.frame];
+            vg.backgroundColor = [UIColor whiteColor];
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(refreshClick:)];
             [vg addGestureRecognizer:tap];
-            vg.tag = 9999;
+            vg.tag = reloadTag;
             
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, vg.frame.size.width, vg.frame.size.height)];
-            label.text = @"重新加载";
+            label.textAlignment = NSTextAlignmentCenter;
+            label.numberOfLines = 10;
+            label.text = @"连接网络或服务器失败 \n 点击重新加载...";
             
             [vg addSubview:label];
 //            UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
@@ -42,7 +47,7 @@
             [self.view addSubview:vg];
         }
     }else{
-        [[self.view viewWithTag:9999] removeFromSuperview];
+        [[self.view viewWithTag:reloadTag] removeFromSuperview];
     }
 
 

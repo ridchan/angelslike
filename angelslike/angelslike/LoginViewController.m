@@ -27,9 +27,15 @@
     
     self.navigationItem.title = @"用户登陆";
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 22, 22);
+    [button setImage:[UIImage imageNamed:@"iconfont-houtui"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClick:)];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registButtonClick:)];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"注册  " style:UIBarButtonItemStylePlain target:self action:@selector(registButtonClick:)];
+    [rightItem setTintColor:[UIColor whiteColor]];
     self.navigationItem.leftBarButtonItem = backItem;
     self.navigationItem.rightBarButtonItem = rightItem;
     

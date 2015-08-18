@@ -74,7 +74,7 @@
 		27EA9A021B72F662003559C0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA9A011B72F662003559C0 /* BaseViewController.m */; };
 		27EA9A081B7313C6003559C0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A071B7313C6003559C0 /* Default-568h@2x.png */; };
 		27EA9A0C1B731777003559C0 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA9A0B1B731777003559C0 /* SearchViewController.m */; };
-		27EA9A0E1B731AE7003559C0 /* iconfont-houtui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A0D1B731AE7003559C0 /* iconfont-houtui@2x.png */; };
+		27EA9A0E1B731AE7003559C0 /* iconfont-houtui.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A0D1B731AE7003559C0 /* iconfont-houtui.png */; };
 		27EA9A111B733208003559C0 /* DropDownList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EA9A101B733208003559C0 /* DropDownList.m */; };
 		27EA9A131B7335FA003559C0 /* tbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EA9A121B7335FA003559C0 /* tbg.png */; };
 		27EADA721B7C38240084D648 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EADA711B7C38240084D648 /* SettingViewController.m */; };
@@ -152,6 +152,7 @@
 		27F65D0D1B79D67900EDE656 /* TextFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F65D0C1B79D67900EDE656 /* TextFieldValidator.m */; };
 		27F65D101B79DA6900EDE656 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F65D0E1B79DA6900EDE656 /* error.png */; };
 		27F65D111B79DA6900EDE656 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F65D0F1B79DA6900EDE656 /* error@2x.png */; };
+		27FB16611B831E17000CDCD3 /* iconfont-search.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FB16601B831E17000CDCD3 /* iconfont-search.png */; };
 		2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4D41BE1B72870400AA314E /* CouViewController.m */; };
 		2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */; };
 		2E7147991B75C0330063FA07 /* NSDictionary_IngoreNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7147981B75C0330063FA07 /* NSDictionary_IngoreNull.m */; };
@@ -295,7 +296,7 @@
 		27EA9A071B7313C6003559C0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		27EA9A0A1B731777003559C0 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		27EA9A0B1B731777003559C0 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		27EA9A0D1B731AE7003559C0 /* iconfont-houtui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-houtui@2x.png"; sourceTree = "<group>"; };
+		27EA9A0D1B731AE7003559C0 /* iconfont-houtui.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-houtui.png"; sourceTree = "<group>"; };
 		27EA9A0F1B733208003559C0 /* DropDownList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownList.h; sourceTree = "<group>"; };
 		27EA9A101B733208003559C0 /* DropDownList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownList.m; sourceTree = "<group>"; };
 		27EA9A121B7335FA003559C0 /* tbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tbg.png; sourceTree = "<group>"; };
@@ -392,6 +393,7 @@
 		27F65D0C1B79D67900EDE656 /* TextFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldValidator.m; sourceTree = "<group>"; };
 		27F65D0E1B79DA6900EDE656 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		27F65D0F1B79DA6900EDE656 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
+		27FB16601B831E17000CDCD3 /* iconfont-search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-search.png"; sourceTree = "<group>"; };
 		2E4D41BD1B72870400AA314E /* CouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouViewController.h; sourceTree = "<group>"; };
 		2E4D41BE1B72870400AA314E /* CouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouViewController.m; sourceTree = "<group>"; };
 		2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
@@ -444,7 +446,7 @@
 				27EFB2691B73971000A14872 /* Category */,
 				27EFB2111B734C9800A14872 /* arrow.png */,
 				27EA9A121B7335FA003559C0 /* tbg.png */,
-				27EA9A0D1B731AE7003559C0 /* iconfont-houtui@2x.png */,
+				27EA9A0D1B731AE7003559C0 /* iconfont-houtui.png */,
 				27BA81851B71FAFB005B527B /* iconfont-icon83.png */,
 				27BA813D1B71AB1B005B527B /* iconfont-jia.png */,
 				27BA81331B71AADF005B527B /* iconfont-cfz.png */,
@@ -462,6 +464,7 @@
 				27EADA811B7C896D0084D648 /* iconfont-fenxiang.png */,
 				27EA453C1B7DD2F0004851A2 /* iconfont-mubiao.png */,
 				27EA453E1B7DD30E004851A2 /* iconfont-wancheng.png */,
+				27FB16601B831E17000CDCD3 /* iconfont-search.png */,
 			);
 			name = "图标";
 			sourceTree = "<group>";
@@ -945,7 +948,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27EA9A0E1B731AE7003559C0 /* iconfont-houtui@2x.png in Resources */,
+				27EA9A0E1B731AE7003559C0 /* iconfont-houtui.png in Resources */,
 				27EFB2551B73970100A14872 /* jiage_03.png in Resources */,
 				27BA813B1B71AADF005B527B /* iconfont-shouye.png in Resources */,
 				27EFB23C1B7396E700A14872 /* changhe_03.png in Resources */,
@@ -1012,6 +1015,7 @@
 				27BA81861B71FAFB005B527B /* iconfont-icon83.png in Resources */,
 				27685A6A1B81E00A005234B0 /* Refresh_icon.png in Resources */,
 				27EADA741B7C3A670084D648 /* iconfont-woyaotixian.png in Resources */,
+				27FB16611B831E17000CDCD3 /* iconfont-search.png in Resources */,
 				27EFB2651B73970900A14872 /* pinglei_05.png in Resources */,
 				27E6ADFD1B785658008CE686 /* IQKeyboardManager.bundle in Resources */,
 				27EADA801B7C89610084D648 /* iconfont-zhuanfa.png in Resources */,
@@ -1166,7 +1170,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1203,7 +1207,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

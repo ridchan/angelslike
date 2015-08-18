@@ -47,6 +47,7 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postdata];
     
+    [self currentThreadAdding];
     if (lock) [RCHub show];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -56,11 +57,25 @@
                 block(nil);
             else
                 block([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error]);
-            NSLog(@"net work error %@",error);
+            [self currentThreadReducing];
         });
         
         
     }];
+}
+
+
+-(void)currentThreadAdding{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    self.currentThreads ++ ;
+}
+
+-(void)currentThreadReducing{
+    self.currentThreads -- ;
+    if (self.currentThreads <= 0) {
+        self.currentThreads = 0;
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }
 }
 
 -(void)startQuery:(NSString *)link info:(NSDictionary *)info completeBlock:(NetWorkBlock)block{
@@ -78,7 +93,8 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postdata];
     
-    
+
+    [self currentThreadAdding];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
@@ -86,7 +102,9 @@
                 block(nil);
             else
                 block([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error]);
-            NSLog(@"net work error %@",error);
+            
+            [self currentThreadReducing];
+
         });
         
         
