@@ -12,6 +12,13 @@
 
 @synthesize currentPage = _currentPage , totalPage = _totalPage;
 
+-(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
+    if (self =  [super initWithFrame:frame style:style]) {
+        [self setReloadHeader];
+    }
+    return self;
+}
+
 -(void)addTarget:(id)target action:(SEL)action{
     tar = target;
     act = action;
@@ -25,6 +32,19 @@
 -(void)setTotalPage:(NSInteger)totalPage{
     _totalPage = totalPage;
     [self createTableFooter];
+}
+
+-(void)setReloadHeader{
+    [self addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [self.panGestureRecognizer addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    NSLog(@"keypath : %@ \n value: %@" ,keyPath,change);
+}
+
+-(void)offsetChange:(id)obj{
+    
 }
 
 

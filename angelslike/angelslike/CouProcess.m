@@ -32,7 +32,7 @@
         label2.textAlignment = NSTextAlignmentCenter;
         label2.font = FontWS(11);
         
-        progress = [[ProgressView alloc]initWithFrame:CGRectMake(ScreenWidth / 2 - 40, 45 , 80, 80)];
+        progress = [[ProgressView alloc]initWithFrame:CGRectMake(ScreenWidth / 2 - 40, 55 , 80, 80)];
         
         progress.arcBackColor = [UIColor getHexColor:@"f2f2f2"];
         progress.arcUnfinishColor = [UIColor getHexColor:@"fa7a7a"];

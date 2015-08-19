@@ -113,7 +113,6 @@
 //    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
 
     
-    
     if (sender.selectedSegmentIndex == 0) {
         self.tvc.view.hidden = YES;
         [self.view sendSubviewToBack:self.tvc.view];
@@ -130,6 +129,12 @@
 }
 
 
+-(void)cellClick:(NSDictionary *)info{
+    NSLog(@"cell click %@",info);
+    ProductlistViewController *vc = [[ProductlistViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark -
 #pragma mark table view
 
@@ -144,6 +149,7 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         cell.title = [@[@"对象",@"场合",@"价格",@"个性",@"品类"] objectAtIndex:indexPath.row];
         cell.buttonInfos = [self.infos objectForKey:cell.title];
+        cell.delegate = self;
     }
 
     

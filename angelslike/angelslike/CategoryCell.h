@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
-#import "UIColor+HexColor.h"
+
+
+@protocol CategoryCellDelegate <NSObject>
+
+-(void)cellClick:(NSDictionary *)info;
+
+@end
 
 @interface CellItem : UIView{
     UIImageView *imageView;
@@ -24,8 +30,10 @@
     UIScrollView *_scrollView;
 }
 
+@property(nonatomic) id<CategoryCellDelegate>delegate;
 @property(nonatomic,strong) NSArray *buttonInfos;
 @property(nonatomic,strong) NSString *title;
+
 
 
 @end

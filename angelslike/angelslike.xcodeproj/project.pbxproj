@@ -49,6 +49,7 @@
 		27DD24041B705C8400C61546 /* MainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD24031B705C8400C61546 /* MainCell.m */; };
 		27DD240B1B7061A000C61546 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD240A1B7061A000C61546 /* ImageDownloader.m */; };
 		27DD240E1B70639B00C61546 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD240D1B70639B00C61546 /* NetWork.m */; };
+		27E07CE81B8420120020B950 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E07CE71B8420120020B950 /* ProductCell.m */; };
 		27E6ADE51B7855EA008CE686 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADE41B7855EA008CE686 /* LoginViewController.m */; };
 		27E6ADFD1B785658008CE686 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27E6ADE71B785658008CE686 /* IQKeyboardManager.bundle */; };
 		27E6ADFE1B785658008CE686 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADE91B785658008CE686 /* IQKeyboardManager.m */; };
@@ -251,6 +252,8 @@
 		27DD240C1B70639B00C61546 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		27DD240D1B70639B00C61546 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		27DD240F1B70682000C61546 /* HeaderDefiner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderDefiner.h; sourceTree = "<group>"; };
+		27E07CE61B8420120020B950 /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
+		27E07CE71B8420120020B950 /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		27E6ADE31B7855EA008CE686 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		27E6ADE41B7855EA008CE686 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		27E6ADE71B785658008CE686 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
@@ -815,6 +818,8 @@
 			children = (
 				27F65CFA1B798D7C00EDE656 /* ProductlistViewController.h */,
 				27F65CFB1B798D7C00EDE656 /* ProductlistViewController.m */,
+				27E07CE61B8420120020B950 /* ProductCell.h */,
+				27E07CE71B8420120020B950 /* ProductCell.m */,
 			);
 			name = "产品列表";
 			sourceTree = "<group>";
@@ -1098,6 +1103,7 @@
 				27DD23FB1B70565700C61546 /* MainViewController.m in Sources */,
 				27BA81771B71C6A6005B527B /* SDWebImagePrefetcher.m in Sources */,
 				27EA9A021B72F662003559C0 /* BaseViewController.m in Sources */,
+				27E07CE81B8420120020B950 /* ProductCell.m in Sources */,
 				27EFB21E1B737ED600A14872 /* CategoryCell.m in Sources */,
 				27BA81781B71C6A6005B527B /* UIButton+WebCache.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,

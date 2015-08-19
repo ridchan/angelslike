@@ -7,9 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "ProductCell.h"
 
-@interface ProductlistViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface ProductlistViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic,strong) UICollectionView *collectionView;
+@property(nonatomic,strong) NSMutableArray *result;
 
 @end

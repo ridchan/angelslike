@@ -34,8 +34,25 @@
     [self showTabbar];
 }
 
+
+-(CAShapeLayer *)lineLayer:(CGPoint)position{
+    CAShapeLayer *layer = [CAShapeLayer new];
+    UIBezierPath *path = [UIBezierPath new];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(ScreenWidth, 0)];
+    
+    
+    layer.path = path.CGPath;
+    layer.lineWidth = 0.5;
+    layer.strokeColor = RGBA(178,177,182,.9).CGColor;
+    layer.fillColor = [UIColor clearColor].CGColor;
+    layer.position = position;
+    return layer;
+}
+
 -(void)addBottomButton{
     UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44)];
+    [v.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
     if ([self.info intForKey:@"type"] == 2) {
         RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
         b1.frame = CGRectMake(10, 5, ScreenWidth - 20, 34);
