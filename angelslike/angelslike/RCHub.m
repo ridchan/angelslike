@@ -83,7 +83,7 @@
         
         self.bview =  [[UIView alloc]initWithFrame:CGRectMake(0, -100, 100, 100)];
         self.bview.backgroundColor = [UIColor clearColor];
-        self.bview.center = CGPointMake([[UIScreen mainScreen] bounds].size.width/2, [[UIScreen mainScreen] bounds].size.height/2);
+        self.bview.center = CGPointMake(frame.size.width / 2, frame.size.height/2);
         
         
         UIView *bg = [[UIView alloc]initWithFrame:self.bview.frame];

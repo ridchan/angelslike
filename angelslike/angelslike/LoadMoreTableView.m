@@ -19,6 +19,13 @@
     return self;
 }
 
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        [self setReloadHeader];
+    }
+    return self;
+}
+
 -(void)addTarget:(id)target action:(SEL)action{
     tar = target;
     act = action;
@@ -35,16 +42,31 @@
 }
 
 -(void)setReloadHeader{
+    hub = [[RCHub alloc]initWithFrame:CGRectMake(0, -44, ScreenWidth, 30)];
+    hub.tag = 9999;
+    [self addSubview:hub];
+    
     [self addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [self.panGestureRecognizer addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    NSLog(@"keypath : %@ \n value: %@" ,keyPath,change);
-}
-
--(void)offsetChange:(id)obj{
-    
+//    NSLog(@"keypath : %@ \n value: %@" ,keyPath,change);
+    static float offset = 0;
+    static int type = 0;
+    if ([keyPath isEqualToString:@"state"]) {
+        NSLog(@"%@",change);
+        type = [[change objectForKey:@"new"] intValue];
+        int oldtype = [[change objectForKey:@"old"] intValue];
+        if (oldtype != type & type == 3) {
+            if (offset < -108) {
+                [hub startAnimation];
+            }
+        }
+    }
+    if ([keyPath isEqualToString:@"contentOffset"]) {
+        offset = [[change objectForKey:@"new"] CGPointValue].y;
+    }
 }
 
 
