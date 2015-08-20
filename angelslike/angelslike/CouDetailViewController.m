@@ -20,6 +20,8 @@
     
     [self initialSetting];
     [self addBottomButton];
+    
+    NSLog(@" top : %f",self.tableView.contentInset.top);
 
 }
 

@@ -14,6 +14,7 @@
     [super viewDidLoad];
     [self setCellInfo];
     [self initialSetting];
+    
     // Do any additional setup after loading the view.
 }
 

@@ -17,6 +17,7 @@
     
     [self initailSetting];
     [self loadMoreData:nil];
+    
 
 }
 
@@ -40,9 +41,11 @@
                            tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
                            tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
                            [tempSelf.result addObjectsFromArray:rs];
-                           [tempSelf.tableView reloadData];
+                           
                        }
+                       [tempSelf.tableView reloadData];
                        [tempSelf.tableView loadDataEnd];
+                       [tempSelf.tableView.header endRefreshing];
                    }];
 }
 
@@ -75,6 +78,11 @@
     downMenu.delegate = self;
     downMenu.frame = CGRectMake(0, 64, ScreenWidth, 35);
     [self.view addSubview:downMenu];
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+    self.tableView.header = header;
 
 }
 

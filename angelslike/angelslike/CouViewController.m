@@ -20,6 +20,7 @@
 
     [self initialSetting];
     [self loadMoreData:nil];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -86,6 +87,12 @@
     downMenu.delegate = self;
     downMenu.frame = CGRectMake(0, 64, ScreenWidth, 35);
     [self.view addSubview:downMenu];
+    
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+    self.tableView.header = header;
  
 }
 
@@ -119,6 +126,7 @@
                            
                        }
                        [tempSelf.tableView reloadData];
+                       [tempSelf.tableView.header endRefreshing];
                        [tempSelf.tableView loadDataEnd];
                    }];
 }

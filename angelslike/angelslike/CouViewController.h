@@ -13,6 +13,7 @@
 #import "SearchViewController.h"
 #import "MXPullDownMenu.h"
 #import "CouDetailViewController.h"
+#import "MJRefresh.h"
 
 @interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UITextFieldDelegate>{
     MXPullDownMenu *downMenu;

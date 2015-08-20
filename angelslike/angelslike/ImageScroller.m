@@ -152,7 +152,10 @@
         _scrollView.contentSize = CGSizeMake(self.frame.size.width * [self.infos count], 1);
         [_scrollView scrollRectToVisible:CGRectMake(_scrollView.frame.size.width , 0, _scrollView.frame.size.width, _scrollView.frame.size.height) animated:NO];
         
-        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(runBanner) userInfo:nil repeats:YES];
+        if (!timer) {
+            timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(runBanner) userInfo:nil repeats:YES];
+        }
+        
     }
     
 

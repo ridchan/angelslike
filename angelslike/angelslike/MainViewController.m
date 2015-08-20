@@ -51,6 +51,7 @@
                                [tempSelf.tableView reloadData];
                            }
                        }
+                       [tempSelf.tableView.header endRefreshing];
                        [tempSelf.tableView loadDataEnd];
     }];
 }
@@ -72,6 +73,12 @@
     [scroller start:SliderLink];
     
     banner = [[Banner alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 60)];
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+    self.tableView.header = header;
+    
 }
 
 - (void)didReceiveMemoryWarning {

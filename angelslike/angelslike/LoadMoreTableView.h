@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
-#import "RCHub.h"
 
 @interface LoadMoreTableView : UITableView{
     id tar;
     SEL act;
-    RCHub *hub;
 }
 
 @property(nonatomic) NSInteger currentPage;
