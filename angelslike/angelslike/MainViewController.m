@@ -75,6 +75,7 @@
     banner = [[Banner alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 60)];
     
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
+//    [header setBackgroundColor:[UIColor getHexColor:@"ff6969"]];
     header.automaticallyChangeAlpha = YES;
     header.lastUpdatedTimeLabel.hidden = YES;
     self.tableView.header = header;
