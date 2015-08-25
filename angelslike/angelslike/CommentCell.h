@@ -10,6 +10,7 @@
 #import "HeaderDefiner.h"
 
 @interface CommentCell : UITableViewCell{
+    UIView *backView;
     UIImageView *imageView;
     UILabel *nameLabel;
     UILabel *dateLabel;

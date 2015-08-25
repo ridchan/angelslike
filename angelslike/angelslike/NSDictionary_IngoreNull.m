@@ -27,6 +27,14 @@
 	}
 }
 
+-(id)objForKey:(NSString *)aKey{
+    if (!([self objectForKey:(id)aKey]==[NSNull null])) {
+        return [self objectForKey:(id)aKey];
+    }else {
+        return nil;
+    }
+}
+
 -(double)floatForKey:(id)aKey{
 	if ([self objectForKey:(id)aKey] && !([self objectForKey:(id)aKey]==[NSNull null])) {
 		return [[self objectForKey:aKey] doubleValue];

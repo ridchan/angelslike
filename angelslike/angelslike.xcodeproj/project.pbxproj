@@ -181,6 +181,7 @@
 		27F65D101B79DA6900EDE656 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F65D0E1B79DA6900EDE656 /* error.png */; };
 		27F65D111B79DA6900EDE656 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27F65D0F1B79DA6900EDE656 /* error@2x.png */; };
 		27FB16611B831E17000CDCD3 /* iconfont-search.png in Resources */ = {isa = PBXBuildFile; fileRef = 27FB16601B831E17000CDCD3 /* iconfont-search.png */; };
+		2E3D95461B8CD5D600E69706 /* BuyNowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E3D95451B8CD5D600E69706 /* BuyNowViewController.m */; };
 		2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4D41BE1B72870400AA314E /* CouViewController.m */; };
 		2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */; };
 		2E7147991B75C0330063FA07 /* NSDictionary_IngoreNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7147981B75C0330063FA07 /* NSDictionary_IngoreNull.m */; };
@@ -477,6 +478,8 @@
 		27F65D0E1B79DA6900EDE656 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		27F65D0F1B79DA6900EDE656 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
 		27FB16601B831E17000CDCD3 /* iconfont-search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-search.png"; sourceTree = "<group>"; };
+		2E3D95441B8CD5D600E69706 /* BuyNowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyNowViewController.h; sourceTree = "<group>"; };
+		2E3D95451B8CD5D600E69706 /* BuyNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyNowViewController.m; sourceTree = "<group>"; };
 		2E4D41BD1B72870400AA314E /* CouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouViewController.h; sourceTree = "<group>"; };
 		2E4D41BE1B72870400AA314E /* CouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouViewController.m; sourceTree = "<group>"; };
 		2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
@@ -633,6 +636,7 @@
 				27EFB2161B73735500A14872 /* 分类页 */,
 				27EED2531B746278009F2DD2 /* 我的页 */,
 				27E53EB41B8C3BC600A56D53 /* 评论 */,
+				2E3D95431B8CCEE000E69706 /* 购买页 */,
 				27DD23D61B70514700C61546 /* AppDelegate.h */,
 				27DD23D71B70514700C61546 /* AppDelegate.m */,
 				27DD23D91B70514700C61546 /* ViewController.h */,
@@ -1034,6 +1038,15 @@
 			name = "引导页";
 			sourceTree = "<group>";
 		};
+		2E3D95431B8CCEE000E69706 /* 购买页 */ = {
+			isa = PBXGroup;
+			children = (
+				2E3D95441B8CD5D600E69706 /* BuyNowViewController.h */,
+				2E3D95451B8CD5D600E69706 /* BuyNowViewController.m */,
+			);
+			name = "购买页";
+			sourceTree = "<group>";
+		};
 		2E4D41BC1B72867D00AA314E /* 凑分子 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1301,6 +1314,7 @@
 				2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */,
 				27E6AE0B1B785B49008CE686 /* RCRoundButton.m in Sources */,
 				27BA81741B71C6A6005B527B /* SDWebImageDownloader.m in Sources */,
+				2E3D95461B8CD5D600E69706 /* BuyNowViewController.m in Sources */,
 				27EA99FE1B72F4A3003559C0 /* CouCell.m in Sources */,
 				27E066231B85DD4300D94803 /* MJRefreshFooter.m in Sources */,
 				27E066301B85DD4300D94803 /* UIScrollView+MJExtension.m in Sources */,

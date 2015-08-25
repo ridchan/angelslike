@@ -26,6 +26,10 @@
 #define AppLoginUrl @"http://www.angelslike.com/json/applogin" //微信登陆接口 unionid
 #define ProductsUrl @"http://app.angelslike.com/product/lists"
 #define ProductUrl @"http://app.angelslike.com/product/detail"
+#define CommentsUrl @"http://app.angelslike.com/review/lists"
+
+#define BuyNowUrl @"http://app.angelslike.com/buynow"
+#define AddressUrl @"http://app.angelslike.com/index/getaddress"
 
 #define MainUrl @"http://www.angelslike.com"
 
