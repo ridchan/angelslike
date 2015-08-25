@@ -10,6 +10,7 @@
 #import "UIColor+HexColor.h"
 #import "HeaderDefiner.h"
 #import "NetWork.h"
+#import "RCHub.h"
 
 @interface BaseViewController : UIViewController
 
@@ -23,5 +24,9 @@
 
 -(void)hideTabBar;
 -(void)showTabbar;
+
+-(void)showNetworkError:(BOOL)err;
+-(void)refreshClick:(id)sender;
+-(CAShapeLayer *)lineLayer:(CGPoint)position;
 
 @end

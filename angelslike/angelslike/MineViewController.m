@@ -8,6 +8,7 @@
 
 #import "MineViewController.h"
 
+
 @implementation MineViewController
 
 @synthesize tableView = _tableView;
@@ -68,10 +69,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    SendAuthReq *req = [[SendAuthReq alloc]init];
-//    req.scope = @"snsapi_userinfo";
-//    req.state = @"angelslike";
-//    [WXApi sendReq:req];
     NSDictionary *info = [[self.infos objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     if ([self respondsToSelector:NSSelectorFromString([info strForKey:@"Action"])]) {
         [self performSelector:NSSelectorFromString([info strForKey:@"Action"]) withObject:nil];

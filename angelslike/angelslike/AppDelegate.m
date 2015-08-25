@@ -20,8 +20,14 @@
 -(void)initialSetting{
     [[IQKeyboardManager sharedManager] setShouldToolbarUsesTextFieldTintColor:YES];
     
+    
+
+    
+    
+//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor getHexColor:@"ff6969"]];
-    [[UINavigationBar appearance]  setTintColor:[UIColor whiteColor]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
                                                            [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:17.0], NSFontAttributeName, nil]];
@@ -77,10 +83,17 @@
 -(void)onResp:(BaseResp *)resp{
     SendAuthResp *sendResp = (SendAuthResp *)resp;
     NSString *link = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WXAppID,WXAppSecret,sendResp.code];
-    [[NetWork shared]startQuery:link info:nil completeBlock:^(id Obj) {
-        NSLog(@"obj %@",Obj);
-    }];
-    
+
+    [[NetWork shared] query:link info:nil block:^(id Obj) {
+        NSDictionary *info = (NSDictionary *)Obj;
+        NSLog(@"wx info %@",Obj);
+        if (info) {
+            [[NetWork shared] query:AppLoginUrl info:@{@"unionid":[info strForKey:@"unionid"]} block:^(id Obj) {
+                NSLog(@"obj %@",Obj);
+            } lock:YES];
+        }
+    } lock:YES];
+
     NSLog(@"resp %@",sendResp.code);
 }
 

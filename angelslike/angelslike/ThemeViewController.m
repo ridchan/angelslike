@@ -17,6 +17,7 @@
     
     [self initailSetting];
     [self loadMoreData:nil];
+    
 
 }
 
@@ -40,9 +41,11 @@
                            tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
                            tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
                            [tempSelf.result addObjectsFromArray:rs];
-                           [tempSelf.tableView reloadData];
+                           
                        }
+                       [tempSelf.tableView reloadData];
                        [tempSelf.tableView loadDataEnd];
+                       [tempSelf.tableView.header endRefreshing];
                    }];
 }
 
@@ -75,6 +78,11 @@
     downMenu.delegate = self;
     downMenu.frame = CGRectMake(0, 64, ScreenWidth, 35);
     [self.view addSubview:downMenu];
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+    self.tableView.header = header;
 
 }
 
@@ -109,19 +117,6 @@
     }
 }
 
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-//
-//{
-//
-//    // 下拉到最底部时显示更多数据
-//
-//    if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height)))
-//    {
-//        [self.tableView loadDataBegin];
-//    }
-//
-//
-//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -150,7 +145,6 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
     return cellHeight ;
     
 }

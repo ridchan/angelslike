@@ -108,6 +108,7 @@
         
         scView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         scView.backgroundColor = [UIColor whiteColor];
+        scView.delegate = self;
         [self addSubview:scView];
         
         if (!imageView) {
@@ -215,24 +216,28 @@
         cp.hidden = YES;
         cp.delegate = self;
         [scView addSubview:cp];
+        
+        process = [[CouProcess alloc]initWithFrame:CGRectMake(0, 150, frame.size.width, 150)];
+        [scView addSubview:process];
     }
     
     return self;
 }
 
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    imageView.center = CGPointMake(40, 104 + scrollView.contentOffset.y);
+}
+
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     CGRect rect = webView.frame;
-    if (webView.scrollView.contentSize.height > webView.frame.size.height) {
-        
-        webView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, webView.scrollView.contentSize.height);
-        cp.frame = CGRectMake(cp.frame.origin.x, webView.frame.origin.y + webView.frame.size.height , cp.frame.size.width, cp.frame.size.height);
-        scView.contentSize = CGSizeMake(1, cp.frame.origin.y + cp.frame.size.height);
-    }else{
-        NSString *htmlHeight = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"];
-        webView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, [htmlHeight floatValue]);
-        cp.frame = CGRectMake(cp.frame.origin.x, webView.frame.origin.y + webView.frame.size.height , cp.frame.size.width, cp.frame.size.height);
-        scView.contentSize = CGSizeMake(1, cp.frame.origin.y + cp.frame.size.height);
-    }
+
+    NSString *htmlHeight = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"];
+    webView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, [htmlHeight floatValue]);
+    cp.frame = CGRectMake(cp.frame.origin.x, webView.frame.origin.y + webView.frame.size.height , cp.frame.size.width, cp.frame.size.height);
+    process.frame = CGRectMake(process.frame.origin.x, cp.frame.origin.y + cp.frame.size.height, process.frame.size.width, process.frame.size.height);
+    scView.contentSize = CGSizeMake(1, process.frame.origin.y + process.frame.size.height);
+
 }
 
 #pragma mark -
@@ -265,7 +270,7 @@
     
     layer.path = path.CGPath;
     layer.lineWidth = 0.5;
-    layer.strokeColor = [UIColor lightGrayColor].CGColor;
+    layer.strokeColor = RGBA(178,177,182,.9).CGColor;
     layer.fillColor = [UIColor clearColor].CGColor;
     layer.position = position;
     return layer;
@@ -273,7 +278,7 @@
 
 -(void)setInfo:(NSDictionary *)info{
     _info = [info mutableCopy];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[_info strForKey:@"uimg"]]];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:[_info strForKey:@"uimg"]] placeholderImage:[UIImage imageNamed:@"hui_logo"]];
     nameLabel.text = [_info strForKey:@"uname"];
     timeStartLabel.text = [NSString stringWithFormat:@"开始时间:%@",[_info strForKey:@"starttime"]];
     timeEndLabel.text = [NSString stringWithFormat:@"结束时间:%@",[_info strForKey:@"endtime"]];
@@ -315,6 +320,10 @@
         [_webView loadHTMLString:rss baseURL:[NSURL URLWithString:@"http://www.angelslike.com"]];
     }
     
+    [process setTarget:[_info strForKey:@"copies"]
+              complete:[_info strForKey:@"currentcopies"]
+     ];
+    
     
     
     
@@ -331,7 +340,6 @@
         curRange = NSMakeRange(loc, length - loc - 1);
         NSRange imgStart = [result rangeOfString:@"<img" options:NSCaseInsensitiveSearch range:curRange];
         loc = imgStart.location;
-        //        length = length - imgStart.location;
         
         if (imgStart.location != NSNotFound) {
             @try {
@@ -341,11 +349,11 @@
                 if (pngEnd.location < jpgEnd.location) {
                     loc = pngEnd.location;
                     //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%d",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
+                    [arr addObject:[NSString stringWithFormat:@"%ld",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
                 }else{
                     loc = jpgEnd.location;
                     //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%d",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
+                    [arr addObject:[NSString stringWithFormat:@"%ld",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
                 }
                 
                 

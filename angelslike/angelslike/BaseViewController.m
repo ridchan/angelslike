@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
+#define reloadTag 9999
+
 @implementation BaseViewController
 
 -(void)viewDidLoad{
@@ -16,11 +18,44 @@
 }
 
 -(void)hideTabBar{
+    self.hidesBottomBarWhenPushed = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideCustomTabBar" object:nil];
 }
 
 -(void)showTabbar{
     [[NSNotificationCenter defaultCenter] postNotificationName:@"bringCustomTabBarToFront" object:nil];
+}
+
+-(void)showNetworkError:(BOOL)err{
+    if (err) {
+        if (![self.view viewWithTag:reloadTag]) {
+            UIView *vg = [[UIView alloc]initWithFrame:self.view.frame];
+            vg.backgroundColor = [UIColor whiteColor];
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(refreshClick:)];
+            [vg addGestureRecognizer:tap];
+            vg.tag = reloadTag;
+            
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, vg.frame.size.width, vg.frame.size.height)];
+            label.textAlignment = NSTextAlignmentCenter;
+            label.numberOfLines = 10;
+            label.text = @"连接网络或服务器失败 \n 点击重新加载...";
+            
+            [vg addSubview:label];
+//            UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+//            imageView.image = [UIImage imageNamed:@"Refresh_icon"];
+//            imageView.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+//            [vg addSubview:imageView];
+            [self.view addSubview:vg];
+        }
+    }else{
+        [[self.view viewWithTag:reloadTag] removeFromSuperview];
+    }
+
+
+}
+
+-(void)refreshClick:(id)sender{
+    
 }
 
 
@@ -190,11 +225,11 @@
                 if (pngEnd.location < jpgEnd.location) {
                     loc = pngEnd.location;
                     //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%d",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
+                    [arr addObject:[NSString stringWithFormat:@"%ld",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
                 }else{
                     loc = jpgEnd.location;
                     //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%d",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
+                    [arr addObject:[NSString stringWithFormat:@"%ld",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
                 }
  
                 
@@ -216,6 +251,21 @@
         offset += [add length];
     }
     
+}
+
+-(CAShapeLayer *)lineLayer:(CGPoint)position{
+    CAShapeLayer *layer = [CAShapeLayer new];
+    UIBezierPath *path = [UIBezierPath new];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(ScreenWidth, 0)];
+    
+    
+    layer.path = path.CGPath;
+    layer.lineWidth = 0.5;
+    layer.strokeColor = RGBA(178,177,182,.9).CGColor;
+    layer.fillColor = [UIColor clearColor].CGColor;
+    layer.position = position;
+    return layer;
 }
 
 @end

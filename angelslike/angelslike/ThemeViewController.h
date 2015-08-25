@@ -11,6 +11,7 @@
 #import "MainCell.h"
 #import "HeaderDefiner.h"
 #import "MXPullDownMenu.h"
+#import "MJRefresh.h"
 
 @interface ThemeViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,MXPullDownMenuDelegate>{
     CGFloat cellHeight;

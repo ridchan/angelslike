@@ -15,6 +15,7 @@
 #import "HeaderDefiner.h"
 #import "Banner.h"
 #import "BaseViewController.h"
+#import "MJRefresh.h"
 
 
 @interface MainViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{

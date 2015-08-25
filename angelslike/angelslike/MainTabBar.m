@@ -17,7 +17,7 @@
     //图片
     UIImageView *imageView = (UIImageView *) [self viewWithTag:1];
     if (!imageView) {
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5 , 25, 25)];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 6 , 22, 22)];
         imageView.userInteractionEnabled = NO;
         imageView.tag =  1;
         [self addSubview:imageView];
@@ -105,6 +105,7 @@
 -(instancetype)init{
     if (self = [super init]) {
         self.frame = CGRectMake(0, ScreenHeight, ScreenWidth, BarHeight);
+        self.backgroundColor = [UIColor whiteColor];
         UIWindow *window = nil;
         id<UIApplicationDelegate> delegate = [[UIApplication sharedApplication] delegate];
         if ([delegate respondsToSelector:@selector(window)])

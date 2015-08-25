@@ -63,7 +63,7 @@
     
     layer.path = path.CGPath;
     layer.lineWidth = 0.5;
-    layer.strokeColor = [UIColor lightGrayColor].CGColor;
+    layer.strokeColor = RGBA(178,177,182,.9).CGColor;
     layer.fillColor = [UIColor clearColor].CGColor;
     layer.position = position;
     return layer;
@@ -85,7 +85,7 @@
 }
 
 -(CGRect)setImg:(NSString *)link name:(NSString *)name price:(NSString *)price content:(NSString *)content{
-    [imageView sd_setImageWithURL:[NSURL URLWithString:link]];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:link] placeholderImage:[UIImage imageNamed:@"hui_logo"]];
     nameLabel.text = name;
     priceLabel.text = [NSString stringWithFormat:@"￥%@",price];
     

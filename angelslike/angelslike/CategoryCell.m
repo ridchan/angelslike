@@ -50,6 +50,19 @@
     return self;
 }
 
+
+-(void)itemTap:(UITapGestureRecognizer *)tap{
+    if ([self.delegate respondsToSelector:@selector(cellClick:)]) {
+        NSDictionary *info = [_buttonInfos objectAtIndex:tap.view.tag  - 1];
+        [self.delegate cellClick:info];
+    }
+}
+
+-(void)addTapToItem:(UIView *)item{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(itemTap:)];
+    [item addGestureRecognizer:tap];
+}
+
 -(void)setButtonInfos:(NSArray *)buttonInfos{
     _buttonInfos = buttonInfos;
     CGFloat gap = 6;
@@ -58,7 +71,9 @@
     [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (int i  = 0 ; i < [_buttonInfos count] ; i ++){
         CellItem *item = [[CellItem alloc]initWithFrame:CGRectMake(gap + (gap * 2 + width) * i, 0, width, _scrollView.frame.size.height)];
+        item.tag = i + 1;
         item.info = [_buttonInfos objectAtIndex:i];
+        [self addTapToItem:item];
         [_scrollView addSubview:item];
         _scrollView.contentSize = CGSizeMake(item.frame.origin.x + item.frame.size.width + gap, 1);
     }

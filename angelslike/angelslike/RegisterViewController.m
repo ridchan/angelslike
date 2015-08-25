@@ -33,22 +33,21 @@
 }
 
 
-
+-(void)popViewController:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 -(void)initialSetting{
     
     self.navigationItem.title = @"用户注册";
     
-//    for (int i = 0 ; i < [self.infos count] ; i ++){
-//        NSDictionary *info = [self.infos objectAtIndex:i];
-//        UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(ButtonMargin, 64 + ButtonGap + 45 * i, ScreenWidth - ButtonMargin * 2, 45)];
-//        textField.tag = i + 1;
-//        textField.placeholder = [info strForKey:@"Name"];
-//        textField.secureTextEntry = [[info strForKey:@"Type"] isEqualToString:@"Password"];
-//        [self setTextFieldAttribute:textField img:[info strForKey:@"IMG"] bottom:(i == [self.infos count] -1)];
-//        [self.view addSubview:textField];
-//        
-//    }
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 22, 22);
+    [button setImage:[UIImage imageNamed:@"iconfont-houtui"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(popViewController:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = backItem;
+
     
     TextFieldValidator *textField = [[TextFieldValidator alloc]initWithFrame:CGRectMake(ButtonMargin, 64 + ButtonGap + 45 * 0, ScreenWidth - ButtonMargin * 2, 45)];
     textField.tag = 1;
@@ -102,29 +101,56 @@
     
     
     
-    [textField addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
-    [textField1 addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
-    [textField2 addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
-    [textField3 addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
-    [textField4 addTarget:self action:@selector(valueChange) forControlEvents:UIControlEventEditingChanged];
+    [textField addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField1 addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField2 addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField3 addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
+    [textField4 addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventEditingChanged];
     
     registButton = [RCRoundButton buttonWithType:UIButtonTypeCustom];
     registButton.frame = CGRectMake(ButtonMargin, 64 + 45 * [self.infos count] + ButtonGap * 2, ScreenWidth - ButtonMargin * 2, 40);
     registButton.tag = 6;
     [registButton setTitle:@"注册" forState:UIControlStateNormal];
-    registButton.backgroundColor = [UIColor lightGrayColor];// [UIColor getHexColor:@"F85C85"];
+    registButton.backgroundColor = [UIColor lightGrayColor];
     [registButton addTarget:self action:@selector(registButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     registButton.enabled = NO;
     [self.view addSubview:registButton];
+    
+    
 }
 
--(void)valueChange{
-    BOOL b = YES;
-    for (int i = 0 ; i < [self.infos count] ; i ++){
-        TextFieldValidator *textField = (TextFieldValidator *)[self.view viewWithTag:i + 1];
-        b = b & [textField validate];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+-(void)valueChange:(UITextField *)textField{
+    static BOOL b1 = NO,b2 = NO, b3 = NO, b4 = NO;
+//    for (int i = 0 ; i < [self.infos count] ; i ++){
+//        TextFieldValidator *textField = (TextFieldValidator *)[self.view viewWithTag:i + 1];
+//        b = b & [textField validate];
+//    }
+    
+    if (textField.tag == 1) {
+        TextFieldValidator *tf = (TextFieldValidator *)textField;
+        b1 = [tf validate];
     }
-    if (b) {
+    
+    if (textField.tag == 2) {
+        TextFieldValidator *tf = (TextFieldValidator *)textField;
+        b2 = [tf validate];
+    }
+    
+    if (textField.tag == 3) {
+        TextFieldValidator *tf = (TextFieldValidator *)textField;
+        b3 = [tf validate];
+    }
+    
+    if (textField.tag == 4) {
+        TextFieldValidator *tf = (TextFieldValidator *)textField;
+        b4 = [tf validate];
+    }
+    
+    if (b1 & b2 & b3 & b4) {
         registButton.enabled = YES;
         registButton.backgroundColor = [UIColor getHexColor:@"F85C85"];
     }else{

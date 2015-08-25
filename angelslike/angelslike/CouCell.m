@@ -104,9 +104,8 @@
 -(void)setInfo:(NSDictionary *)info{
     _info = info;
     
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[info strForKey:@"img"]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
-    }];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:[info strForKey:@"img"]]  placeholderImage:[UIImage imageNamed:@"hui_logo"]];
+    
     companyLabel.text = [info strForKey:@"name"];
     nameLabel.text = [info strForKey:@"title"];
     pnameLabel.text = [NSString stringWithFormat:@"[凑什么]%@",[info strForKey:@"pname"]];

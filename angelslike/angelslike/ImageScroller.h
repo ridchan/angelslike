@@ -24,6 +24,7 @@
 @interface ImageScroller : UIView<UIScrollViewDelegate>{
     UIScrollView *_scrollView;
     UIPageControl *_pageControl;
+    NSTimer *timer;
     id tar;
     SEL sel;
     

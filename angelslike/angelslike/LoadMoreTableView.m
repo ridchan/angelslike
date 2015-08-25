@@ -12,6 +12,20 @@
 
 @synthesize currentPage = _currentPage , totalPage = _totalPage;
 
+-(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
+    if (self =  [super initWithFrame:frame style:style]) {
+        
+    }
+    return self;
+}
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        
+    }
+    return self;
+}
+
 -(void)addTarget:(id)target action:(SEL)action{
     tar = target;
     act = action;
@@ -28,6 +42,8 @@
 }
 
 
+
+
 - (void) createTableFooter
 
 {
@@ -35,20 +51,18 @@
     self.tableFooterView = nil;
 
     if (_currentPage < _totalPage) {
-//        UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.bounds.size.width, 40.0f)];
+        UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.bounds.size.width, 40.0f)];
         
-//        UILabel *loadMoreText = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 116.0f, 40.0f)];
-//        
-//        [loadMoreText setCenter:tableFooterView.center];
-//        
-//        [loadMoreText setFont:[UIFont fontWithName:@"Helvetica Neue" size:14]];
-//        
-//        [loadMoreText setText:@"上拉显示更多数据"];
-//        
-//        [tableFooterView addSubview:loadMoreText];
+        UILabel *loadMoreText = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 116.0f, 40.0f)];
+        
+        [loadMoreText setCenter:tableFooterView.center];
+        
+        [loadMoreText setFont:[UIFont fontWithName:@"Helvetica Neue" size:14]];
+        
+        [tableFooterView addSubview:loadMoreText];
         
         
-//        self.tableFooterView = tableFooterView;
+        self.tableFooterView = tableFooterView;
     }
     
 

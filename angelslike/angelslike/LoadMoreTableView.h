@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
 
-@interface LoadMoreTableView : UITableView<UIScrollViewDelegate>{
+@interface LoadMoreTableView : UITableView{
     id tar;
     SEL act;
 }

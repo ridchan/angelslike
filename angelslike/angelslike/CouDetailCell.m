@@ -103,7 +103,7 @@
     
     layer.path = path.CGPath;
     layer.lineWidth = 1.0;
-    layer.strokeColor = [UIColor lightGrayColor].CGColor;
+    layer.strokeColor = RGBA(178,177,182,.9).CGColor;
     layer.fillColor = [UIColor clearColor].CGColor;
     layer.position = position;
     return layer;
@@ -111,7 +111,7 @@
 
 -(void)setInfo:(NSDictionary *)info{
     _info = [info mutableCopy];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[_info strForKey:@"pimg"]]];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:[_info strForKey:@"pimg"]] placeholderImage:[UIImage imageNamed:@"hui_logo"]];
     nameLabel.text = [_info strForKey:@"uname"];
     timeStartLabel.text = [NSString stringWithFormat:@"开始时间:%@",[_info strForKey:@"starttime"]];
     timeEndLabel.text = [NSString stringWithFormat:@"结束时间:%@",[_info strForKey:@"endtime"]];

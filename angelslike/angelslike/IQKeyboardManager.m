@@ -453,7 +453,7 @@
         //  Negative
         else
         {
-            CGFloat disturbDistance;
+            CGFloat disturbDistance ;
             
             //  Calculating disturbed distance
 			switch (rootController.interfaceOrientation)
@@ -476,7 +476,7 @@
 
             //  disturbDistance Negative = frame disturbed.
             //  disturbDistance positive = frame not disturbed.
-            if(disturbDistance<0)
+            if(0 > disturbDistance)
             {
                 //  adjusting rootViewRect
                 switch (rootController.interfaceOrientation)

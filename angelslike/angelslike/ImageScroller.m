@@ -130,15 +130,20 @@
         
         for (int i = 0 ; i < [self.infos count] ;  i ++){
             NSDictionary *info  = [self.infos objectAtIndex:i];
-            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width * i, 0, self.frame.size.width, self.frame.size.height)];
-            imageView.userInteractionEnabled = YES;
-            imageView.tag = i + 1;
-            [_scrollView addSubview:imageView];
+            
+            UIImageView *imageView = (UIImageView *)[self viewWithTag:i + 1];
+            if (!imageView){
+                imageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width * i, 0, self.frame.size.width, self.frame.size.height)];
+                imageView.userInteractionEnabled = YES;
+                imageView.tag = i + 1;
+                [_scrollView addSubview:imageView];
+                UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap:)];
+                [imageView addGestureRecognizer:recognizer];
+            }
             
             [imageView sd_setImageWithURL:[NSURL URLWithString:[self.cdn stringByAppendingPathComponent:[info objectForKey:@"img"]]]];
             
-            UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap:)];
-            [imageView addGestureRecognizer:recognizer];
+
         }
 
 
@@ -147,7 +152,10 @@
         _scrollView.contentSize = CGSizeMake(self.frame.size.width * [self.infos count], 1);
         [_scrollView scrollRectToVisible:CGRectMake(_scrollView.frame.size.width , 0, _scrollView.frame.size.width, _scrollView.frame.size.height) animated:NO];
         
-        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(runBanner) userInfo:nil repeats:YES];
+        if (!timer) {
+            timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(runBanner) userInfo:nil repeats:YES];
+        }
+        
     }
     
 

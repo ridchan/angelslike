@@ -20,6 +20,7 @@
 
     [self initialSetting];
     [self loadMoreData:nil];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -32,6 +33,7 @@
     self.navigationItem.title = @"凑分子";
     //顶部配置
     seg = [[UISegmentedControl alloc]initWithItems:@[@"谁在凑分子",@"我的凑分子"]];
+    seg.frame = CGRectMake(0, 6 , 200, 32);
     seg.tintColor = [UIColor whiteColor];
     seg.selectedSegmentIndex = 0;
     self.navigationItem.titleView = seg;
@@ -42,17 +44,25 @@
     self.navigationItem.rightBarButtonItem = barButtonItem;
     
     //搜索框
-    _searchBar  = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 10, 28)];
-    _searchBar.barStyle = UIBarStyleDefault;
-    _searchBar.backgroundColor = [UIColor clearColor];
-    _searchBar.tintColor = [UIColor clearColor];
-    _searchBar.delegate  = self;
+    _navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, 44)];
 
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setTitle:@"返回" forState:UIControlStateNormal];
+    backButton.frame = CGRectMake(ScreenWidth - 60, 0, 50, 44);
+    [backButton addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 8, ScreenWidth - 70 , 28)];
+    _textField.borderStyle = UITextBorderStyleRoundedRect;
+    _textField.returnKeyType = UIReturnKeySearch;
+    _textField.delegate = self;
+    _textField.placeholder  = @"搜索";
+    
+    [_navBar addSubview:_textField];
+    [_navBar addSubview:backButton];
+    
 
-//    searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:_searchBar contentsController:self];
     
-    
-    //    [self.navigationItem.backBarButtonItem setTitle:@""];
+    [self.navigationController.navigationBar addSubview:_navBar];
     [self.navigationItem setHidesBackButton:YES];
     
 
@@ -77,7 +87,18 @@
     downMenu.delegate = self;
     downMenu.frame = CGRectMake(0, 64, ScreenWidth, 35);
     [self.view addSubview:downMenu];
+    
+    
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+    self.tableView.header = header;
  
+}
+
+
+-(void)refreshClick:(id)sender{
+    [self loadMoreData:nil];
 }
 
 
@@ -85,20 +106,27 @@
     __block CouViewController *tempSelf = self;
     NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
     [self.searchInfo setObject:nPage forKey:@"page"];
-    [self.searchInfo setObject:_searchBar.text forKey:@"key"];
+    [self.searchInfo setObject:_textField.text forKey:@"key"];
     
     [[NetWork shared] startQuery:ListLink
                             info:self.searchInfo
                    completeBlock:^(id Obj) {
-                       NSArray *rs = [[Obj objectForKey:@"data"] objectForKey:@"list"];
-                       NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
-                       tempSelf.cdn = ImageLink;// [Obj objectForKey:@"cdn"];
-                       if ([rs count] > 0){
-                           tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
-                           tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
-                           [tempSelf.result addObjectsFromArray:rs];
+                       
+                       [tempSelf showNetworkError:[Obj intForKey:@"status"] == 0];
+                       
+                       if ([Obj intForKey:@"status"] == 1) {
+                           NSArray *rs = [[Obj objectForKey:@"data"] objectForKey:@"list"];
+                           NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
+                           tempSelf.cdn = ImageLink;// [Obj objectForKey:@"cdn"];
+                           if ([rs count] > 0){
+                               tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
+                               tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
+                               [tempSelf.result addObjectsFromArray:rs];
+                           }
+                           
                        }
                        [tempSelf.tableView reloadData];
+                       [tempSelf.tableView.header endRefreshing];
                        [tempSelf.tableView loadDataEnd];
                    }];
 }
@@ -106,25 +134,36 @@
 
 -(void)backClick:(id)sender{
     
-    self.navigationItem.titleView = seg;
-
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
-    barButtonItem.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = barButtonItem;
-    
-    _searchBar.text = @"";
+//    self.navigationItem.titleView = seg;
+//
+//    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
+//    barButtonItem.tintColor = [UIColor whiteColor];
+//    self.navigationItem.rightBarButtonItem = barButtonItem;
+//    
+//    _searchBar.text = @"";
+    _textField.text = @"";
+    [_textField resignFirstResponder];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    _navBar.frame = CGRectMake(ScreenWidth, 0, ScreenWidth, 44);
+    [UIView commitAnimations];
     [self reloadData];
 }
 
 -(void)searchClick:(id)sender{
-
+    [self.navigationController.navigationBar bringSubviewToFront:_navBar];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    _navBar.frame = CGRectMake(0, 0, ScreenWidth, 44);
+    [UIView commitAnimations];
+    /*
     self.navigationItem.titleView = _searchBar;
     [_searchBar becomeFirstResponder];
 
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backClick:)];
     self.navigationItem.rightBarButtonItem = barButtonItem;
-    
+    */
 }
 
 -(void)reloadData{
@@ -136,6 +175,13 @@
 
 #pragma mark -
 #pragma mark search bar
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    [self reloadData];
+    return YES;
+}
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [_searchBar resignFirstResponder];
@@ -209,6 +255,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return CouCellHeight + CouCellGap;
 }
+
 
 //-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 //    return 45;
