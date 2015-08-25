@@ -18,6 +18,7 @@
 }
 
 -(void)hideTabBar{
+    self.hidesBottomBarWhenPushed = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideCustomTabBar" object:nil];
 }
 
@@ -250,6 +251,21 @@
         offset += [add length];
     }
     
+}
+
+-(CAShapeLayer *)lineLayer:(CGPoint)position{
+    CAShapeLayer *layer = [CAShapeLayer new];
+    UIBezierPath *path = [UIBezierPath new];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(ScreenWidth, 0)];
+    
+    
+    layer.path = path.CGPath;
+    layer.lineWidth = 0.5;
+    layer.strokeColor = RGBA(178,177,182,.9).CGColor;
+    layer.fillColor = [UIColor clearColor].CGColor;
+    layer.position = position;
+    return layer;
 }
 
 @end

@@ -15,7 +15,6 @@
 -(instancetype)init{
     if (self = [super init]) {
         //
-        NSLog(@"init collection cell");
     }
     return self;
 }
@@ -27,9 +26,11 @@
         [self.contentView addSubview:imageView];
         
         nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, self.frame.size.width, 25)];
+        nameLabel.font = FontWS(12);
         [self.contentView addSubview:nameLabel];
         
         priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 125, self.frame.size.width, 25)];
+        priceLabel.font = FontWS(10);
         priceLabel.textColor = [UIColor redColor];
         [self.contentView addSubview:priceLabel];
         
@@ -43,12 +44,10 @@
 -(void)setInfo:(NSDictionary *)info{
     _info = info;
     if (_info) {
-        
+        [imageView sd_setImageWithURL:[NSURL URLWithString:[ImageLink stringByAppendingPathComponent:[_info strForKey:@"img"]]]  placeholderImage:[UIImage imageNamed:@"hui_logo"]];
+        nameLabel.text = [_info strForKey:@"name"];
+        priceLabel.text = [NSString stringWithFormat:@"￥%0.2f",[_info floatForKey:@"price"]];
     }
-    
-    [imageView sd_setImageWithURL:[NSURL URLWithString:@"http://img1.angelslike.com/303514b47427b705fcfa1891975d0eac.jpeg"]];
-    nameLabel.text = @"卡通充电宝";
-    priceLabel.text = @"￥79.00";
 }
 
 

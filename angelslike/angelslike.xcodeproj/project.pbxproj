@@ -70,6 +70,13 @@
 		27E066311B85DD4300D94803 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0661D1B85DD4300D94803 /* UIScrollView+MJRefresh.m */; };
 		27E066321B85DD4300D94803 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0661F1B85DD4300D94803 /* UIView+MJExtension.m */; };
 		27E07CE81B8420120020B950 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E07CE71B8420120020B950 /* ProductCell.m */; };
+		27E53EAF1B8C23A400A56D53 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E53EAE1B8C23A400A56D53 /* ProductDetailViewController.m */; };
+		27E53EB21B8C25DA00A56D53 /* ProductDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E53EB11B8C25DA00A56D53 /* ProductDetail.m */; };
+		27E53EB71B8C3BE200A56D53 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E53EB61B8C3BE200A56D53 /* CommentViewController.m */; };
+		27E53EBA1B8C3D0100A56D53 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E53EB91B8C3D0100A56D53 /* CommentCell.m */; };
+		27E53EBC1B8C47E900A56D53 /* hui_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E53EBB1B8C47E900A56D53 /* hui_logo.png */; };
+		27E53EBF1B8C4BB500A56D53 /* RCMutileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E53EBE1B8C4BB500A56D53 /* RCMutileView.m */; };
+		27E53EC21B8C76B000A56D53 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E53EC11B8C76B000A56D53 /* WebViewController.m */; };
 		27E6ADE51B7855EA008CE686 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADE41B7855EA008CE686 /* LoginViewController.m */; };
 		27E6ADFD1B785658008CE686 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27E6ADE71B785658008CE686 /* IQKeyboardManager.bundle */; };
 		27E6ADFE1B785658008CE686 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6ADE91B785658008CE686 /* IQKeyboardManager.m */; };
@@ -314,6 +321,19 @@
 		27E0661F1B85DD4300D94803 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		27E07CE61B8420120020B950 /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		27E07CE71B8420120020B950 /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
+		27E53EAD1B8C23A400A56D53 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		27E53EAE1B8C23A400A56D53 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		27E53EB01B8C25DA00A56D53 /* ProductDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetail.h; sourceTree = "<group>"; };
+		27E53EB11B8C25DA00A56D53 /* ProductDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetail.m; sourceTree = "<group>"; };
+		27E53EB51B8C3BE200A56D53 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		27E53EB61B8C3BE200A56D53 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		27E53EB81B8C3D0100A56D53 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		27E53EB91B8C3D0100A56D53 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		27E53EBB1B8C47E900A56D53 /* hui_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hui_logo.png; sourceTree = "<group>"; };
+		27E53EBD1B8C4BB500A56D53 /* RCMutileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMutileView.h; sourceTree = "<group>"; };
+		27E53EBE1B8C4BB500A56D53 /* RCMutileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMutileView.m; sourceTree = "<group>"; };
+		27E53EC01B8C76B000A56D53 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		27E53EC11B8C76B000A56D53 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		27E6ADE31B7855EA008CE686 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		27E6ADE41B7855EA008CE686 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		27E6ADE71B785658008CE686 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
@@ -500,6 +520,7 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				27E53EBB1B8C47E900A56D53 /* hui_logo.png */,
 				27685A691B81E00A005234B0 /* Refresh_icon.png */,
 				27685A671B818CDB005234B0 /* wechat-icon-168.png */,
 				27EAFA9A1B7B063400DF60E9 /* my-bg.png */,
@@ -611,6 +632,7 @@
 				27EA9A091B73174E003559C0 /* 搜索页 */,
 				27EFB2161B73735500A14872 /* 分类页 */,
 				27EED2531B746278009F2DD2 /* 我的页 */,
+				27E53EB41B8C3BC600A56D53 /* 评论 */,
 				27DD23D61B70514700C61546 /* AppDelegate.h */,
 				27DD23D71B70514700C61546 /* AppDelegate.m */,
 				27DD23D91B70514700C61546 /* ViewController.h */,
@@ -684,6 +706,8 @@
 		27DD24001B70592D00C61546 /* 自定义控件 */ = {
 			isa = PBXGroup;
 			children = (
+				27E53EBD1B8C4BB500A56D53 /* RCMutileView.h */,
+				27E53EBE1B8C4BB500A56D53 /* RCMutileView.m */,
 				27EAFA941B7AFBC200DF60E9 /* RCHub.h */,
 				27EAFA951B7AFBC200DF60E9 /* RCHub.m */,
 				27E065F01B85736400D94803 /* RCRefresher.h */,
@@ -813,6 +837,17 @@
 				27E066151B85DD4300D94803 /* MJRefreshStateHeader.m */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		27E53EB41B8C3BC600A56D53 /* 评论 */ = {
+			isa = PBXGroup;
+			children = (
+				27E53EB51B8C3BE200A56D53 /* CommentViewController.h */,
+				27E53EB61B8C3BE200A56D53 /* CommentViewController.m */,
+				27E53EB81B8C3D0100A56D53 /* CommentCell.h */,
+				27E53EB91B8C3D0100A56D53 /* CommentCell.m */,
+			);
+			name = "评论";
 			sourceTree = "<group>";
 		};
 		27E6ADE21B7855CD008CE686 /* 登陆页 */ = {
@@ -973,10 +1008,16 @@
 		27F65CF91B798D0A00EDE656 /* 产品列表 */ = {
 			isa = PBXGroup;
 			children = (
-				27F65CFA1B798D7C00EDE656 /* ProductlistViewController.h */,
-				27F65CFB1B798D7C00EDE656 /* ProductlistViewController.m */,
 				27E07CE61B8420120020B950 /* ProductCell.h */,
 				27E07CE71B8420120020B950 /* ProductCell.m */,
+				27E53EB01B8C25DA00A56D53 /* ProductDetail.h */,
+				27E53EB11B8C25DA00A56D53 /* ProductDetail.m */,
+				27F65CFA1B798D7C00EDE656 /* ProductlistViewController.h */,
+				27F65CFB1B798D7C00EDE656 /* ProductlistViewController.m */,
+				27E53EAD1B8C23A400A56D53 /* ProductDetailViewController.h */,
+				27E53EAE1B8C23A400A56D53 /* ProductDetailViewController.m */,
+				27E53EC01B8C76B000A56D53 /* WebViewController.h */,
+				27E53EC11B8C76B000A56D53 /* WebViewController.m */,
 			);
 			name = "产品列表";
 			sourceTree = "<group>";
@@ -1175,6 +1216,7 @@
 				27EFB24A1B7396F600A14872 /* gexin_04.png in Resources */,
 				27EFB23B1B7396E700A14872 /* changhe_02.png in Resources */,
 				27BA81861B71FAFB005B527B /* iconfont-icon83.png in Resources */,
+				27E53EBC1B8C47E900A56D53 /* hui_logo.png in Resources */,
 				27685A6A1B81E00A005234B0 /* Refresh_icon.png in Resources */,
 				27EADA741B7C3A670084D648 /* iconfont-woyaotixian.png in Resources */,
 				27FB16611B831E17000CDCD3 /* iconfont-search.png in Resources */,
@@ -1203,6 +1245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27DD23DB1B70514700C61546 /* ViewController.m in Sources */,
+				27E53EC21B8C76B000A56D53 /* WebViewController.m in Sources */,
 				2E7147991B75C0330063FA07 /* NSDictionary_IngoreNull.m in Sources */,
 				27F65D061B799FB100EDE656 /* UserInfo.m in Sources */,
 				27E066321B85DD4300D94803 /* UIView+MJExtension.m in Sources */,
@@ -1218,8 +1261,10 @@
 				27E6AE041B785658008CE686 /* UIView+Hierarchy.m in Sources */,
 				27DD24041B705C8400C61546 /* MainCell.m in Sources */,
 				27DD23FF1B70584700C61546 /* UIColor+HexColor.m in Sources */,
+				27E53EB21B8C25DA00A56D53 /* ProductDetail.m in Sources */,
 				27E066211B85DD4300D94803 /* MJRefreshBackFooter.m in Sources */,
 				272B6DAD1B709CF1006CCFE6 /* ImageScroller.m in Sources */,
+				27E53EB71B8C3BE200A56D53 /* CommentViewController.m in Sources */,
 				27DD23D51B70514700C61546 /* main.m in Sources */,
 				27E6ADE51B7855EA008CE686 /* LoginViewController.m in Sources */,
 				27E0662F1B85DD4300D94803 /* MJRefreshConst.m in Sources */,
@@ -1229,6 +1274,7 @@
 				27E0662B1B85DD4300D94803 /* MJRefreshGifHeader.m in Sources */,
 				27E6AE001B785658008CE686 /* IQTextView.m in Sources */,
 				2E7A78B91B77CA5B004A58AB /* ProgressView.m in Sources */,
+				27E53EAF1B8C23A400A56D53 /* ProductDetailViewController.m in Sources */,
 				27BA81751B71C6A6005B527B /* SDWebImageDownloaderOperation.m in Sources */,
 				27BA81411B71ABA3005B527B /* MainTabBar.m in Sources */,
 				27EADA7C1B7C7BBD0084D648 /* CouDetail.m in Sources */,
@@ -1280,6 +1326,7 @@
 				27EA9A021B72F662003559C0 /* BaseViewController.m in Sources */,
 				27E07CE81B8420120020B950 /* ProductCell.m in Sources */,
 				27EFB21E1B737ED600A14872 /* CategoryCell.m in Sources */,
+				27E53EBF1B8C4BB500A56D53 /* RCMutileView.m in Sources */,
 				27E0662A1B85DD4300D94803 /* MJRefreshBackStateFooter.m in Sources */,
 				27BA81781B71C6A6005B527B /* UIButton+WebCache.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
@@ -1290,6 +1337,7 @@
 				27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */,
 				27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */,
 				27EAFA9E1B7B2B0100DF60E9 /* CouDetailViewController.m in Sources */,
+				27E53EBA1B8C3D0100A56D53 /* CommentCell.m in Sources */,
 				27E066271B85DD4300D94803 /* MJRefreshAutoStateFooter.m in Sources */,
 				27BA81841B71F80E005B527B /* Banner.m in Sources */,
 				27BA817E1B71C6A6005B527B /* UIView+WebCacheOperation.m in Sources */,
@@ -1333,7 +1381,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: SIU PING CHEN (2W4QESWWTM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SIU PING CHEN (2W4QESWWTM)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1377,7 +1426,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: SIU PING CHEN (2W4QESWWTM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SIU PING CHEN (2W4QESWWTM)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1401,7 +1451,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Edmond Chen (9944SN36X7)";
 				INFOPLIST_FILE = angelslike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1417,7 +1467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Edmond Chen (9944SN36X7)";
 				INFOPLIST_FILE = angelslike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

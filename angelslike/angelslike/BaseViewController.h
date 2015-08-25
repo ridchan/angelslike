@@ -27,5 +27,6 @@
 
 -(void)showNetworkError:(BOOL)err;
 -(void)refreshClick:(id)sender;
+-(CAShapeLayer *)lineLayer:(CGPoint)position;
 
 @end

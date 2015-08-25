@@ -117,19 +117,6 @@
     }
 }
 
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-//
-//{
-//
-//    // 下拉到最底部时显示更多数据
-//
-//    if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height)))
-//    {
-//        [self.tableView loadDataBegin];
-//    }
-//
-//
-//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -158,7 +145,6 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
     return cellHeight ;
     
 }

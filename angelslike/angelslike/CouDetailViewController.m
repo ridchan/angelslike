@@ -55,7 +55,7 @@
 -(void)addBottomButton{
     UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44)];
     [v.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
-    if ([self.info intForKey:@"type"] == 2) {
+    if ([self.info intForKey:@"type"] != 1) {
         RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
         b1.frame = CGRectMake(10, 5, ScreenWidth - 20, 34);
         [b1 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];

@@ -24,6 +24,10 @@
 #define RegistUrl @"http://www.angelslike.com/json/register"
 #define CouDetailUrl @"http://www.angelslike.com/items.html"
 #define AppLoginUrl @"http://www.angelslike.com/json/applogin" //微信登陆接口 unionid
+#define ProductsUrl @"http://app.angelslike.com/product/lists"
+#define ProductUrl @"http://app.angelslike.com/product/detail"
+
+#define MainUrl @"http://www.angelslike.com"
 
 // margin 首页
 #define MainCellMargin 10

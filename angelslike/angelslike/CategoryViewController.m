@@ -21,45 +21,45 @@
 
 -(void)setCellInfo{
     //设置数据
-    self.infos = @{@"对象":@[@{@"Name":@"送长辈",@"IMG":@"duixiang_00.png"},
-                           @{@"Name":@"送恋人",@"IMG":@"duixiang_01.png"},
-                           @{@"Name":@"送同事",@"IMG":@"duixiang_02.png"},
-                           @{@"Name":@"送朋友",@"IMG":@"duixiang_03.png"},
-                           @{@"Name":@"送老师",@"IMG":@"duixiang_04.png"},
-                           @{@"Name":@"送儿童",@"IMG":@"duixiang_05.png"},
-                           @{@"Name":@"送亲人",@"IMG":@"duixiang_06.png"},
-                           @{@"Name":@"送嘉宾",@"IMG":@"duixiang_07.png"}
+    self.infos = @{@"对象":@[@{@"Name":@"送长辈",@"IMG":@"duixiang_00.png",@"ID":@"39",@"Type":@"ob"},
+                           @{@"Name":@"送恋人",@"IMG":@"duixiang_01.png",@"ID":@"35",@"Type":@"ob"},
+                           @{@"Name":@"送同事",@"IMG":@"duixiang_02.png",@"ID":@"36",@"Type":@"ob"},
+                           @{@"Name":@"送朋友",@"IMG":@"duixiang_03.png",@"ID":@"37",@"Type":@"ob"},
+                           @{@"Name":@"送老师",@"IMG":@"duixiang_04.png",@"ID":@"60",@"Type":@"ob"},
+                           @{@"Name":@"送儿童",@"IMG":@"duixiang_05.png",@"ID":@"38",@"Type":@"ob"},
+                           @{@"Name":@"送亲人",@"IMG":@"duixiang_06.png",@"ID":@"61",@"Type":@"ob"},
+                           @{@"Name":@"送嘉宾",@"IMG":@"duixiang_07.png",@"ID":@"62",@"Type":@"ob"}
                            ],
-                   @"场合":@[@{@"Name":@"亲情礼",@"IMG":@"changhe_00.png"},
-                           @{@"Name":@"爱情礼",@"IMG":@"changhe_01.png"},
-                           @{@"Name":@"人情礼",@"IMG":@"changhe_02.png"},
-                           @{@"Name":@"生日礼",@"IMG":@"changhe_03.png"},
-                           @{@"Name":@"婚庆礼",@"IMG":@"changhe_04.png"},
-                           @{@"Name":@"节日礼",@"IMG":@"changhe_05.png"}
+                   @"场合":@[@{@"Name":@"亲情礼",@"IMG":@"changhe_00.png",@"ID":@"41",@"Type":@"se"},
+                           @{@"Name":@"爱情礼",@"IMG":@"changhe_01.png",@"ID":@"42",@"Type":@"se"},
+                           @{@"Name":@"人情礼",@"IMG":@"changhe_02.png",@"ID":@"44",@"Type":@"se"},
+                           @{@"Name":@"生日礼",@"IMG":@"changhe_03.png",@"ID":@"45",@"Type":@"se"},
+                           @{@"Name":@"婚庆礼",@"IMG":@"changhe_04.png",@"ID":@"63",@"Type":@"se"},
+                           @{@"Name":@"节日礼",@"IMG":@"changhe_05.png",@"ID":@"46",@"Type":@"se"}
                            ],
-                   @"价格":@[@{@"Name":@"¥50以下",@"IMG":@"jiage_00.png"},
-                           @{@"Name":@"¥50-200",@"IMG":@"jiage_01.png"},
-                           @{@"Name":@"¥200-500",@"IMG":@"jiage_02.png"},
-                           @{@"Name":@"¥500-1000",@"IMG":@"jiage_03.png"},
-                           @{@"Name":@"¥1000以上",@"IMG":@"jiage_04.png"}
+                   @"价格":@[@{@"Name":@"¥50以下",@"IMG":@"jiage_00.png",@"ID":@"1",@"Type":@"pp"},
+                           @{@"Name":@"¥50-200",@"IMG":@"jiage_01.png",@"ID":@"2",@"Type":@"pp"},
+                           @{@"Name":@"¥200-500",@"IMG":@"jiage_02.png",@"ID":@"3",@"Type":@"pp"},
+                           @{@"Name":@"¥500-1000",@"IMG":@"jiage_03.png",@"ID":@"4",@"Type":@"pp"},
+                           @{@"Name":@"¥1000以上",@"IMG":@"jiage_04.png",@"ID":@"5",@"Type":@"pp"}
                            ],
-                   @"个性":@[@{@"Name":@"高逼格",@"IMG":@"gexin_00.png"},
-                           @{@"Name":@"清新美物",@"IMG":@"gexin_01.png"},
-                           @{@"Name":@"整蛊搞笑",@"IMG":@"gexin_02.png"},
-                           @{@"Name":@"科技苑",@"IMG":@"gexin_03.png"},
-                           @{@"Name":@"低调宅",@"IMG":@"gexin_04.png"},
-                           @{@"Name":@"中国风",@"IMG":@"gexin_05.png"},
-                           @{@"Name":@"文化范",@"IMG":@"gexin_06.png"}
+                   @"个性":@[@{@"Name":@"高逼格",@"IMG":@"gexin_00.png",@"ID":@"4",@"Type":@"ct"},
+                           @{@"Name":@"清新美物",@"IMG":@"gexin_01.png",@"ID":@"5",@"Type":@"ct"},
+                           @{@"Name":@"整蛊搞笑",@"IMG":@"gexin_02.png",@"ID":@"6",@"Type":@"ct"},
+                           @{@"Name":@"科技苑",@"IMG":@"gexin_03.png",@"ID":@"7",@"Type":@"ct"},
+                           @{@"Name":@"低调宅",@"IMG":@"gexin_04.png",@"ID":@"8",@"Type":@"ct"},
+                           @{@"Name":@"中国风",@"IMG":@"gexin_05.png",@"ID":@"9",@"Type":@"ct"},
+                           @{@"Name":@"文化范",@"IMG":@"gexin_06.png",@"ID":@"10",@"Type":@"ct"}
                            ],
-                   @"品类":@[@{@"Name":@"生活用品",@"IMG":@"pinglei_00.png"},
-                           @{@"Name":@"创意家居",@"IMG":@"pinglei_01.png"},
-                           @{@"Name":@"数码电器",@"IMG":@"pinglei_02.png"},
-                           @{@"Name":@"时尚穿搭",@"IMG":@"pinglei_03.png"},
-                           @{@"Name":@"美妆护理",@"IMG":@"pinglei_04.png"},
-                           @{@"Name":@"潮流饰物",@"IMG":@"pinglei_05.png"},
-                           @{@"Name":@"文体娱乐",@"IMG":@"pinglei_06.png"},
-                           @{@"Name":@"健康食品",@"IMG":@"pinglei_07.png"},
-                           @{@"Name":@"汽车用品",@"IMG":@"pinglei_08.png"}
+                   @"品类":@[@{@"Name":@"生活用品",@"IMG":@"pinglei_00.png",@"ID":@"22",@"Type":@"pt"},
+                           @{@"Name":@"创意家居",@"IMG":@"pinglei_01.png",@"ID":@"24",@"Type":@"pt"},
+                           @{@"Name":@"数码电器",@"IMG":@"pinglei_02.png",@"ID":@"31",@"Type":@"pt"},
+                           @{@"Name":@"时尚穿搭",@"IMG":@"pinglei_03.png",@"ID":@"35",@"Type":@"pt"},
+                           @{@"Name":@"美妆护理",@"IMG":@"pinglei_04.png",@"ID":@"47",@"Type":@"pt"},
+                           @{@"Name":@"潮流饰物",@"IMG":@"pinglei_05.png",@"ID":@"55",@"Type":@"pt"},
+                           @{@"Name":@"文体娱乐",@"IMG":@"pinglei_06.png",@"ID":@"60",@"Type":@"pt"},
+                           @{@"Name":@"健康食品",@"IMG":@"pinglei_07.png",@"ID":@"67",@"Type":@"pt"},
+                           @{@"Name":@"汽车用品",@"IMG":@"pinglei_08.png",@"ID":@"71",@"Type":@"pt"}
                            ]
                    };
 }
@@ -129,10 +129,16 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self showTabbar];
+}
+
 
 -(void)cellClick:(NSDictionary *)info{
-    NSLog(@"cell click %@",info);
     ProductlistViewController *vc = [[ProductlistViewController alloc]init];
+    vc.dic = info;
+    [self hideTabBar];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
