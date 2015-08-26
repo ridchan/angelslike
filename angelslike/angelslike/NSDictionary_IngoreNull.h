@@ -25,5 +25,7 @@
 
 -(BOOL) emptyForKey:(NSString *)aKey;
 
+-(id)objForKey:(NSString *)aKey;
+
 
 @end

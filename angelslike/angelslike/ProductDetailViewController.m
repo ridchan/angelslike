@@ -72,6 +72,7 @@
     b2.frame = CGRectMake(ScreenWidth / 2 + 5, 5, ScreenWidth / 2 - 15, 34);
     [b2 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
     [b2 setTitle:@"立即购买" forState:UIControlStateNormal];
+    [b2 addTarget:self action:@selector(buynow:) forControlEvents:UIControlEventTouchUpInside];
     [v addSubview:b2];
     
     
@@ -81,6 +82,11 @@
 #pragma mark -
 #pragma mark action
 
+-(void)buynow:(id)sender{
+    BuyNowViewController *vc = [[BuyNowViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(void)setSubView{
     
     [pd setInfo:self.result];
@@ -88,8 +94,14 @@
     WebViewController *vc1 = [[WebViewController alloc]init];
     mv.titles = @[@"图文介绍",@"评论"];
     vc1.content = [self.result strForKey:@"desc"];
+    
+    CommentViewController *vc2 = [[CommentViewController alloc]init];
+    vc2.info = [NSDictionary dictionaryWithObjectsAndKeys:
+                [self.result strForKey:@"id"],@"id",
+                @"1",@"type",
+                nil];
 //    vc1.baseUrl = @"http://img1.angelslike.com";
-    mv.viewControllers = @[vc1,[[UIViewController alloc]init]];
+    mv.viewControllers = @[vc1,vc2];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -108,6 +120,7 @@
 }
 
 -(void)backClick:(id)sender{
+    [pd removeObserver:self forKeyPath:@"frame"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

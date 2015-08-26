@@ -12,11 +12,18 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+
+
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    
     [self.view addSubview:webView];
-
-    [webView loadHTMLString:self.content baseURL:nil];
-
+    NSMutableString *str = [NSMutableString stringWithString:self.content];
+    [self reSizeImage:str];
+    [webView loadHTMLString:str baseURL:[NSURL URLWithString:@"http://www.angelslike.com"]];
 }
 
 

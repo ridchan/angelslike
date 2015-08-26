@@ -268,4 +268,17 @@
     return layer;
 }
 
+-(BOOL)checkScrollView:(UIScrollView *)scrollView{
+    if (scrollView.contentSize.height > scrollView.frame.size.height) {
+        if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height - 20))){
+            return YES;
+            
+        }
+    }
+ 
+    
+    return NO;
+        
+}
+
 @end

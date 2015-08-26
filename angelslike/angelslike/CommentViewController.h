@@ -16,4 +16,6 @@
 @property(nonatomic,strong) LoadMoreTableView *tableView;
 @property(nonatomic,strong) NSMutableArray *result;
 
+@property(nonatomic,strong) NSDictionary *info;
+
 @end

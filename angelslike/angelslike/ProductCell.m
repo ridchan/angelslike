@@ -25,12 +25,12 @@
         imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 100)];
         [self.contentView addSubview:imageView];
         
-        nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, self.frame.size.width, 25)];
+        nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 100, self.frame.size.width - 10, 25)];
         nameLabel.font = FontWS(12);
         [self.contentView addSubview:nameLabel];
         
-        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 125, self.frame.size.width, 25)];
-        priceLabel.font = FontWS(10);
+        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 125, self.frame.size.width - 10, 25)];
+        priceLabel.font = FontWS(11);
         priceLabel.textColor = [UIColor redColor];
         [self.contentView addSubview:priceLabel];
         

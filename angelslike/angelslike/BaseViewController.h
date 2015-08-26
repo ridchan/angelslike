@@ -25,6 +25,7 @@
 -(void)hideTabBar;
 -(void)showTabbar;
 
+-(BOOL)checkScrollView:(UIScrollView *)scrollView;
 -(void)showNetworkError:(BOOL)err;
 -(void)refreshClick:(id)sender;
 -(CAShapeLayer *)lineLayer:(CGPoint)position;

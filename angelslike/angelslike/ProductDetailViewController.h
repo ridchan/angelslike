@@ -11,6 +11,7 @@
 #import "RCMutileView.h"
 #import "WebViewController.h"
 #import "CommentViewController.h"
+#import "BuyNowViewController.h"
 
 @interface ProductDetailViewController : BaseViewController<UIScrollViewDelegate>{
     ProductDetail *pd;
