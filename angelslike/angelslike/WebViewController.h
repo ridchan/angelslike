@@ -8,7 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface WebViewController : BaseViewController
+@interface WebViewController : BaseViewController<UIScrollViewDelegate>{
+    UIScrollView *scView;
+}
 
 @property(nonatomic,strong) NSString *content;
 @property(nonatomic,strong) NSString *baseUrl;
