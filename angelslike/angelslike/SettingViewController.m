@@ -57,7 +57,10 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.row == 0) {
+        AbountUsViewController *vc = [[AbountUsViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 

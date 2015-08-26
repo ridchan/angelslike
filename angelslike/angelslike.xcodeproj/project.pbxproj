@@ -70,6 +70,13 @@
 		27E066311B85DD4300D94803 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0661D1B85DD4300D94803 /* UIScrollView+MJRefresh.m */; };
 		27E066321B85DD4300D94803 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0661F1B85DD4300D94803 /* UIView+MJExtension.m */; };
 		27E07CE81B8420120020B950 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E07CE71B8420120020B950 /* ProductCell.m */; };
+		27E4515C1B8D5CE800547DAD /* AreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4515B1B8D5CE800547DAD /* AreaView.m */; };
+		27E4515F1B8D732100547DAD /* BuyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4515E1B8D732000547DAD /* BuyCell.m */; };
+		27E451621B8D733100547DAD /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E451611B8D733100547DAD /* AddressCell.m */; };
+		27E451651B8DAC2000547DAD /* PayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E451641B8DAC2000547DAD /* PayCell.m */; };
+		27E451671B8DAE2E00547DAD /* iconfont-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E451661B8DAE2E00547DAD /* iconfont-check.png */; };
+		27E451691B8DB44D00547DAD /* iconfont-nocheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E451681B8DB44D00547DAD /* iconfont-nocheck.png */; };
+		27E4516C1B8DD37800547DAD /* AbountUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4516B1B8DD37800547DAD /* AbountUsViewController.m */; };
 		27E53EAF1B8C23A400A56D53 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E53EAE1B8C23A400A56D53 /* ProductDetailViewController.m */; };
 		27E53EB21B8C25DA00A56D53 /* ProductDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E53EB11B8C25DA00A56D53 /* ProductDetail.m */; };
 		27E53EB71B8C3BE200A56D53 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E53EB61B8C3BE200A56D53 /* CommentViewController.m */; };
@@ -322,6 +329,18 @@
 		27E0661F1B85DD4300D94803 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		27E07CE61B8420120020B950 /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		27E07CE71B8420120020B950 /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
+		27E4515A1B8D5CE800547DAD /* AreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaView.h; sourceTree = "<group>"; };
+		27E4515B1B8D5CE800547DAD /* AreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaView.m; sourceTree = "<group>"; };
+		27E4515D1B8D732000547DAD /* BuyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCell.h; sourceTree = "<group>"; };
+		27E4515E1B8D732000547DAD /* BuyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyCell.m; sourceTree = "<group>"; };
+		27E451601B8D733100547DAD /* AddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressCell.h; sourceTree = "<group>"; };
+		27E451611B8D733100547DAD /* AddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
+		27E451631B8DAC1F00547DAD /* PayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayCell.h; sourceTree = "<group>"; };
+		27E451641B8DAC2000547DAD /* PayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayCell.m; sourceTree = "<group>"; };
+		27E451661B8DAE2E00547DAD /* iconfont-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-check.png"; sourceTree = "<group>"; };
+		27E451681B8DB44D00547DAD /* iconfont-nocheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-nocheck.png"; sourceTree = "<group>"; };
+		27E4516A1B8DD37800547DAD /* AbountUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbountUsViewController.h; sourceTree = "<group>"; };
+		27E4516B1B8DD37800547DAD /* AbountUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbountUsViewController.m; sourceTree = "<group>"; };
 		27E53EAD1B8C23A400A56D53 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
 		27E53EAE1B8C23A400A56D53 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
 		27E53EB01B8C25DA00A56D53 /* ProductDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetail.h; sourceTree = "<group>"; };
@@ -533,6 +552,8 @@
 				27EFB2691B73971000A14872 /* Category */,
 				27EFB2111B734C9800A14872 /* arrow.png */,
 				27EA9A121B7335FA003559C0 /* tbg.png */,
+				27E451681B8DB44D00547DAD /* iconfont-nocheck.png */,
+				27E451661B8DAE2E00547DAD /* iconfont-check.png */,
 				27EA9A0D1B731AE7003559C0 /* iconfont-houtui.png */,
 				27BA81851B71FAFB005B527B /* iconfont-icon83.png */,
 				27BA813D1B71AB1B005B527B /* iconfont-jia.png */,
@@ -936,6 +957,8 @@
 				27EED2551B7462B1009F2DD2 /* MineViewController.m */,
 				27EADA701B7C38240084D648 /* SettingViewController.h */,
 				27EADA711B7C38240084D648 /* SettingViewController.m */,
+				27E4516A1B8DD37800547DAD /* AbountUsViewController.h */,
+				27E4516B1B8DD37800547DAD /* AbountUsViewController.m */,
 			);
 			name = "我的页";
 			sourceTree = "<group>";
@@ -1043,6 +1066,14 @@
 			children = (
 				2E3D95441B8CD5D600E69706 /* BuyNowViewController.h */,
 				2E3D95451B8CD5D600E69706 /* BuyNowViewController.m */,
+				27E4515A1B8D5CE800547DAD /* AreaView.h */,
+				27E4515B1B8D5CE800547DAD /* AreaView.m */,
+				27E451631B8DAC1F00547DAD /* PayCell.h */,
+				27E451641B8DAC2000547DAD /* PayCell.m */,
+				27E4515D1B8D732000547DAD /* BuyCell.h */,
+				27E4515E1B8D732000547DAD /* BuyCell.m */,
+				27E451601B8D733100547DAD /* AddressCell.h */,
+				27E451611B8D733100547DAD /* AddressCell.m */,
 			);
 			name = "购买页";
 			sourceTree = "<group>";
@@ -1174,6 +1205,7 @@
 				27EED2701B7489F7009F2DD2 /* mine_03.png in Resources */,
 				27EADA7E1B7C894D0084D648 /* iconfont-wodexiangqingyanjing.png in Resources */,
 				27EED26E1B7489F7009F2DD2 /* mine_01.png in Resources */,
+				27E451671B8DAE2E00547DAD /* iconfont-check.png in Resources */,
 				27E6AE0E1B787C30008CE686 /* iconfont-suo.png in Resources */,
 				27EFB23E1B7396E700A14872 /* changhe_05.png in Resources */,
 				27EFB2671B73970900A14872 /* pinglei_07.png in Resources */,
@@ -1218,6 +1250,7 @@
 				27F65D011B799DD400EDE656 /* 01-引导页.jpg in Resources */,
 				27685A681B818CDB005234B0 /* wechat-icon-168.png in Resources */,
 				27EAFA9B1B7B063400DF60E9 /* my-bg.png in Resources */,
+				27E451691B8DB44D00547DAD /* iconfont-nocheck.png in Resources */,
 				27F65D111B79DA6900EDE656 /* error@2x.png in Resources */,
 				27EFB2631B73970900A14872 /* pinglei_03.png in Resources */,
 				27EFB2611B73970900A14872 /* pinglei_01.png in Resources */,
@@ -1262,6 +1295,7 @@
 				2E7147991B75C0330063FA07 /* NSDictionary_IngoreNull.m in Sources */,
 				27F65D061B799FB100EDE656 /* UserInfo.m in Sources */,
 				27E066321B85DD4300D94803 /* UIView+MJExtension.m in Sources */,
+				27E4515C1B8D5CE800547DAD /* AreaView.m in Sources */,
 				27BA817B1B71C6A6005B527B /* UIImage+WebP.m in Sources */,
 				27EED2661B7480C2009F2DD2 /* MineCell.m in Sources */,
 				27EFB2151B73518D00A14872 /* MXPullDownMenu.m in Sources */,
@@ -1307,6 +1341,7 @@
 				27BA81761B71C6A6005B527B /* SDWebImageManager.m in Sources */,
 				27E066221B85DD4300D94803 /* MJRefreshComponent.m in Sources */,
 				27E066261B85DD4300D94803 /* MJRefreshAutoNormalFooter.m in Sources */,
+				27E4516C1B8DD37800547DAD /* AbountUsViewController.m in Sources */,
 				27EA453B1B7DD1F2004851A2 /* CouProcess.m in Sources */,
 				27E066241B85DD4300D94803 /* MJRefreshHeader.m in Sources */,
 				27E6AE061B785658008CE686 /* UIWindow+Hierarchy.m in Sources */,
@@ -1315,6 +1350,7 @@
 				27E6AE0B1B785B49008CE686 /* RCRoundButton.m in Sources */,
 				27BA81741B71C6A6005B527B /* SDWebImageDownloader.m in Sources */,
 				2E3D95461B8CD5D600E69706 /* BuyNowViewController.m in Sources */,
+				27E4515F1B8D732100547DAD /* BuyCell.m in Sources */,
 				27EA99FE1B72F4A3003559C0 /* CouCell.m in Sources */,
 				27E066231B85DD4300D94803 /* MJRefreshFooter.m in Sources */,
 				27E066301B85DD4300D94803 /* UIScrollView+MJExtension.m in Sources */,
@@ -1345,11 +1381,13 @@
 				27BA81781B71C6A6005B527B /* UIButton+WebCache.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
 				27F65CFC1B798D7C00EDE656 /* ProductlistViewController.m in Sources */,
+				27E451621B8D733100547DAD /* AddressCell.m in Sources */,
 				27BA81811B71EA77005B527B /* LoadMoreTableView.m in Sources */,
 				27BA81731B71C6A6005B527B /* SDWebImageDecoder.m in Sources */,
 				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,
 				27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */,
 				27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */,
+				27E451651B8DAC2000547DAD /* PayCell.m in Sources */,
 				27EAFA9E1B7B2B0100DF60E9 /* CouDetailViewController.m in Sources */,
 				27E53EBA1B8C3D0100A56D53 /* CommentCell.m in Sources */,
 				27E066271B85DD4300D94803 /* MJRefreshAutoStateFooter.m in Sources */,
@@ -1395,8 +1433,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: SIU PING CHEN (2W4QESWWTM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SIU PING CHEN (2W4QESWWTM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1440,8 +1478,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: SIU PING CHEN (2W4QESWWTM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SIU PING CHEN (2W4QESWWTM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1465,7 +1503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Edmond Chen (9944SN36X7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = angelslike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1481,7 +1519,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Edmond Chen (9944SN36X7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = angelslike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

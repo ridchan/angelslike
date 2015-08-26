@@ -7,11 +7,24 @@
 //
 
 #import "BaseViewController.h"
+#import "AreaView.h"
+#import "HeaderDefiner.h"
+#import "BuyCell.h"
+#import "AddressCell.h"
+#import "PayCell.h"
 
-@interface BuyNowViewController : BaseViewController<UIPickerViewDataSource,UIPickerViewDelegate>
+@interface BuyNowViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
+    AreaView *av;
+    UILabel *totalLabel;
+}
 
-@property(nonatomic,strong) NSArray *pro;
-@property(nonatomic,strong) NSArray *citys;
-@property(nonatomic,strong) NSArray *dis;
+
+@property(nonatomic,strong) UITableView *tableView;
+
+@property(nonatomic,strong) NSMutableArray *products;
+
+@property(nonatomic,strong) NSMutableArray *adds;
+
+@property(nonatomic,strong) NSMutableArray *paytypes;
 
 @end

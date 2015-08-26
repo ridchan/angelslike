@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "MineCell.h"
+#import "AbountUsViewController.h"
 
 @interface SettingViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 

@@ -44,8 +44,14 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self showTabbar];
+}
+
 -(void)settingClick:(id)sender{
     SettingViewController *vc = [[SettingViewController alloc]init];
+    [self hideTabBar];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -34,9 +34,13 @@
 }
 
 -(void)initailSetting{
+    
+//    self.navigationController.navigationBar.alpha = 0.0;
+//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 25, 25);
-    [button setImage:[UIImage imageNamed:@"iconfont-houtui"] forState:UIControlStateNormal];
+    [button setImage:[[UIImage imageNamed:@"iconfont-houtui"] rt_tintedImageWithColor:[UIColor blackColor]] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = barItem;
@@ -50,9 +54,6 @@
     [scView addSubview:pd];
     
     mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, pd.frame.size.height + pd.frame.origin.y, ScreenWidth, ScreenHeight )];
-    
-    
-
     [scView addSubview:mv];
 }
 
@@ -84,6 +85,9 @@
 
 -(void)buynow:(id)sender{
     BuyNowViewController *vc = [[BuyNowViewController alloc]init];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.result];
+    [dic setObject:@"1" forKey:@"qty"];
+    vc.products = [NSMutableArray arrayWithObject:dic];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -105,6 +109,7 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    self.navigationController.navigationBar.alpha = scrollView.contentOffset.y / 100 + 0.1;
     if (scrollView.contentOffset.y + 64  > mv.frame.origin.y) {
         scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 64);
     }
@@ -120,6 +125,8 @@
 }
 
 -(void)backClick:(id)sender{
+    self.navigationController.navigationBar.barTintColor = [UIColor getHexColor:@"ff6969"];
+    self.navigationController.navigationBar.alpha = 1.0;
     [pd removeObserver:self forKeyPath:@"frame"];
     [self.navigationController popViewControllerAnimated:YES];
 }

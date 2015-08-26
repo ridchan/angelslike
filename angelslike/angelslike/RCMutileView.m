@@ -23,10 +23,26 @@
 }
 */
 
+-(CAShapeLayer *)lineLayer:(CGPoint)position{
+    CAShapeLayer *layer = [CAShapeLayer new];
+    UIBezierPath *path = [UIBezierPath new];
+    [path moveToPoint:CGPointMake(0, 0)];
+    [path addLineToPoint:CGPointMake(ScreenWidth, 0)];
+    
+    
+    layer.path = path.CGPath;
+    layer.lineWidth = 0.5;
+    layer.strokeColor = RGBA(178,177,182,.9).CGColor;
+    layer.fillColor = [UIColor clearColor].CGColor;
+    layer.position = position;
+    return layer;
+}
+
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
         //
         [self initial];
+        
     }
     return self;
 }
@@ -37,6 +53,7 @@
     if (self = [super initWithFrame:frame]) {
         //
         [self initial];
+        [self.layer addSublayer:[self lineLayer:CGPointMake(0, hHeight)]];
     }
     
     return self;

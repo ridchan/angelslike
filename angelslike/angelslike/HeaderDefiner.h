@@ -19,7 +19,7 @@
 
 #define SliderLink @"http://www.angelslike.com/json/getslider"
 #define ListLink @"http://www.angelslike.com/json/getlist"
-#define ImageLink @"http://img1.angelslike.com"
+#define ImageLink @"http://image1.angelslike.com"
 #define LoginUrl @"http://www.angelslike.com/json/login"
 #define RegistUrl @"http://www.angelslike.com/json/register"
 #define CouDetailUrl @"http://www.angelslike.com/items.html"

@@ -41,10 +41,16 @@
     [imageView sd_setImageWithURL:[NSURL URLWithString:[ImageLink stringByAppendingPathComponent:[info strForKey:@"img"]]] placeholderImage:[UIImage imageNamed:@"hui_logo"]];
     namelabel.text = [info strForKey:@"name"];
     pricelabel.text = [NSString stringWithFormat:@"￥%@",[info strForKey:@"price"]];
+    
     [content loadHTMLString:[info strForKey:@"content"] baseURL:[NSURL URLWithString:MainUrl]];
+    
+
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= 'gray'"];
+    
     CGRect rect = webView.frame;
     
     NSString *htmlHeight = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"];
