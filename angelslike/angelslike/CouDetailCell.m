@@ -111,7 +111,7 @@
 
 -(void)setInfo:(NSDictionary *)info{
     _info = [info mutableCopy];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[_info strForKey:@"pimg"]] placeholderImage:[UIImage imageNamed:@"hui_logo"]];
+    [imageView setPreImageWithUrl:[_info strForKey:@"pimg"]];
     nameLabel.text = [_info strForKey:@"uname"];
     timeStartLabel.text = [NSString stringWithFormat:@"开始时间:%@",[_info strForKey:@"starttime"]];
     timeEndLabel.text = [NSString stringWithFormat:@"结束时间:%@",[_info strForKey:@"endtime"]];

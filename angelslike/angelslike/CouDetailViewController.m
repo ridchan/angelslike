@@ -13,15 +13,10 @@
 -(void)viewDidLoad{
     
     [super viewDidLoad];
-//    [self.navigationController setHidesBarsOnSwipe:YES];
-    
-
-    [self hideTabBar];
     
     [self initialSetting];
     [self addBottomButton];
     
-    NSLog(@" top : %f",self.tableView.contentInset.top);
 
 }
 
@@ -29,11 +24,6 @@
     [super viewDidAppear:animated];
 //    [self initialSetting];
     
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self showTabbar];
 }
 
 
@@ -106,11 +96,11 @@
     __block CouDetail *tempView = (CouDetail *)[self.view viewWithTag:99];
     __block CouDetailViewController *tempSelf = self;
     
-    NSDictionary *dic = @{@"id":[self.info strForKey:@"id"],@"type":[self.info strForKey:@"type"],@"json":@"1"};
+    NSDictionary *dic = @{@"id":[self.info strForKey:@"id"]};
     [[NetWork shared] query:CouDetailUrl info:dic block:^(id Obj) {
         [tempSelf showNetworkError:[Obj intForKey:@"status"] == 0];
         if ([Obj intForKey:@"status"] == 1) {
-            NSDictionary *dic = [[Obj objectForKey:@"data"] objectForKey:@"items"];
+            NSDictionary *dic = [Obj objectForKey:@"data"] ;
             tempView.info = dic;
             tempView.hidden = NO;
         }

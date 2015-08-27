@@ -51,7 +51,7 @@
                  [NSString stringWithFormat:@"%ld",page],@"page",
                  nil];
     
-    
+    bloading = NO;
     [self refreshClick:nil];
 }
 
@@ -71,6 +71,7 @@
                 [tempSelf.result addObjectsFromArray:rs];
                 [self.collectionView reloadData];
             }
+            bloading = NO;
             
         }
         
@@ -93,8 +94,10 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height - 20))){
-        if (page < totalPage) {
+        if (page < totalPage & bloading  == NO) {
+            bloading = YES;
             [self.info setObject:[NSString stringWithFormat:@"%ld",page + 1] forKey:@"page"];
+            NSLog(@"self.info %@",self.info);
             [self loadData:nil];
         }
     }

@@ -104,7 +104,7 @@
 -(void)setInfo:(NSDictionary *)info{
     _info = info;
     
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[info strForKey:@"img"]]  placeholderImage:[UIImage imageNamed:@"hui_logo"]];
+    [imageView setPreImageWithUrl:[info strForKey:@"img"]];
     
     companyLabel.text = [info strForKey:@"name"];
     nameLabel.text = [info strForKey:@"title"];

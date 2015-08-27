@@ -49,7 +49,7 @@
     _info = nil;
     _info = info;
     if (_info) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:[MainUrl stringByAppendingPathComponent:[_info strForKey:@"img"]]] placeholderImage:[UIImage imageNamed:@"hui_logo"]];
+        [imageView setPreImageWithUrl:[_info strForKey:@"img"] domain:MainUrl];
         nameLabel.text = [_info strForKey:@"name"];
         dateLabel.text = [_info strForKey:@"time"];
         commentLabel.text = [_info strForKey:@"content"];

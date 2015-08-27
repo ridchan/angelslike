@@ -65,7 +65,7 @@
     self.tableView.totalPage = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
-//    self.tableView.contentInset = UIEdgeInsetsMake(108, 0, 0, 0);
+
     [self.tableView addTarget:self action:@selector(loadMoreData:)];
     [self.view addSubview:self.tableView];
     
@@ -86,7 +86,7 @@
 
 }
 
--(void)reloadData{
+-(void)refreshClick:(id)sender{
     //重新加载数据
     [self.result removeAllObjects];
     self.tableView.currentPage = 0;
@@ -104,17 +104,38 @@
     NSString *value =  [[valueArr objectAtIndex:column] objectAtIndex:row];
     [self.searchInfo setObject:value forKey:[keyArr objectAtIndex:column]];
     
-    [self reloadData];
+    [self refreshClick:nil];
 }
 
+
+- (UIViewController *)findViewController:(UIView *)sourceView
+{
+    id target=sourceView;
+    while (target) {
+        target = ((UIResponder *)target).nextResponder;
+        if ([target isKindOfClass:[UIViewController class]]) {
+            break;
+        }
+    }
+    return target;
+}
 
 #pragma mark table view method
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height - 20)))
+    if( [self checkScrollView:scrollView])
     {
         [self.tableView loadDataBegin];
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *info = [self.result objectAtIndex:indexPath.row];
+    ThemeDetailViewController *vc = [[ThemeDetailViewController alloc]init];
+    vc.strid = [info strForKey:@"id"];
+    
+    UIViewController *viewController = [self findViewController:[self.view superview]];
+    [viewController.navigationController pushViewController:vc animated:YES];
 }
 
 

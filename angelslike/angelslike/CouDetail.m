@@ -278,7 +278,7 @@
 
 -(void)setInfo:(NSDictionary *)info{
     _info = [info mutableCopy];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[_info strForKey:@"uimg"]] placeholderImage:[UIImage imageNamed:@"hui_logo"]];
+    [imageView setPreImageWithUrl:[_info strForKey:@"uimg"]];
     nameLabel.text = [_info strForKey:@"uname"];
     timeStartLabel.text = [NSString stringWithFormat:@"开始时间:%@",[_info strForKey:@"starttime"]];
     timeEndLabel.text = [NSString stringWithFormat:@"结束时间:%@",[_info strForKey:@"endtime"]];
@@ -309,7 +309,7 @@
     
     if ([_info intForKey:@"type"] == 1) {
         cp.hidden = NO;
-        [cp setImg:[_info strForKey:@"pimg"] name:[_info strForKey:@"pname"]  price:[_info strForKey:@"pprice"]  content:[_info strForKey:@"pcontent"] ];
+        [cp setImg:[ImageLink stringByAppendingPathComponent:[_info strForKey:@"pimg"]] name:[_info strForKey:@"pname"]  price:[_info strForKey:@"pprice"]  content:[_info strForKey:@"pcontent"] ];
     }
     
 

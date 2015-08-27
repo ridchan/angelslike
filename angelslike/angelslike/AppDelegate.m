@@ -38,7 +38,7 @@
     
     MainViewController *vc1 = [[MainViewController alloc]init];
     UINavigationController *nvc1 = [[UINavigationController alloc]initWithRootViewController:vc1];
-    
+
     
     CouViewController *vc2 = [[CouViewController alloc]init];
     UINavigationController *nvc2 = [[UINavigationController alloc]initWithRootViewController:vc2];
@@ -53,6 +53,12 @@
     
     
     TabBarViewController *tbc = [[TabBarViewController alloc]init];
+    nvc1.delegate = tbc;
+    nvc2.delegate = tbc;
+    nvc3.delegate = tbc;
+    nvc4.delegate = tbc;
+    nvc5.delegate = tbc;
+    
     tbc.viewControllers = @[nvc1,nvc2,nvc3,nvc4,nvc5];
     
     self.window.rootViewController = tbc;
@@ -69,6 +75,9 @@
     return YES;
 }
 
+#pragma mark -
+#pragma mark wx delegate
+
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     return [WXApi handleOpenURL:url delegate:self];
 }
@@ -78,7 +87,7 @@
 }
 
 -(void)onReq:(BaseReq *)req{
-    NSLog(@"req %@",req);
+
 }
 
 -(void)onResp:(BaseResp *)resp{
@@ -87,10 +96,15 @@
 
     [[NetWork shared] query:link info:nil block:^(id Obj) {
         NSDictionary *info = (NSDictionary *)Obj;
-        NSLog(@"wx info %@",Obj);
         if (info) {
             [[NetWork shared] query:AppLoginUrl info:@{@"unionid":[info strForKey:@"unionid"]} block:^(id Obj) {
-                NSLog(@"obj %@",Obj);
+                if ([Obj objForKey:@"data"]) {
+                    [UserInfo shared].info = [Obj objectForKey:@"data"];
+                    [[[UIAlertView alloc]initWithTitle:@"" message:@"登陆成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"LoginSuccess" object:nil];
+                }else{
+                    [[[UIAlertView alloc]initWithTitle:@"" message:@"没有此用户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+                }
             } lock:YES];
         }
     } lock:YES];

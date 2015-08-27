@@ -63,7 +63,7 @@
     nameLabel.text = [_info strForKey:@"mname"];
     moneyLabel.text = [_info strForKey:@"mmoney"];
     depositLabel.text = [_info strForKey:@"mfen"];
-    [logo sd_setImageWithURL:[NSURL URLWithString:[@"http://www.angelslike.com/" stringByAppendingPathComponent:[_info strForKey:@"mimg"]]]];
+    [logo setPreImageWithUrl:[_info strForKey:@"mimg"]];
 }
 
 @end

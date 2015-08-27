@@ -141,7 +141,7 @@
                 [imageView addGestureRecognizer:recognizer];
             }
             
-            [imageView sd_setImageWithURL:[NSURL URLWithString:[self.cdn stringByAppendingPathComponent:[info objectForKey:@"img"]]]];
+            [imageView setPreImageWithUrl:[info objectForKey:@"img"]];
             
 
         }

@@ -129,16 +129,11 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self showTabbar];
-}
 
 
 -(void)cellClick:(NSDictionary *)info{
     ProductlistViewController *vc = [[ProductlistViewController alloc]init];
     vc.dic = info;
-    [self hideTabBar];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

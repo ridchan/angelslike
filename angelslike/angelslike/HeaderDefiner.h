@@ -19,14 +19,15 @@
 
 #define SliderLink @"http://www.angelslike.com/json/getslider"
 #define ListLink @"http://www.angelslike.com/json/getlist"
-#define ImageLink @"http://image1.angelslike.com"
-#define LoginUrl @"http://www.angelslike.com/json/login"
+#define ImageLink @"http://img1.angelslike.com"
+#define LoginUrl @"http://app.angelslike.com/index/login"
 #define RegistUrl @"http://www.angelslike.com/json/register"
-#define CouDetailUrl @"http://www.angelslike.com/items.html"
-#define AppLoginUrl @"http://www.angelslike.com/json/applogin" //微信登陆接口 unionid
+#define CouDetailUrl @"http://app.angelslike.com/cou/detail"
+#define AppLoginUrl @"http://app.angelslike.com/index/login" //微信登陆接口 unionid
 #define ProductsUrl @"http://app.angelslike.com/product/lists"
 #define ProductUrl @"http://app.angelslike.com/product/detail"
 #define CommentsUrl @"http://app.angelslike.com/review/lists"
+#define ThemeUrl @"http://app.angelslike.com/theme/detail"
 
 #define BuyNowUrl @"http://app.angelslike.com/buynow"
 #define AddressUrl @"http://app.angelslike.com/index/getaddress"
@@ -50,8 +51,9 @@
 #import "RCRoundButton.h"
 #import "UserInfo.h"
 #import "UIColor+HexColor.h"
-#import "UIImageView+WebCache.h"
 #import "UIImage+RTTint.h"
+#import "UIImageView+PreUrl.h"
+#import "UILabel+Resize.h"
 
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 

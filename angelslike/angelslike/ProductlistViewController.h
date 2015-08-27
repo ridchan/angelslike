@@ -14,6 +14,7 @@
 @interface ProductlistViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>{
     NSInteger page;
     NSInteger totalPage;
+    BOOL bloading ;
 }
 
 @property(nonatomic,strong) UICollectionView *collectionView;

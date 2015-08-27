@@ -112,7 +112,7 @@
 }
 
 -(void)fillContent{
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[ImageLink stringByAppendingPathComponent:[_info strForKey:@"img"]]]];
+    [imageView setPreImageWithUrl:[_info strForKey:@"img"]];
     nameLabel.text = [_info strForKey:@"name"];
     qty.text = [_info strForKey:@"qty"];
     

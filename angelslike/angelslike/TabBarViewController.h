@@ -12,7 +12,7 @@
 #import "LoginViewController.h"
 #import "GuideViewController.h"
 
-@interface TabBarViewController : UITabBarController<MainTabBarDelgate>{
+@interface TabBarViewController : UITabBarController<MainTabBarDelgate,UINavigationControllerDelegate>{
     MainTabBar *tabbar;
 }
 

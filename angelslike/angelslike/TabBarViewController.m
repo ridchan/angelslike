@@ -52,6 +52,17 @@
     
     [super viewDidAppear:animated];
     
+    
+}
+
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    NSInteger idx = [navigationController.viewControllers indexOfObject:viewController];
+    if (idx == 0) {
+        [self bringCustomTabBarToFront];
+    }else if (idx == 1){
+        viewController.hidesBottomBarWhenPushed = YES;
+        [self hideCustomTabBar];
+    }
 }
 
 

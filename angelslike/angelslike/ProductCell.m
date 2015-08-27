@@ -44,7 +44,7 @@
 -(void)setInfo:(NSDictionary *)info{
     _info = info;
     if (_info) {
-        [imageView sd_setImageWithURL:[NSURL URLWithString:[ImageLink stringByAppendingPathComponent:[_info strForKey:@"img"]]]  placeholderImage:[UIImage imageNamed:@"hui_logo"]];
+        [imageView setPreImageWithUrl:[_info strForKey:@"img"]];
         nameLabel.text = [_info strForKey:@"name"];
         priceLabel.text = [NSString stringWithFormat:@"￥%0.2f",[_info floatForKey:@"price"]];
     }

@@ -38,7 +38,7 @@
 }
 
 -(void)setInfo:(NSDictionary *)info{
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[ImageLink stringByAppendingPathComponent:[info strForKey:@"img"]]] placeholderImage:[UIImage imageNamed:@"hui_logo"]];
+    [imageView setPreImageWithUrl:[info strForKey:@"img"]];
     namelabel.text = [info strForKey:@"name"];
     pricelabel.text = [NSString stringWithFormat:@"￥%@",[info strForKey:@"price"]];
     

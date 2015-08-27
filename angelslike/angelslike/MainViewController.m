@@ -121,6 +121,15 @@
 //    
 //}
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row > 1) {
+        NSDictionary *info = [self.result objectAtIndex:indexPath.row - 2];
+        ThemeDetailViewController *vc = [[ThemeDetailViewController alloc]init];
+        vc.strid = [info strForKey:@"id"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Slider"];

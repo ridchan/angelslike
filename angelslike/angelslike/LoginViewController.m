@@ -70,6 +70,17 @@
     wxButton.frame = CGRectMake(0, 0, 50, 50);
     wxButton.center = CGPointMake(ScreenWidth / 2, loginButton.frame.origin.y + loginButton.frame.size.height + ButtonGap + 25);
     [self.view addSubview:wxButton];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wxLoginSuccess:) name:@"LoginSuccess" object:nil];
+}
+
+-(void)wxLoginSuccess:(id)sender{
+    __block LoginViewController *tempSelf = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        [tempSelf showTabbar];
+        [tempSelf.bvc setSelectedIndex:4];
+    }];
+
 }
 
 -(void)wxloginClick:(id)sender{
@@ -86,6 +97,7 @@
         if ([Obj intForKey:@"status"] == 1) {
             [UserInfo shared].info = [Obj objectForKey:@"data"];
             [tempSelf dismissViewControllerAnimated:YES completion:^{
+                [tempSelf showTabbar];
                 [tempSelf.bvc setSelectedIndex:4];
             }];
         }else{

@@ -25,7 +25,7 @@
 #pragma mark init
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    NSLog(@"change %@",change);
+
     CGRect rect = [[change objectForKey:@"new"] CGRectValue];
     
     mv.frame = CGRectMake(0, rect.size.height + rect.origin.y + 10, ScreenWidth, ScreenHeight - 64);
@@ -110,13 +110,13 @@
                 [self.result strForKey:@"id"],@"id",
                 @"1",@"type",
                 nil];
-//    vc1.baseUrl = @"http://img1.angelslike.com";
+
     mv.viewControllers = @[vc1,vc2];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    self.navigationController.navigationBar.alpha = scrollView.contentOffset.y / 100 + 0.1;
-    
+
+
     if (scrollView.contentOffset.y + 64  > mv.frame.origin.y) {
         scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 64);
         scView.scrollEnabled = NO;
