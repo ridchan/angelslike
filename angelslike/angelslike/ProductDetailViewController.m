@@ -55,6 +55,12 @@
     
     mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, pd.frame.size.height + pd.frame.origin.y, ScreenWidth, ScreenHeight )];
     [scView addSubview:mv];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewCanMove:) name:@"MainScroll" object:nil];
+}
+
+-(void)scrollViewCanMove:(id)obj{
+    scView.scrollEnabled = YES;
 }
 
 -(void)addBottomButton{
@@ -110,8 +116,12 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 //    self.navigationController.navigationBar.alpha = scrollView.contentOffset.y / 100 + 0.1;
+    
     if (scrollView.contentOffset.y + 64  > mv.frame.origin.y) {
         scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 64);
+        scView.scrollEnabled = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SubScrollCanMove" object:[NSNumber numberWithBool:YES]];
+        scrollView.scrollEnabled = NO;
     }
 }
 
