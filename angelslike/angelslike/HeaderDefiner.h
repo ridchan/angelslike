@@ -16,6 +16,7 @@
 #define FontWS(s) [UIFont systemFontOfSize:s]
 #define RGBA(r,g,b,a) [UIColor colorWithRed:(float)(r/255.0f)green:(float)(g / 255.0f) blue:(float)(b / 255.0f)alpha:a]
 
+#define MyCouUrl @"http://app.angelslike.com/my/mycourecords"
 
 #define SliderLink @"http://www.angelslike.com/json/getslider"
 #define ListLink @"http://www.angelslike.com/json/getlist"

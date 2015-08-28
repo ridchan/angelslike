@@ -79,7 +79,6 @@
     [self.view addSubview:self.tableView];
     [self.tableView reloadData];
     
-    
     //顶部配置
     UISegmentedControl *seg = [[UISegmentedControl alloc]initWithItems:@[@"礼物分类",@"主题分类"]];
     seg.frame = CGRectMake(0, 6 , 200, 32);

@@ -20,6 +20,9 @@
         self.layer.borderWidth = 1.0;
         self.layer.cornerRadius = radii;
     }
+    if (self.bRound) {
+        radii = frame.size.width / 2;
+    }
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
                                                    byRoundingCorners:UIRectCornerAllCorners
                                                          cornerRadii:CGSizeMake(radii, radii)];

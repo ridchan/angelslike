@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "angelslike/CouDetailViewController.m"
-            timestampString = "462362779.215131"
+            timestampString = "462445619.920978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-refreshClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -89,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "angelslike/TabBarViewController.m"
-            timestampString = "462362629.039407"
+            filePath = "angelslike/MyCouViewController.m"
+            timestampString = "462450113.326329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-loadMoreData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

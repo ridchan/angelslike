@@ -10,8 +10,11 @@
 #import "TopCell.h"
 #import "ItemCell.h"
 #import "ProductDetailViewController.h"
+#import "BottomView.h"
 
-@interface ThemeDetailViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,ItemCellDelegate>
+@interface ThemeDetailViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,ItemCellDelegate>{
+    BottomView *bv;
+}
 
 
 @property(nonatomic,strong) UITableView *tableView;

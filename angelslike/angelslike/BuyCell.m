@@ -20,12 +20,14 @@
 }
 
 -(void)initialSetting{
-    imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 80, 100)];
+    imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 80, 80)];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:imageView];
     
-    nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 5, ScreenWidth - 90 , 50)];
+    nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 5, ScreenWidth - 150 , 50)];
     nameLabel.backgroundColor = [UIColor clearColor];
+    nameLabel.numberOfLines = 2;
+    nameLabel.font = [UIFont boldSystemFontOfSize:14];
     [self addSubview:nameLabel];
     
     UIButton *redButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -47,22 +49,27 @@
     [self addSubview:redButton];
     [self addSubview:addButton];
     
-    qty = [[UILabel alloc]initWithFrame:CGRectMake(120, 50, 30, 30)];
+    qty = [[UILabel alloc]initWithFrame:CGRectMake(120, 60, 30, 20)];
     qty.backgroundColor = [UIColor clearColor];
+    qty.font = FontWS(14);
     qty.textAlignment = NSTextAlignmentCenter;
     qty.layer.borderColor = RGBA(178,177,182,.9).CGColor;
     qty.layer.borderWidth = 1.0;
+    
     [self addSubview:qty];
     
     totalLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 30, ScreenWidth - 95, 30)];
     totalLabel.backgroundColor = [UIColor clearColor];
     totalLabel.textAlignment = NSTextAlignmentRight;
     totalLabel.textColor = [UIColor redColor];
+    totalLabel.font = FontWS(12);
     [self addSubview:totalLabel];
     
     qtyLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 60, ScreenWidth - 95, 30)];
     qtyLabel.backgroundColor = [UIColor clearColor];
     qtyLabel.textAlignment = NSTextAlignmentRight;
+    qtyLabel.textColor = [UIColor getHexColor:@"767676"];
+    qtyLabel.font = FontWS(12);
     [self addSubview:qtyLabel];
 }
 

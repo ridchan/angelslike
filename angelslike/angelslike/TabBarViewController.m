@@ -48,6 +48,8 @@
         hasLoaded = YES;
     }
     
+    
+    [self performSelector:@selector(hideRealTabBar)];
     [self bringCustomTabBarToFront];
     
     [super viewDidAppear:animated];
@@ -60,7 +62,7 @@
     if (idx == 0) {
         [self bringCustomTabBarToFront];
     }else if (idx == 1){
-        viewController.hidesBottomBarWhenPushed = YES;
+//        viewController.hidesBottomBarWhenPushed = YES;
         [self hideCustomTabBar];
     }
 }
@@ -121,8 +123,8 @@
 
 //将自定义的tabbar显示出来
 - (void)bringCustomTabBarToFront{
-    [self performSelector:@selector(hideRealTabBar)];
-    [UIView animateWithDuration:0.35 animations:^{
+//    [self performSelector:@selector(hideRealTabBar)];
+    [UIView animateWithDuration:.35 animations:^{
         tabbar.frame = CGRectMake(0, ScreenHeight - 49, ScreenWidth, 49);
         
     }];
@@ -130,8 +132,8 @@
 
 //隐藏自定义tabbar
 - (void)hideCustomTabBar{
-    [self performSelector:@selector(hideRealTabBar)];
-    [UIView animateWithDuration:0.35 animations:^{
+//    [self performSelector:@selector(hideRealTabBar)];
+    [UIView animateWithDuration:.35 animations:^{
         tabbar.frame = CGRectMake(0, ScreenHeight, ScreenWidth, 49);
     }];
 }

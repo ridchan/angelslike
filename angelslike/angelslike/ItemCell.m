@@ -15,17 +15,17 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         //
-        nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, ScreenWidth - 10, 30)];
-        nameLabel.font = [UIFont boldSystemFontOfSize:17];
+        nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth - 10, 30)];
+        nameLabel.font = [UIFont boldSystemFontOfSize:19];
         
-        contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, nameLabel.frame.size.height, ScreenWidth - 10, 50)];
-        contentLabel.textColor = RGBA(178,177,182,.9);
-        contentLabel.font = FontWS(14);
+        contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, nameLabel.frame.size.height + 10, ScreenWidth - 20, 50)];
+        contentLabel.textColor = [UIColor getHexColor:@"767676"];
+        contentLabel.font = FontWS(13);
         contentLabel.numberOfLines = 0;
         
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(5, contentLabel.frame.origin.y + contentLabel.frame.size.height, ScreenWidth - 10, (ScreenWidth - 10) * 9 / 16)];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10, ScreenWidth - 20, (ScreenWidth - 10) * 9 / 16)];
         
-        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, imageView.frame.origin.y + imageView.frame.size.height, ScreenWidth - 10, 40)];
+        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, imageView.frame.origin.y + imageView.frame.size.height, ScreenWidth - 20, 40)];
         priceLabel.textColor = [UIColor getHexColor:@"F44236"];
         
         
@@ -86,12 +86,12 @@
         nameLabel.text = [_info strForKey:@"name"];
         [contentLabel setTextResize:[self removeHtml:[_info strForKey:@"content"]]];
         
-        imageView.frame = CGRectMake(5, contentLabel.frame.origin.y + contentLabel.frame.size.height + 5, imageView.frame.size.width, imageView.frame.size.height);
+        imageView.frame = CGRectMake(10, contentLabel.frame.origin.y + contentLabel.frame.size.height + 10, imageView.frame.size.width, imageView.frame.size.height);
         
         [imageView setPreImageWithUrl:[_info strForKey:@"img"]];
         
         
-        priceLabel.frame = CGRectMake(5, imageView.frame.origin.y + imageView.frame.size.height , priceLabel.frame.size.width, priceLabel.frame.size.height);
+        priceLabel.frame = CGRectMake(10, imageView.frame.origin.y + imageView.frame.size.height +10, priceLabel.frame.size.width, priceLabel.frame.size.height);
         priceLabel.text = [NSString stringWithFormat:@"￥%@",[_info strForKey:@"price"]];
         
         viewButton.center = CGPointMake(viewButton.center.x, priceLabel.center.y);

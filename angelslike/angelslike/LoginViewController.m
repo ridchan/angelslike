@@ -13,10 +13,13 @@
 
 @implementation LoginViewController
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
 
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"hideCustomTabBar" object:nil];
     [self initialSetting];
 }
 

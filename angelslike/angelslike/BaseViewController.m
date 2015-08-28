@@ -15,7 +15,9 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor getHexColor:@"F1F0F6"];
-    self.hidesBottomBarWhenPushed = YES;
+//    if ([self.navigationController.viewControllers indexOfObject:self] == 1) {
+//        self.hidesBottomBarWhenPushed = YES;
+//    }
 }
 
 -(void)hideTabBar{

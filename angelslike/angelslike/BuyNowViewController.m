@@ -140,12 +140,12 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @[@"产品明细",@"收货信息",@"支付方式"][section];
+    return @[@"",@"收货信息",@"支付方式"][section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 100;
+        return 90;
     }else{
         return 44;
     }

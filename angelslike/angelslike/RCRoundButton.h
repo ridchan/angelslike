@@ -11,5 +11,6 @@
 @interface RCRoundButton : UIButton
 
 @property(nonatomic) float radio;
+@property(nonatomic) BOOL bRound;
 
 @end

@@ -62,6 +62,7 @@
         b2.frame = CGRectMake(ScreenWidth / 2 + 5, 5, ScreenWidth / 2 - 15, 34);
         [b2 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
         [b2 setTitle:@"我也要凑" forState:UIControlStateNormal];
+        [b2 addTarget:self action:@selector(couPayClick:) forControlEvents:UIControlEventTouchUpInside];
         [v addSubview:b2];
     }
     
@@ -75,6 +76,9 @@
     [self.view addSubview:v];
     
     
+    cp = [[CouPay alloc]init];
+    [self.view addSubview:cp];
+    
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 25, 25);
@@ -86,6 +90,10 @@
     self.navigationItem.title = @"凑分子";
     [self refreshClick:nil];
 
+}
+
+-(void)couPayClick:(id)sender{
+    [cp show];
 }
 
 -(void)backClick:(id)sender{

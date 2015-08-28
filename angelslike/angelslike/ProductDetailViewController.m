@@ -11,14 +11,33 @@
 @implementation ProductDetailViewController
 
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    
     [self initailSetting];
+    [self addHeader];
     [self addBottomButton];
     [self loadData:nil];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = YES;
+    [super viewWillAppear:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = NO;
+    [super viewWillDisappear:animated];
+}
+
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
 
 
 #pragma mark -
@@ -63,6 +82,13 @@
     scView.scrollEnabled = YES;
 }
 
+
+-(void)addHeader{
+    header = [[ProductHeader alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+    [header addTarget:self action:@selector(headerButtonClick:)];
+    [self.view addSubview:header];
+}
+
 -(void)addBottomButton{
     UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44)];
     v.backgroundColor = [UIColor whiteColor];
@@ -88,6 +114,13 @@
 
 #pragma mark -
 #pragma mark action
+
+-(void)headerButtonClick:(UIButton *)sender{
+    if (sender.tag == 1) {
+        self.navigationController.navigationBarHidden = NO;
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 -(void)buynow:(id)sender{
     BuyNowViewController *vc = [[BuyNowViewController alloc]init];
@@ -115,11 +148,10 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    header.alpha = scrollView.contentOffset.y / 200;
 
-
-    if (scrollView.contentOffset.y + 64  > mv.frame.origin.y) {
-        scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 64);
-        scView.scrollEnabled = NO;
+    if (scrollView.contentOffset.y + 44  > mv.frame.origin.y) {
+        scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 44);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SubScrollCanMove" object:[NSNumber numberWithBool:YES]];
         scrollView.scrollEnabled = NO;
     }
@@ -129,8 +161,13 @@
     __block ProductDetailViewController *tempSelf = self;
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[self.info strForKey:@"id"],@"id",nil];
     [[NetWork shared] query:ProductUrl info:dic block:^(id Obj) {
-        tempSelf.result = [Obj objectForKey:@"data"];
-        [tempSelf setSubView];
+        if ([Obj intForKey:@"status"] == 1) {
+            tempSelf.result = [Obj objectForKey:@"data"];
+            [tempSelf setSubView];
+        }else{
+            [tempSelf showMessage:[Obj strForKey:@"info"]];
+        }
+
     } lock:YES];
 }
 

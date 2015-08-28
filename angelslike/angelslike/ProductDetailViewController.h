@@ -12,10 +12,12 @@
 #import "WebViewController.h"
 #import "CommentViewController.h"
 #import "BuyNowViewController.h"
+#import "ProductHeader.h"
 
 @interface ProductDetailViewController : BaseViewController<UIScrollViewDelegate>{
     ProductDetail *pd;
     RCMutileView *mv;
+    ProductHeader *header;
     UIScrollView *scView;
 }
 

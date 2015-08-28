@@ -16,17 +16,23 @@
     
     self.indexs = [NSMutableDictionary dictionary];
     [self initialSetting];
+    [self addBottomView];
     [self loadData];
+    
     
 }
 
--(void)topCellChange:(NSNotification *)obj{
-//    UITableViewCell *cell = (UITableViewCell *)obj.object;
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-//    if(indexPath){
-//        [self.indexs setObject:[NSString stringWithFormat:@"%0.2f",cell.frame.size.height] forKey:indexPath];
-//        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//    }
+-(BOOL)prefersStatusBarHidden{
+    return NO;
+}
+
+-(void)addBottomView{
+    bv = [[BottomView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44)];
+    [self.view addSubview:bv];
+}
+
+-(void)setBottomView{
+    [bv setCount:[self.result strForKey:@"praise"] count2:[self.result strForKey:@"review"] count3:[self.result strForKey:@"share"]];
 }
 
 -(void)initialSetting{
@@ -54,6 +60,7 @@
                        
                        if ([Obj intForKey:@"status"] == 1) {
                            tempSelf.result = [Obj objectForKey:@"data"] ;
+                           [tempSelf setBottomView];
   
                        }
                        [tempSelf.tableView reloadData];

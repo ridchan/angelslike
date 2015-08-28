@@ -18,7 +18,7 @@
 @implementation AppDelegate
 
 -(void)initialSetting{
-//    [[IQKeyboardManager sharedManager] setEnable:NO];
+    [[IQKeyboardManager sharedManager] setEnable:NO];
     
     
 

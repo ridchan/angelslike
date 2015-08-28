@@ -10,6 +10,10 @@
 
 @implementation WebViewController
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
 
@@ -26,7 +30,7 @@
     
     NSMutableString *str = [NSMutableString stringWithString:self.content];
     [self reSizeImage:str];
-    [webView loadHTMLString:str baseURL:[NSURL URLWithString:@"http://www.angelslike.com"]];
+    [webView loadHTMLString:str baseURL:[NSURL URLWithString:ImageLink]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewCanMove:) name:@"SubScrollCanMove" object:nil];
 }

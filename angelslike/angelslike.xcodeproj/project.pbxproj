@@ -77,6 +77,16 @@
 		27E066311B85DD4300D94803 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0661D1B85DD4300D94803 /* UIScrollView+MJRefresh.m */; };
 		27E066321B85DD4300D94803 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0661F1B85DD4300D94803 /* UIView+MJExtension.m */; };
 		27E07CE81B8420120020B950 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E07CE71B8420120020B950 /* ProductCell.m */; };
+		27E089981B8FFF0F0090C724 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E089971B8FFF0F0090C724 /* BottomView.m */; };
+		27E0899D1B90012D0090C724 /* iconfont-kongxi.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E089991B90012D0090C724 /* iconfont-kongxi.png */; };
+		27E0899E1B90012D0090C724 /* iconfont-fenxiang-r.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0899A1B90012D0090C724 /* iconfont-fenxiang-r.png */; };
+		27E0899F1B90012D0090C724 /* iconfont-pinglun.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0899B1B90012D0090C724 /* iconfont-pinglun.png */; };
+		27E089A01B90012D0090C724 /* iconfont-xin.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0899C1B90012D0090C724 /* iconfont-xin.png */; };
+		27E089A31B9019EA0090C724 /* ProductHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E089A21B9019EA0090C724 /* ProductHeader.m */; };
+		27E089A51B9030D40090C724 /* iconfont-gouwuche.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E089A41B9030D40090C724 /* iconfont-gouwuche.png */; };
+		27E089A81B904D3A0090C724 /* CouPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E089A71B904D3A0090C724 /* CouPayViewController.m */; };
+		27E089AB1B9054080090C724 /* CouPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E089AA1B9054080090C724 /* CouPay.m */; };
+		27E0E3C31B90676E00685760 /* MyCouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0E3C21B90676E00685760 /* MyCouViewController.m */; };
 		27E4515C1B8D5CE800547DAD /* AreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4515B1B8D5CE800547DAD /* AreaView.m */; };
 		27E4515F1B8D732100547DAD /* BuyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4515E1B8D732000547DAD /* BuyCell.m */; };
 		27E451621B8D733100547DAD /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E451611B8D733100547DAD /* AddressCell.m */; };
@@ -348,6 +358,21 @@
 		27E0661F1B85DD4300D94803 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		27E07CE61B8420120020B950 /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		27E07CE71B8420120020B950 /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
+		27E089961B8FFF0F0090C724 /* BottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
+		27E089971B8FFF0F0090C724 /* BottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
+		27E089991B90012D0090C724 /* iconfont-kongxi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-kongxi.png"; sourceTree = "<group>"; };
+		27E0899A1B90012D0090C724 /* iconfont-fenxiang-r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-fenxiang-r.png"; sourceTree = "<group>"; };
+		27E0899B1B90012D0090C724 /* iconfont-pinglun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-pinglun.png"; sourceTree = "<group>"; };
+		27E0899C1B90012D0090C724 /* iconfont-xin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-xin.png"; sourceTree = "<group>"; };
+		27E089A11B9019EA0090C724 /* ProductHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductHeader.h; sourceTree = "<group>"; };
+		27E089A21B9019EA0090C724 /* ProductHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductHeader.m; sourceTree = "<group>"; };
+		27E089A41B9030D40090C724 /* iconfont-gouwuche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-gouwuche.png"; sourceTree = "<group>"; };
+		27E089A61B904D3A0090C724 /* CouPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouPayViewController.h; sourceTree = "<group>"; };
+		27E089A71B904D3A0090C724 /* CouPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouPayViewController.m; sourceTree = "<group>"; };
+		27E089A91B9054080090C724 /* CouPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouPay.h; sourceTree = "<group>"; };
+		27E089AA1B9054080090C724 /* CouPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouPay.m; sourceTree = "<group>"; };
+		27E0E3C11B90676E00685760 /* MyCouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouViewController.h; sourceTree = "<group>"; };
+		27E0E3C21B90676E00685760 /* MyCouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouViewController.m; sourceTree = "<group>"; };
 		27E4515A1B8D5CE800547DAD /* AreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaView.h; sourceTree = "<group>"; };
 		27E4515B1B8D5CE800547DAD /* AreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaView.m; sourceTree = "<group>"; };
 		27E4515D1B8D732000547DAD /* BuyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCell.h; sourceTree = "<group>"; };
@@ -594,6 +619,11 @@
 				27FB16601B831E17000CDCD3 /* iconfont-search.png */,
 				27DF59581B8EB88200E94B06 /* leftcon.png */,
 				27DF59591B8EB88200E94B06 /* rightcon.png */,
+				27E089991B90012D0090C724 /* iconfont-kongxi.png */,
+				27E0899A1B90012D0090C724 /* iconfont-fenxiang-r.png */,
+				27E0899B1B90012D0090C724 /* iconfont-pinglun.png */,
+				27E0899C1B90012D0090C724 /* iconfont-xin.png */,
+				27E089A41B9030D40090C724 /* iconfont-gouwuche.png */,
 			);
 			name = "图标";
 			sourceTree = "<group>";
@@ -800,6 +830,8 @@
 			children = (
 				27DF594C1B8EAC4200E94B06 /* ThemeDetailViewController.h */,
 				27DF594D1B8EAC4200E94B06 /* ThemeDetailViewController.m */,
+				27E089961B8FFF0F0090C724 /* BottomView.h */,
+				27E089971B8FFF0F0090C724 /* BottomView.m */,
 				27DF594F1B8EACF100E94B06 /* TopCell.h */,
 				27DF59501B8EACF100E94B06 /* TopCell.m */,
 				27DF59521B8EACFD00E94B06 /* ItemCell.h */,
@@ -1074,6 +1106,8 @@
 		27F65CF91B798D0A00EDE656 /* 产品列表 */ = {
 			isa = PBXGroup;
 			children = (
+				27E089A11B9019EA0090C724 /* ProductHeader.h */,
+				27E089A21B9019EA0090C724 /* ProductHeader.m */,
 				27E07CE61B8420120020B950 /* ProductCell.h */,
 				27E07CE71B8420120020B950 /* ProductCell.m */,
 				27E53EB01B8C25DA00A56D53 /* ProductDetail.h */,
@@ -1134,6 +1168,12 @@
 				2E4D41BE1B72870400AA314E /* CouViewController.m */,
 				27EAFA9C1B7B2B0100DF60E9 /* CouDetailViewController.h */,
 				27EAFA9D1B7B2B0100DF60E9 /* CouDetailViewController.m */,
+				27E089A61B904D3A0090C724 /* CouPayViewController.h */,
+				27E089A71B904D3A0090C724 /* CouPayViewController.m */,
+				27E089A91B9054080090C724 /* CouPay.h */,
+				27E089AA1B9054080090C724 /* CouPay.m */,
+				27E0E3C11B90676E00685760 /* MyCouViewController.h */,
+				27E0E3C21B90676E00685760 /* MyCouViewController.m */,
 			);
 			name = "凑分子";
 			sourceTree = "<group>";
@@ -1253,6 +1293,7 @@
 				27F65D021B799DD400EDE656 /* 02-引导页.jpg in Resources */,
 				27EFB2481B7396F600A14872 /* gexin_02.png in Resources */,
 				27EA9A131B7335FA003559C0 /* tbg.png in Resources */,
+				27E089A01B90012D0090C724 /* iconfont-xin.png in Resources */,
 				27E6AE081B785915008CE686 /* logo_160.png in Resources */,
 				27BA81391B71AADF005B527B /* iconfont-fenlei.png in Resources */,
 				27EFB2471B7396F600A14872 /* gexin_01.png in Resources */,
@@ -1263,6 +1304,7 @@
 				27EFB22B1B73966800A14872 /* duixiang_00.png in Resources */,
 				27F65D031B799DD400EDE656 /* 03-引导页.jpg in Resources */,
 				27EFB22C1B73966800A14872 /* duixiang_01.png in Resources */,
+				27E0899F1B90012D0090C724 /* iconfont-pinglun.png in Resources */,
 				27EFB2461B7396F600A14872 /* gexin_00.png in Resources */,
 				27EFB2661B73970900A14872 /* pinglei_06.png in Resources */,
 				27EFB2621B73970900A14872 /* pinglei_02.png in Resources */,
@@ -1297,6 +1339,7 @@
 				27EFB2611B73970900A14872 /* pinglei_01.png in Resources */,
 				27EFB2601B73970900A14872 /* pinglei_00.png in Resources */,
 				27EFB2541B73970100A14872 /* jiage_02.png in Resources */,
+				27E0899E1B90012D0090C724 /* iconfont-fenxiang-r.png in Resources */,
 				27EFB2681B73970900A14872 /* pinglei_08.png in Resources */,
 				27EED26F1B7489F7009F2DD2 /* mine_02.png in Resources */,
 				27E6AE0F1B787C30008CE686 /* iconfont-user.png in Resources */,
@@ -1304,9 +1347,11 @@
 				27EFB23B1B7396E700A14872 /* changhe_02.png in Resources */,
 				27BA81861B71FAFB005B527B /* iconfont-icon83.png in Resources */,
 				27E53EBC1B8C47E900A56D53 /* hui_logo.png in Resources */,
+				27E0899D1B90012D0090C724 /* iconfont-kongxi.png in Resources */,
 				27685A6A1B81E00A005234B0 /* Refresh_icon.png in Resources */,
 				27EADA741B7C3A670084D648 /* iconfont-woyaotixian.png in Resources */,
 				27FB16611B831E17000CDCD3 /* iconfont-search.png in Resources */,
+				27E089A51B9030D40090C724 /* iconfont-gouwuche.png in Resources */,
 				27E0662E1B85DD4300D94803 /* MJRefresh.bundle in Resources */,
 				27EFB2651B73970900A14872 /* pinglei_05.png in Resources */,
 				27E6ADFD1B785658008CE686 /* IQKeyboardManager.bundle in Resources */,
@@ -1359,6 +1404,7 @@
 				27DF594E1B8EAC4200E94B06 /* ThemeDetailViewController.m in Sources */,
 				27E0662F1B85DD4300D94803 /* MJRefreshConst.m in Sources */,
 				27E6AE011B785658008CE686 /* IQTitleBarButtonItem.m in Sources */,
+				27E0E3C31B90676E00685760 /* MyCouViewController.m in Sources */,
 				2E7A78C21B77CA79004A58AB /* RMViewController.m in Sources */,
 				27EADA721B7C38240084D648 /* SettingViewController.m in Sources */,
 				27E0662B1B85DD4300D94803 /* MJRefreshGifHeader.m in Sources */,
@@ -1366,6 +1412,7 @@
 				2E7A78B91B77CA5B004A58AB /* ProgressView.m in Sources */,
 				27E53EAF1B8C23A400A56D53 /* ProductDetailViewController.m in Sources */,
 				27BA81751B71C6A6005B527B /* SDWebImageDownloaderOperation.m in Sources */,
+				27E089A31B9019EA0090C724 /* ProductHeader.m in Sources */,
 				27BA81411B71ABA3005B527B /* MainTabBar.m in Sources */,
 				27EADA7C1B7C7BBD0084D648 /* CouDetail.m in Sources */,
 				27BA81711B71C6A6005B527B /* SDImageCache.m in Sources */,
@@ -1424,8 +1471,10 @@
 				27E0662A1B85DD4300D94803 /* MJRefreshBackStateFooter.m in Sources */,
 				27BA81781B71C6A6005B527B /* UIButton+WebCache.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
+				27E089981B8FFF0F0090C724 /* BottomView.m in Sources */,
 				27F65CFC1B798D7C00EDE656 /* ProductlistViewController.m in Sources */,
 				27E451621B8D733100547DAD /* AddressCell.m in Sources */,
+				27E089A81B904D3A0090C724 /* CouPayViewController.m in Sources */,
 				27BA81811B71EA77005B527B /* LoadMoreTableView.m in Sources */,
 				27BA81731B71C6A6005B527B /* SDWebImageDecoder.m in Sources */,
 				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,
@@ -1433,6 +1482,7 @@
 				27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */,
 				27E451651B8DAC2000547DAD /* PayCell.m in Sources */,
 				27EAFA9E1B7B2B0100DF60E9 /* CouDetailViewController.m in Sources */,
+				27E089AB1B9054080090C724 /* CouPay.m in Sources */,
 				27E53EBA1B8C3D0100A56D53 /* CommentCell.m in Sources */,
 				27E066271B85DD4300D94803 /* MJRefreshAutoStateFooter.m in Sources */,
 				27BA81841B71F80E005B527B /* Banner.m in Sources */,

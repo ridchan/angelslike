@@ -125,6 +125,7 @@
     if (indexPath.row > 1) {
         NSDictionary *info = [self.result objectAtIndex:indexPath.row - 2];
         ThemeDetailViewController *vc = [[ThemeDetailViewController alloc]init];
+//        vc.hidesBottomBarWhenPushed = YES;
         vc.strid = [info strForKey:@"id"];
         [self.navigationController pushViewController:vc animated:YES];
     }

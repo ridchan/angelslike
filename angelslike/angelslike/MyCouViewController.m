@@ -1,23 +1,23 @@
 //
-//  CouViewController.m
+//  MyCouViewController.m
 //  angelslike
 //
-//  Created by ridchan on 15/8/6.
+//  Created by angelslike on 15/8/28.
 //  Copyright (c) 2015年 angelslike. All rights reserved.
 //
 
-#import "CouViewController.h"
+#import "MyCouViewController.h"
 
-@interface CouViewController ()
+@interface MyCouViewController ()
 
 @end
 
-@implementation CouViewController
+@implementation MyCouViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-
+    
+    
     [self initialSetting];
     [self loadMoreData:nil];
     
@@ -26,47 +26,46 @@
 
 -(void)initialSetting{
     
-
-    self.searchInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"list_cou",@"type",
-                                                                        @"new",@"sort",nil];
-
-    self.navigationItem.title = @"凑分子";
-    //顶部配置
-    seg = [[UISegmentedControl alloc]initWithItems:@[@"谁在凑分子",@"我的凑分子"]];
-    seg.frame = CGRectMake(0, 6 , 200, 32);
-    seg.tintColor = [UIColor whiteColor];
-    seg.selectedSegmentIndex = 0;
-    self.navigationItem.titleView = seg;
-    [seg addTarget:self action:@selector(viewChange:) forControlEvents:UIControlEventValueChanged];
     
-    //搜索按钮
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
-    barButtonItem.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = barButtonItem;
+    self.searchInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"list_cou",@"type",
+                       @"new",@"sort",nil];
+    
+    self.navigationItem.title = @"我的凑分子";
+    //顶部配置
+//    seg = [[UISegmentedControl alloc]initWithItems:@[@"谁在凑分子",@"我的凑分子"]];
+//    seg.frame = CGRectMake(0, 6 , 200, 32);
+//    seg.tintColor = [UIColor whiteColor];
+//    seg.selectedSegmentIndex = 0;
+//    self.navigationItem.titleView = seg;
+//    
+//    //搜索按钮
+//    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
+//    barButtonItem.tintColor = [UIColor whiteColor];
+//    self.navigationItem.rightBarButtonItem = barButtonItem;
     
     //搜索框
-    _navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, 44)];
-
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setTitle:@"返回" forState:UIControlStateNormal];
-    backButton.frame = CGRectMake(ScreenWidth - 60, 0, 50, 44);
-    [backButton addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
+//    _navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, 44)];
+//    
+//    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [backButton setTitle:@"返回" forState:UIControlStateNormal];
+//    backButton.frame = CGRectMake(ScreenWidth - 60, 0, 50, 44);
+//    [backButton addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    _textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 8, ScreenWidth - 70 , 28)];
-    _textField.borderStyle = UITextBorderStyleRoundedRect;
-    _textField.returnKeyType = UIReturnKeySearch;
-    _textField.delegate = self;
-    _textField.placeholder  = @"搜索";
+//    _textField = [[UITextField alloc]initWithFrame:CGRectMake(10, 8, ScreenWidth - 70 , 28)];
+//    _textField.borderStyle = UITextBorderStyleRoundedRect;
+//    _textField.returnKeyType = UIReturnKeySearch;
+//    _textField.delegate = self;
+//    _textField.placeholder  = @"搜索";
+//    
+//    [_navBar addSubview:_textField];
+//    [_navBar addSubview:backButton];
+//    
+//    
+//    
+//    [self.navigationController.navigationBar addSubview:_navBar];
+//    [self.navigationItem setHidesBackButton:YES];
     
-    [_navBar addSubview:_textField];
-    [_navBar addSubview:backButton];
     
-
-    
-    [self.navigationController.navigationBar addSubview:_navBar];
-    [self.navigationItem setHidesBackButton:YES];
-    
-
     //table view
     self.result = [NSMutableArray array];
     self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
@@ -86,7 +85,7 @@
     nameArr = @[ @[ @"全部类型", @"人情凑", @"颜值凑", @"爱心凑", @"随便凑"], @[@"全部状态", @"进行中" ,@"已完成"], @[@"按时间最新", @"按人气最高", @"按总价最贵"]];
     downMenu = [[MXPullDownMenu alloc] initWithArray:nameArr selectedColor:[UIColor getHexColor:@"FE6869"]];
     downMenu.delegate = self;
-    downMenu.frame = CGRectMake(0, 64, ScreenWidth, 35);
+    downMenu.frame = CGRectMake(0, 0, ScreenWidth, 35);
     [self.view addSubview:downMenu];
     
     
@@ -95,35 +94,6 @@
     header.lastUpdatedTimeLabel.hidden = YES;
     self.tableView.header = header;
     
-    self.mvc = [[MyCouViewController alloc]init];
-    self.mvc.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
-    [self.view addSubview:self.mvc.view];
-    self.mvc.view.hidden = YES;
- 
-}
-
--(void)viewChange:(UISegmentedControl *)sender{
-    
-    [UIView beginAnimations:nil context:nil];
-    //持续时间
-    [UIView setAnimationDuration:.5];
-    //在出动画的时候减缓速度
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    //添加动画开始及结束的代理
-    [UIView setAnimationDelegate:self];
-    //动画效果
-    //    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
-    
-    
-    if (sender.selectedSegmentIndex == 0) {
-        self.mvc.view.hidden = YES;
-        [self.view sendSubviewToBack:self.mvc.view];
-    }else{
-        self.mvc.view.hidden = NO;
-        [self.view bringSubviewToFront:self.mvc.view];
-    }
-    
-    [UIView commitAnimations];
 }
 
 
@@ -133,12 +103,13 @@
 
 
 -(void)loadMoreData:(id)obj{
-    __block CouViewController *tempSelf = self;
+    __block MyCouViewController *tempSelf = self;
     NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
     [self.searchInfo setObject:nPage forKey:@"page"];
-    [self.searchInfo setObject:_textField.text forKey:@"key"];
+    [self.searchInfo setObject:[[UserInfo shared].info strForKey:@"loginkey"] forKey:@"loginkey"];
+//    [self.searchInfo setObject:_textField.text forKey:@"key"];
     
-    [[NetWork shared] startQuery:ListLink
+    [[NetWork shared] startQuery:MyCouUrl
                             info:self.searchInfo
                    completeBlock:^(id Obj) {
                        
@@ -164,13 +135,13 @@
 
 -(void)backClick:(id)sender{
     
-//    self.navigationItem.titleView = seg;
-//
-//    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
-//    barButtonItem.tintColor = [UIColor whiteColor];
-//    self.navigationItem.rightBarButtonItem = barButtonItem;
-//    
-//    _searchBar.text = @"";
+    //    self.navigationItem.titleView = seg;
+    //
+    //    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
+    //    barButtonItem.tintColor = [UIColor whiteColor];
+    //    self.navigationItem.rightBarButtonItem = barButtonItem;
+    //
+    //    _searchBar.text = @"";
     _textField.text = @"";
     [_textField resignFirstResponder];
     [UIView beginAnimations:nil context:nil];
@@ -187,13 +158,13 @@
     _navBar.frame = CGRectMake(0, 0, ScreenWidth, 44);
     [UIView commitAnimations];
     /*
-    self.navigationItem.titleView = _searchBar;
-    [_searchBar becomeFirstResponder];
-
-    
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backClick:)];
-    self.navigationItem.rightBarButtonItem = barButtonItem;
-    */
+     self.navigationItem.titleView = _searchBar;
+     [_searchBar becomeFirstResponder];
+     
+     
+     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backClick:)];
+     self.navigationItem.rightBarButtonItem = barButtonItem;
+     */
 }
 
 -(void)reloadData{
@@ -226,7 +197,7 @@
     NSArray *valueArr = @[@[@"",@"1",@"2",@"3",@"4"],@[@"",@"9",@"10"],@[@"new",@"hot",@"costly"]];
     NSString *value =  [[valueArr objectAtIndex:column] objectAtIndex:row];
     [self.searchInfo setObject:value forKey:[keyArr objectAtIndex:column]];
- 
+    
     [self reloadData];
 }
 
@@ -252,7 +223,7 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     static NSString *identify = @"Cell";
     CouCell *cell = (CouCell *)[tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
@@ -290,13 +261,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "CouDetail.h"
+#import "CouPay.h"
 
-@interface CouDetailViewController : BaseViewController
+@interface CouDetailViewController : BaseViewController{
+    CouPay *cp;
+}
 
 @property(nonatomic,strong) NSDictionary *info;
 
