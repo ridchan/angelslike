@@ -20,6 +20,18 @@
 //    }
 }
 
+- (UIViewController *)findViewController:(UIView *)sourceView
+{
+    id target=sourceView;
+    while (target) {
+        target = ((UIResponder *)target).nextResponder;
+        if ([target isKindOfClass:[UIViewController class]]) {
+            break;
+        }
+    }
+    return target;
+}
+
 -(void)hideTabBar{
     self.hidesBottomBarWhenPushed = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideCustomTabBar" object:nil];

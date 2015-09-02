@@ -10,6 +10,7 @@
 #import "BaseViewController.h"
 #import "CouDetail.h"
 #import "CouPay.h"
+#import "ProductDetailViewController.h"
 
 @interface CouDetailViewController : BaseViewController{
     CouPay *cp;

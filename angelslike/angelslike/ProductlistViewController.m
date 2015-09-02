@@ -47,7 +47,7 @@
     page =  1;
     self.info = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                  [self.dic strForKey:@"ID"],@"id",
-                 [self.dic strForKey:@"Type"],@"types",
+                 [self.dic strForKey:@"Type"],@"type",
                  [NSString stringWithFormat:@"%ld",page],@"page",
                  nil];
     
@@ -97,7 +97,7 @@
         if (page < totalPage & bloading  == NO) {
             bloading = YES;
             [self.info setObject:[NSString stringWithFormat:@"%ld",page + 1] forKey:@"page"];
-            NSLog(@"self.info %@",self.info);
+//            NSLog(@"self.info %@",self.info);
             [self loadData:nil];
         }
     }

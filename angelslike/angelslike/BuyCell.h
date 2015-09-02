@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
+#import "QtyButton.h"
 
 @interface BuyCell : UITableViewCell{
     UIImageView *imageView;
@@ -15,6 +16,7 @@
     UILabel *qtyLabel;
     UILabel *totalLabel;
     UILabel *qty;
+    QtyButton *qb;
 }
 
 @property(nonatomic,strong) NSMutableDictionary *info;

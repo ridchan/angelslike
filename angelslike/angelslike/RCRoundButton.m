@@ -11,6 +11,15 @@
 
 @implementation RCRoundButton
 
+-(void)setCorner:(CGFloat)corner{
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                                   byRoundingCorners:UIRectCornerAllCorners
+                                                         cornerRadii:CGSizeMake(corner, corner)];
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame         = self.bounds;
+    maskLayer.path          = maskPath.CGPath;
+    self.layer.mask         = maskLayer;
+}
 
 -(void)setFrame:(CGRect)frame{
     [super setFrame:frame];
@@ -23,13 +32,9 @@
     if (self.bRound) {
         radii = frame.size.width / 2;
     }
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
-                                                   byRoundingCorners:UIRectCornerAllCorners
-                                                         cornerRadii:CGSizeMake(radii, radii)];
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame         = self.bounds;
-    maskLayer.path          = maskPath.CGPath;
-    self.layer.mask         = maskLayer;
+    
+    [self setCorner:radii];
+    
 }
 
 -(void)awakeFromNib{

@@ -15,6 +15,7 @@
 #import "CouDetailViewController.h"
 #import "MJRefresh.h"
 #import "MyCouViewController.h"
+#import "LoginViewController.h"
 
 @interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UITextFieldDelegate>{
     MXPullDownMenu *downMenu;

@@ -12,22 +12,26 @@
 
 @synthesize info = _info;
 
+
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 130)];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 130)];
         imageView.image = [UIImage imageNamed:@"my-bg"];
-        [self addSubview: imageView];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [self addSubview:imageView];
         
-        logo = [[UIImageView alloc]initWithFrame:CGRectMake(20, 100, 60, 60)];
-        logo.layer.cornerRadius = 30;
+        logo = [[UIImageView alloc]initWithFrame:CGRectMake(15, 90, 80, 80)];
+        logo.layer.cornerRadius = 40;
         logo.layer.masksToBounds = YES;
         [self addSubview:logo];
         
         nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(100 , 100, 200, 30)];
         nameLabel.backgroundColor = [UIColor clearColor];
+        nameLabel.textColor = [UIColor whiteColor];
         [self addSubview:nameLabel];
         
         moneyLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth / 3, 130, ScreenWidth / 3, 30)];
@@ -52,18 +56,31 @@
         title2.textAlignment = NSTextAlignmentCenter;
         title2.text = @"积分";
         [self addSubview:title2];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(offsetChange:) name:@"UserInfoCell" object:nil];
     }
     return self;
 }
 
-
+-(void)offsetChange:(NSNotification *)obj{
+    NSNumber *num = (NSNumber *)obj.object;
+    CGFloat scale = fabsf([num floatValue] + 64) / 100 + 1.0;
+    NSLog(@"scale %f",scale);
+    
+    imageView.frame = CGRectMake(0, [num floatValue] + 64, ScreenWidth, 130 * scale);
+//    imageView.transform =  CGAffineTransformMakeScale(scale,scale);
+}
 
 -(void)setInfo:(NSDictionary *)info{
     _info = [info mutableCopy];
-    nameLabel.text = [_info strForKey:@"mname"];
-    moneyLabel.text = [_info strForKey:@"mmoney"];
+    nameLabel.text = [_info strForKey:@"name"];
+    moneyLabel.text = [_info strForKey:@"money"];
     depositLabel.text = [_info strForKey:@"mfen"];
-    [logo setPreImageWithUrl:[_info strForKey:@"mimg"]];
+    [logo setPreImageWithUrl:[_info strForKey:@"img"] domain:@"http://www.angelslike.com"];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 @end

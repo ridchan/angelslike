@@ -18,7 +18,7 @@
 @implementation AppDelegate
 
 -(void)initialSetting{
-    [[IQKeyboardManager sharedManager] setEnable:NO];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
     
     
 
@@ -91,7 +91,9 @@
 }
 
 -(void)onResp:(BaseResp *)resp{
+
     SendAuthResp *sendResp = (SendAuthResp *)resp;
+    if (!sendResp.code) return;
     NSString *link = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WXAppID,WXAppSecret,sendResp.code];
 
     [[NetWork shared] query:link info:nil block:^(id Obj) {

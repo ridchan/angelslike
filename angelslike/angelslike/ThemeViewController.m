@@ -108,17 +108,7 @@
 }
 
 
-- (UIViewController *)findViewController:(UIView *)sourceView
-{
-    id target=sourceView;
-    while (target) {
-        target = ((UIResponder *)target).nextResponder;
-        if ([target isKindOfClass:[UIViewController class]]) {
-            break;
-        }
-    }
-    return target;
-}
+
 
 #pragma mark table view method
 

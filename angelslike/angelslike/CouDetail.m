@@ -112,28 +112,28 @@
         [self addSubview:scView];
         
         if (!imageView) {
-            imageView =  [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 70, 70)];
+            imageView =  [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 70, 70)];
             imageView.layer.cornerRadius = 35.0;
             imageView.layer.masksToBounds = YES;
             [scView addSubview:imageView];
         }
         
         if (!nameLabel) {
-            nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(80, 5, frame.size.width - 160, 30)];
+            nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 5, frame.size.width - 160, 30)];
             nameLabel.font = FontWS(14);
             nameLabel.backgroundColor = [UIColor clearColor];
             [scView addSubview:nameLabel];
         }
         
         if (!timeStartLabel) {
-            timeStartLabel = [[UILabel alloc]initWithFrame:CGRectMake(80, 35, frame.size.width - 160, 20)];
+            timeStartLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 35, frame.size.width - 160, 20)];
             timeStartLabel.font = FontWS(11);
             timeStartLabel.backgroundColor = [UIColor clearColor];
             [scView addSubview:timeStartLabel];
         }
         
         if (!timeEndLabel) {
-            timeEndLabel = [[UILabel alloc]initWithFrame:CGRectMake(80, 55, frame.size.width - 160, 20)];
+            timeEndLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 55, frame.size.width - 160, 20)];
             timeEndLabel.font = FontWS(11);
             timeEndLabel.backgroundColor = [UIColor clearColor];
             [scView addSubview:timeEndLabel];
@@ -149,60 +149,60 @@
             statuLabel.textColor = [UIColor getHexColor:@"F88F19"];
             statuLabel.layer.borderWidth = 1;
             statuLabel.layer.masksToBounds = YES;
-            statuLabel.layer.cornerRadius = 3;
+            statuLabel.layer.cornerRadius = 4;
             statuLabel.layer.borderColor = statuLabel.textColor.CGColor;
             [scView addSubview:statuLabel];
         }
         
         
         
-        CALayer *line1 = [self lineLayer:CGPointMake(0, 80)];
+        CALayer *line1 = [self lineLayer:CGPointMake(0, 90)];
         [scView.layer addSublayer:line1];
         
         
         
-        targetLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, ScreenWidth / 3, 30)];
+        targetLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 90, ScreenWidth / 3, 30)];
         targetLabel.font = FontWS(11);
         targetLabel.backgroundColor = [UIColor clearColor];
         targetLabel.textAlignment = NSTextAlignmentCenter;
         [scView addSubview:targetLabel];
         
-        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth / 3, 80, ScreenWidth / 3, 30)];
+        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth / 3, 90, ScreenWidth / 3, 30)];
         priceLabel.backgroundColor = [UIColor clearColor];
         priceLabel.textAlignment = NSTextAlignmentCenter;
         priceLabel.font = FontWS(11);
         [scView addSubview:priceLabel];
         
-        totalLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth / 3 * 2, 80, ScreenWidth / 3, 30)];
+        totalLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth / 3 * 2, 90, ScreenWidth / 3, 30)];
         totalLabel.backgroundColor = [UIColor clearColor];
         totalLabel.textAlignment = NSTextAlignmentCenter;
         totalLabel.font = FontWS(11);
         [scView addSubview:totalLabel];
         
-        CALayer *line2 = [self lineLayer:CGPointMake(0, 110)];
+        CALayer *line2 = [self lineLayer:CGPointMake(0, 120)];
         [scView.layer addSublayer:line2];
         
-        iconView = [[IconView alloc]initWithFrame:CGRectMake(frame.size.width - 200, 5, 195, 20)];
+        iconView = [[IconView alloc]initWithFrame:CGRectMake(frame.size.width - 200, 10, 195, 20)];
         iconView.hidden = YES;
         [scView addSubview:iconView];
         
         
         //
-        daylabel = [[DayLabel alloc] initWithFrame:CGRectMake(0, 120, 60, 30)];
-        daylabel.backgroundColor = [UIColor getHexColor:@"ff6969"];
+        daylabel = [[DayLabel alloc] initWithFrame:CGRectMake(0, 130, 60, 30)];
+        daylabel.backgroundColor = [UIColor getHexColor:@"F94626"];
         daylabel.textColor = [UIColor whiteColor];
         daylabel.font = FontWS(14);
         daylabel.textAlignment = NSTextAlignmentCenter;
         [scView addSubview:daylabel];
         
-        titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 120, frame.size.width - 85, 45)];
+        titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 130, frame.size.width - 85, 45)];
         titlelabel.backgroundColor = [UIColor clearColor];
         titlelabel.font = [UIFont boldSystemFontOfSize:15];
         titlelabel.numberOfLines = 2;
         [scView addSubview:titlelabel];
         //
         
-        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 160, frame.size.width , 1)];//frame.size.height - 160)];
+        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 175, frame.size.width , 1)];//frame.size.height - 160)];
         _webView.delegate = self;
         _webView.scalesPageToFit = NO;
         _webView.scrollView.scrollEnabled = NO;
@@ -212,7 +212,7 @@
 
         
         
-        cp = [[CouProduct alloc]initWithFrame:CGRectMake(0, 165, frame.size.width, 1)];
+        cp = [[CouProduct alloc]initWithFrame:CGRectMake(0, 175, frame.size.width, 1)];
         cp.hidden = YES;
         cp.delegate = self;
         [scView addSubview:cp];
@@ -248,7 +248,22 @@
 }
 
 -(void)checkButtonClick:(id)sender{
+    if ([[self findViewController:self] respondsToSelector:@selector(productClick:)]) {
+        [[self findViewController:self] performSelector:@selector(productClick:) withObject:nil];
+    }
     
+}
+
+- (UIViewController *)findViewController:(UIView *)sourceView
+{
+    id target=sourceView;
+    while (target) {
+        target = ((UIResponder *)target).nextResponder;
+        if ([target isKindOfClass:[UIViewController class]]) {
+            break;
+        }
+    }
+    return target;
 }
 
 #pragma mark -

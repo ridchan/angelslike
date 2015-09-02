@@ -12,6 +12,8 @@
 #import "UserInfo.h"
 #import "WXApi.h"
 #import "SettingViewController.h"
+#import "MyCouViewController.h"
+#import "AddressViewController.h"
 
 @interface MineViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 

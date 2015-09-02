@@ -89,9 +89,29 @@
             [bg addSubview:progress];
         }
         
+        if (!addButton) {
+            addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            addButton.frame = CGRectMake(ScreenWidth - 70, 0, 70, 25);
+            [addButton setTitle:@"填写收货地址" forState:UIControlStateNormal];
+            addButton.titleLabel.font = FontWS(9);
+            [addButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            addButton.layer.borderWidth =  1.0;
+            addButton.layer.borderColor = [UIColor getHexColor:@"E0E0E0"].CGColor;
+            [addButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:addButton];
+        }
+        
         
     }
     return self;
+}
+
+-(void)buttonClick:(id)obj{
+    if (self.delegate) {
+        if ([self.delegate respondsToSelector:@selector(couCellButtonClick:)]) {
+            [self.delegate performSelector:@selector(couCellButtonClick:) withObject:self.info];
+        }
+    }
 }
 
 -(void)setName:(NSString *)name andType:(NSString *)strType inLabel:(UILabel *)attrLabel{
@@ -120,7 +140,7 @@
     
     targetLabel.text = [NSString stringWithFormat:@"目标 %@ 份 | 已凑 %@ 份",[info strForKey:@"copies"],[info strForKey:@"currentcopies"]];
     
-    statuLabel.text = [info strForKey:@"status"];
+    statuLabel.text = [info strForKey:@"nowstatus"];
     
     if ([[info strForKey:@"copies"] doubleValue] > 0) {
         CGFloat p = [[info strForKey:@"currentcopies"] doubleValue] / [[info strForKey:@"copies"] doubleValue] * bg.frame.size.width;

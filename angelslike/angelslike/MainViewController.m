@@ -37,7 +37,7 @@
     __block MainViewController *tempSelf = self;
     NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
     [[NetWork shared] startQuery:ListLink
-                            info:@{@"type":@"list_theme",@"page":nPage,@"sort":@"new"}
+                            info:@{@"page":nPage,@"sort":@"new"}
                    completeBlock:^(id Obj) {
                        [tempSelf  showNetworkError:[Obj intForKey:@"status"] == 0];
                        if ([Obj intForKey:@"status"] == 1) {

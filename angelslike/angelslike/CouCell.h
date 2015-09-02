@@ -12,6 +12,13 @@
 #import "UIImageView+WebCache.h"
 #import "UIColor+HexColor.h"
 
+
+@protocol CouCellDelegate <NSObject>
+
+-(void)couCellButtonClick:(id)obj;
+
+@end
+
 @interface CouCell : UITableViewCell{
     UIImageView *imageView;//图片
     UILabel *companyLabel;//图片名称
@@ -22,9 +29,11 @@
     UILabel *statuLabel;
     UIView *progress;
     UIView *bg;
+    UIButton *addButton;
     
 }
 
 @property(nonatomic,strong) NSDictionary *info;
+@property(nonatomic) id<CouCellDelegate> delegate;
 
 @end

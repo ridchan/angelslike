@@ -13,9 +13,9 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         img1 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-        img1.image =  [UIImage imageNamed:@"iconfont-mubiao"];
+        img1.image =  [[UIImage imageNamed:@"iconfont-mubiao"] rt_tintedImageWithColor:RGBA(24,24,27,.8)];
         img2 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
-        img2.image =  [UIImage imageNamed:@"iconfont-wancheng"];
+        img2.image =  [[UIImage imageNamed:@"iconfont-wancheng"] rt_tintedImageWithColor:RGBA(24,24,27,.8)];
         
 //        [self.layer addSublayer:[self lineLayer:CGPointMake(0, 5)]];
         [self.layer addSublayer:[self lineLayer:CGPointMake(0, 40)]];
@@ -25,11 +25,13 @@
         label1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, frame.size.width/2, 40)];
         label1.backgroundColor = [UIColor clearColor];
         label1.textAlignment = NSTextAlignmentCenter;
+        label1.textColor = RGBA(24,24,27,.8);
         label1.font = FontWS(11);
         
         label2 = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width/2, 0, frame.size.width/2, 40)];
         label2.backgroundColor = [UIColor clearColor];
         label2.textAlignment = NSTextAlignmentCenter;
+        label2.textColor = RGBA(24,24,27,.8);
         label2.font = FontWS(11);
         
         progress = [[ProgressView alloc]initWithFrame:CGRectMake(ScreenWidth / 2 - 40, 55 , 80, 80)];

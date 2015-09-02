@@ -30,33 +30,37 @@
     nameLabel.font = [UIFont boldSystemFontOfSize:14];
     [self addSubview:nameLabel];
     
-    UIButton *redButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    redButton.frame = CGRectMake(90, 50, 30, 30);
-    redButton.tag = 1;
-    [redButton setTitle:@"-" forState:UIControlStateNormal];
-    [redButton setTitleColor:[UIColor getHexColor:@"626262"] forState:UIControlStateNormal];
-    [redButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self setButton:redButton withStyle:0];
-    
-    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    addButton.frame = CGRectMake(150, 50, 30, 30);
-    addButton.tag = 2;
-    [addButton setTitle:@"+" forState:UIControlStateNormal];
-    [addButton setTitleColor:[UIColor getHexColor:@"626262"] forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self setButton:addButton withStyle:1];
-    
-    [self addSubview:redButton];
-    [self addSubview:addButton];
-    
-    qty = [[UILabel alloc]initWithFrame:CGRectMake(120, 60, 30, 20)];
-    qty.backgroundColor = [UIColor clearColor];
-    qty.font = FontWS(14);
-    qty.textAlignment = NSTextAlignmentCenter;
-    qty.layer.borderColor = RGBA(178,177,182,.9).CGColor;
-    qty.layer.borderWidth = 1.0;
-    
-    [self addSubview:qty];
+    qb = [[QtyButton alloc]initWithFrame:CGRectMake(90, 45, 105, 35)];
+    [qb addTarget:self action:@selector(buttonClick:)];
+    qb.style = 1;
+    [self addSubview:qb];
+//    UIButton *redButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    redButton.frame = CGRectMake(90, 50, 30, 30);
+//    redButton.tag = 1;
+//    [redButton setTitle:@"-" forState:UIControlStateNormal];
+//    [redButton setTitleColor:[UIColor getHexColor:@"626262"] forState:UIControlStateNormal];
+//    [redButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [self setButton:redButton withStyle:0];
+//    
+//    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    addButton.frame = CGRectMake(150, 50, 30, 30);
+//    addButton.tag = 2;
+//    [addButton setTitle:@"+" forState:UIControlStateNormal];
+//    [addButton setTitleColor:[UIColor getHexColor:@"626262"] forState:UIControlStateNormal];
+//    [addButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [self setButton:addButton withStyle:1];
+//    
+//    [self addSubview:redButton];
+//    [self addSubview:addButton];
+//    
+//    qty = [[UILabel alloc]initWithFrame:CGRectMake(120, 60, 30, 20)];
+//    qty.backgroundColor = [UIColor clearColor];
+//    qty.font = FontWS(14);
+//    qty.textAlignment = NSTextAlignmentCenter;
+//    qty.layer.borderColor = RGBA(178,177,182,.9).CGColor;
+//    qty.layer.borderWidth = 1.0;
+//    
+//    [self addSubview:qty];
     
     totalLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 30, ScreenWidth - 95, 30)];
     totalLabel.backgroundColor = [UIColor clearColor];
@@ -73,18 +77,9 @@
     [self addSubview:qtyLabel];
 }
 
--(void)buttonClick:(UIButton *)sender{
-    if (sender.tag == 1) {
-        if ([_info intForKey:@"qty"] != 1) {
-            NSInteger nqty = [_info intForKey:@"qty"] - 1;
-            [_info setObject:[NSString stringWithFormat:@"%ld",nqty] forKey:@"qty"];
-            [self fillContent];
-        }
-    }else{
-        NSInteger nqty = [_info intForKey:@"qty"] + 1;
-        [_info setObject:[NSString stringWithFormat:@"%ld",nqty] forKey:@"qty"];
-        [self fillContent];
-    }
+-(void)buttonClick:(NSString *)nqty{
+    [_info setObject:nqty forKey:@"qty"];
+    [self fillContent];
     
  
 }

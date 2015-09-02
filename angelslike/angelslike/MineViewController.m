@@ -26,7 +26,7 @@
     self.navigationItem.title = @"我的";
     
     self.infos = @[@[@{@"Name":@"用户信息"}],
-                   @[@{@"Name":@"我的凑分子",@"IMG":@"mine_00"},
+                   @[@{@"Name":@"我的凑分子",@"IMG":@"mine_00",@"Action":@"myCouClick:"},
                      @{@"Name":@"我购买的礼物",@"IMG":@"mine_01"},
                      @{@"Name":@"我的关注",@"IMG":@"mine_02"}
                      ],
@@ -49,8 +49,23 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)myCouClick:(id)sender{
+    AddressViewController *vc = [[AddressViewController alloc] init];
+//    MyCouViewController *vc = [[MyCouViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark -
 #pragma mark table view delegate
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    if (scrollView.contentOffset.y <= scrollView.contentInset.top) {
+//        NSNumber *off = [NSNumber numberWithFloat:scrollView.contentOffset.y];
+//        NSLog(@"off %@",off);
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserInfoCell" object:off];
+//    }
+    
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {

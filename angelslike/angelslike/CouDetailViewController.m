@@ -43,25 +43,32 @@
 }
 
 -(void)addBottomButton{
-    UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44)];
+    UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 54, ScreenWidth, 54)];
     [v.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
-    if ([self.info intForKey:@"type"] != 1) {
+    if ([self.info intForKey:@"type"] == 2) {
         RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-        b1.frame = CGRectMake(10, 5, ScreenWidth - 20, 34);
+        b1.frame = CGRectMake(10, 10, ScreenWidth - 20, 34);
         [b1 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
+        b1.titleLabel.font = FontWS(16);
         [b1 setTitle:@"我也要凑" forState:UIControlStateNormal];
+        [b1 setTitleShadowColor:[UIColor getHexColor:@"F7356A"] forState:UIControlStateNormal];
         [v addSubview:b1];
     }else if ([self.info intForKey:@"type"] == 1){
         RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-        b1.frame = CGRectMake(10, 5, ScreenWidth / 2 - 15, 34);
+        b1.frame = CGRectMake(10, 10, ScreenWidth / 2 - 15, 34);
         [b1 setBackgroundColor:[UIColor getHexColor:@"FAC116"]];
+        [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
+        [b1 addTarget:self action:@selector(productClick:) forControlEvents:UIControlEventTouchUpInside];
         [b1 setTitle:@"我要发起" forState:UIControlStateNormal];
+        b1.titleLabel.font = FontWS(16);
         [v addSubview:b1];
         
         RCRoundButton *b2 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-        b2.frame = CGRectMake(ScreenWidth / 2 + 5, 5, ScreenWidth / 2 - 15, 34);
+        b2.frame = CGRectMake(ScreenWidth / 2 + 5, 10, ScreenWidth / 2 - 15, 34);
+        b2.titleLabel.font = FontWS(16);
         [b2 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
         [b2 setTitle:@"我也要凑" forState:UIControlStateNormal];
+        [b2 setTitleShadowColor:[UIColor getHexColor:@"F7356A"] forState:UIControlStateNormal];
         [b2 addTarget:self action:@selector(couPayClick:) forControlEvents:UIControlEventTouchUpInside];
         [v addSubview:b2];
     }
@@ -70,7 +77,7 @@
 }
 
 -(void)initialSetting{
-    CouDetail *v = [[CouDetail alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 44)];
+    CouDetail *v = [[CouDetail alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 54)];
     v.hidden = YES;
     v.tag = 99;
     [self.view addSubview:v];
@@ -92,7 +99,15 @@
 
 }
 
+-(void)productClick:(id)obj{
+    CouDetail *cd  = (CouDetail *)[self.view viewWithTag:99];
+    ProductDetailViewController *vc = [[ProductDetailViewController alloc] init];
+    vc.info = [NSDictionary dictionaryWithObject:[cd.info strForKey:@"pid"] forKey:@"id"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(void)couPayClick:(id)sender{
+    cp.info = [NSMutableDictionary dictionaryWithObject:[self.info strForKey:@"everyprice"] forKey:@"price"];
     [cp show];
 }
 

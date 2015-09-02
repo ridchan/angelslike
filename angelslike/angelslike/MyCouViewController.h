@@ -27,5 +27,5 @@
 @property (strong,nonatomic) NSMutableArray *result;
 @property (strong,nonatomic) NSString *cdn;
 @property (strong,nonatomic) NSMutableDictionary *searchInfo;
-
+-(void)loadMoreData:(id)obj;
 @end

@@ -21,7 +21,17 @@
 
 -(void)setCellInfo{
     //设置数据
-    self.infos = @{@"对象":@[@{@"Name":@"送长辈",@"IMG":@"duixiang_00.png",@"ID":@"39",@"Type":@"ob"},
+    self.infos = @{@"品类":@[@{@"Name":@"生活用品",@"IMG":@"pinglei_00.png",@"ID":@"22",@"Type":@"pt"},
+                             @{@"Name":@"创意家居",@"IMG":@"pinglei_01.png",@"ID":@"24",@"Type":@"pt"},
+                             @{@"Name":@"数码电器",@"IMG":@"pinglei_02.png",@"ID":@"31",@"Type":@"pt"},
+                             @{@"Name":@"时尚穿搭",@"IMG":@"pinglei_03.png",@"ID":@"35",@"Type":@"pt"},
+                             @{@"Name":@"美妆护理",@"IMG":@"pinglei_04.png",@"ID":@"47",@"Type":@"pt"},
+                             @{@"Name":@"潮流饰物",@"IMG":@"pinglei_05.png",@"ID":@"55",@"Type":@"pt"},
+                             @{@"Name":@"文体娱乐",@"IMG":@"pinglei_06.png",@"ID":@"60",@"Type":@"pt"},
+                             @{@"Name":@"健康食品",@"IMG":@"pinglei_07.png",@"ID":@"67",@"Type":@"pt"},
+                             @{@"Name":@"汽车用品",@"IMG":@"pinglei_08.png",@"ID":@"71",@"Type":@"pt"}
+                            ],
+                   @"对象":@[@{@"Name":@"送长辈",@"IMG":@"duixiang_00.png",@"ID":@"39",@"Type":@"ob"},
                            @{@"Name":@"送恋人",@"IMG":@"duixiang_01.png",@"ID":@"35",@"Type":@"ob"},
                            @{@"Name":@"送同事",@"IMG":@"duixiang_02.png",@"ID":@"36",@"Type":@"ob"},
                            @{@"Name":@"送朋友",@"IMG":@"duixiang_03.png",@"ID":@"37",@"Type":@"ob"},
@@ -50,16 +60,6 @@
                            @{@"Name":@"低调宅",@"IMG":@"gexin_04.png",@"ID":@"8",@"Type":@"ct"},
                            @{@"Name":@"中国风",@"IMG":@"gexin_05.png",@"ID":@"9",@"Type":@"ct"},
                            @{@"Name":@"文化范",@"IMG":@"gexin_06.png",@"ID":@"10",@"Type":@"ct"}
-                           ],
-                   @"品类":@[@{@"Name":@"生活用品",@"IMG":@"pinglei_00.png",@"ID":@"22",@"Type":@"pt"},
-                           @{@"Name":@"创意家居",@"IMG":@"pinglei_01.png",@"ID":@"24",@"Type":@"pt"},
-                           @{@"Name":@"数码电器",@"IMG":@"pinglei_02.png",@"ID":@"31",@"Type":@"pt"},
-                           @{@"Name":@"时尚穿搭",@"IMG":@"pinglei_03.png",@"ID":@"35",@"Type":@"pt"},
-                           @{@"Name":@"美妆护理",@"IMG":@"pinglei_04.png",@"ID":@"47",@"Type":@"pt"},
-                           @{@"Name":@"潮流饰物",@"IMG":@"pinglei_05.png",@"ID":@"55",@"Type":@"pt"},
-                           @{@"Name":@"文体娱乐",@"IMG":@"pinglei_06.png",@"ID":@"60",@"Type":@"pt"},
-                           @{@"Name":@"健康食品",@"IMG":@"pinglei_07.png",@"ID":@"67",@"Type":@"pt"},
-                           @{@"Name":@"汽车用品",@"IMG":@"pinglei_08.png",@"ID":@"71",@"Type":@"pt"}
                            ]
                    };
 }
@@ -148,7 +148,7 @@
         cell = [[CategoryCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         cell.backgroundColor =  [UIColor clearColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        cell.title = [@[@"对象",@"场合",@"价格",@"个性",@"品类"] objectAtIndex:indexPath.row];
+        cell.title = [[self.infos allKeys] objectAtIndex:indexPath.row];
         cell.buttonInfos = [self.infos objectForKey:cell.title];
         cell.delegate = self;
     }

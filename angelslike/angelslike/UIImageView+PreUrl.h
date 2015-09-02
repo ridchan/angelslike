@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "UIImageView+WebCache.h"
 
+typedef void(^ImageBlock)(id Obj);
+
 @interface UIImageView (PreUrl)
 
 -(void)setPreImageWithUrl:(NSString *)link;
+-(void)setPreImageWithUrl:(NSString *)link block:(ImageBlock)block;
 -(void)setPreImageWithUrl:(NSString *)link domain:(NSString *)domain;
 
 @end

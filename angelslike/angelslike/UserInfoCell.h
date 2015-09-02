@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 
 @interface UserInfoCell : UITableViewCell{
+    UIImageView *imageView;
     UIImageView *logo;
     UILabel *nameLabel;
     UILabel *moneyLabel;

@@ -68,14 +68,14 @@
     
     //table view
     self.result = [NSMutableArray array];
-    self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 44)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.currentPage = 0;
     self.tableView.totalPage = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(104, 0, 0, 0);
     [self.tableView addTarget:self action:@selector(loadMoreData:)];
     [self.view addSubview:self.tableView];
     
@@ -85,7 +85,7 @@
     nameArr = @[ @[ @"全部类型", @"人情凑", @"颜值凑", @"爱心凑", @"随便凑"], @[@"全部状态", @"进行中" ,@"已完成"], @[@"按时间最新", @"按人气最高", @"按总价最贵"]];
     downMenu = [[MXPullDownMenu alloc] initWithArray:nameArr selectedColor:[UIColor getHexColor:@"FE6869"]];
     downMenu.delegate = self;
-    downMenu.frame = CGRectMake(0, 0, ScreenWidth, 35);
+    downMenu.frame = CGRectMake(0, 64, ScreenWidth, 35);
     [self.view addSubview:downMenu];
     
     
@@ -98,6 +98,8 @@
 
 
 -(void)refreshClick:(id)sender{
+    [self.result removeAllObjects];
+    self.tableView.currentPage = 0;
     [self loadMoreData:nil];
 }
 
@@ -105,6 +107,9 @@
 -(void)loadMoreData:(id)obj{
     __block MyCouViewController *tempSelf = self;
     NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
+    if ([UserInfo shared].info == nil) {
+        return;
+    }
     [self.searchInfo setObject:nPage forKey:@"page"];
     [self.searchInfo setObject:[[UserInfo shared].info strForKey:@"loginkey"] forKey:@"loginkey"];
 //    [self.searchInfo setObject:_textField.text forKey:@"key"];
@@ -218,7 +223,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CouDetailViewController *vc = [[CouDetailViewController alloc]init];
     vc.info = [self.result objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:vc animated:YES];
+    UIViewController *viewController = [self findViewController:[self.view superview]];
+    [viewController.navigationController pushViewController:vc animated:YES];
+
 }
 
 

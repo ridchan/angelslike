@@ -13,4 +13,6 @@
 @property(nonatomic) float radio;
 @property(nonatomic) BOOL bRound;
 
+-(void)setCorner:(CGFloat)corner;
+
 @end

@@ -103,7 +103,14 @@
 }
 
 -(void)viewChange:(UISegmentedControl *)sender{
-    
+    if ([UserInfo shared].info == nil) {
+        sender.selectedSegmentIndex = 0;
+        LoginViewController *lvc = [[LoginViewController alloc]init];
+        lvc.bvc = self.navigationController.tabBarController;
+        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:lvc];
+        [self presentViewController:nvc animated:YES completion:NULL];
+        return;
+    }
     [UIView beginAnimations:nil context:nil];
     //持续时间
     [UIView setAnimationDuration:.5];
@@ -120,6 +127,9 @@
         [self.view sendSubviewToBack:self.mvc.view];
     }else{
         self.mvc.view.hidden = NO;
+        if (self.mvc.result == nil) {
+            [self.mvc loadMoreData:nil];
+        }
         [self.view bringSubviewToFront:self.mvc.view];
     }
     
@@ -138,7 +148,7 @@
     [self.searchInfo setObject:nPage forKey:@"page"];
     [self.searchInfo setObject:_textField.text forKey:@"key"];
     
-    [[NetWork shared] startQuery:ListLink
+    [[NetWork shared] startQuery:CouUrl
                             info:self.searchInfo
                    completeBlock:^(id Obj) {
                        

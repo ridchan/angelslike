@@ -8,8 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface WebViewController : BaseViewController<UIScrollViewDelegate>{
+@interface WebViewController : BaseViewController<UIScrollViewDelegate,UIWebViewDelegate>{
     UIScrollView *scView;
+    BOOL canMove;
 }
 
 @property(nonatomic,strong) NSString *content;

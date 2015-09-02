@@ -19,6 +19,7 @@
     RCMutileView *mv;
     ProductHeader *header;
     UIScrollView *scView;
+    BOOL canMove;
 }
 
 @property(nonatomic,strong) NSDictionary *info;

@@ -42,7 +42,7 @@
     [self.view addSubview:self.tableView];
     
 
-    self.adds = [NSMutableArray arrayWithArray:@[@"姓名",@"地址",@"详细地址",@"电话",@"备注"]];
+//    self.adds = [NSMutableArray arrayWithArray:@[@"姓名",@"地址",@"详细地址",@"电话",@"备注"]];
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -61,13 +61,13 @@
 
 
 -(void)addBottomButton{
-    UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44)];
+    UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 48, ScreenWidth, 48)];
     v.backgroundColor = [UIColor whiteColor];
     [v.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
     
     
 //    RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-    totalLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, ScreenWidth / 2 - 15, 34)];
+    totalLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 4, ScreenWidth / 2 - 15, 40)];
     totalLabel.backgroundColor = [UIColor clearColor];
     totalLabel.font = FontWS(14);
     [self setTotalLabel];
@@ -76,7 +76,7 @@
     [v addSubview:totalLabel];
     
     RCRoundButton *b2 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-    b2.frame = CGRectMake(ScreenWidth / 2 + 5 + 40, 5, ScreenWidth / 2 - 15 - 40, 34);
+    b2.frame = CGRectMake(ScreenWidth / 2 + 5 + 50, 4, ScreenWidth / 2 - 15 - 50, 40);
     [b2.titleLabel setFont:FontWS(14)];
     [b2 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
     [b2 setTitle:@"确认支付" forState:UIControlStateNormal];
@@ -124,7 +124,29 @@
 
 
 -(void)comfirmPay:(id)sender{
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    for(NSDictionary *dic in self.products){
+        [info setObject:[dic strForKey:@"id"] forKey:@"id"];//产品id
+        [info setObject:[dic strForKey:@"qty"] forKey:@"qty"];//产品数量
+    }
+    [info setObject:[[UserInfo shared].info strForKey:@"loginkey"] forKey:@"loginkey"];
+    [info setObject:@"4" forKey:@"paytype"];
     
+    __block BuyNowViewController *tempSelf = self;
+    [[NetWork shared] query:BuyNowUrl info:info block:^(id Obj) {
+        if ([Obj intForKey:@"status"] == 1) {
+            NSDictionary *data = [Obj objectForKey:@"data"];
+            [tempSelf cancelOrder:[data strForKey:@"orderid"]];
+        }
+    } lock:YES];
+}
+
+-(void)cancelOrder:(NSString *)orderid{
+    [[NetWork shared] query:CancelOrderUrl info:@{@"orderid":orderid} block:^(id Obj) {
+        if ([Obj intForKey:@"status"] == 1) {
+            NSLog(@"取消成功");
+        }
+    } lock:YES];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
@@ -136,11 +158,11 @@
 #pragma mark table view delegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return [@[@"22",@"22",@"22"][section] floatValue];
+    return [@[@"22",@"22"][section] floatValue];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @[@"",@"收货信息",@"支付方式"][section];
+    return @[@"",@"支付方式"][section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -152,7 +174,7 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 2;
 }
 
 
@@ -161,8 +183,6 @@
         case 0:
             return [self.products count];
         case 1:
-            return [self.adds count];
-        case 2:
             return 1;
         default:
             return 0;
@@ -180,15 +200,15 @@
         }
         cell.info = [self.products objectAtIndex:indexPath.row];
         return cell;
-    }else if (indexPath.section == 1){
-        AddressCell *cell = (AddressCell *)[tableView dequeueReusableCellWithIdentifier:@"AddressCell"];
-        if (cell == nil) {
-            cell = [[AddressCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddressCell"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-
-        cell.textLabel.text = [self.adds objectAtIndex:indexPath.row];
-        return cell;
+//    }else if (indexPath.section == 1){
+//        AddressCell *cell = (AddressCell *)[tableView dequeueReusableCellWithIdentifier:@"AddressCell"];
+//        if (cell == nil) {
+//            cell = [[AddressCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddressCell"];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        }
+//
+//        cell.textLabel.text = [self.adds objectAtIndex:indexPath.row];
+//        return cell;
     }else{
         PayCell *cell = (PayCell *) [tableView dequeueReusableCellWithIdentifier:@"PayCell"];
         if (cell == nil) {
