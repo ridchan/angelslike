@@ -96,7 +96,6 @@
     if (self.bLoading == NO)
         
     {
-        NSLog(@"load in bottom");
         self.bLoading = YES;
         
         UIActivityIndicatorView *tableFooterActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(75.0f, 10.0f, 20.0f, 20.0f)];

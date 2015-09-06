@@ -64,18 +64,24 @@
 //    
 //    [self.navigationController.navigationBar addSubview:_navBar];
 //    [self.navigationItem setHidesBackButton:YES];
-    
-    
+
     //table view
     self.result = [NSMutableArray array];
-    self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 44)];
+    if (self.ctype == CouViewTypeFromSetting) {
+        self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        self.tableView.contentInset = UIEdgeInsetsMake(44 , 0, 0, 0);
+    }else{
+        self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 44)];
+        self.tableView.contentInset = UIEdgeInsetsMake(104 , 0, 0, 0);
+    }
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.currentPage = 0;
     self.tableView.totalPage = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.contentInset = UIEdgeInsetsMake(104, 0, 0, 0);
+    
     [self.tableView addTarget:self action:@selector(loadMoreData:)];
     [self.view addSubview:self.tableView];
     
@@ -106,12 +112,14 @@
 
 -(void)loadMoreData:(id)obj{
     __block MyCouViewController *tempSelf = self;
+    NSLog(@"loading");
     NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
     if ([UserInfo shared].info == nil) {
         return;
     }
     [self.searchInfo setObject:nPage forKey:@"page"];
     [self.searchInfo setObject:[[UserInfo shared].info strForKey:@"loginkey"] forKey:@"loginkey"];
+    
 //    [self.searchInfo setObject:_textField.text forKey:@"key"];
     
     [[NetWork shared] startQuery:MyCouUrl
@@ -212,6 +220,12 @@
 #pragma mark -
 #pragma mark table view method
 
+-(void)couCellButtonClick:(id)obj{
+    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:[[AddressViewController alloc]init]];
+    UIViewController *viewController = [self findViewController:[self.view superview]];
+    [viewController.navigationController.tabBarController presentViewController:nvc animated:YES completion:NULL];
+}
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if([self checkScrollView:scrollView]){
         [self.tableView loadDataBegin];
@@ -223,8 +237,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CouDetailViewController *vc = [[CouDetailViewController alloc]init];
     vc.info = [self.result objectAtIndex:indexPath.row];
-    UIViewController *viewController = [self findViewController:[self.view superview]];
-    [viewController.navigationController pushViewController:vc animated:YES];
+    if (self.ctype == CouViewTypeFromSetting) {
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        UIViewController *viewController = [self findViewController:[self.view superview]];
+        [viewController.navigationController pushViewController:vc animated:YES];
+    }
+
 
 }
 
@@ -235,12 +254,13 @@
     CouCell *cell = (CouCell *)[tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
         cell = [[CouCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        cell.delegate = self;
         cell.backgroundColor =  [UIColor clearColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     
     cell.info = [self.result objectAtIndex:indexPath.row];
-    
+    cell.bAddress = [cell.info intForKey:@"is_address"] == 0;
     return cell;
     
 }

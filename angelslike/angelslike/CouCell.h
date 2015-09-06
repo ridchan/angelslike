@@ -35,5 +35,6 @@
 
 @property(nonatomic,strong) NSDictionary *info;
 @property(nonatomic) id<CouCellDelegate> delegate;
+@property(nonatomic) BOOL bAddress;
 
 @end

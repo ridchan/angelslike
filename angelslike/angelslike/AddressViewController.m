@@ -40,6 +40,12 @@
     cb.center = CGPointMake(ScreenWidth / 2 , cen);
     [cb addTarget:self action:@selector(buttonClick:)];
     [self.view addSubview:cb];
+    
+    [self setBackButtonAction:@selector(backClick:)];
+}
+
+-(void)backClick:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 -(void)buttonClick:(UIButton *)sender{

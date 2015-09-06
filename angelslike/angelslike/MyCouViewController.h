@@ -13,8 +13,14 @@
 #import "MXPullDownMenu.h"
 #import "CouDetailViewController.h"
 #import "MJRefresh.h"
+#import "AddressViewController.h"
 
-@interface MyCouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UITextFieldDelegate>{
+typedef enum{
+    CouViewTypeFromCou = 0,
+    CouViewTypeFromSetting = 1,
+}CouViewType;
+
+@interface MyCouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UITextFieldDelegate,CouCellDelegate>{
     MXPullDownMenu *downMenu;
     UISearchBar *_searchBar;
     UISegmentedControl *seg;
@@ -23,6 +29,7 @@
     UITextField *_textField;
 }
 
+@property (nonatomic) CouViewType ctype;
 @property (strong,nonatomic) LoadMoreTableView *tableView;
 @property (strong,nonatomic) NSMutableArray *result;
 @property (strong,nonatomic) NSString *cdn;

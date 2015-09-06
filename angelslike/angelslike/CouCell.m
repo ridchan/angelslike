@@ -11,6 +11,7 @@
 @implementation CouCell
 
 @synthesize info = _info;
+@synthesize bAddress = _bAddress;
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self =  [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -97,6 +98,7 @@
             [addButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             addButton.layer.borderWidth =  1.0;
             addButton.layer.borderColor = [UIColor getHexColor:@"E0E0E0"].CGColor;
+            addButton.hidden = YES;
             [addButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:addButton];
         }
@@ -104,6 +106,11 @@
         
     }
     return self;
+}
+
+-(void)setBAddress:(BOOL)bAddress{
+    _bAddress = bAddress;
+    addButton.hidden = !bAddress;
 }
 
 -(void)buttonClick:(id)obj{

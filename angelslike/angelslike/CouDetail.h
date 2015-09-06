@@ -52,6 +52,8 @@
     
     CouProduct *cp;
     CouProcess *process;
+    
+    RCRoundButton *inviteButton;
 }
 
 @property(nonatomic,strong) NSDictionary *info;

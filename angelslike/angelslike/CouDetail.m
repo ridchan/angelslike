@@ -330,9 +330,7 @@
 
     
     if ([[_info strForKey:@"content"] length] > 0) {
-        NSMutableString *rss = [NSMutableString stringWithString:[_info strForKey:@"content"]];
-        [self reSizeImage:rss];
-        [_webView loadHTMLString:rss baseURL:[NSURL URLWithString:@"http://www.angelslike.com"]];
+        [_webView loadHTMLString:[_info strForKey:@"content"] baseURL:[NSURL URLWithString:@"http://www.angelslike.com"]];
     }
     
     [process setTarget:[_info strForKey:@"copies"]
@@ -345,51 +343,5 @@
 }
 
 
--(void)reSizeImage:(NSMutableString *)result{
-    BOOL find = YES;
-    NSInteger loc = 0;
-    NSInteger length = [result length];
-    NSMutableArray *arr = [NSMutableArray array];
-    NSRange curRange;
-    while (find) {
-        curRange = NSMakeRange(loc, length - loc - 1);
-        NSRange imgStart = [result rangeOfString:@"<img" options:NSCaseInsensitiveSearch range:curRange];
-        loc = imgStart.location;
-        
-        if (imgStart.location != NSNotFound) {
-            @try {
-                curRange = NSMakeRange(loc, length - loc - 1);
-                NSRange pngEnd = [result rangeOfString:@"png\"" options:NSCaseInsensitiveSearch range:curRange];
-                NSRange jpgEnd = [result rangeOfString:@"jpg\"" options:NSCaseInsensitiveSearch range:curRange];
-                if (pngEnd.location < jpgEnd.location) {
-                    loc = pngEnd.location;
-                    //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%ld",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
-                }else{
-                    loc = jpgEnd.location;
-                    //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%ld",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
-                }
-                
-                
-            }
-            @catch (NSException *exception) {
-                NSLog(@"exception %@",exception);
-                find = NO;
-            }
-        }else{
-            find = NO;
-        }
-        
-    }
-    NSString *add = [NSString stringWithFormat:@" width=\"100%%\""];
-    NSUInteger offset = 0;
-    for (NSString *lc in arr){
-        [result insertString:add
-                     atIndex:[lc integerValue] + offset ];
-        offset += [add length];
-    }
-    
-}
 
 @end

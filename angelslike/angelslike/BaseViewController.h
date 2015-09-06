@@ -30,5 +30,6 @@
 -(void)refreshClick:(id)sender;
 -(CAShapeLayer *)lineLayer:(CGPoint)position;
 - (UIViewController *)findViewController:(UIView *)sourceView;
+-(void)setBackButtonAction:(SEL)action;
 
 @end

@@ -10,11 +10,13 @@
 #import "ProductCell.h"
 #import "MJRefresh.h"
 #import "ProductDetailViewController.h"
+#import "MXPullDownMenu.h"
 
-@interface ProductlistViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>{
+@interface ProductlistViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,MXPullDownMenuDelegate>{
     NSInteger page;
     NSInteger totalPage;
     BOOL bloading ;
+    MXPullDownMenu *downMenu;
 }
 
 @property(nonatomic,strong) UICollectionView *collectionView;

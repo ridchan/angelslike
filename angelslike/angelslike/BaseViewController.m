@@ -20,6 +20,15 @@
 //    }
 }
 
+-(void)setBackButtonAction:(SEL)action{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 25, 25);
+    [button setImage:[UIImage imageNamed:@"iconfont-houtui"] forState:UIControlStateNormal];
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = barItem;
+}
+
 - (UIViewController *)findViewController:(UIView *)sourceView
 {
     id target=sourceView;

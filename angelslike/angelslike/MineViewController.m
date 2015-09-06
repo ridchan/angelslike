@@ -50,8 +50,10 @@
 }
 
 -(void)myCouClick:(id)sender{
-    AddressViewController *vc = [[AddressViewController alloc] init];
-//    MyCouViewController *vc = [[MyCouViewController alloc]init];
+//    AddressViewController *vc = [[AddressViewController alloc] init];
+    MyCouViewController *vc = [[MyCouViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.ctype = CouViewTypeFromSetting;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

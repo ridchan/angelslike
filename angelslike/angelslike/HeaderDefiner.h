@@ -19,26 +19,41 @@
 #define HexColor(hex) [UIColor getHexColor:hex]
 #define HEXCOLOR(c)   [UIColor colorWithRed:((c>>16)&0xFF)/255.0f green:((c>>8)&0xFF)/255.0f blue:(c&0xFF)/255.0f alpha:1.0f];
 
-#define MyCouUrl @"http://app.angelslike.com/my/mycourecords"
-#define SliderLink @"http://www.angelslike.com/json/getslider"
-#define ListLink @"http://app.angelslike.com/theme/lists"
-#define ImageLink @"http://img1.angelslike.com"
-#define LoginUrl @"http://app.angelslike.com/index/login"
-#define RegistUrl @"http://app.angelslike.com/index/register"
-#define CouUrl @"http://app.angelslike.com/cou/lists"
-#define CouDetailUrl @"http://app.angelslike.com/cou/detail"
-#define AppLoginUrl @"http://app.angelslike.com/index/login" //微信登陆接口 unionid
-#define ProductsUrl @"http://app.angelslike.com/product/lists"
-#define ProductUrl @"http://app.angelslike.com/product/detail"
-#define CommentsUrl @"http://app.angelslike.com/review/lists"
-#define ThemeUrl @"http://app.angelslike.com/theme/detail"
-
-#define BuyNowUrl @"http://app.angelslike.com/buynow"
-#define CancelOrderUrl @"http://app.angelslike.com/index/cancelOrder"
-
-#define AddressUrl @"http://app.angelslike.com/index/getaddress"
-
+//web文本来源地址，用于取图
 #define MainUrl @"http://www.angelslike.com"
+//主域名
+#define MainDomain @"http://app.angelslike.com/"
+//图片地址
+#define ImageLink @"http://img1.angelslike.com"
+//广告栏
+#define SliderLink @"http://www.angelslike.com/json/getslider"
+//我的凑分子
+#define MyCouUrl [MainDomain stringByAppendingPathComponent:@"my/mycourecords"]
+#define CouUrl [MainDomain stringByAppendingPathComponent:@"cou/lists"]
+#define CouDetailUrl [MainDomain stringByAppendingPathComponent:@"cou/detail"]
+//主题
+#define ListLink [MainDomain stringByAppendingPathComponent:@"theme/lists"]
+#define ThemeUrl [MainDomain stringByAppendingPathComponent:@"theme/detail"]
+//登陆
+#define LoginUrl [MainDomain stringByAppendingPathComponent:@"index/login"]
+#define AppLoginUrl [MainDomain stringByAppendingPathComponent:@"index/login"] //微信登陆接口 unionid
+//注册
+#define RegistUrl [MainDomain stringByAppendingPathComponent:@"index/register"]
+//产品列表
+#define ProductsUrl [MainDomain stringByAppendingPathComponent:@"product/lists"]
+#define ProductUrl [MainDomain stringByAppendingPathComponent:@"product/detail"]
+//评论
+#define CommentsUrl [MainDomain stringByAppendingPathComponent:@"review/lists"]
+
+
+//立即购买
+#define BuyNowUrl [MainDomain stringByAppendingPathComponent:@"buynow"]
+//取消订单
+#define CancelOrderUrl [MainDomain stringByAppendingPathComponent:@"index/cancelOrder"]
+//获取地址
+#define AddressUrl [MainDomain stringByAppendingPathComponent:@"index/getaddress"]
+
+
 
 // margin 首页
 #define MainCellMargin 10

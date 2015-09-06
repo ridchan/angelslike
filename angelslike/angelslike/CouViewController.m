@@ -181,6 +181,8 @@
 //    self.navigationItem.rightBarButtonItem = barButtonItem;
 //    
 //    _searchBar.text = @"";
+    
+    
     _textField.text = @"";
     [_textField resignFirstResponder];
     [UIView beginAnimations:nil context:nil];

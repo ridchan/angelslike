@@ -25,6 +25,7 @@
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource  = self;
+    self.collectionView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
 
     [self.collectionView registerClass:[ProductCell class] forCellWithReuseIdentifier:@"ProductCell"];
     [self.view addSubview:self.collectionView];
@@ -34,6 +35,16 @@
     header.automaticallyChangeAlpha = YES;
     header.lastUpdatedTimeLabel.hidden = YES;
     self.collectionView.header = header;
+    
+    
+    NSArray *nameArr;
+    nameArr = @[@[@"全部对象", @"送长辈", @"送恋人", @"送同事", @"送朋友", @"送老师", @"送儿童", @"送亲人", @"送嘉宾"],
+                @[@"全部场景", @"亲情礼" ,@"爱情礼", @"人情礼", @"生日礼", @"婚庆礼", @"节日礼"],
+                @[@"按时间最新", @"按人气最高"]];
+    downMenu = [[MXPullDownMenu alloc] initWithArray:nameArr selectedColor:[UIColor getHexColor:@"FE6869"]];
+    downMenu.delegate = self;
+    downMenu.frame = CGRectMake(0, 64, ScreenWidth, 35);
+    [self.view addSubview:downMenu];
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -54,6 +65,8 @@
     bloading = NO;
     [self refreshClick:nil];
 }
+
+
 
 -(void)loadData:(id)sender{
     __block ProductlistViewController *tempSelf = self;

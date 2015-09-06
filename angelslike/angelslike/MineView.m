@@ -50,6 +50,7 @@
     imageView.contentMode =  UIViewContentModeScaleAspectFit;
     imageView.image = [UIImage imageNamed:@"sendmy"];
     [self addSubview:imageView];
+
 }
 
 -(UITextField *)textField:(CGRect)frame{

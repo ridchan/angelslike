@@ -77,11 +77,38 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        static NSString *topIdentify = @"TopCell";
+        TopCell *cell = (TopCell *)[tableView dequeueReusableCellWithIdentifier:topIdentify];
+        if (cell == nil) {
+            cell = [[TopCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:topIdentify];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            
+        }
+        
+        [cell setContent:[self.result strForKey:@"content"] image:[self.result strForKey:@"img"]];
+        if (![self.indexs objectForKey:indexPath]) {
+            [self.indexs setObject:[NSString stringWithFormat:@"%0.2f",cell.frame.size.height] forKey:indexPath];
+        }
+    }else{
+        static NSString *itemIdentify = @"ItemCell";
+        ItemCell *cell = (ItemCell *)[tableView dequeueReusableCellWithIdentifier:itemIdentify];
+        if (cell == nil) {
+            cell = [[ItemCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:itemIdentify];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        }
+        
+        cell.info = [[self.result objectForKey:@"details"] objectAtIndex:indexPath.row - 1];
+        if (![self.indexs objectForKey:indexPath]) {
+            [self.indexs setObject:[NSString stringWithFormat:@"%0.2f",cell.frame.size.height] forKey:indexPath];
+        }
+    }
+    NSLog(@"height %@",[self.indexs objectForKey:indexPath]);
     return [[self.indexs objectForKey:indexPath] floatValue];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    NSLog(@"cell ");
     if (indexPath.row == 0) {
         static NSString *topIdentify = @"TopCell";
         TopCell *cell = (TopCell *)[tableView dequeueReusableCellWithIdentifier:topIdentify];

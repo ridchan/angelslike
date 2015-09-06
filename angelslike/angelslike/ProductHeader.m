@@ -116,6 +116,18 @@
     backView.alpha = alpha + 0.1;
 
     line.opacity = alpha >= 1 ? 1 : 0;
+    
+    if (alpha >= 1.0) {
+        button1.backgroundColor = [UIColor whiteColor];
+        button2.backgroundColor = [UIColor whiteColor];
+        button3.backgroundColor = [UIColor whiteColor];
+        button4.backgroundColor = [UIColor whiteColor];
+    }else{
+        button1.backgroundColor = RGBA(245,245,245,.4);
+        button2.backgroundColor = RGBA(245,245,245,.4);
+        button3.backgroundColor = RGBA(245,245,245,.4);
+        button4.backgroundColor = RGBA(245,245,245,.4);
+    }
 }
 
 

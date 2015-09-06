@@ -93,6 +93,8 @@
 		27E089A81B904D3A0090C724 /* CouPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E089A71B904D3A0090C724 /* CouPayViewController.m */; };
 		27E089AB1B9054080090C724 /* CouPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E089AA1B9054080090C724 /* CouPay.m */; };
 		27E0E3C31B90676E00685760 /* MyCouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0E3C21B90676E00685760 /* MyCouViewController.m */; };
+		27E0FA301B9C2E0400F1F8EB /* iconfont-dianzan.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */; };
+		27E0FA321B9C320800F1F8EB /* xiaolian.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FA311B9C320800F1F8EB /* xiaolian.png */; };
 		27E37AC51B9431990038F8FB /* CheckButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E37AC41B9431990038F8FB /* CheckButton.m */; };
 		27E37AC81B94346A0038F8FB /* QtyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E37AC71B94346A0038F8FB /* QtyButton.m */; };
 		27E3B05C1B969BA200BA6254 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E3B05B1B969BA200BA6254 /* CircleButton.m */; };
@@ -391,6 +393,8 @@
 		27E089AA1B9054080090C724 /* CouPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouPay.m; sourceTree = "<group>"; };
 		27E0E3C11B90676E00685760 /* MyCouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouViewController.h; sourceTree = "<group>"; };
 		27E0E3C21B90676E00685760 /* MyCouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouViewController.m; sourceTree = "<group>"; };
+		27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-dianzan.png"; sourceTree = "<group>"; };
+		27E0FA311B9C320800F1F8EB /* xiaolian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiaolian.png; sourceTree = "<group>"; };
 		27E37AC31B9431990038F8FB /* CheckButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckButton.h; sourceTree = "<group>"; };
 		27E37AC41B9431990038F8FB /* CheckButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckButton.m; sourceTree = "<group>"; };
 		27E37AC61B94346A0038F8FB /* QtyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QtyButton.h; sourceTree = "<group>"; };
@@ -666,6 +670,8 @@
 				274CD79E1B95973E000125EB /* sendmy.png */,
 				274CD79F1B95973E000125EB /* sendta.png */,
 				274CD7AC1B95A182000125EB /* receiving-round.png */,
+				27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */,
+				27E0FA311B9C320800F1F8EB /* xiaolian.png */,
 			);
 			name = "图标";
 			sourceTree = "<group>";
@@ -1323,6 +1329,7 @@
 			files = (
 				27EA9A0E1B731AE7003559C0 /* iconfont-houtui.png in Resources */,
 				27EFB2551B73970100A14872 /* jiage_03.png in Resources */,
+				27E0FA301B9C2E0400F1F8EB /* iconfont-dianzan.png in Resources */,
 				27BA813B1B71AADF005B527B /* iconfont-shouye.png in Resources */,
 				27EFB23C1B7396E700A14872 /* changhe_03.png in Resources */,
 				27EFB2121B734C9800A14872 /* arrow.png in Resources */,
@@ -1376,6 +1383,7 @@
 				27BA813C1B71AADF005B527B /* iconfont-wode.png in Resources */,
 				27DD23E01B70514700C61546 /* Images.xcassets in Resources */,
 				27EFB22F1B73966800A14872 /* duixiang_04.png in Resources */,
+				27E0FA321B9C320800F1F8EB /* xiaolian.png in Resources */,
 				27EFB2641B73970900A14872 /* pinglei_04.png in Resources */,
 				27EA453F1B7DD30E004851A2 /* iconfont-wancheng.png in Resources */,
 				27EFB2521B73970100A14872 /* jiage_00.png in Resources */,
