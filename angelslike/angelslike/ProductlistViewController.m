@@ -38,9 +38,7 @@
     
     
     NSArray *nameArr;
-    nameArr = @[@[@"全部对象", @"送长辈", @"送恋人", @"送同事", @"送朋友", @"送老师", @"送儿童", @"送亲人", @"送嘉宾"],
-                @[@"全部场景", @"亲情礼" ,@"爱情礼", @"人情礼", @"生日礼", @"婚庆礼", @"节日礼"],
-                @[@"按时间最新", @"按人气最高"]];
+    nameArr = @[@[@"按时间最新", @"按人气最高"]];
     downMenu = [[MXPullDownMenu alloc] initWithArray:nameArr selectedColor:[UIColor getHexColor:@"FE6869"]];
     downMenu.delegate = self;
     downMenu.frame = CGRectMake(0, 64, ScreenWidth, 35);
@@ -67,6 +65,11 @@
 }
 
 
+-(void)PullDownMenu:(MXPullDownMenu *)pullDownMenu didSelectRowAtColumn:(NSInteger)column row:(NSInteger)row{
+    NSArray *values = @[@"new",@"hot"];
+    [self.info setObject:[values objectAtIndex:row] forKey:@"sort"];
+    [self refreshClick:nil];
+}
 
 -(void)loadData:(id)sender{
     __block ProductlistViewController *tempSelf = self;

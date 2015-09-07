@@ -29,8 +29,8 @@
 -(void)initial{
     self.backgroundColor = [UIColor clearColor];
     
-    img1 = [UIImage imageNamed:@"iconfont-check"];
-    img2 = [UIImage imageNamed:@"iconfont-nocheck"];
+    img1 = [UIImage imageNamed:@"pieceorder_check_press"];
+    img2 = [UIImage imageNamed:@"pieceorder_check_def"];
     
     imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 32, 32)];
     imageView.image = img2;

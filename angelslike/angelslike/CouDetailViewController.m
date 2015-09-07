@@ -16,7 +16,7 @@
     
     [self initialSetting];
     [self addBottomButton];
-    
+    [self addViewController];
 
 }
 
@@ -42,8 +42,29 @@
     return layer;
 }
 
+-(void)addViewController{
+    
+    CouDetail *v = (CouDetail *)[self.view viewWithTag:99];
+    
+    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, v.frame.size.height, ScreenWidth, ScreenHeight - 64)];
+    mv.titles = @[@"谁在凑",@"凑热闹"];
+    
+    CouRecordsViewController *vc1 = [[CouRecordsViewController alloc]init];
+    vc1.info = @{@"id":[self.info strForKey:@"id"],@"type":@"2"};
+    
+    CommentViewController *vc2 = [[CommentViewController alloc]init];
+    vc2.info = @{@"id":[self.info strForKey:@"id"],@"type":@"2"};
+    mv.viewControllers = @[vc1,vc2];
+    
+    
+    [v addToView:mv];
+    
+    
+}
+
 -(void)addBottomButton{
     UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 54, ScreenWidth, 54)];
+    v.backgroundColor = [UIColor whiteColor];
     [v.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
     if ([self.info intForKey:@"type"] == 2) {
         RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
@@ -77,7 +98,7 @@
 }
 
 -(void)initialSetting{
-    CouDetail *v = [[CouDetail alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 54)];
+    CouDetail *v = [[CouDetail alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight )];
     v.hidden = YES;
     v.tag = 99;
     [self.view addSubview:v];

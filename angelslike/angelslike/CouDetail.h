@@ -54,8 +54,12 @@
     CouProcess *process;
     
     RCRoundButton *inviteButton;
+    
+    UIView *tempView;
 }
 
 @property(nonatomic,strong) NSDictionary *info;
+
+-(void)addToView:(UIView *)view;
 
 @end

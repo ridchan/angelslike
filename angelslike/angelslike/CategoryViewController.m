@@ -21,15 +21,15 @@
 
 -(void)setCellInfo{
     //设置数据
-    self.infos = @{@"品类":@[@{@"Name":@"生活用品",@"IMG":@"pinglei_00.png",@"ID":@"22",@"Type":@"pt"},
-                             @{@"Name":@"创意家居",@"IMG":@"pinglei_01.png",@"ID":@"24",@"Type":@"pt"},
-                             @{@"Name":@"数码电器",@"IMG":@"pinglei_02.png",@"ID":@"31",@"Type":@"pt"},
-                             @{@"Name":@"时尚穿搭",@"IMG":@"pinglei_03.png",@"ID":@"35",@"Type":@"pt"},
-                             @{@"Name":@"美妆护理",@"IMG":@"pinglei_04.png",@"ID":@"47",@"Type":@"pt"},
-                             @{@"Name":@"潮流饰物",@"IMG":@"pinglei_05.png",@"ID":@"55",@"Type":@"pt"},
-                             @{@"Name":@"文体娱乐",@"IMG":@"pinglei_06.png",@"ID":@"60",@"Type":@"pt"},
-                             @{@"Name":@"健康食品",@"IMG":@"pinglei_07.png",@"ID":@"67",@"Type":@"pt"},
-                             @{@"Name":@"汽车用品",@"IMG":@"pinglei_08.png",@"ID":@"71",@"Type":@"pt"}
+    self.infos = @{@"品类":@[@{@"Name":@"日用百货",@"IMG":@"pinglei_00.png",@"ID":@"88",@"Type":@"pt"},
+                             @{@"Name":@"穿搭配饰",@"IMG":@"pinglei_01.png",@"ID":@"96",@"Type":@"pt"},
+                             @{@"Name":@"美妆护肤",@"IMG":@"pinglei_02.png",@"ID":@"101",@"Type":@"pt"},
+                             @{@"Name":@"美食养生",@"IMG":@"pinglei_03.png",@"ID":@"108",@"Type":@"pt"},
+                             @{@"Name":@"亲子玩具",@"IMG":@"pinglei_04.png",@"ID":@"115",@"Type":@"pt"},
+                             @{@"Name":@"户外运动",@"IMG":@"pinglei_05.png",@"ID":@"120",@"Type":@"pt"},
+                             @{@"Name":@"数码电器",@"IMG":@"pinglei_06.png",@"ID":@"125",@"Type":@"pt"},
+                             @{@"Name":@"文化办公",@"IMG":@"pinglei_07.png",@"ID":@"132",@"Type":@"pt"},
+                             @{@"Name":@"爱车萌宠",@"IMG":@"pinglei_08.png",@"ID":@"136",@"Type":@"pt"}
                             ],
                    @"对象":@[@{@"Name":@"送长辈",@"IMG":@"duixiang_00.png",@"ID":@"39",@"Type":@"ob"},
                            @{@"Name":@"送恋人",@"IMG":@"duixiang_01.png",@"ID":@"35",@"Type":@"ob"},

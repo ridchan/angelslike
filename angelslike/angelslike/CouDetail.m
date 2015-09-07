@@ -219,13 +219,34 @@
         
         process = [[CouProcess alloc]initWithFrame:CGRectMake(0, 150, frame.size.width, 150)];
         [scView addSubview:process];
+        
+        inviteButton =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
+        [inviteButton setTitle:@"邀请朋友来凑" forState:UIControlStateNormal];
+        inviteButton.frame = CGRectMake(10, 310 , 300, 45);
+        inviteButton.titleLabel.font = FontWS(18);
+        inviteButton.backgroundColor = HexColor(@"3AB356");
+        [inviteButton setTitleShadowColor:HexColor(@"309647") forState:UIControlStateNormal];
+        [scView addSubview:inviteButton];
     }
     
     return self;
 }
 
+-(void)addToView:(UIView *)view{
+    CGRect rect = CGRectZero;
+    rect.origin = CGPointMake(0 , 350);
+    rect.size = view.frame.size;
+    tempView = view;
+    tempView.frame = rect;
+    [tempView.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
+    [scView addSubview:tempView];
+}
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"scroll %f ;;  %f",scrollView.contentOffset.y,tempView.frame.origin.y);
+    if (scrollView.contentOffset.y + 64 > tempView.frame.origin.y ) {
+        scrollView.contentOffset  = CGPointMake(0, tempView.frame.origin.y - 64);
+    }
 //    imageView.center = CGPointMake(40, 104 + scrollView.contentOffset.y);
 }
 
@@ -236,7 +257,14 @@
     webView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, [htmlHeight floatValue]);
     cp.frame = CGRectMake(cp.frame.origin.x, webView.frame.origin.y + webView.frame.size.height , cp.frame.size.width, cp.frame.size.height);
     process.frame = CGRectMake(process.frame.origin.x, cp.frame.origin.y + cp.frame.size.height, process.frame.size.width, process.frame.size.height);
-    scView.contentSize = CGSizeMake(1, process.frame.origin.y + process.frame.size.height);
+    
+
+    inviteButton.frame = CGRectMake(inviteButton.frame.origin.x, process.frame.origin.y + process.frame.size.height, inviteButton.frame.size.width, inviteButton.frame.size.height);
+    
+    tempView.frame = CGRectMake(tempView.frame.origin.x, inviteButton.frame.origin.y + inviteButton.frame.size.height + 10, tempView.frame.size.width, tempView.frame.size.height);
+    
+    
+    scView.contentSize = CGSizeMake(1, tempView.frame.origin.y + tempView.frame.size.height);
 
 }
 

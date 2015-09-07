@@ -29,6 +29,7 @@
 #define SliderLink @"http://www.angelslike.com/json/getslider"
 //我的凑分子
 #define MyCouUrl [MainDomain stringByAppendingPathComponent:@"my/mycourecords"]
+#define CouRecordUrl [MainDomain stringByAppendingPathComponent:@"cou/records"]
 #define CouUrl [MainDomain stringByAppendingPathComponent:@"cou/lists"]
 #define CouDetailUrl [MainDomain stringByAppendingPathComponent:@"cou/detail"]
 //主题
@@ -78,7 +79,24 @@
 
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
+//#define SuppressPerformSelectorLeakWarning(Stuff) \
+//
+//do { \
+//    
+//    _Pragma("clang diagnostic push") \
+//    
+//    _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+//    
+//    Stuff; \
+//    
+//    _Pragma("clang diagnostic pop") \
+//    
+//} while (0)
+
+//设置View的tag属性
+#define VIEWWITHTAG(_OBJECT, _TAG)    [_OBJECT viewWithTag : _TAG]
 
 
+#define RECT(a,b,c,d) CGRectMake(a,b,c,d)
 
 #endif//

@@ -95,6 +95,19 @@
 		27E0E3C31B90676E00685760 /* MyCouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0E3C21B90676E00685760 /* MyCouViewController.m */; };
 		27E0FA301B9C2E0400F1F8EB /* iconfont-dianzan.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */; };
 		27E0FA321B9C320800F1F8EB /* xiaolian.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FA311B9C320800F1F8EB /* xiaolian.png */; };
+		27E16BEC1B9D250C00EE5259 /* CouRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16BEB1B9D250C00EE5259 /* CouRecordsViewController.m */; };
+		27E16BEF1B9D2ACF00EE5259 /* CouRecrodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16BEE1B9D2ACF00EE5259 /* CouRecrodCell.m */; };
+		27E16BF21B9D5AA100EE5259 /* ReplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16BF11B9D5AA100EE5259 /* ReplayView.m */; };
+		27E16BF41B9D85AA00EE5259 /* mine_002.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E16BF31B9D85AA00EE5259 /* mine_002.png */; };
+		27E16BF71B9D8AAE00EE5259 /* pieceorder_check_def.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E16BF51B9D8AAE00EE5259 /* pieceorder_check_def.png */; };
+		27E16BF81B9D8AAE00EE5259 /* pieceorder_check_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E16BF61B9D8AAE00EE5259 /* pieceorder_check_press.png */; };
+		27E16BFB1B9D8E1200EE5259 /* StartCouViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16BFA1B9D8E1200EE5259 /* StartCouViewViewController.m */; };
+		27E16C001B9D995F00EE5259 /* CouNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16BFF1B9D995F00EE5259 /* CouNameCell.m */; };
+		27E16C031B9D997000EE5259 /* CouTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C021B9D997000EE5259 /* CouTitleCell.m */; };
+		27E16C061B9D998200EE5259 /* CouContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C051B9D998200EE5259 /* CouContentCell.m */; };
+		27E16C091B9D999100EE5259 /* CouImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C081B9D999100EE5259 /* CouImageCell.m */; };
+		27E16C0C1B9D999D00EE5259 /* CouQtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */; };
+		27E16C0F1B9D9AC500EE5259 /* CouMyQtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */; };
 		27E37AC51B9431990038F8FB /* CheckButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E37AC41B9431990038F8FB /* CheckButton.m */; };
 		27E37AC81B94346A0038F8FB /* QtyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E37AC71B94346A0038F8FB /* QtyButton.m */; };
 		27E3B05C1B969BA200BA6254 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E3B05B1B969BA200BA6254 /* CircleButton.m */; };
@@ -395,6 +408,29 @@
 		27E0E3C21B90676E00685760 /* MyCouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouViewController.m; sourceTree = "<group>"; };
 		27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-dianzan.png"; sourceTree = "<group>"; };
 		27E0FA311B9C320800F1F8EB /* xiaolian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiaolian.png; sourceTree = "<group>"; };
+		27E16BEA1B9D250C00EE5259 /* CouRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouRecordsViewController.h; sourceTree = "<group>"; };
+		27E16BEB1B9D250C00EE5259 /* CouRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouRecordsViewController.m; sourceTree = "<group>"; };
+		27E16BED1B9D2ACF00EE5259 /* CouRecrodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouRecrodCell.h; sourceTree = "<group>"; };
+		27E16BEE1B9D2ACF00EE5259 /* CouRecrodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouRecrodCell.m; sourceTree = "<group>"; };
+		27E16BF01B9D5AA100EE5259 /* ReplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplayView.h; sourceTree = "<group>"; };
+		27E16BF11B9D5AA100EE5259 /* ReplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplayView.m; sourceTree = "<group>"; };
+		27E16BF31B9D85AA00EE5259 /* mine_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_002.png; sourceTree = "<group>"; };
+		27E16BF51B9D8AAE00EE5259 /* pieceorder_check_def.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieceorder_check_def.png; sourceTree = "<group>"; };
+		27E16BF61B9D8AAE00EE5259 /* pieceorder_check_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieceorder_check_press.png; sourceTree = "<group>"; };
+		27E16BF91B9D8E1200EE5259 /* StartCouViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartCouViewViewController.h; sourceTree = "<group>"; };
+		27E16BFA1B9D8E1200EE5259 /* StartCouViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartCouViewViewController.m; sourceTree = "<group>"; };
+		27E16BFE1B9D995F00EE5259 /* CouNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouNameCell.h; sourceTree = "<group>"; };
+		27E16BFF1B9D995F00EE5259 /* CouNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouNameCell.m; sourceTree = "<group>"; };
+		27E16C011B9D997000EE5259 /* CouTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouTitleCell.h; sourceTree = "<group>"; };
+		27E16C021B9D997000EE5259 /* CouTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouTitleCell.m; sourceTree = "<group>"; };
+		27E16C041B9D998200EE5259 /* CouContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouContentCell.h; sourceTree = "<group>"; };
+		27E16C051B9D998200EE5259 /* CouContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouContentCell.m; sourceTree = "<group>"; };
+		27E16C071B9D999100EE5259 /* CouImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouImageCell.h; sourceTree = "<group>"; };
+		27E16C081B9D999100EE5259 /* CouImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouImageCell.m; sourceTree = "<group>"; };
+		27E16C0A1B9D999D00EE5259 /* CouQtyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouQtyCell.h; sourceTree = "<group>"; };
+		27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouQtyCell.m; sourceTree = "<group>"; };
+		27E16C0D1B9D9AC500EE5259 /* CouMyQtyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouMyQtyCell.h; sourceTree = "<group>"; };
+		27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouMyQtyCell.m; sourceTree = "<group>"; };
 		27E37AC31B9431990038F8FB /* CheckButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckButton.h; sourceTree = "<group>"; };
 		27E37AC41B9431990038F8FB /* CheckButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckButton.m; sourceTree = "<group>"; };
 		27E37AC61B94346A0038F8FB /* QtyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QtyButton.h; sourceTree = "<group>"; };
@@ -672,6 +708,8 @@
 				274CD7AC1B95A182000125EB /* receiving-round.png */,
 				27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */,
 				27E0FA311B9C320800F1F8EB /* xiaolian.png */,
+				27E16BF51B9D8AAE00EE5259 /* pieceorder_check_def.png */,
+				27E16BF61B9D8AAE00EE5259 /* pieceorder_check_press.png */,
 			);
 			name = "图标";
 			sourceTree = "<group>";
@@ -987,6 +1025,44 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		27E16BFC1B9D90A200EE5259 /* 直接购买 */ = {
+			isa = PBXGroup;
+			children = (
+				2E3D95441B8CD5D600E69706 /* BuyNowViewController.h */,
+				2E3D95451B8CD5D600E69706 /* BuyNowViewController.m */,
+				27E4515A1B8D5CE800547DAD /* AreaView.h */,
+				27E4515B1B8D5CE800547DAD /* AreaView.m */,
+				27E451631B8DAC1F00547DAD /* PayCell.h */,
+				27E451641B8DAC2000547DAD /* PayCell.m */,
+				27E4515D1B8D732000547DAD /* BuyCell.h */,
+				27E4515E1B8D732000547DAD /* BuyCell.m */,
+				27E451601B8D733100547DAD /* AddressCell.h */,
+				27E451611B8D733100547DAD /* AddressCell.m */,
+			);
+			name = "直接购买";
+			sourceTree = "<group>";
+		};
+		27E16BFD1B9D90B000EE5259 /* 凑分子 */ = {
+			isa = PBXGroup;
+			children = (
+				27E16BF91B9D8E1200EE5259 /* StartCouViewViewController.h */,
+				27E16BFA1B9D8E1200EE5259 /* StartCouViewViewController.m */,
+				27E16BFE1B9D995F00EE5259 /* CouNameCell.h */,
+				27E16BFF1B9D995F00EE5259 /* CouNameCell.m */,
+				27E16C011B9D997000EE5259 /* CouTitleCell.h */,
+				27E16C021B9D997000EE5259 /* CouTitleCell.m */,
+				27E16C041B9D998200EE5259 /* CouContentCell.h */,
+				27E16C051B9D998200EE5259 /* CouContentCell.m */,
+				27E16C071B9D999100EE5259 /* CouImageCell.h */,
+				27E16C081B9D999100EE5259 /* CouImageCell.m */,
+				27E16C0A1B9D999D00EE5259 /* CouQtyCell.h */,
+				27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */,
+				27E16C0D1B9D9AC500EE5259 /* CouMyQtyCell.h */,
+				27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */,
+			);
+			name = "凑分子";
+			sourceTree = "<group>";
+		};
 		27E53EB41B8C3BC600A56D53 /* 评论 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1089,6 +1165,7 @@
 		27EED2571B7464E1009F2DD2 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				27E16BF31B9D85AA00EE5259 /* mine_002.png */,
 				27EED2731B748D90009F2DD2 /* mine_00.png */,
 				27EED2681B7489F7009F2DD2 /* mine_01.png */,
 				27EED2691B7489F7009F2DD2 /* mine_02.png */,
@@ -1190,16 +1267,8 @@
 		2E3D95431B8CCEE000E69706 /* 购买页 */ = {
 			isa = PBXGroup;
 			children = (
-				2E3D95441B8CD5D600E69706 /* BuyNowViewController.h */,
-				2E3D95451B8CD5D600E69706 /* BuyNowViewController.m */,
-				27E4515A1B8D5CE800547DAD /* AreaView.h */,
-				27E4515B1B8D5CE800547DAD /* AreaView.m */,
-				27E451631B8DAC1F00547DAD /* PayCell.h */,
-				27E451641B8DAC2000547DAD /* PayCell.m */,
-				27E4515D1B8D732000547DAD /* BuyCell.h */,
-				27E4515E1B8D732000547DAD /* BuyCell.m */,
-				27E451601B8D733100547DAD /* AddressCell.h */,
-				27E451611B8D733100547DAD /* AddressCell.m */,
+				27E16BFD1B9D90B000EE5259 /* 凑分子 */,
+				27E16BFC1B9D90A200EE5259 /* 直接购买 */,
 			);
 			name = "购买页";
 			sourceTree = "<group>";
@@ -1227,6 +1296,12 @@
 				27E089AA1B9054080090C724 /* CouPay.m */,
 				27E0E3C11B90676E00685760 /* MyCouViewController.h */,
 				27E0E3C21B90676E00685760 /* MyCouViewController.m */,
+				27E16BEA1B9D250C00EE5259 /* CouRecordsViewController.h */,
+				27E16BEB1B9D250C00EE5259 /* CouRecordsViewController.m */,
+				27E16BED1B9D2ACF00EE5259 /* CouRecrodCell.h */,
+				27E16BEE1B9D2ACF00EE5259 /* CouRecrodCell.m */,
+				27E16BF01B9D5AA100EE5259 /* ReplayView.h */,
+				27E16BF11B9D5AA100EE5259 /* ReplayView.m */,
 			);
 			name = "凑分子";
 			sourceTree = "<group>";
@@ -1352,6 +1427,7 @@
 				27E6AE081B785915008CE686 /* logo_160.png in Resources */,
 				27BA81391B71AADF005B527B /* iconfont-fenlei.png in Resources */,
 				27EFB2471B7396F600A14872 /* gexin_01.png in Resources */,
+				27E16BF81B9D8AAE00EE5259 /* pieceorder_check_press.png in Resources */,
 				27E6AE111B787F25008CE686 /* iconfont-shouji.png in Resources */,
 				27EFB2531B73970100A14872 /* jiage_01.png in Resources */,
 				27F65D101B79DA6900EDE656 /* error.png in Resources */,
@@ -1385,6 +1461,7 @@
 				27EFB22F1B73966800A14872 /* duixiang_04.png in Resources */,
 				27E0FA321B9C320800F1F8EB /* xiaolian.png in Resources */,
 				27EFB2641B73970900A14872 /* pinglei_04.png in Resources */,
+				27E16BF41B9D85AA00EE5259 /* mine_002.png in Resources */,
 				27EA453F1B7DD30E004851A2 /* iconfont-wancheng.png in Resources */,
 				27EFB2521B73970100A14872 /* jiage_00.png in Resources */,
 				27F65D011B799DD400EDE656 /* 01-引导页.jpg in Resources */,
@@ -1394,6 +1471,7 @@
 				27F65D111B79DA6900EDE656 /* error@2x.png in Resources */,
 				27EFB2631B73970900A14872 /* pinglei_03.png in Resources */,
 				27EFB2611B73970900A14872 /* pinglei_01.png in Resources */,
+				27E16BF71B9D8AAE00EE5259 /* pieceorder_check_def.png in Resources */,
 				27EFB2601B73970900A14872 /* pinglei_00.png in Resources */,
 				27EFB2541B73970100A14872 /* jiage_02.png in Resources */,
 				27E0899E1B90012D0090C724 /* iconfont-fenxiang-r.png in Resources */,
@@ -1446,11 +1524,14 @@
 				27EFB2151B73518D00A14872 /* MXPullDownMenu.m in Sources */,
 				27EAFA991B7B033400DF60E9 /* UserInfoCell.m in Sources */,
 				27E066251B85DD4300D94803 /* MJRefreshAutoGifFooter.m in Sources */,
+				27E16BF21B9D5AA100EE5259 /* ReplayView.m in Sources */,
 				27DF59541B8EACFD00E94B06 /* ItemCell.m in Sources */,
 				27E6AE021B785658008CE686 /* IQToolbar.m in Sources */,
 				27EED2771B7495B1009F2DD2 /* ThemeViewController.m in Sources */,
 				27F65D0A1B79A5E300EDE656 /* GuideViewController.m in Sources */,
 				27DD23D81B70514700C61546 /* AppDelegate.m in Sources */,
+				27E16C0F1B9D9AC500EE5259 /* CouMyQtyCell.m in Sources */,
+				27E16C031B9D997000EE5259 /* CouTitleCell.m in Sources */,
 				27E6AE041B785658008CE686 /* UIView+Hierarchy.m in Sources */,
 				27DD24041B705C8400C61546 /* MainCell.m in Sources */,
 				27DD23FF1B70584700C61546 /* UIColor+HexColor.m in Sources */,
@@ -1467,9 +1548,11 @@
 				27E0E3C31B90676E00685760 /* MyCouViewController.m in Sources */,
 				2E7A78C21B77CA79004A58AB /* RMViewController.m in Sources */,
 				27EADA721B7C38240084D648 /* SettingViewController.m in Sources */,
+				27E16BEC1B9D250C00EE5259 /* CouRecordsViewController.m in Sources */,
 				27E0662B1B85DD4300D94803 /* MJRefreshGifHeader.m in Sources */,
 				27E6AE001B785658008CE686 /* IQTextView.m in Sources */,
 				2E7A78B91B77CA5B004A58AB /* ProgressView.m in Sources */,
+				27E16C001B9D995F00EE5259 /* CouNameCell.m in Sources */,
 				274CD7A81B95A062000125EB /* MineView.m in Sources */,
 				27E53EAF1B8C23A400A56D53 /* ProductDetailViewController.m in Sources */,
 				27BA81751B71C6A6005B527B /* SDWebImageDownloaderOperation.m in Sources */,
@@ -1481,7 +1564,9 @@
 				274CD7A51B959B2B000125EB /* AddressViewController.m in Sources */,
 				27DD240E1B70639B00C61546 /* NetWork.m in Sources */,
 				2E7A78BF1B77CA65004A58AB /* RMDownloadIndicator.m in Sources */,
+				27E16C091B9D999100EE5259 /* CouImageCell.m in Sources */,
 				27E6AE051B785658008CE686 /* UIView+IQKeyboardToolbar.m in Sources */,
+				27E16BFB1B9D8E1200EE5259 /* StartCouViewViewController.m in Sources */,
 				274CD7AB1B95A081000125EB /* HerView.m in Sources */,
 				27E0662D1B85DD4300D94803 /* MJRefreshStateHeader.m in Sources */,
 				27BA81441B71B508005B527B /* UIImage+Color.m in Sources */,
@@ -1545,10 +1630,13 @@
 				27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */,
 				27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */,
 				27E451651B8DAC2000547DAD /* PayCell.m in Sources */,
+				27E16C0C1B9D999D00EE5259 /* CouQtyCell.m in Sources */,
 				27EAFA9E1B7B2B0100DF60E9 /* CouDetailViewController.m in Sources */,
 				27E089AB1B9054080090C724 /* CouPay.m in Sources */,
 				27E53EBA1B8C3D0100A56D53 /* CommentCell.m in Sources */,
 				27E066271B85DD4300D94803 /* MJRefreshAutoStateFooter.m in Sources */,
+				27E16C061B9D998200EE5259 /* CouContentCell.m in Sources */,
+				27E16BEF1B9D2ACF00EE5259 /* CouRecrodCell.m in Sources */,
 				27BA81841B71F80E005B527B /* Banner.m in Sources */,
 				27DF59571B8EB31400E94B06 /* UIImageView+PreUrl.m in Sources */,
 				27DF59511B8EACF100E94B06 /* TopCell.m in Sources */,

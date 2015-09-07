@@ -1,8 +1,8 @@
 //
-//  CommentCell.h
+//  CouRecrodCell.h
 //  angelslike
 //
-//  Created by angelslike on 15/8/25.
+//  Created by angelslike on 15/9/7.
 //  Copyright (c) 2015年 angelslike. All rights reserved.
 //
 
@@ -10,12 +10,15 @@
 #import "HeaderDefiner.h"
 #import "ReplayView.h"
 
-@interface CommentCell : UITableViewCell{
+@interface CouRecrodCell : UITableViewCell{
     UIView *backView;
     UIImageView *imageView;
     UILabel *nameLabel;
     UILabel *dateLabel;
     UILabel *commentLabel;
+    
+    UILabel *qtylabel;
+    UILabel *pricelabel;
     
     ReplayView *r1;
     ReplayView *r2;

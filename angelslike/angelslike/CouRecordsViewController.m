@@ -1,14 +1,18 @@
 //
-//  CommentViewController.m
+//  CouRecordsViewController.m
 //  angelslike
 //
-//  Created by angelslike on 15/8/25.
+//  Created by angelslike on 15/9/7.
 //  Copyright (c) 2015年 angelslike. All rights reserved.
 //
 
-#import "CommentViewController.h"
+#import "CouRecordsViewController.h"
 
-@implementation CommentViewController
+@interface CouRecordsViewController ()
+
+@end
+
+@implementation CouRecordsViewController
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -17,6 +21,7 @@
 
 -(void)initialSetting{
     
+    self.heights = [NSMutableDictionary dictionary];
     
     //table view
     self.result = [NSMutableArray array];
@@ -27,7 +32,7 @@
     self.tableView.totalPage = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
-//    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
+    //    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
     [self.tableView addTarget:self action:@selector(loadMoreData:)];
     [self.view addSubview:self.tableView];
     
@@ -41,18 +46,17 @@
     UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(280, 5, 30, 30)];
     imageView.image = [UIImage imageNamed:@"xiaolian"];
     [view addSubview:imageView];
-
+    
     self.tableView.tableHeaderView = view;
-
+    
     [self.view addSubview:view];
     
     
-    self.heights = [NSMutableDictionary dictionary];
-//    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
-//    header.automaticallyChangeAlpha = YES;
-//    header.lastUpdatedTimeLabel.hidden = YES;
-//    self.tableView.header = header;
-//    
+    //    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
+    //    header.automaticallyChangeAlpha = YES;
+    //    header.lastUpdatedTimeLabel.hidden = YES;
+    //    self.tableView.header = header;
+    //
     [self refreshClick:nil];
 }
 
@@ -77,12 +81,12 @@
 }
 
 -(void)loadMoreData:(id)sender{
-    __block CommentViewController *tempSelf = self;
+    __block CouRecordsViewController *tempSelf = self;
     NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.info];
     [dic setObject:nPage forKey:@"page"];
-    [[NetWork shared] startQuery:CommentsUrl
+    [[NetWork shared] startQuery:CouRecordUrl
                             info:dic
                    completeBlock:^(id Obj) {
                        
@@ -91,15 +95,15 @@
                        if ([Obj intForKey:@"status"] == 1) {
                            NSArray *rs = [[Obj objectForKey:@"data"] objForKey:@"list"];
                            NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
-//                           tempSelf.cdn = ImageLink;// [Obj objectForKey:@"cdn"];
-
+                           //                           tempSelf.cdn = ImageLink;// [Obj objectForKey:@"cdn"];
+                           
                            if ([rs count] > 0){
                                tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
                                tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
                                [tempSelf.result addObjectsFromArray:rs];
                            }
-
-  
+                           
+                           
                            
                        }
                        [tempSelf.tableView reloadData];
@@ -121,9 +125,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *identify = @"Cell";
-    CommentCell *cell = (CommentCell *)[tableView dequeueReusableCellWithIdentifier:identify];
+    CouRecrodCell *cell = (CouRecrodCell *)[tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
-        cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        cell = [[CouRecrodCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     
@@ -134,14 +138,13 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     if ([self.heights objectForKey:indexPath]) {
         return [[self.heights objectForKey:indexPath] floatValue];
     }else{
         static NSString *identify = @"Cell";
-        CommentCell *cell = (CommentCell *)[tableView dequeueReusableCellWithIdentifier:identify];
+        CouRecrodCell *cell = (CouRecrodCell *)[tableView dequeueReusableCellWithIdentifier:identify];
         if (cell == nil) {
-            cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+            cell = [[CouRecrodCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
         
@@ -150,7 +153,6 @@
         return cell.frame.size.height + 1 ;
     }
     
-
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -160,6 +162,5 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
-
 
 @end

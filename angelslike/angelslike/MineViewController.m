@@ -27,8 +27,8 @@
     
     self.infos = @[@[@{@"Name":@"用户信息"}],
                    @[@{@"Name":@"我的凑分子",@"IMG":@"mine_00",@"Action":@"myCouClick:"},
-                     @{@"Name":@"我购买的礼物",@"IMG":@"mine_01"},
-                     @{@"Name":@"我的关注",@"IMG":@"mine_02"}
+                     @{@"Name":@"我的订单",@"IMG":@"mine_01"},
+                     @{@"Name":@"我的购物车",@"IMG":@"mine_002"}
                      ],
                    @[@{@"Name":@"达人专区",@"IMG":@"mine_03"},
                      @{@"Name":@"邀请朋友",@"IMG":@"mine_04"},

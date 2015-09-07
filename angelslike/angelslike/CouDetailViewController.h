@@ -11,9 +11,12 @@
 #import "CouDetail.h"
 #import "CouPay.h"
 #import "ProductDetailViewController.h"
+#import "CommentViewController.h"
+#import "CouRecordsViewController.h"
 
 @interface CouDetailViewController : BaseViewController{
     CouPay *cp;
+    RCMutileView *mv;
 }
 
 @property(nonatomic,strong) NSDictionary *info;
