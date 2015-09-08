@@ -7,7 +7,23 @@
 //
 
 #import "BaseViewController.h"
+#import "CouNameCell.h"
+#import "CouTitleCell.h"
+#import "CouContentCell.h"
+#import "CouImageCell.h"
+#import "CouQtyCell.h"
+#import "CouMyQtyCell.h"
+#import "SGPopSelectView.h"
+#import "MyAddressCell.h"
+#import "HerAddressCell.h"
 
-@interface StartCouViewViewController : BaseViewController
+@interface StartCouViewViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
+    SGPopSelectView *popView;
+}
+
+
+@property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong) NSMutableArray *infos;
+@property(nonatomic,strong) NSMutableDictionary *P;
 
 @end

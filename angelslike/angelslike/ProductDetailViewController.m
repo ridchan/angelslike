@@ -104,6 +104,7 @@
     [b1 setBackgroundColor:[UIColor getHexColor:@"FAC116"]];
     [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
     [b1 setTitle:@"凑分子购买" forState:UIControlStateNormal];
+    [b1 addTarget:self action:@selector(counow:) forControlEvents:UIControlEventTouchUpInside];
     [v addSubview:b1];
     
     RCRoundButton *b2 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
@@ -130,6 +131,34 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
+
+-(void)counow:(id)sender {
+//    StartCouViewViewController *vc = [[StartCouViewViewController alloc]init ];
+//    vc.P = [NSMutableDictionary dictionaryWithDictionary:self.info];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    UIImage *_originImage = [UIImage imageNamed:@"download"];
+    
+    NSData *_data = UIImageJPEGRepresentation(_originImage,1.0);
+    
+    NSString *_encodedImageStr = [_data base64Encoding];
+    
+    [[NetWork shared] query:@"http://weixin.angelslike.com/json/saveimage" info:@{@"type":@"cou",@"base64":[self encodeURL:_encodedImageStr]} block:^(id Obj) {
+        NSLog(@"obj %@",Obj);
+    } lock:YES];
+
+}
+
+- (NSString*)encodeURL:(NSString *)string
+{
+    NSString *newString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes( kCFAllocatorDefault, (CFStringRef)string, NULL, CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"),kCFStringEncodingUTF8));
+    if (newString) {
+        return newString;
+    }
+    return @"";
+}
+
 
 -(void)buynow:(id)sender{
     BuyNowViewController *vc = [[BuyNowViewController alloc]init];

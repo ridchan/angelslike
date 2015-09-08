@@ -20,4 +20,14 @@
     // Configure the view for the selected state
 }
 
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self =  [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        //
+        textView  =  [[UITextView alloc]initWithFrame:RECT(10, 0, ScreenWidth - 5, 100)];
+        [self addSubview:textView];
+    }
+    
+    return self;
+}
+
 @end

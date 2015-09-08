@@ -24,11 +24,11 @@
     UIImageView *imageView = (UIImageView *)[self viewWithTag:11];
     UIImageView *imageView2 = (UIImageView *)[self viewWithTag:12];
     if (sender.tag == 1) {
-        imageView.image = [UIImage imageNamed:@"iconfont-check"];
-        imageView2.image = [UIImage imageNamed:@"iconfont-nocheck"];
+        imageView.image = [UIImage imageNamed:@"pieceorder_check_press"];
+        imageView2.image = [UIImage imageNamed:@"pieceorder_check_def"];
     }else{
-        imageView2.image = [UIImage imageNamed:@"iconfont-check"];
-        imageView.image = [UIImage imageNamed:@"iconfont-nocheck"];
+        imageView2.image = [UIImage imageNamed:@"pieceorder_check_press"];
+        imageView.image = [UIImage imageNamed:@"pieceorder_check_def"];
     }
     _selectIndex = sender.tag - 1;
 }

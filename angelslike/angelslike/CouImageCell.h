@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HeaderDefiner.h"
 
-@interface CouImageCell : UITableViewCell
+@interface CouImageCell : UITableViewCell{
+    UIImageView *imageView;
+    UILabel *label;
+}
 
 @end

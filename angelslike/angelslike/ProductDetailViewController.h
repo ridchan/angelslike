@@ -13,6 +13,7 @@
 #import "CommentViewController.h"
 #import "BuyNowViewController.h"
 #import "ProductHeader.h"
+#import "StartCouViewViewController.h"
 
 @interface ProductDetailViewController : BaseViewController<UIScrollViewDelegate>{
     ProductDetail *pd;

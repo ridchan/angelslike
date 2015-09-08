@@ -20,4 +20,20 @@
     // Configure the view for the selected state
 }
 
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        //
+        imageView = [[UIImageView alloc]initWithFrame:RECT(10, 1, 30, 30)];
+        imageView.image = IMAGE(@"download");
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:imageView];
+        
+        label = [[UILabel alloc]initWithFrame:RECT(0, 1, ScreenWidth - 5, 30)];
+        label.textAlignment = NSTextAlignmentRight;
+        label.text = @"最多上传9张图片";
+        [self addSubview:label];
+    }
+    return self;
+}
+
 @end

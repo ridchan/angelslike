@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HeaderDefiner.h"
 
-@interface CouContentCell : UITableViewCell
+@interface CouContentCell : UITableViewCell{
+    UITextView *textView;
+}
 
 @end

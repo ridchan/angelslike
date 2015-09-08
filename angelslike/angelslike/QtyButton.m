@@ -84,7 +84,7 @@
 -(void)setStyle:(NSInteger)style{
     _style = style;
     if (style == 0) {
-        self.backgroundColor = [UIColor getHexColor:@"F0EFEF"];
+        self.backgroundColor = HexColor(@"F0EFEF");
         [self setRadio:self];
         [self setRadio:button1];
         [self setRadio:button2];

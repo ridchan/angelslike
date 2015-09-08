@@ -108,6 +108,15 @@
 		27E16C091B9D999100EE5259 /* CouImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C081B9D999100EE5259 /* CouImageCell.m */; };
 		27E16C0C1B9D999D00EE5259 /* CouQtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */; };
 		27E16C0F1B9D9AC500EE5259 /* CouMyQtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */; };
+		27E2A9FA1B9E8E1A0046D28D /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E2A9F91B9E8E1A0046D28D /* download.png */; };
+		27E2A9FD1B9EC2C70046D28D /* MyAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2A9FC1B9EC2C70046D28D /* MyAddressCell.m */; };
+		27E2AA001B9EC2DE0046D28D /* HerAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2A9FF1B9EC2DE0046D28D /* HerAddressCell.m */; };
+		27E2AA031B9EC6B60046D28D /* ValDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2AA021B9EC6B60046D28D /* ValDayCell.m */; };
+		27E2AA061B9EC6F90046D28D /* OpenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2AA051B9EC6F90046D28D /* OpenCell.m */; };
+		27E2AA091B9EC7100046D28D /* MutileCopiesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2AA081B9EC7100046D28D /* MutileCopiesCell.m */; };
+		27E2AA0F1B9ED2070046D28D /* UIView+Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2AA0E1B9ED2070046D28D /* UIView+Controller.m */; };
+		27E2AA111B9EE6E30046D28D /* sg_pop_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E2AA101B9EE6E30046D28D /* sg_pop_images.xcassets */; };
+		27E2AA141B9EE8DE0046D28D /* SGPopSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2AA131B9EE8DE0046D28D /* SGPopSelectView.m */; };
 		27E37AC51B9431990038F8FB /* CheckButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E37AC41B9431990038F8FB /* CheckButton.m */; };
 		27E37AC81B94346A0038F8FB /* QtyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E37AC71B94346A0038F8FB /* QtyButton.m */; };
 		27E3B05C1B969BA200BA6254 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E3B05B1B969BA200BA6254 /* CircleButton.m */; };
@@ -431,6 +440,22 @@
 		27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouQtyCell.m; sourceTree = "<group>"; };
 		27E16C0D1B9D9AC500EE5259 /* CouMyQtyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouMyQtyCell.h; sourceTree = "<group>"; };
 		27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouMyQtyCell.m; sourceTree = "<group>"; };
+		27E2A9F91B9E8E1A0046D28D /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download.png; sourceTree = "<group>"; };
+		27E2A9FB1B9EC2C70046D28D /* MyAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddressCell.h; sourceTree = "<group>"; };
+		27E2A9FC1B9EC2C70046D28D /* MyAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressCell.m; sourceTree = "<group>"; };
+		27E2A9FE1B9EC2DE0046D28D /* HerAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerAddressCell.h; sourceTree = "<group>"; };
+		27E2A9FF1B9EC2DE0046D28D /* HerAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HerAddressCell.m; sourceTree = "<group>"; };
+		27E2AA011B9EC6B60046D28D /* ValDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValDayCell.h; sourceTree = "<group>"; };
+		27E2AA021B9EC6B60046D28D /* ValDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValDayCell.m; sourceTree = "<group>"; };
+		27E2AA041B9EC6F90046D28D /* OpenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCell.h; sourceTree = "<group>"; };
+		27E2AA051B9EC6F90046D28D /* OpenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenCell.m; sourceTree = "<group>"; };
+		27E2AA071B9EC7100046D28D /* MutileCopiesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutileCopiesCell.h; sourceTree = "<group>"; };
+		27E2AA081B9EC7100046D28D /* MutileCopiesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutileCopiesCell.m; sourceTree = "<group>"; };
+		27E2AA0D1B9ED2070046D28D /* UIView+Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Controller.h"; sourceTree = "<group>"; };
+		27E2AA0E1B9ED2070046D28D /* UIView+Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Controller.m"; sourceTree = "<group>"; };
+		27E2AA101B9EE6E30046D28D /* sg_pop_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = sg_pop_images.xcassets; sourceTree = "<group>"; };
+		27E2AA121B9EE8DE0046D28D /* SGPopSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPopSelectView.h; sourceTree = "<group>"; };
+		27E2AA131B9EE8DE0046D28D /* SGPopSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPopSelectView.m; sourceTree = "<group>"; };
 		27E37AC31B9431990038F8FB /* CheckButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckButton.h; sourceTree = "<group>"; };
 		27E37AC41B9431990038F8FB /* CheckButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckButton.m; sourceTree = "<group>"; };
 		27E37AC61B94346A0038F8FB /* QtyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QtyButton.h; sourceTree = "<group>"; };
@@ -710,6 +735,7 @@
 				27E0FA311B9C320800F1F8EB /* xiaolian.png */,
 				27E16BF51B9D8AAE00EE5259 /* pieceorder_check_def.png */,
 				27E16BF61B9D8AAE00EE5259 /* pieceorder_check_press.png */,
+				27E2A9F91B9E8E1A0046D28D /* download.png */,
 			);
 			name = "图标";
 			sourceTree = "<group>";
@@ -866,6 +892,8 @@
 				27F65D051B799FB100EDE656 /* UserInfo.m */,
 				27DF595C1B8EF5B400E94B06 /* UILabel+Resize.h */,
 				27DF595D1B8EF5B400E94B06 /* UILabel+Resize.m */,
+				27E2AA0D1B9ED2070046D28D /* UIView+Controller.h */,
+				27E2AA0E1B9ED2070046D28D /* UIView+Controller.m */,
 			);
 			name = "常用类";
 			sourceTree = "<group>";
@@ -902,6 +930,9 @@
 		27DD24011B70593C00C61546 /* 第三方 */ = {
 			isa = PBXGroup;
 			children = (
+				27E2AA101B9EE6E30046D28D /* sg_pop_images.xcassets */,
+				27E2AA121B9EE8DE0046D28D /* SGPopSelectView.h */,
+				27E2AA131B9EE8DE0046D28D /* SGPopSelectView.m */,
 				27E065F31B85DD4300D94803 /* MJRefresh */,
 				27EAFA9F1B7B426700DF60E9 /* WX */,
 				27F65D0B1B79D67800EDE656 /* TextFieldValidator.h */,
@@ -1059,6 +1090,16 @@
 				27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */,
 				27E16C0D1B9D9AC500EE5259 /* CouMyQtyCell.h */,
 				27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */,
+				27E2A9FB1B9EC2C70046D28D /* MyAddressCell.h */,
+				27E2A9FC1B9EC2C70046D28D /* MyAddressCell.m */,
+				27E2A9FE1B9EC2DE0046D28D /* HerAddressCell.h */,
+				27E2A9FF1B9EC2DE0046D28D /* HerAddressCell.m */,
+				27E2AA011B9EC6B60046D28D /* ValDayCell.h */,
+				27E2AA021B9EC6B60046D28D /* ValDayCell.m */,
+				27E2AA041B9EC6F90046D28D /* OpenCell.h */,
+				27E2AA051B9EC6F90046D28D /* OpenCell.m */,
+				27E2AA071B9EC7100046D28D /* MutileCopiesCell.h */,
+				27E2AA081B9EC7100046D28D /* MutileCopiesCell.m */,
 			);
 			name = "凑分子";
 			sourceTree = "<group>";
@@ -1426,11 +1467,13 @@
 				27E089A01B90012D0090C724 /* iconfont-xin.png in Resources */,
 				27E6AE081B785915008CE686 /* logo_160.png in Resources */,
 				27BA81391B71AADF005B527B /* iconfont-fenlei.png in Resources */,
+				27E2AA111B9EE6E30046D28D /* sg_pop_images.xcassets in Resources */,
 				27EFB2471B7396F600A14872 /* gexin_01.png in Resources */,
 				27E16BF81B9D8AAE00EE5259 /* pieceorder_check_press.png in Resources */,
 				27E6AE111B787F25008CE686 /* iconfont-shouji.png in Resources */,
 				27EFB2531B73970100A14872 /* jiage_01.png in Resources */,
 				27F65D101B79DA6900EDE656 /* error.png in Resources */,
+				27E2A9FA1B9E8E1A0046D28D /* download.png in Resources */,
 				27EFB24B1B7396F600A14872 /* gexin_05.png in Resources */,
 				27EFB22B1B73966800A14872 /* duixiang_00.png in Resources */,
 				27F65D031B799DD400EDE656 /* 03-引导页.jpg in Resources */,
@@ -1533,9 +1576,11 @@
 				27E16C0F1B9D9AC500EE5259 /* CouMyQtyCell.m in Sources */,
 				27E16C031B9D997000EE5259 /* CouTitleCell.m in Sources */,
 				27E6AE041B785658008CE686 /* UIView+Hierarchy.m in Sources */,
+				27E2AA141B9EE8DE0046D28D /* SGPopSelectView.m in Sources */,
 				27DD24041B705C8400C61546 /* MainCell.m in Sources */,
 				27DD23FF1B70584700C61546 /* UIColor+HexColor.m in Sources */,
 				27E53EB21B8C25DA00A56D53 /* ProductDetail.m in Sources */,
+				27E2AA001B9EC2DE0046D28D /* HerAddressCell.m in Sources */,
 				27E066211B85DD4300D94803 /* MJRefreshBackFooter.m in Sources */,
 				272B6DAD1B709CF1006CCFE6 /* ImageScroller.m in Sources */,
 				27E3B05C1B969BA200BA6254 /* CircleButton.m in Sources */,
@@ -1552,6 +1597,7 @@
 				27E0662B1B85DD4300D94803 /* MJRefreshGifHeader.m in Sources */,
 				27E6AE001B785658008CE686 /* IQTextView.m in Sources */,
 				2E7A78B91B77CA5B004A58AB /* ProgressView.m in Sources */,
+				27E2AA061B9EC6F90046D28D /* OpenCell.m in Sources */,
 				27E16C001B9D995F00EE5259 /* CouNameCell.m in Sources */,
 				274CD7A81B95A062000125EB /* MineView.m in Sources */,
 				27E53EAF1B8C23A400A56D53 /* ProductDetailViewController.m in Sources */,
@@ -1568,6 +1614,7 @@
 				27E6AE051B785658008CE686 /* UIView+IQKeyboardToolbar.m in Sources */,
 				27E16BFB1B9D8E1200EE5259 /* StartCouViewViewController.m in Sources */,
 				274CD7AB1B95A081000125EB /* HerView.m in Sources */,
+				27E2AA031B9EC6B60046D28D /* ValDayCell.m in Sources */,
 				27E0662D1B85DD4300D94803 /* MJRefreshStateHeader.m in Sources */,
 				27BA81441B71B508005B527B /* UIImage+Color.m in Sources */,
 				27BA81721B71C6A6005B527B /* SDWebImageCompat.m in Sources */,
@@ -1587,6 +1634,7 @@
 				2E4D41BF1B72870400AA314E /* CouViewController.m in Sources */,
 				27E6AE0B1B785B49008CE686 /* RCRoundButton.m in Sources */,
 				27BA81741B71C6A6005B527B /* SDWebImageDownloader.m in Sources */,
+				27E2A9FD1B9EC2C70046D28D /* MyAddressCell.m in Sources */,
 				2E3D95461B8CD5D600E69706 /* BuyNowViewController.m in Sources */,
 				27E4515F1B8D732100547DAD /* BuyCell.m in Sources */,
 				27EA99FE1B72F4A3003559C0 /* CouCell.m in Sources */,
@@ -1608,6 +1656,7 @@
 				27E066201B85DD4300D94803 /* MJRefreshAutoFooter.m in Sources */,
 				27BA81791B71C6A6005B527B /* UIImage+GIF.m in Sources */,
 				27E0662C1B85DD4300D94803 /* MJRefreshNormalHeader.m in Sources */,
+				27E2AA0F1B9ED2070046D28D /* UIView+Controller.m in Sources */,
 				27DF595E1B8EF5B400E94B06 /* UILabel+Resize.m in Sources */,
 				2E7A78BE1B77CA65004A58AB /* RMDisplayLabel.m in Sources */,
 				27DD23FB1B70565700C61546 /* MainViewController.m in Sources */,
@@ -1615,6 +1664,7 @@
 				27EA9A021B72F662003559C0 /* BaseViewController.m in Sources */,
 				27E07CE81B8420120020B950 /* ProductCell.m in Sources */,
 				27EFB21E1B737ED600A14872 /* CategoryCell.m in Sources */,
+				27E2AA091B9EC7100046D28D /* MutileCopiesCell.m in Sources */,
 				27E53EBF1B8C4BB500A56D53 /* RCMutileView.m in Sources */,
 				27E0662A1B85DD4300D94803 /* MJRefreshBackStateFooter.m in Sources */,
 				27E37AC51B9431990038F8FB /* CheckButton.m in Sources */,

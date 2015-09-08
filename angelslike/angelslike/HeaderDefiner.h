@@ -97,6 +97,9 @@
 #define VIEWWITHTAG(_OBJECT, _TAG)    [_OBJECT viewWithTag : _TAG]
 
 
-#define RECT(a,b,c,d) CGRectMake(a,b,c,d)
+#define RECT(x,y,w,h) CGRectMake(x,y,w,h)
+#define Format2(a,b) [NSString stringWithFormat:@"%@%@",a,b]
+#define Format3(a,b,c) [NSString stringWithFormat:@"%@%@%@",a,b,c]
+#define IMAGE(n) [UIImage imageNamed:n]
 
 #endif//

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QtyButton.h"
 
-@interface CouMyQtyCell : UITableViewCell
+@interface CouMyQtyCell : UITableViewCell{
+    QtyButton *qb;
+    UILabel *label;
+}
+
+@property(nonatomic,strong) NSMutableDictionary *info;
 
 @end
