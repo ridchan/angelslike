@@ -10,7 +10,7 @@
 #import "MineCell.h"
 #import "AbountUsViewController.h"
 
-@interface SettingViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface SettingViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) NSArray *infos;

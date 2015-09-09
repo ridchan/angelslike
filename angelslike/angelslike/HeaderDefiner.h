@@ -13,6 +13,7 @@
 
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#define isIOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >=8.0
 #define isiPhone4 ([UIScreen mainScreen].bounds.size.height == 480)
 #define FontWS(s) [UIFont systemFontOfSize:s]
 #define RGBA(r,g,b,a) [UIColor colorWithRed:(float)(r/255.0f)green:(float)(g / 255.0f) blue:(float)(b / 255.0f)alpha:a]

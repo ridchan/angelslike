@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CheckButton.h"
 #import "HeaderDefiner.h"
+#import "PickerView.h"
+#import "NetWork.h"
+#import "SGPopSelectView.h"
 
 @interface MyAddressCell : UITableViewCell{
     CheckButton *cb;
@@ -16,5 +19,7 @@
 }
 
 @property(nonatomic) BOOL bCheck;
+
+@property(nonatomic,strong) NSMutableDictionary *info;
 
 @end

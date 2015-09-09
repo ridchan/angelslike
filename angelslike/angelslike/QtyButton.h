@@ -21,5 +21,7 @@
 
 @property(nonatomic,strong) NSString *qty;
 @property(nonatomic) NSInteger style;
+@property(nonatomic) NSInteger maxValue;
+@property(nonatomic) NSInteger minValue;
 
 @end

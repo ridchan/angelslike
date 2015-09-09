@@ -133,20 +133,9 @@
 }
 
 -(void)counow:(id)sender {
-//    StartCouViewViewController *vc = [[StartCouViewViewController alloc]init ];
-//    vc.P = [NSMutableDictionary dictionaryWithDictionary:self.info];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
-    
-    UIImage *_originImage = [UIImage imageNamed:@"download"];
-    
-    NSData *_data = UIImageJPEGRepresentation(_originImage,1.0);
-    
-    NSString *_encodedImageStr = [_data base64Encoding];
-    
-    [[NetWork shared] query:@"http://weixin.angelslike.com/json/saveimage" info:@{@"type":@"cou",@"base64":[self encodeURL:_encodedImageStr]} block:^(id Obj) {
-        NSLog(@"obj %@",Obj);
-    } lock:YES];
+    StartCouViewViewController *vc = [[StartCouViewViewController alloc]init ];
+    vc.P = [NSMutableDictionary dictionaryWithDictionary:self.info];
+    [self.navigationController pushViewController:vc animated:YES];
 
 }
 

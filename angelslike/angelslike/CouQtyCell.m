@@ -24,8 +24,8 @@
 
 -(void)qtyChange:(NSString *)str{
     self.everyPrice = [NSString stringWithFormat:@"%0.2f",[_info floatForKey:@"price"] / [str floatValue]];
-    [self.info setObject:self.everyPrice forKey:@"everyprice"];
     [self.info setObject:str forKey:@"CouQty"];
+    [self.info setObject:self.everyPrice forKey:@"everyprice"];
     [self setQtyLabel];
 }
 
@@ -48,6 +48,7 @@
         qb = [[QtyButton alloc]initWithFrame:RECT(10, 14, 130, 40)];
         [qb addTarget:self action:@selector(qtyChange:)];
         qb.qty = @"2";
+        qb.minValue = 2;
         qb.style = 0;
         [self addSubview:qb];
         

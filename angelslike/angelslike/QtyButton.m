@@ -22,7 +22,8 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self  = [super initWithFrame:frame]) {
-        
+        self.minValue = 1;
+        self.maxValue = NSIntegerMax;
         
         button1 = [UIButton buttonWithType:UIButtonTypeCustom];
         button1.backgroundColor  = [UIColor whiteColor];
@@ -71,14 +72,28 @@
 
 
 -(void)button1Click:(id)sender{
-    NSString *nqty = [NSString stringWithFormat:@"%ld",[self.qty integerValue] - 1];
-    self.qty = nqty;
+    if ([self.qty integerValue] > _minValue) {
+        NSString *nqty = [NSString stringWithFormat:@"%ld",[self.qty integerValue] - 1];
+        self.qty = nqty;
+    }
+
     
 }
 
 -(void)button2Click:(id)sender{
-    NSString *nqty = [NSString stringWithFormat:@"%ld",[self.qty integerValue] + 1];
-    self.qty = nqty;
+    if ([self.qty integerValue] < _maxValue) {
+        NSString *nqty = [NSString stringWithFormat:@"%ld",[self.qty integerValue] + 1];
+        self.qty = nqty;
+    }
+
+}
+
+-(void)setMaxValue:(NSInteger)maxValue{
+    _maxValue = maxValue;
+    if (_maxValue < [self.qty integerValue]) {
+        NSString *nqty = [NSString stringWithFormat:@"%ld",_maxValue];
+        self.qty = nqty;
+    }
 }
 
 -(void)setStyle:(NSInteger)style{

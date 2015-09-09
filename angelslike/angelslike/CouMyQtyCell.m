@@ -63,6 +63,8 @@
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     [self setQtyLabel:nil];
+    qb.maxValue = [[_info strForKey:@"CouQty"] integerValue] - 1;
+    
 }
 
 -(void)setInfo:(NSMutableDictionary *)info{

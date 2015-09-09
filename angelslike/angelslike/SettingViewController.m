@@ -49,9 +49,17 @@
 }
 
 -(void)logoutClick:(id)sender{
-    [UserInfo shared].info = nil;
-    [self.navigationController popViewControllerAnimated:YES];
-    [self.navigationController.tabBarController setSelectedIndex:0];
+
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"" message:@"是否确认登出" delegate:self cancelButtonTitle:nil otherButtonTitles:@"否",@"是", nil];
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        [UserInfo shared].info = nil;
+        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController.tabBarController setSelectedIndex:0];
+    }
 }
 
 

@@ -10,7 +10,9 @@
 
 typedef void (^PopViewSelectedHandle) (NSInteger selectedIndex);
 
-@interface SGPopSelectView : UIView
+@interface SGPopSelectView : UIView{
+    UIView *backView;
+}
 @property (nonatomic, strong) NSArray *selections;
 @property (nonatomic, copy) PopViewSelectedHandle selectedHandle;
 @property (nonatomic, readonly) BOOL visible;

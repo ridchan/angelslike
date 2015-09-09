@@ -88,14 +88,14 @@
                 [self.P setObject:@"MY" forKey:@"Address"];
                 mcell.bCheck = YES;
                 hcell.bCheck = NO;
-                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:3]] withRowAnimation:UITableViewRowAnimationMiddle];
+                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:3]] withRowAnimation:UITableViewRowAnimationNone];
             }
         }else{
             if (!hcell.bCheck) {
                 [self.P setObject:@"HER" forKey:@"Address"];
                 mcell.bCheck = NO;
                 hcell.bCheck = YES;
-                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:3]] withRowAnimation:UITableViewRowAnimationMiddle];
+                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:3]] withRowAnimation:UITableViewRowAnimationNone];
             }
         }
     }
@@ -105,12 +105,12 @@
     if (indexPath.row == 0 & indexPath.section == 3) {
         
         if ([[self.P strForKey:@"Address"] isEqualToString:@"MY"]) {
-            return 200;
+            return 210;
         }else{
             return 48;
         }
     }else{
-        NSArray *arr =  @[@[@"107",@"37",@"100",@"35"],
+        NSArray *arr =  @[@[@"107",@"37",@"100",@"180"],
                           @[@"69"],
                           @[@"48"],
                           @[@"48",@"89"],

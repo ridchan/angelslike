@@ -113,7 +113,6 @@
         if (page < totalPage & bloading  == NO) {
             bloading = YES;
             [self.info setObject:[NSString stringWithFormat:@"%ld",page + 1] forKey:@"page"];
-//            NSLog(@"self.info %@",self.info);
             [self loadData:nil];
         }
     }

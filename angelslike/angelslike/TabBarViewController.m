@@ -45,12 +45,14 @@
             [self presentViewController:gvc animated:NO completion:NULL];
         }
         
+        [self bringCustomTabBarToFront];
         hasLoaded = YES;
+        
     }
     
     
     [self performSelector:@selector(hideRealTabBar)];
-    [self bringCustomTabBarToFront];
+    
     
     [super viewDidAppear:animated];
     

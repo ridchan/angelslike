@@ -108,6 +108,9 @@
 		27E16C091B9D999100EE5259 /* CouImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C081B9D999100EE5259 /* CouImageCell.m */; };
 		27E16C0C1B9D999D00EE5259 /* CouQtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */; };
 		27E16C0F1B9D9AC500EE5259 /* CouMyQtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */; };
+		27E213151BA01757008888BA /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E213141BA01757008888BA /* PickerView.m */; };
+		27E213181BA03BAB008888BA /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E213171BA03BAB008888BA /* OrderListViewController.m */; };
+		27E2131B1BA03BE6008888BA /* OrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2131A1BA03BE6008888BA /* OrderViewCell.m */; };
 		27E2A9FA1B9E8E1A0046D28D /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E2A9F91B9E8E1A0046D28D /* download.png */; };
 		27E2A9FD1B9EC2C70046D28D /* MyAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2A9FC1B9EC2C70046D28D /* MyAddressCell.m */; };
 		27E2AA001B9EC2DE0046D28D /* HerAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2A9FF1B9EC2DE0046D28D /* HerAddressCell.m */; };
@@ -440,6 +443,12 @@
 		27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouQtyCell.m; sourceTree = "<group>"; };
 		27E16C0D1B9D9AC500EE5259 /* CouMyQtyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouMyQtyCell.h; sourceTree = "<group>"; };
 		27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouMyQtyCell.m; sourceTree = "<group>"; };
+		27E213131BA01757008888BA /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		27E213141BA01757008888BA /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
+		27E213161BA03BAB008888BA /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewController.h; sourceTree = "<group>"; };
+		27E213171BA03BAB008888BA /* OrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListViewController.m; sourceTree = "<group>"; };
+		27E213191BA03BE6008888BA /* OrderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewCell.h; sourceTree = "<group>"; };
+		27E2131A1BA03BE6008888BA /* OrderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewCell.m; sourceTree = "<group>"; };
 		27E2A9F91B9E8E1A0046D28D /* download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download.png; sourceTree = "<group>"; };
 		27E2A9FB1B9EC2C70046D28D /* MyAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddressCell.h; sourceTree = "<group>"; };
 		27E2A9FC1B9EC2C70046D28D /* MyAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressCell.m; sourceTree = "<group>"; };
@@ -923,6 +932,8 @@
 				27E37AC41B9431990038F8FB /* CheckButton.m */,
 				27E37AC61B94346A0038F8FB /* QtyButton.h */,
 				27E37AC71B94346A0038F8FB /* QtyButton.m */,
+				27E213131BA01757008888BA /* PickerView.h */,
+				27E213141BA01757008888BA /* PickerView.m */,
 			);
 			name = "自定义控件";
 			sourceTree = "<group>";
@@ -1199,6 +1210,10 @@
 				27EADA711B7C38240084D648 /* SettingViewController.m */,
 				27E4516A1B8DD37800547DAD /* AbountUsViewController.h */,
 				27E4516B1B8DD37800547DAD /* AbountUsViewController.m */,
+				27E213161BA03BAB008888BA /* OrderListViewController.h */,
+				27E213171BA03BAB008888BA /* OrderListViewController.m */,
+				27E213191BA03BE6008888BA /* OrderViewCell.h */,
+				27E2131A1BA03BE6008888BA /* OrderViewCell.m */,
 			);
 			name = "我的页";
 			sourceTree = "<group>";
@@ -1593,6 +1608,7 @@
 				27E0E3C31B90676E00685760 /* MyCouViewController.m in Sources */,
 				2E7A78C21B77CA79004A58AB /* RMViewController.m in Sources */,
 				27EADA721B7C38240084D648 /* SettingViewController.m in Sources */,
+				27E213181BA03BAB008888BA /* OrderListViewController.m in Sources */,
 				27E16BEC1B9D250C00EE5259 /* CouRecordsViewController.m in Sources */,
 				27E0662B1B85DD4300D94803 /* MJRefreshGifHeader.m in Sources */,
 				27E6AE001B785658008CE686 /* IQTextView.m in Sources */,
@@ -1643,6 +1659,7 @@
 				27BA817D1B71C6A6005B527B /* UIImageView+WebCache.m in Sources */,
 				27EFB2191B73737C00A14872 /* CategoryViewController.m in Sources */,
 				27E6ADFE1B785658008CE686 /* IQKeyboardManager.m in Sources */,
+				27E213151BA01757008888BA /* PickerView.m in Sources */,
 				27EADA791B7C4D680084D648 /* CouDetailCell.m in Sources */,
 				27BA817C1B71C6A6005B527B /* UIImageView+HighlightedWebCache.m in Sources */,
 				27E066311B85DD4300D94803 /* UIScrollView+MJRefresh.m in Sources */,
@@ -1678,6 +1695,7 @@
 				27BA81731B71C6A6005B527B /* SDWebImageDecoder.m in Sources */,
 				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,
 				27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */,
+				27E2131B1BA03BE6008888BA /* OrderViewCell.m in Sources */,
 				27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */,
 				27E451651B8DAC2000547DAD /* PayCell.m in Sources */,
 				27E16C0C1B9D999D00EE5259 /* CouQtyCell.m in Sources */,

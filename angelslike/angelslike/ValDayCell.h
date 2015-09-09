@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
 #import "UIView+Controller.h"
+#import "PickerView.h"
+#import "SGPopSelectView.h"
 
-@interface ValDayCell : UITableViewCell<UITextFieldDelegate>{
+@interface ValDayCell : UITableViewCell{
     UILabel *label;
     UITextField *textField;
+    PickerView *picker;
 }
+
+
 
 @end
