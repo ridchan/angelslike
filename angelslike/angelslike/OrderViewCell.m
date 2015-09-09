@@ -28,7 +28,11 @@
         
         statu = [[UILabel alloc]initWithFrame:RECT(5, 5, ScreenWidth - 10, 20)];
         statu.textAlignment = NSTextAlignmentRight;
+        statu.font = FontWS(11);
         [self addSubview:statu];
+        
+        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 25, ScreenWidth, 100)];
+        [self addSubview:whiteView];
     }
     return self;
 }
