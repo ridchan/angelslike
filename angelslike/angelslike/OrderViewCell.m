@@ -24,6 +24,11 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         order = [[UILabel alloc]initWithFrame:RECT(5, 5, ScreenWidth - 10, 20)];
         order.font = FontWS(11);
+        [self addSubview:order];
+        
+        statu = [[UILabel alloc]initWithFrame:RECT(5, 5, ScreenWidth - 10, 20)];
+        statu.textAlignment = NSTextAlignmentRight;
+        [self addSubview:statu];
     }
     return self;
 }
