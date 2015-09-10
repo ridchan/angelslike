@@ -232,6 +232,8 @@
     return self;
 }
 
+
+
 -(void)addToView:(UIView *)view{
     CGRect rect = CGRectZero;
     rect.origin = CGPointMake(0 , 350);
@@ -243,11 +245,9 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"scroll %f ;;  %f",scrollView.contentOffset.y,tempView.frame.origin.y);
     if (scrollView.contentOffset.y + 64 > tempView.frame.origin.y ) {
         scrollView.contentOffset  = CGPointMake(0, tempView.frame.origin.y - 64);
     }
-//    imageView.center = CGPointMake(40, 104 + scrollView.contentOffset.y);
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
@@ -350,10 +350,10 @@
     daylabel.text = [[[_info strForKey:@"outday"] stringByReplacingOccurrencesOfString:@"<font>" withString:@""] stringByReplacingOccurrencesOfString:@"</font>" withString:@""];
     titlelabel.text = [_info strForKey:@"title"];
     
-    if ([_info intForKey:@"type"] == 1) {
+//    if ([_info intForKey:@"type"] == 1) {
         cp.hidden = NO;
         [cp setImg:[ImageLink stringByAppendingPathComponent:[_info strForKey:@"pimg"]] name:[_info strForKey:@"pname"]  price:[_info strForKey:@"pprice"]  content:[_info strForKey:@"pcontent"] ];
-    }
+//    }
     
 
     

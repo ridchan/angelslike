@@ -94,10 +94,10 @@
 
 -(CGRect)setImg:(NSString *)link name:(NSString *)name price:(NSString *)price content:(NSString *)content{
     
-    __block UILabel *tempName = nameLabel;
-    __block UILabel *tempPrice = priceLabel;
-    __block UIImageView *tempImage = imageView;
-    __block UIWebView *tempContent = contentLabel;
+//    __block UILabel *tempName = nameLabel;
+//    __block UILabel *tempPrice = priceLabel;
+//    __block UIImageView *tempImage = imageView;
+//    __block UIWebView *tempContent = contentLabel;
     [imageView setPreImageWithUrl:link block:^(id Obj) {
 //        (10, 215, frame.size.width - 20, 30)
 //        tempName.frame = CGRectMake(10, tempImage.frame.size.height + tempImage.frame.origin.y + 5, tempImage.frame.size.width, tempImage.frame.size.height);

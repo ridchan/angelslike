@@ -16,6 +16,7 @@
 #import "MineViewController.h"
 #import "IQKeyboardManager.h"
 #import "WXApi.h"
+#import "BaiduMobStat.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>
 

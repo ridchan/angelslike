@@ -27,7 +27,7 @@
     
     self.infos = @[@[@{@"Name":@"用户信息"}],
                    @[@{@"Name":@"我的凑分子",@"IMG":@"mine_00",@"Action":@"myCouClick:"},
-                     @{@"Name":@"我的订单",@"IMG":@"mine_01"},
+                     @{@"Name":@"我的订单",@"IMG":@"mine_01",@"Action":@"myOrderClick:"},
                      @{@"Name":@"我的购物车",@"IMG":@"mine_002"}
                      ],
                    @[@{@"Name":@"达人专区",@"IMG":@"mine_03"},
@@ -42,6 +42,11 @@
     [self.view addSubview:self.tableView];
     [self.tableView reloadData];
     
+}
+
+-(void)myOrderClick:(id)order{
+    OrderListViewController *vc = [[OrderListViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)settingClick:(id)sender{

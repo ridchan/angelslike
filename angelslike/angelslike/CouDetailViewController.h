@@ -14,7 +14,7 @@
 #import "CommentViewController.h"
 #import "CouRecordsViewController.h"
 
-@interface CouDetailViewController : BaseViewController{
+@interface CouDetailViewController : BaseViewController<UIScrollViewDelegate,CouDetailDelegate>{
     CouPay *cp;
     RCMutileView *mv;
 }

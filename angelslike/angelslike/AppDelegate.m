@@ -11,6 +11,7 @@
 #define WXAppID @"wxcb123955cc21a093" //@"wx808df514e9cb4fc0"  公众平台
 #define WXAppSecret @"e1f09700641778a0f00cd2f3b56f2862" // @"72113780a6d46096850d1a93ee5addb3" 公众平台
 
+
 @interface AppDelegate ()
 
 @end
@@ -22,7 +23,7 @@
     
     
 
-    
+    [self baiduMobStat];
     
 //    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
 //    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
@@ -63,6 +64,16 @@
     
     self.window.rootViewController = tbc;
     [self.window makeKeyAndVisible];
+    
+    
+}
+
+-(void)baiduMobStat{
+    BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
+    // 此处(startWithAppId之前)可以设置初始化的可选参数，具体有哪些参数，可详见BaiduMobStat.h文件，例如：
+    statTracker.shortAppVersion  = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    [statTracker startWithAppId:@"f890d1ef6f"]; // 设置您在mtj网站上添加的app的appkey,此处AppId即为应用的appKey
 }
 
 

@@ -139,15 +139,6 @@
 
 }
 
-- (NSString*)encodeURL:(NSString *)string
-{
-    NSString *newString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes( kCFAllocatorDefault, (CFStringRef)string, NULL, CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"),kCFStringEncodingUTF8));
-    if (newString) {
-        return newString;
-    }
-    return @"";
-}
-
 
 -(void)buynow:(id)sender{
     BuyNowViewController *vc = [[BuyNowViewController alloc]init];

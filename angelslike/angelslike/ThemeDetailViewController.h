@@ -11,6 +11,7 @@
 #import "ItemCell.h"
 #import "ProductDetailViewController.h"
 #import "BottomView.h"
+#import "CommentViewController.h"
 
 @interface ThemeDetailViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,ItemCellDelegate>{
     BottomView *bv;

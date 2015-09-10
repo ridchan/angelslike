@@ -16,11 +16,12 @@
 }
 
 -(void)initialSetting{
-    
+    CGFloat off = 0;
+    if(self.navigationController) off = 44;
     
     //table view
     self.result = [NSMutableArray array];
-    self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, self.view.frame.size.height - 44)];
+    self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, off, ScreenWidth, self.view.frame.size.height - 44)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.currentPage = 0;
@@ -48,13 +49,16 @@
     
     
     self.heights = [NSMutableDictionary dictionary];
-//    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
-//    header.automaticallyChangeAlpha = YES;
-//    header.lastUpdatedTimeLabel.hidden = YES;
-//    self.tableView.header = header;
-//    
+
     [self refreshClick:nil];
+    
+    [self setBackButtonAction:@selector(backClick:)];
 }
+
+-(void)backClick:(id)obj{
+    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+}
+
 
 
 -(UITextField *)textField:(CGRect)frame{

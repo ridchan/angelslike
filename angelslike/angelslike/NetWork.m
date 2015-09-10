@@ -47,6 +47,7 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postdata];
     
+    [[BaiduMobStat defaultStat] webviewStartLoadWithRequest:request];
     [self currentThreadAdding];
     if (lock) [RCHub show];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -93,7 +94,7 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postdata];
     
-
+    [[BaiduMobStat defaultStat] webviewStartLoadWithRequest:request];
     [self currentThreadAdding];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{

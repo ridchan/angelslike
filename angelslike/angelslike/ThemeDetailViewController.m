@@ -33,6 +33,18 @@
 
 -(void)setBottomView{
     [bv setCount:[self.result strForKey:@"praise"] count2:[self.result strForKey:@"review"] count3:[self.result strForKey:@"share"]];
+    [bv addTarget:self action:@selector(bottomButtonClick:)];
+}
+
+-(void)bottomButtonClick:(UIButton *)sender{
+    if (sender.tag == 2) {
+        
+        CommentViewController *vc =[[CommentViewController alloc]init];
+        vc.info = @{@"id":self.strid,@"type":@"0"};
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+//        [self.navigationController pushViewController:vc animated:YES];
+        [self presentViewController:nav animated:YES completion:NULL];
+    }
 }
 
 -(void)initialSetting{

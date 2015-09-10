@@ -14,6 +14,7 @@
 #import "SettingViewController.h"
 #import "MyCouViewController.h"
 #import "AddressViewController.h"
+#import "OrderListViewController.h"
 
 @interface MineViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 

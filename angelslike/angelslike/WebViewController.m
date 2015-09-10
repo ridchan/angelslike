@@ -60,6 +60,7 @@
 }
 
 -(void)scrollViewCanMove:(NSNotification *)obj{
+    
     if (canMove == NO) {
         NSNumber *num = obj.object;
         scView.contentOffset = CGPointMake(0, scView.contentOffset.y + [num floatValue]);
@@ -70,7 +71,7 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y < 0) {
+    if (scrollView.contentOffset.y <= 0) {
         canMove = NO;
         scrollView.scrollEnabled = NO;
         float off = scrollView.contentOffset.y;
@@ -84,9 +85,6 @@
     canMove = YES;
 }
 
--(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
-    NSLog(@"eecelerating");
-}
 
 
 

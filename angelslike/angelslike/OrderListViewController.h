@@ -7,7 +7,19 @@
 //
 
 #import "BaseViewController.h"
+#import "LoadMoreTableView.h"
+#import "MXPullDownMenu.h"
+#import "MJRefresh.h"
+#import "OrderViewCell.h"
 
-@interface OrderListViewController : BaseViewController
+@interface OrderListViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,MXPullDownMenuDelegate>{
+    CGFloat cellHeight;
+    MXPullDownMenu *downMenu;
+}
+
+@property(nonatomic,strong) LoadMoreTableView *tableView;
+@property(nonatomic,strong) NSMutableArray *result;
+@property(nonatomic,strong) NSString *cdn;
+@property (strong,nonatomic) NSMutableDictionary *searchInfo;
 
 @end

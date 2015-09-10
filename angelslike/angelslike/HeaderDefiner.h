@@ -33,6 +33,7 @@
 #define CouRecordUrl [MainDomain stringByAppendingPathComponent:@"cou/records"]
 #define CouUrl [MainDomain stringByAppendingPathComponent:@"cou/lists"]
 #define CouDetailUrl [MainDomain stringByAppendingPathComponent:@"cou/detail"]
+#define MyOrderUrl [MainDomain stringByAppendingPathComponent:@"my/myorder"]
 //主题
 #define ListLink [MainDomain stringByAppendingPathComponent:@"theme/lists"]
 #define ThemeUrl [MainDomain stringByAppendingPathComponent:@"theme/detail"]
@@ -56,6 +57,8 @@
 #define AddressUrl [MainDomain stringByAppendingPathComponent:@"index/getaddress"]
 
 
+#define AliPID @"2088911709405062"
+#define AliSID @"2868362748@qq.com"
 
 // margin 首页
 #define MainCellMargin 10
@@ -102,5 +105,6 @@
 #define Format2(a,b) [NSString stringWithFormat:@"%@%@",a,b]
 #define Format3(a,b,c) [NSString stringWithFormat:@"%@%@%@",a,b,c]
 #define IMAGE(n) [UIImage imageNamed:n]
+#define UserDefault [NSUserDefaults standardUserDefaults]
 
 #endif//

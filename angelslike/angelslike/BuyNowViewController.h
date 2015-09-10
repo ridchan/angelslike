@@ -13,6 +13,8 @@
 #import "AddressCell.h"
 #import "PayCell.h"
 
+#import <AlipaySDK/AlipaySDK.h>
+
 @interface BuyNowViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
     AreaView *av;
     UILabel *totalLabel;

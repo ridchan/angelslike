@@ -16,6 +16,7 @@
 @interface MyAddressCell : UITableViewCell{
     CheckButton *cb;
     UILabel *label;
+    
 }
 
 @property(nonatomic) BOOL bCheck;

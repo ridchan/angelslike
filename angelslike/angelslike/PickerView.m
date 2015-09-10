@@ -22,8 +22,8 @@
         label.layer.cornerRadius = 5;
 //        label.textAlignment = NSTextAlignmentCenter;
         label.font = FontWS(12);
-
-        label.textColor = [UIColor lightGrayColor];
+        
+        label.textColor = [UIColor blackColor];
         
         [self.layer addSublayer:[self shadowAsInverse]];
         [self addSubview:label];

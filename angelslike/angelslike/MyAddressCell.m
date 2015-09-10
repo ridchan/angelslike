@@ -84,33 +84,54 @@
     }else{
         type = @"dis";
     }
-    
-    [[NetWork shared]query:AddressUrl info:@{@"type":type} block:^(id Obj) {
-        SGPopSelectView *popView = [[SGPopSelectView alloc] init];
-        
+ 
+    id address = [UserDefault objectForKey:type];
+    if (!address) {
+        [[NetWork shared]query:AddressUrl info:@{@"type":type} block:^(id Obj) {
+            id newAddress = [Obj objectForKey:@"data"];
+            [UserDefault setObject:newAddress forKey:type];
+            
+            if (pk.tag == 1) {
+                [self showSelection:newAddress picker:pk];
+            }else if (pk.tag == 2){
+                PickerView *pk1 = (PickerView *)[self viewWithTag:1];
+                NSArray *newArr = [newAddress objectForKey:pk1.text];
+                [self showSelection:newArr picker:pk];
+            }else{
+                PickerView *pk2 = (PickerView *)[self viewWithTag:2];
+                NSArray *newArr = [newAddress objectForKey:pk2.text];
+                [self showSelection:newArr picker:pk];
+            }
+        } lock:NO];
+    }else{
         if (pk.tag == 1) {
-            popView.selections = [Obj objForKey:@"data"];
+            [self showSelection:address picker:pk];
         }else if (pk.tag == 2){
             PickerView *pk1 = (PickerView *)[self viewWithTag:1];
-            NSArray *arr = [[Obj objForKey:@"data"] objectForKey:pk1.text];
-            popView.selections = arr;
+            NSArray *newArr = [address objectForKey:pk1.text];
+            [self showSelection:newArr picker:pk];
         }else{
             PickerView *pk2 = (PickerView *)[self viewWithTag:2];
-            popView.selections = [[Obj objForKey:@"data"] objectForKey:pk2.text];
+            NSArray *newArr = [address objectForKey:pk2.text];
+            [self showSelection:newArr picker:pk];
         }
-        
-        popView.selections = [Obj objForKey:@"data"];
-        __block SGPopSelectView *tempView = popView;
-        popView.selectedHandle = ^(NSInteger selectedIndex){
-            pk.text = tempView.selections[selectedIndex];
-            [tempView hide:NO];
-        };
-        
-        UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-        CGRect rect=[pk convertRect:pk.bounds toView:window];
-        
-        [popView showFromView:window atPoint:rect.origin animated:YES];
-    } lock:YES];
+    }
+
+}
+
+-(void)showSelection:(NSArray *)arr picker:(PickerView *)pk{
+    SGPopSelectView *popView = [[SGPopSelectView alloc] init];
+    popView.selections = arr;
+    __block SGPopSelectView *tempView = popView;
+    popView.selectedHandle = ^(NSInteger selectedIndex){
+        pk.text = tempView.selections[selectedIndex];
+        [tempView hide:NO];
+    };
+    
+    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+    CGRect rect=[pk convertRect:pk.bounds toView:window];
+    
+    [popView showFromView:window atPoint:rect.origin animated:YES];
 }
 
 

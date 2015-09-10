@@ -45,7 +45,7 @@
 -(void)addViewController{
     
     CouDetail *v = (CouDetail *)[self.view viewWithTag:99];
-    
+//    v.delegate = self;
     mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, v.frame.size.height, ScreenWidth, ScreenHeight - 64)];
     mv.titles = @[@"谁在凑",@"凑热闹"];
     
@@ -61,6 +61,12 @@
     
     
 }
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+}
+
+
 
 -(void)addBottomButton{
     UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 54, ScreenWidth, 54)];

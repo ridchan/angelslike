@@ -14,10 +14,15 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [[BaiduMobStat defaultStat] pageviewStartWithName:NSStringFromClass([self class])];
     self.view.backgroundColor = [UIColor getHexColor:@"F1F0F6"];
 //    if ([self.navigationController.viewControllers indexOfObject:self] == 1) {
 //        self.hidesBottomBarWhenPushed = YES;
 //    }
+}
+
+-(void)dealloc{
+    [[BaiduMobStat defaultStat] pageviewEndWithName:NSStringFromClass([self class])];
 }
 
 -(void)setBackButtonAction:(SEL)action{

@@ -95,6 +95,20 @@
 		27E0E3C31B90676E00685760 /* MyCouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0E3C21B90676E00685760 /* MyCouViewController.m */; };
 		27E0FA301B9C2E0400F1F8EB /* iconfont-dianzan.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */; };
 		27E0FA321B9C320800F1F8EB /* xiaolian.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FA311B9C320800F1F8EB /* xiaolian.png */; };
+		27E106C31BA11F8B00FB6318 /* OrderDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E106C21BA11F8B00FB6318 /* OrderDetailViewCell.m */; };
+		27E106C61BA1670C00FB6318 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27E106C41BA1670C00FB6318 /* AlipaySDK.bundle */; };
+		27E106C71BA1670C00FB6318 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106C51BA1670C00FB6318 /* AlipaySDK.framework */; };
+		27E106C91BA1673000FB6318 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106C81BA1673000FB6318 /* CoreTelephony.framework */; };
+		27E106CB1BA1674100FB6318 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106CA1BA1674100FB6318 /* CoreText.framework */; };
+		27E106CD1BA1674700FB6318 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106CC1BA1674700FB6318 /* CoreGraphics.framework */; };
+		27E106CF1BA1674E00FB6318 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106CE1BA1674E00FB6318 /* UIKit.framework */; };
+		27E106D31BA1675E00FB6318 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106D21BA1675E00FB6318 /* Foundation.framework */; };
+		27E106D51BA1775000FB6318 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106D41BA1775000FB6318 /* libBaiduMobStat.a */; };
+		27E106D81BA17DC100FB6318 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106D71BA17DC100FB6318 /* Security.framework */; };
+		27E106DA1BA17DC700FB6318 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106D91BA17DC700FB6318 /* CoreLocation.framework */; };
+		27E106DC1BA17DD100FB6318 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106DB1BA17DD100FB6318 /* libz.1.2.5.dylib */; };
+		27E106DE1BA17DD900FB6318 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E106DD1BA17DD900FB6318 /* libstdc++.dylib */; };
+		27E106E11BA18DE600FB6318 /* AnswerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E106E01BA18DE600FB6318 /* AnswerView.m */; };
 		27E16BEC1B9D250C00EE5259 /* CouRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16BEB1B9D250C00EE5259 /* CouRecordsViewController.m */; };
 		27E16BEF1B9D2ACF00EE5259 /* CouRecrodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16BEE1B9D2ACF00EE5259 /* CouRecrodCell.m */; };
 		27E16BF21B9D5AA100EE5259 /* ReplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16BF11B9D5AA100EE5259 /* ReplayView.m */; };
@@ -420,6 +434,23 @@
 		27E0E3C21B90676E00685760 /* MyCouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouViewController.m; sourceTree = "<group>"; };
 		27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-dianzan.png"; sourceTree = "<group>"; };
 		27E0FA311B9C320800F1F8EB /* xiaolian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiaolian.png; sourceTree = "<group>"; };
+		27E106C11BA11F8B00FB6318 /* OrderDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewCell.h; sourceTree = "<group>"; };
+		27E106C21BA11F8B00FB6318 /* OrderDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewCell.m; sourceTree = "<group>"; };
+		27E106C41BA1670C00FB6318 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		27E106C51BA1670C00FB6318 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		27E106C81BA1673000FB6318 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		27E106CA1BA1674100FB6318 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		27E106CC1BA1674700FB6318 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		27E106CE1BA1674E00FB6318 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		27E106D21BA1675E00FB6318 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		27E106D41BA1775000FB6318 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
+		27E106D61BA1775C00FB6318 /* BaiduMobStat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		27E106D71BA17DC100FB6318 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		27E106D91BA17DC700FB6318 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		27E106DB1BA17DD100FB6318 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		27E106DD1BA17DD900FB6318 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		27E106DF1BA18DE600FB6318 /* AnswerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerView.h; sourceTree = "<group>"; };
+		27E106E01BA18DE600FB6318 /* AnswerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerView.m; sourceTree = "<group>"; };
 		27E16BEA1B9D250C00EE5259 /* CouRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouRecordsViewController.h; sourceTree = "<group>"; };
 		27E16BEB1B9D250C00EE5259 /* CouRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouRecordsViewController.m; sourceTree = "<group>"; };
 		27E16BED1B9D2ACF00EE5259 /* CouRecrodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouRecrodCell.h; sourceTree = "<group>"; };
@@ -662,12 +693,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E106DE1BA17DD900FB6318 /* libstdc++.dylib in Frameworks */,
+				27E106DC1BA17DD100FB6318 /* libz.1.2.5.dylib in Frameworks */,
+				27E106DA1BA17DC700FB6318 /* CoreLocation.framework in Frameworks */,
+				27E106D81BA17DC100FB6318 /* Security.framework in Frameworks */,
+				27E106D31BA1675E00FB6318 /* Foundation.framework in Frameworks */,
+				27E106CF1BA1674E00FB6318 /* UIKit.framework in Frameworks */,
+				27E106CD1BA1674700FB6318 /* CoreGraphics.framework in Frameworks */,
+				27E106CB1BA1674100FB6318 /* CoreText.framework in Frameworks */,
+				27BA81461B71B537005B527B /* QuartzCore.framework in Frameworks */,
+				27E106C91BA1673000FB6318 /* CoreTelephony.framework in Frameworks */,
+				27EAFAA71B7B42E700DF60E9 /* SystemConfiguration.framework in Frameworks */,
+				27E106C71BA1670C00FB6318 /* AlipaySDK.framework in Frameworks */,
+				27E106D51BA1775000FB6318 /* libBaiduMobStat.a in Frameworks */,
 				27EAFAAD1B7B431C00DF60E9 /* libc++.dylib in Frameworks */,
 				27EAFAAB1B7B42F800DF60E9 /* libsqlite3.0.dylib in Frameworks */,
 				27EAFAA91B7B42F100DF60E9 /* libz.dylib in Frameworks */,
-				27EAFAA71B7B42E700DF60E9 /* SystemConfiguration.framework in Frameworks */,
 				27EAFAA41B7B429900DF60E9 /* libWeChatSDK.a in Frameworks */,
-				27BA81461B71B537005B527B /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +834,19 @@
 		27DD23C61B70514700C61546 = {
 			isa = PBXGroup;
 			children = (
+				27E106DD1BA17DD900FB6318 /* libstdc++.dylib */,
+				27E106DB1BA17DD100FB6318 /* libz.1.2.5.dylib */,
+				27E106D91BA17DC700FB6318 /* CoreLocation.framework */,
+				27E106D71BA17DC100FB6318 /* Security.framework */,
+				27E106D61BA1775C00FB6318 /* BaiduMobStat.h */,
+				27E106D41BA1775000FB6318 /* libBaiduMobStat.a */,
+				27E106D21BA1675E00FB6318 /* Foundation.framework */,
+				27E106CE1BA1674E00FB6318 /* UIKit.framework */,
+				27E106CC1BA1674700FB6318 /* CoreGraphics.framework */,
+				27E106CA1BA1674100FB6318 /* CoreText.framework */,
+				27E106C81BA1673000FB6318 /* CoreTelephony.framework */,
+				27E106C41BA1670C00FB6318 /* AlipaySDK.bundle */,
+				27E106C51BA1670C00FB6318 /* AlipaySDK.framework */,
 				27EAFAAC1B7B431C00DF60E9 /* libc++.dylib */,
 				27EAFAAA1B7B42F800DF60E9 /* libsqlite3.0.dylib */,
 				27EAFAA81B7B42F100DF60E9 /* libz.dylib */,
@@ -934,6 +989,8 @@
 				27E37AC71B94346A0038F8FB /* QtyButton.m */,
 				27E213131BA01757008888BA /* PickerView.h */,
 				27E213141BA01757008888BA /* PickerView.m */,
+				27E106DF1BA18DE600FB6318 /* AnswerView.h */,
+				27E106E01BA18DE600FB6318 /* AnswerView.m */,
 			);
 			name = "自定义控件";
 			sourceTree = "<group>";
@@ -1214,6 +1271,8 @@
 				27E213171BA03BAB008888BA /* OrderListViewController.m */,
 				27E213191BA03BE6008888BA /* OrderViewCell.h */,
 				27E2131A1BA03BE6008888BA /* OrderViewCell.m */,
+				27E106C11BA11F8B00FB6318 /* OrderDetailViewCell.h */,
+				27E106C21BA11F8B00FB6318 /* OrderDetailViewCell.m */,
 			);
 			name = "我的页";
 			sourceTree = "<group>";
@@ -1548,6 +1607,7 @@
 				27E089A51B9030D40090C724 /* iconfont-gouwuche.png in Resources */,
 				27E0662E1B85DD4300D94803 /* MJRefresh.bundle in Resources */,
 				27EFB2651B73970900A14872 /* pinglei_05.png in Resources */,
+				27E106C61BA1670C00FB6318 /* AlipaySDK.bundle in Resources */,
 				27E6ADFD1B785658008CE686 /* IQKeyboardManager.bundle in Resources */,
 				27EADA801B7C89610084D648 /* iconfont-zhuanfa.png in Resources */,
 				27EED2741B748D90009F2DD2 /* mine_00.png in Resources */,
@@ -1593,6 +1653,7 @@
 				27E6AE041B785658008CE686 /* UIView+Hierarchy.m in Sources */,
 				27E2AA141B9EE8DE0046D28D /* SGPopSelectView.m in Sources */,
 				27DD24041B705C8400C61546 /* MainCell.m in Sources */,
+				27E106C31BA11F8B00FB6318 /* OrderDetailViewCell.m in Sources */,
 				27DD23FF1B70584700C61546 /* UIColor+HexColor.m in Sources */,
 				27E53EB21B8C25DA00A56D53 /* ProductDetail.m in Sources */,
 				27E2AA001B9EC2DE0046D28D /* HerAddressCell.m in Sources */,
@@ -1677,6 +1738,7 @@
 				27DF595E1B8EF5B400E94B06 /* UILabel+Resize.m in Sources */,
 				2E7A78BE1B77CA65004A58AB /* RMDisplayLabel.m in Sources */,
 				27DD23FB1B70565700C61546 /* MainViewController.m in Sources */,
+				27E106E11BA18DE600FB6318 /* AnswerView.m in Sources */,
 				27BA81771B71C6A6005B527B /* SDWebImagePrefetcher.m in Sources */,
 				27EA9A021B72F662003559C0 /* BaseViewController.m in Sources */,
 				27E07CE81B8420120020B950 /* ProductCell.m in Sources */,
@@ -1820,12 +1882,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = angelslike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/angelslike",
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1836,12 +1903,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = angelslike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/angelslike",
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

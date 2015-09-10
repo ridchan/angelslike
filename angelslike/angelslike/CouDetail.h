@@ -28,6 +28,13 @@
 
 @end
 
+
+@protocol CouDetailDelegate <NSObject>
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView;
+
+@end
+
 @interface CouDetail : UIView<UIWebViewDelegate,CouProductDelegate,UIScrollViewDelegate>{
     UIScrollView *scView;
     
@@ -59,7 +66,8 @@
 }
 
 @property(nonatomic,strong) NSDictionary *info;
-
+@property(nonatomic) id<CouDetailDelegate> delegate;
 -(void)addToView:(UIView *)view;
+
 
 @end
