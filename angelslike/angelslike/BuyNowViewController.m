@@ -124,21 +124,6 @@
 
 
 -(void)comfirmPay:(id)sender{
-    NSMutableString *privateKey = [NSMutableString string];
-    [privateKey appendString:@"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK6PtuuJiEWczsOI\n"];
-    [privateKey appendString:@"X4J1plCApFUqgV5sJfSatHakdO+o0CX/ufM7qHOdp0sLL8Y+DAjNMzJBSqmKgtkB\n"];
-    [privateKey appendString:@"Iz3Ow9JqmfUi4VwhLolYzdiSqhuwSPE8VUYDZvjBP0tNpsbSaFX/Gvn8Qmqz5R0v\n"];
-    [privateKey appendString:@"oIsIfNtt1wnd3uXPExW5E/IMpqYjAgMBAAECgYEAoaP2kBiklUFkvO808csbnIPi\n"];
-    [privateKey appendString:@"p/JaJSMj6mKvJQWYOqwpQmaQu8jMbXLZDMZpELs3zZamB60qA+B81ZEWHw+th0wH\n"];
-    [privateKey appendString:@"K4PfaBq2clFm0IIK1YbH7aFbirrn7gwU6y0u/12aUxWAnuSs3oshKiLFP0cZFEYn\n"];
-    [privateKey appendString:@"kWM90ZAj1dOkrA3u2nECQQDkJlcu4hcYCjfyb8Jc2mhi+rJyWXVtOrG8vGgbf+Hf\n"];
-    [privateKey appendString:@"Y0UJJgoGyuAQD/C4VYQYLBympUoCwVimrQrBg05l/Dm9AkEAw9697KlfvOdqkVTs\n"];
-    [privateKey appendString:@"uPTzdSNvUiZaZqmCpBUK5BW27HLi2HZ1YeyH0Emuenwc1LmviTFDFGE8rbzKeChe\n"];
-    [privateKey appendString:@"hnMtXwJAHiTesggXSwrWl4aipIgK8MD04NznAfaWUzyFeNStsEk6btoCyyD098pT\n"];
-    [privateKey appendString:@"YNeTq2nwoygFnlWTc/o7CJRjwF/R9QJAfv4cz6NlIjo8Wuvf629NpeYKmA2r0SIY\n"];
-    [privateKey appendString:@"RMAr5oO5rQYz07rCEnJkAAS1rk5n9vhJOj8JSd5dlBtyfoNV/gARKwJAc6eBXPNA\n"];
-    [privateKey appendString:@"HC5gLOIZNfqW7/sXhjZR47W3AdQsoKQekmVfHsh6ixq4vKn3TJtC8rbwTNknRLs4\n"];
-    [privateKey appendString:@"ti1V2itso6belw==\n"];
     
     NSMutableDictionary *info = [NSMutableDictionary dictionary];
     for(NSDictionary *dic in self.products){
@@ -167,30 +152,35 @@
 
 
 -(void)payInOrder:(NSString *)orderNo{
-/*    if ([partner length] == 0 ||
-        [seller length] == 0 ||
-        [privateKey length] == 0)
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:@"缺少partner或者seller或者私钥。"
-                                                       delegate:self
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
+    /*
+    NSMutableString *privateKey = [NSMutableString string];
+    [privateKey appendString:@"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK6PtuuJiEWczsOI\n"];
+    [privateKey appendString:@"X4J1plCApFUqgV5sJfSatHakdO+o0CX/ufM7qHOdp0sLL8Y+DAjNMzJBSqmKgtkB\n"];
+    [privateKey appendString:@"Iz3Ow9JqmfUi4VwhLolYzdiSqhuwSPE8VUYDZvjBP0tNpsbSaFX/Gvn8Qmqz5R0v\n"];
+    [privateKey appendString:@"oIsIfNtt1wnd3uXPExW5E/IMpqYjAgMBAAECgYEAoaP2kBiklUFkvO808csbnIPi\n"];
+    [privateKey appendString:@"p/JaJSMj6mKvJQWYOqwpQmaQu8jMbXLZDMZpELs3zZamB60qA+B81ZEWHw+th0wH\n"];
+    [privateKey appendString:@"K4PfaBq2clFm0IIK1YbH7aFbirrn7gwU6y0u/12aUxWAnuSs3oshKiLFP0cZFEYn\n"];
+    [privateKey appendString:@"kWM90ZAj1dOkrA3u2nECQQDkJlcu4hcYCjfyb8Jc2mhi+rJyWXVtOrG8vGgbf+Hf\n"];
+    [privateKey appendString:@"Y0UJJgoGyuAQD/C4VYQYLBympUoCwVimrQrBg05l/Dm9AkEAw9697KlfvOdqkVTs\n"];
+    [privateKey appendString:@"uPTzdSNvUiZaZqmCpBUK5BW27HLi2HZ1YeyH0Emuenwc1LmviTFDFGE8rbzKeChe\n"];
+    [privateKey appendString:@"hnMtXwJAHiTesggXSwrWl4aipIgK8MD04NznAfaWUzyFeNStsEk6btoCyyD098pT\n"];
+    [privateKey appendString:@"YNeTq2nwoygFnlWTc/o7CJRjwF/R9QJAfv4cz6NlIjo8Wuvf629NpeYKmA2r0SIY\n"];
+    [privateKey appendString:@"RMAr5oO5rQYz07rCEnJkAAS1rk5n9vhJOj8JSd5dlBtyfoNV/gARKwJAc6eBXPNA\n"];
+    [privateKey appendString:@"HC5gLOIZNfqW7/sXhjZR47W3AdQsoKQekmVfHsh6ixq4vKn3TJtC8rbwTNknRLs4\n"];
+    [privateKey appendString:@"ti1V2itso6belw==\n"];
+    
     
  
     //生成订单信息及签名
  
     //将商品信息赋予AlixPayOrder的成员变量
     Order *order = [[Order alloc] init];
-    order.partner = partner;
-    order.seller = seller;
-    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
-    order.productName = product.subject; //商品标题
-    order.productDescription = product.body; //商品描述
-    order.amount = [NSString stringWithFormat:@"%.2f",product.price]; //商品价格
+    order.partner = AliPID;
+    order.seller = AliSID;
+    order.tradeNO = orderNo; //订单ID（由商家自行制定）
+    order.productName = @"天使礼客"; //商品标题
+    order.productDescription = @"天使礼客"; //商品描述
+    order.amount = [NSString stringWithFormat:@"%.2f",0.2]; //商品价格
     order.notifyURL =  @"http://www.xxx.com"; //回调URL
     
     order.service = @"mobile.securitypay.pay";
@@ -206,7 +196,7 @@
     NSString *orderSpec = [order description];
     NSLog(@"orderSpec = %@",orderSpec);
     
-    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
     id<DataSigner> signer = CreateRSADataSigner(privateKey);
     NSString *signedString = [signer signString:orderSpec];
     
@@ -220,9 +210,10 @@
             NSLog(@"reslut = %@",resultDic);
         }];
         
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     }
     */
+ 
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{

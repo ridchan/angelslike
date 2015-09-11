@@ -56,8 +56,11 @@
             if (lock) [RCHub dismiss];
             if (data == nil)
                 block(nil);
-            else
-                block([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error]);
+            else{
+                id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+                NSLog(@"retunr obj %@",obj);
+                block(obj);
+            }
             [self currentThreadReducing];
         });
         

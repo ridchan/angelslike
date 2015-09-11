@@ -14,4 +14,6 @@
     UITextField *text;
 }
 
+@property(nonatomic,weak) NSMutableDictionary *info;
+
 @end

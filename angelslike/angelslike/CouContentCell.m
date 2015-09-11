@@ -23,11 +23,15 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self =  [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         //
-        textView  =  [[UITextView alloc]initWithFrame:RECT(10, 0, ScreenWidth - 5, 100)];
-        [self addSubview:textView];
+        _textView  =  [[UITextView alloc]initWithFrame:RECT(10, 0, ScreenWidth - 5, 100)];
+        [self addSubview:_textView];
     }
     
     return self;
+}
+
+-(void)textViewDidChange:(UITextView *)textView{
+    [self.info setObject:textView.text forKey:@"content"];
 }
 
 @end

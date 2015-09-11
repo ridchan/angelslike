@@ -77,8 +77,10 @@
     SGPopSelectView *popView = [[SGPopSelectView alloc] init];
     popView.selections = @[@"1",@"3",@"7",@"10",@"16",@"24",@"30"];
     __weak SGPopSelectView *tempView = popView;
+    __block ValDayCell *tempSelf = self;
     popView.selectedHandle = ^(NSInteger selectedIndex){
-        picker.text = popView.selections[selectedIndex];
+        picker.text = tempView.selections[selectedIndex];
+        [tempSelf.info setObject:picker.text forKey:@"couDay"];
         [tempView hide:NO];
     };
     

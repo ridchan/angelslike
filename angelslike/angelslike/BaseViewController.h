@@ -12,6 +12,7 @@
 #import "NetWork.h"
 #import "RCHub.h"
 
+
 @interface BaseViewController : UIViewController
 
 -(void)setTextFieldAttribute:(UITextField *)textField img:(NSString *)imgName bottom:(NSInteger)txtType;

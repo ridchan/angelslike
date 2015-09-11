@@ -40,6 +40,7 @@
 
 -(void)valueChange:(id)obj{
     label.text = [NSString stringWithFormat:@"%ld/20",[text.text length]];
+    [self.info setObject:text.text forKey:@"title"];
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{

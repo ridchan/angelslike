@@ -34,6 +34,7 @@
 #define CouUrl [MainDomain stringByAppendingPathComponent:@"cou/lists"]
 #define CouDetailUrl [MainDomain stringByAppendingPathComponent:@"cou/detail"]
 #define MyOrderUrl [MainDomain stringByAppendingPathComponent:@"my/myorder"]
+#define ComfirmCouUrl [MainDomain stringByAppendingPathComponent:@"cou/confirmcou"]
 //主题
 #define ListLink [MainDomain stringByAppendingPathComponent:@"theme/lists"]
 #define ThemeUrl [MainDomain stringByAppendingPathComponent:@"theme/detail"]
@@ -53,9 +54,12 @@
 #define BuyNowUrl [MainDomain stringByAppendingPathComponent:@"buynow"]
 //取消订单
 #define CancelOrderUrl [MainDomain stringByAppendingPathComponent:@"index/cancelOrder"]
+//取消凑分子
+#define CancelCouUrl [MainDomain stringByAppendingPathComponent:@"index/click_order"]
 //获取地址
 #define AddressUrl [MainDomain stringByAppendingPathComponent:@"index/getaddress"]
 
+#define SaveImageUrl @"http://weixin.angelslike.com/json/saveimage"
 
 #define AliPID @"2088911709405062"
 #define AliSID @"2868362748@qq.com"

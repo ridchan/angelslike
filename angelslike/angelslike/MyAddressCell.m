@@ -46,7 +46,7 @@
 
 -(void)setInfo:(NSMutableDictionary *)info{
     _info = info;
-    self.bCheck = [[_info strForKey:@"Address"] isEqualToString:@"MY"];
+    self.bCheck = [_info intForKey:@"Address"] == 1;
 }
 
 -(void)initialAddress{
@@ -55,11 +55,12 @@
     [self addSubview:[self labelName:@"详细地址" frame:CGRectMake(10, 130, 100, 30)]];
     [self addSubview:[self labelName:@"电话" frame:CGRectMake(10, 170, 100, 30)]];
     
-    [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 50, self.frame.size.width / 3 * 2 - 10, 30)]];
+    
+    [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 50, self.frame.size.width / 3 * 2 - 10, 30) withTag:11]];
     [self SelectAddress];
 //    [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 90, self.frame.size.width / 3 * 2 - 10, 30)]];
-    [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 130, self.frame.size.width / 3 * 2 - 10, 30)]];
-    [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 170, self.frame.size.width / 3 * 2 - 10, 30)]];
+    [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 130, self.frame.size.width / 3 * 2 - 10, 30) withTag:12]];
+    [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 170, self.frame.size.width / 3 * 2 - 10, 30) withTag:13]];
 }
 
 -(void)SelectAddress{
@@ -120,11 +121,15 @@
 }
 
 -(void)showSelection:(NSArray *)arr picker:(PickerView *)pk{
-    SGPopSelectView *popView = [[SGPopSelectView alloc] init];
+    if (!popView)
+        popView = [[SGPopSelectView alloc] init];
     popView.selections = arr;
+    __block MyAddressCell *tempSelf = self;
     __block SGPopSelectView *tempView = popView;
     popView.selectedHandle = ^(NSInteger selectedIndex){
         pk.text = tempView.selections[selectedIndex];
+        NSArray *arr = @[@"pro",@"city",@"dis"];
+        [tempSelf.info setObject:pk.text forKey:arr[pk.tag - 1]];
         [tempView hide:NO];
     };
     
@@ -134,8 +139,14 @@
     [popView showFromView:window atPoint:rect.origin animated:YES];
 }
 
+-(void)textChange:(UITextField *)textField{
+    NSArray *arr = @[@"name",@"address",@"phone"];
+    [self.info setObject:textField.text forKey:arr[textField.tag - 11]];
 
--(UITextField *)textField:(CGRect)frame{
+    
+}
+
+-(UITextField *)textField:(CGRect)frame withTag:(NSInteger)tag{
     UITextField *txt = [[UITextField alloc]initWithFrame:frame];
     txt.font = FontWS(14);
     txt.backgroundColor = HexColor(@"F8F8F8");
@@ -144,6 +155,8 @@
     txt.layer.borderWidth = 1.0;
     txt.layer.cornerRadius = 4;
     txt.layer.masksToBounds = YES;
+    txt.tag = tag;
+    [txt addTarget:self action:@selector(textChange:) forControlEvents:UIControlEventEditingChanged];
     return txt;
 }
 

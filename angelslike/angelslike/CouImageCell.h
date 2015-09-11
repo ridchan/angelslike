@@ -27,5 +27,8 @@
 }
 
 @property(nonatomic,strong) NSMutableArray *images;
+@property(nonatomic,strong) NSMutableArray *imageNames;
+
+@property(nonatomic,weak) NSMutableDictionary *info;
 
 @end

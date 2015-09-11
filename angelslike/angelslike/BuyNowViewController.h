@@ -12,7 +12,9 @@
 #import "BuyCell.h"
 #import "AddressCell.h"
 #import "PayCell.h"
-
+//#import "Order.h"
+//#import "DataSigner.h"
+//#import "APAuthV2Info.h"
 #import <AlipaySDK/AlipaySDK.h>
 
 @interface BuyNowViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{

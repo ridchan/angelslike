@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
 
-@interface CouContentCell : UITableViewCell{
-    UITextView *textView;
+@interface CouContentCell : UITableViewCell<UITextViewDelegate>{
+    UITextView *_textView;
 }
-
+@property(nonatomic,weak) NSMutableDictionary *info;
 @end

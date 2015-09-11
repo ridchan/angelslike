@@ -24,7 +24,7 @@
 
 -(void)qtyChange:(NSString *)str{
     self.everyPrice = [NSString stringWithFormat:@"%0.2f",[_info floatForKey:@"price"] / [str floatValue]];
-    [self.info setObject:str forKey:@"CouQty"];
+    [self.info setObject:str forKey:@"qty"];
     [self.info setObject:self.everyPrice forKey:@"everyprice"];
     [self setQtyLabel];
 }
@@ -66,7 +66,7 @@
 
 -(void)setInfo:(NSMutableDictionary *)info{
     _info = info;
-    qb.qty = [_info strForKey:@"CouQty"];
+    qb.qty = [_info strForKey:@"qty"];
     [self setQtyLabel];
 }
 

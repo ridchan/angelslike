@@ -42,6 +42,7 @@
         //
         self.clipsToBounds = YES;
         self.images = [NSMutableArray array];
+        self.imageNames = [NSMutableArray array];
         
         imageView = [[UIImageView alloc]initWithFrame:RECT(10, 1, 30, 30)];
         imageView.image = IMAGE(@"download");
@@ -104,10 +105,16 @@
     [picker dismissViewControllerAnimated:YES completion:^{
         NSData *_data = UIImageJPEGRepresentation(image,1.0);
         NSString *_encodedImageStr = Format2(@"data:image/png;base64,",[self encodeURL:[_data base64Encoding]]) ;
-        [[NetWork shared] query:@"http://weixin.angelslike.com/json/saveimage" info:@{@"type":@"cou",@"base64":_encodedImageStr} block:^(id Obj) {
-            NSLog(@"obj %@",Obj);
-            [tempSelf.images addObject:newImage];
-            [tempView reloadData];
+        [[NetWork shared] query:SaveImageUrl info:@{@"type":@"cou",@"base64":_encodedImageStr} block:^(id Obj) {
+            if ([Obj intForKey:@"status"] == 1) {
+                [tempSelf.images addObject:newImage];
+                [tempSelf.imageNames addObject:[[Obj objectForKey:@"data"] strForKey:@"file"]];
+                [tempView reloadData];
+                [self ResetImageArray];
+            }else{
+                
+            }
+   
         } lock:YES];
     }];
 }
@@ -181,8 +188,18 @@
     if (asIndex != 1 ) return;
     
     [self.images removeObjectAtIndex:indexPath.row];
+    [self.imageNames removeObjectAtIndex:indexPath.row];
     [collectionView reloadData];
+    
+    [self ResetImageArray];
+}
 
+
+-(void)ResetImageArray{
+    NSData *data = [NSJSONSerialization dataWithJSONObject:self.imageNames options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    [self.info setObject:str forKey:@"img"];
+    
 }
 
 

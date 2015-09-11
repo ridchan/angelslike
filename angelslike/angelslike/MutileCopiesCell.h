@@ -16,4 +16,6 @@
     CheckButton *cb;
 }
 
+@property(nonatomic) BOOL bCheck;
+
 @end

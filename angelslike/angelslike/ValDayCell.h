@@ -18,6 +18,6 @@
     PickerView *picker;
 }
 
-
+@property(nonatomic,weak) NSMutableDictionary *info;
 
 @end

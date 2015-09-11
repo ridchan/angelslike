@@ -23,12 +23,12 @@
 -(void)qtyChange:(NSString *)str{
 //    NSString *amount = [NSString stringWithFormat:@"%0.2f",[self.info floatForKey:@"everyprice"] * [str floatValue]];
 //    [self.info setObject:amount forKey:@"MyCouAmount"];
-    [self.info setObject:str forKey:@"MyCouQty"];
+    [self.info setObject:str forKey:@"mycopies"];
     [self setQtyLabel:nil];
 }
 
 -(void)setQtyLabel:(NSString *)str{
-    NSString *amount = [NSString stringWithFormat:@"￥%0.2f",[self.info floatForKey:@"everyprice"] * [self.info floatForKey:@"MyCouQty"]];
+    NSString *amount = [NSString stringWithFormat:@"￥%0.2f",[self.info floatForKey:@"everyprice"] * [self.info floatForKey:@"qty"]];
     [self.info setObject:amount forKey:@"MyCouAmount"];
     NSString *pre = @"合计 ";
     NSMutableString *nstr = [NSMutableString stringWithFormat:@"%@%@",pre,amount];
@@ -63,13 +63,13 @@
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     [self setQtyLabel:nil];
-    qb.maxValue = [[_info strForKey:@"CouQty"] integerValue] - 1;
+    qb.maxValue = [[_info strForKey:@"qty"] integerValue] - 1;
     
 }
 
 -(void)setInfo:(NSMutableDictionary *)info{
     _info = info;
-    qb.qty = [_info strForKey:@"MyCouQty"];
+    qb.qty = [_info strForKey:@"mycopies"];
     [self setQtyLabel:nil];
 //    [_info removeObserver:self forKeyPath:@"everyprice"];
 

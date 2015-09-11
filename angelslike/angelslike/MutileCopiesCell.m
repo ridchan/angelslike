@@ -41,5 +41,12 @@
     return self;
 }
 
+-(BOOL)bCheck{
+    return cb.selected;
+}
+
+-(void)setBCheck:(BOOL)bCheck{
+    cb.selected = bCheck;
+}
 
 @end
