@@ -21,6 +21,15 @@
 //    }
 }
 
+-(UITableViewCell *)GetSuperCell:(UIView *)view{
+    UIView *supView = [view superview];
+    if ([supView isKindOfClass:[UITableViewCell class]]) {
+        return (UITableViewCell *)supView;
+    }else{
+        return [self GetSuperCell:supView];
+    }
+}
+
 -(void)dealloc{
     [[BaiduMobStat defaultStat] pageviewEndWithName:NSStringFromClass([self class])];
 }

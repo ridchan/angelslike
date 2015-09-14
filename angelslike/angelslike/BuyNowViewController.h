@@ -15,7 +15,7 @@
 //#import "Order.h"
 //#import "DataSigner.h"
 //#import "APAuthV2Info.h"
-#import <AlipaySDK/AlipaySDK.h>
+#import <AlipaySDK/AlipaySDK.h> 
 
 @interface BuyNowViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
     AreaView *av;

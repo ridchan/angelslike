@@ -9,6 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
 
-@interface AnswerView : UIView
+typedef enum{
+    AnswerViewType_Cancel = 1,
+    AnswerViewType_Comfrim = 2,
+}AnswerViewType;
+
+typedef void(^AnswerBlock)(id Obj,AnswerViewType asType);
+
+@interface AnswerView : UIView{
+    UIView *anView;
+    UIButton *cancelButton;
+    UIButton *comfirmButton;
+    UITextView *textView;
+    UILabel *title;
+    id object;
+}
+
+@property(nonatomic,copy) AnswerBlock block;
+-(void)showWithObject:(id)obj withTitle:(NSString *)msg;
+-(void)show;
+-(void)dismiss;
 
 @end

@@ -33,4 +33,6 @@
 - (UIViewController *)findViewController:(UIView *)sourceView;
 -(void)setBackButtonAction:(SEL)action;
 
+-(UITableViewCell *)GetSuperCell:(UIView *)view;
+
 @end

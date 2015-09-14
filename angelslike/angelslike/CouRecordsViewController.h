@@ -10,8 +10,11 @@
 #import "LoadMoreTableView.h"
 #import "MJRefresh.h"
 #import "CouRecrodCell.h"
+#import "AnswerView.h"
 
-@interface CouRecordsViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CouRecordsViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
+    AnswerView *anView;
+}
 
 @property(nonatomic,strong) LoadMoreTableView *tableView;
 @property(nonatomic,strong) NSMutableArray *result;

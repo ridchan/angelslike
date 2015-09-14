@@ -45,28 +45,7 @@
         commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
         commentLabel.numberOfLines = 99;
         [self addSubview:commentLabel];
-        
-        UIImageView *img1 = [[UIImageView alloc]initWithFrame:CGRectMake(220, 15, 20, 20)];
-        img1.image = [[UIImage imageNamed:@"iconfont-pinglun"] rt_tintedImageWithColor:HexColor(@"797979")];
-        [self addSubview:img1];
-        
-        UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(245, 15, 20, 20)];
-        label1.backgroundColor = [UIColor clearColor];
-        label1.font = FontWS(11);
-        label1.text = @"0";
-        label1.textColor = HexColor(@"797979");
-        [self addSubview:label1];
-        
-        UIImageView *img2 = [[UIImageView alloc]initWithFrame:CGRectMake(270, 15, 20, 20)];
-        img2.image = [[UIImage imageNamed:@"iconfont-dianzan"] rt_tintedImageWithColor:HexColor(@"797979")];
-        [self addSubview:img2];
-        
-        UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(295, 15, 20, 20)];
-        label2.backgroundColor = [UIColor clearColor];
-        label2.font = FontWS(11);
-        label2.text = @"0";
-        label2.textColor = HexColor(@"797979");
-        [self addSubview:label2];
+
         
         
         qtylabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, 310, 20)];
@@ -75,15 +54,75 @@
         qtylabel.font = FontWS(12);
         [self addSubview:qtylabel];
         
-        r1 = [[ReplayView alloc]initWithFrame:CGRectMake(60, 80, self.frame.size.width - 80, 0)];
+        r1 = [[ReplayView alloc]initWithFrame:CGRectMake(10, 80, self.frame.size.width - 20, 0)];
         [self addSubview:r1];
         
-        r2 = [[ReplayView alloc]initWithFrame:CGRectMake(60, 80, self.frame.size.width - 80, 0)];
+        r2 = [[ReplayView alloc]initWithFrame:CGRectMake(10, 80, self.frame.size.width - 20, 0)];
         [self addSubview:r2];
+        
+        
+        UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
+        UIImageView *img1 = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width - 115, 15, 40, 20)];
+        [img1 addGestureRecognizer:tap1];
+        img1.tag = CouCellType_Comment;
+        img1.image = [[UIImage imageNamed:@"iconfont-pinglun"] rt_tintedImageWithColor:HexColor(@"797979")];
+        img1.userInteractionEnabled = YES;
+        img1.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:img1];
+        
+        reviewLbl = [[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width - 75, 15, 20, 20)];
+        reviewLbl.backgroundColor = [UIColor clearColor];
+        reviewLbl.font = FontWS(11);
+        reviewLbl.text = @"0";
+        reviewLbl.textColor = HexColor(@"797979");
+        [self addSubview:reviewLbl];
+        
+        UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
+        UIImageView *img2 = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width - 60  , 15, 40, 20)];
+        [img2 addGestureRecognizer:tap2];
+        img2.tag = CouCellType_Praise;
+        img2.image = [[UIImage imageNamed:@"iconfont-dianzan"] rt_tintedImageWithColor:HexColor(@"797979")];
+        img2.userInteractionEnabled = YES;
+        img2.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:img2];
+        
+        pariseLbl = [[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width - 20 - 5 , 15, 20, 20)];
+        pariseLbl.backgroundColor = [UIColor clearColor];
+        pariseLbl.font = FontWS(11);
+        pariseLbl.text = @"0";
+        pariseLbl.textColor = HexColor(@"797979");
+        [self addSubview:pariseLbl];
+        
+        button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [button setTitle:@"查看更多" forState:UIControlStateNormal];
+        button.frame = CGRectMake(self.frame.size.width - 80, 0, 60, 30);
+        [button addTarget:self action:@selector(showMore:) forControlEvents:UIControlEventTouchUpInside];
+        button.titleLabel.font = FontWS(13);
+        button.hidden = YES;
+        button.tag = CouCellType_More;
+        [self addSubview:button];
         
     }
     
     return self;
+}
+
+-(void)showMore:(UIButton *)b{
+    if ([tar respondsToSelector:act]) {
+        [tar performSelector:act withObject:b];
+    }
+}
+
+-(void)tap:(UIGestureRecognizer *)gesture{
+    if ([tar respondsToSelector:act]) {
+        [tar performSelector:act withObject:[gesture view]];
+    }
+}
+
+-(void)addTarget:(id)target action:(SEL)action{
+    tar = target;
+    act = action;
 }
 
 -(void)setInfo:(NSDictionary *)info{
@@ -107,7 +146,9 @@
         [imageView setPreImageWithUrl:[_info strForKey:@"uimg"] domain:MainUrl];
         nameLabel.text = [_info strForKey:@"uname"];
         dateLabel.text = [_info strForKey:@"time"];
-        commentLabel.text = [_info strForKey:@"comment"];
+        commentLabel.text = [_info strForKey:@"content"];
+        reviewLbl.text = [_info strForKey:@"review"];
+        pariseLbl.text = [_info strForKey:@"praise"];
         CGRect rect = [commentLabel.text boundingRectWithSize:CGSizeMake(commentLabel.frame.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:commentLabel.font} context:nil];
         
         commentLabel.frame = CGRectMake(commentLabel.frame.origin.x, commentLabel.frame.origin.y, commentLabel.frame.size.width, rect.size.height + 5);
@@ -133,6 +174,12 @@
             
         }
         
+        if ([arr count] > 2) {
+            button.frame = CGRectMake(button.frame.origin.x, r2.frame.origin.y + r2.frame.size.height, button.frame.size.width, button.frame.size.height);
+            
+            button.hidden = NO;
+            subRect = button.frame;
+        }
         
         backView.frame = CGRectMake(0, 0, backView.frame.size.width ,subRect.origin.y + subRect.size.height + 5);
         

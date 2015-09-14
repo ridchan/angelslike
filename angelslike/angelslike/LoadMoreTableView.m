@@ -48,22 +48,22 @@
 
 {
     
-    self.tableFooterView = nil;
-
-    if (_currentPage < _totalPage) {
-        UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.bounds.size.width, 40.0f)];
-        
-        UILabel *loadMoreText = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 116.0f, 40.0f)];
-        
-        [loadMoreText setCenter:tableFooterView.center];
-        
-        [loadMoreText setFont:[UIFont fontWithName:@"Helvetica Neue" size:14]];
-        
-        [tableFooterView addSubview:loadMoreText];
-        
-        
-        self.tableFooterView = tableFooterView;
-    }
+//    self.tableFooterView = nil;
+//
+//    if (_currentPage < _totalPage) {
+//        UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.bounds.size.width, 40.0f)];
+//        
+//        UILabel *loadMoreText = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 116.0f, 40.0f)];
+//        
+//        [loadMoreText setCenter:tableFooterView.center];
+//        
+//        [loadMoreText setFont:[UIFont fontWithName:@"Helvetica Neue" size:14]];
+//        
+//        [tableFooterView addSubview:loadMoreText];
+//        
+//        
+//        self.tableFooterView = tableFooterView;
+//    }
     
 
     
@@ -98,14 +98,14 @@
     {
         self.bLoading = YES;
         
-        UIActivityIndicatorView *tableFooterActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(75.0f, 10.0f, 20.0f, 20.0f)];
-        tableFooterActivityIndicator.center = CGPointMake(ScreenWidth / 2, 20);
-        
-        [tableFooterActivityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
-        
-        [tableFooterActivityIndicator startAnimating];
-        
-        [self.tableFooterView addSubview:tableFooterActivityIndicator];
+//        UIActivityIndicatorView *tableFooterActivityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(75.0f, 10.0f, 20.0f, 20.0f)];
+//        tableFooterActivityIndicator.center = CGPointMake(ScreenWidth / 2, 20);
+//        
+//        [tableFooterActivityIndicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+//        
+//        [tableFooterActivityIndicator startAnimating];
+//        
+//        [self.tableFooterView addSubview:tableFooterActivityIndicator];
         
         
         if ([tar respondsToSelector:act]) {

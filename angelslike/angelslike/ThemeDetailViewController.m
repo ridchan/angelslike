@@ -120,7 +120,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"cell ");
+
     if (indexPath.row == 0) {
         static NSString *topIdentify = @"TopCell";
         TopCell *cell = (TopCell *)[tableView dequeueReusableCellWithIdentifier:topIdentify];

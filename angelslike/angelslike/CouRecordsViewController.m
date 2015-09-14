@@ -37,19 +37,20 @@
     [self.view addSubview:self.tableView];
     
     
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
-    view.backgroundColor = [UIColor whiteColor];
-    
-    UITextField *textField = [self textField:CGRectMake(15, 5, 250, 30)];
-    [view addSubview:textField];
-    
-    UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(280, 5, 30, 30)];
-    imageView.image = [UIImage imageNamed:@"xiaolian"];
-    [view addSubview:imageView];
-    
-    self.tableView.tableHeaderView = view;
-    
-    [self.view addSubview:view];
+    [self setReplay];
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+//    view.backgroundColor = [UIColor whiteColor];
+//    
+//    UITextField *textField = [self textField:CGRectMake(15, 5, 250, 30)];
+//    [view addSubview:textField];
+//    
+//    UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(280, 5, 30, 30)];
+//    imageView.image = [UIImage imageNamed:@"xiaolian"];
+//    [view addSubview:imageView];
+//    
+//    self.tableView.tableFooterView = view;
+//    
+//    [self.view addSubview:view];
     
     
     //    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
@@ -73,6 +74,17 @@
     return txt;
 }
 
+-(UIButton *)button:(CGRect)frame{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    button.backgroundColor = [UIColor getHexColor:@"F8F8F8"];
+    
+    button.layer.borderColor = [UIColor getHexColor:@"bbbbbb"].CGColor;
+    button.layer.borderWidth = 1.0;
+    button.layer.cornerRadius = 4;
+    button.layer.masksToBounds = YES;
+    return button;
+}
 
 -(void)refreshClick:(id)sender{
     [self.result removeAllObjects];
@@ -112,6 +124,31 @@
                    }];
 }
 
+-(void)setReplay{
+    anView = [[AnswerView alloc]init];
+    anView.hidden = YES;
+    
+    __block CouRecordsViewController *tempSlef = self;
+    anView.block = ^(id obj,AnswerViewType type){
+        if (type == AnswerViewType_Comfrim) {
+            NSDictionary *info = [obj objectForKey:@"object"];
+            NSString *content = [obj objectForKey:@"content"];
+            [[NetWork shared]query:CommentAddUrl info:@{@"type":[info strForKey:@"commentType"],@"id":[info strForKey:@"id"],@"content":content,@"loginkey":[[UserInfo shared].info strForKey:@"loginkey"]} block:^(id Obj) {
+                [tempSlef refreshClick:nil];
+                
+            } lock:YES];
+        }
+    };
+}
+
+-(void)cellClick:(UIView *)view{
+    if (view.tag == CouCellType_Comment) {
+        CouRecrodCell *cell = (CouRecrodCell *) [self GetSuperCell:view];
+        NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:cell.info];
+        [info setObject:@"5" forKey:@"commentType"];
+        [anView showWithObject:info withTitle:@"请输入评论"];
+    }
+}
 
 #pragma mark -
 #pragma mark tableview delegate
@@ -129,6 +166,7 @@
     if (cell == nil) {
         cell = [[CouRecrodCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell addTarget:self action:@selector(cellClick:)];
     }
     
     cell.info = [self.result objectAtIndex:indexPath.row];

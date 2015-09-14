@@ -58,7 +58,6 @@
                 block(nil);
             else{
                 id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-                NSLog(@"retunr obj %@",obj);
                 block(obj);
             }
             [self currentThreadReducing];

@@ -46,14 +46,14 @@
         commentLabel.numberOfLines = 99;
         [self addSubview:commentLabel];
         
-        UIImageView *img1 = [[UIImageView alloc]initWithFrame:CGRectMake(260, 15, 20, 20)];
-        img1.image = [[UIImage imageNamed:@"iconfont-pinglun"] rt_tintedImageWithColor:HexColor(@"797979")];
-        [self addSubview:img1];
-        
-        UIImageView *img2 = [[UIImageView alloc]initWithFrame:CGRectMake(290, 15, 20, 20)];
-        img2.image = [[UIImage imageNamed:@"iconfont-dianzan"] rt_tintedImageWithColor:HexColor(@"797979")];
-        [self addSubview:img2];
-        
+//        UIImageView *img1 = [[UIImageView alloc]initWithFrame:CGRectMake(260, 15, 20, 20)];
+//        img1.image = [[UIImage imageNamed:@"iconfont-pinglun"] rt_tintedImageWithColor:HexColor(@"797979")];
+//        [self addSubview:img1];
+//        
+//        UIImageView *img2 = [[UIImageView alloc]initWithFrame:CGRectMake(290, 15, 20, 20)];
+//        img2.image = [[UIImage imageNamed:@"iconfont-dianzan"] rt_tintedImageWithColor:HexColor(@"797979")];
+//        [self addSubview:img2];
+//        
         
     }
     
@@ -67,7 +67,7 @@
         [imageView setPreImageWithUrl:[_info strForKey:@"img"] domain:MainUrl];
         nameLabel.text = [_info strForKey:@"name"];
         dateLabel.text = [_info strForKey:@"time"];
-        commentLabel.text = [_info strForKey:@"title"];
+        commentLabel.text = [_info strForKey:@"content"];
         CGRect rect = [commentLabel.text boundingRectWithSize:CGSizeMake(commentLabel.frame.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:commentLabel.font} context:nil];
         
         commentLabel.frame = CGRectMake(commentLabel.frame.origin.x, commentLabel.frame.origin.y, commentLabel.frame.size.width, rect.size.height + 5);

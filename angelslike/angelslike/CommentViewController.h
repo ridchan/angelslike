@@ -10,8 +10,13 @@
 #import "LoadMoreTableView.h"
 #import "MJRefresh.h"
 #import "CommentCell.h"
+#import "AnswerView.h"
+#import "CommentAllViewController.h"
 
-@interface CommentViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CommentViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
+    AnswerView *anView;
+    NSString *commentType;
+}
 
 @property(nonatomic,strong) LoadMoreTableView *tableView;
 @property(nonatomic,strong) NSMutableArray *result;

@@ -10,6 +10,12 @@
 #import "HeaderDefiner.h"
 #import "ReplayView.h"
 
+typedef enum{
+    CouCellType_Comment = 1001,
+    CouCellType_Praise = 2001,
+    CouCellType_More = 3001,
+}CouCellType;
+
 @interface CouRecrodCell : UITableViewCell{
     UIView *backView;
     UIImageView *imageView;
@@ -22,8 +28,19 @@
     
     ReplayView *r1;
     ReplayView *r2;
+    
+    id tar;
+    SEL act;
+    
+    
+    UILabel *pariseLbl;
+    UILabel *reviewLbl;
+    
+    UIButton *button;
 }
 
 @property(nonatomic,strong) NSDictionary *info;
+
+-(void)addTarget:(id)target action:(SEL)action;
 
 @end

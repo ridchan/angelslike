@@ -73,7 +73,6 @@
 		27E023101BA2B4750089D1CD /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E023071BA2B4750089D1CD /* RSADataSigner.m */; };
 		27E023111BA2B4750089D1CD /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E023091BA2B4750089D1CD /* RSADataVerifier.m */; };
 		27E023141BA2B5E20089D1CD /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27E023121BA2B5E20089D1CD /* AlipaySDK.bundle */; };
-		27E023171BA2B7EF0089D1CD /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E023161BA2B7EF0089D1CD /* AlipaySDK.framework */; };
 		27E0231A1BA2B8170089D1CD /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E023181BA2B8170089D1CD /* libcrypto.a */; };
 		27E0231B1BA2B8170089D1CD /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E023191BA2B8170089D1CD /* libssl.a */; };
 		27E065F21B85736400D94803 /* RCRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E065F11B85736400D94803 /* RCRefresher.m */; };
@@ -257,6 +256,8 @@
 		27EFB2661B73970900A14872 /* pinglei_06.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EFB25D1B73970800A14872 /* pinglei_06.png */; };
 		27EFB2671B73970900A14872 /* pinglei_07.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EFB25E1B73970900A14872 /* pinglei_07.png */; };
 		27EFB2681B73970900A14872 /* pinglei_08.png in Resources */ = {isa = PBXBuildFile; fileRef = 27EFB25F1B73970900A14872 /* pinglei_08.png */; };
+		27F21B161BA67BDF0015913E /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F21B151BA67BDF0015913E /* AlipaySDK.framework */; };
+		27F21B191BA6D6540015913E /* CommentAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F21B181BA6D6540015913E /* CommentAllViewController.m */; };
 		27F65CFC1B798D7C00EDE656 /* ProductlistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F65CFB1B798D7C00EDE656 /* ProductlistViewController.m */; };
 		27F65D011B799DD400EDE656 /* 01-引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27F65CFE1B799DD400EDE656 /* 01-引导页.jpg */; };
 		27F65D021B799DD400EDE656 /* 02-引导页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27F65CFF1B799DD400EDE656 /* 02-引导页.jpg */; };
@@ -484,7 +485,6 @@
 		27E023081BA2B4750089D1CD /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
 		27E023091BA2B4750089D1CD /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
 		27E023121BA2B5E20089D1CD /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
-		27E023161BA2B7EF0089D1CD /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = "../../Downloads/WS_MOBILE_PAY_SDK_BASE/支付宝钱包支付接口开发包2.0标准版/DEMO/客户端demo/支付宝钱包支付接口开发包2.0标准版(iOS 3.0.1)/AlipaySDK.framework"; sourceTree = "<group>"; };
 		27E023181BA2B8170089D1CD /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		27E023191BA2B8170089D1CD /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		27E065F01B85736400D94803 /* RCRefresher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCRefresher.h; sourceTree = "<group>"; };
@@ -766,6 +766,9 @@
 		27EFB25D1B73970800A14872 /* pinglei_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinglei_06.png; sourceTree = "<group>"; };
 		27EFB25E1B73970900A14872 /* pinglei_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinglei_07.png; sourceTree = "<group>"; };
 		27EFB25F1B73970900A14872 /* pinglei_08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinglei_08.png; sourceTree = "<group>"; };
+		27F21B151BA67BDF0015913E /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		27F21B171BA6D6540015913E /* CommentAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentAllViewController.h; sourceTree = "<group>"; };
+		27F21B181BA6D6540015913E /* CommentAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentAllViewController.m; sourceTree = "<group>"; };
 		27F65CFA1B798D7C00EDE656 /* ProductlistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductlistViewController.h; sourceTree = "<group>"; };
 		27F65CFB1B798D7C00EDE656 /* ProductlistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductlistViewController.m; sourceTree = "<group>"; };
 		27F65CFE1B799DD400EDE656 /* 01-引导页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "01-引导页.jpg"; sourceTree = "<group>"; };
@@ -803,7 +806,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E023171BA2B7EF0089D1CD /* AlipaySDK.framework in Frameworks */,
+				27F21B161BA67BDF0015913E /* AlipaySDK.framework in Frameworks */,
 				27E106DE1BA17DD900FB6318 /* libstdc++.dylib in Frameworks */,
 				27E106DC1BA17DD100FB6318 /* libz.1.2.5.dylib in Frameworks */,
 				27E106DA1BA17DC700FB6318 /* CoreLocation.framework in Frameworks */,
@@ -946,9 +949,9 @@
 		27DD23C61B70514700C61546 = {
 			isa = PBXGroup;
 			children = (
+				27F21B151BA67BDF0015913E /* AlipaySDK.framework */,
 				27E023181BA2B8170089D1CD /* libcrypto.a */,
 				27E023191BA2B8170089D1CD /* libssl.a */,
-				27E023161BA2B7EF0089D1CD /* AlipaySDK.framework */,
 				27E023121BA2B5E20089D1CD /* AlipaySDK.bundle */,
 				27E106DD1BA17DD900FB6318 /* libstdc++.dylib */,
 				27E106DB1BA17DD100FB6318 /* libz.1.2.5.dylib */,
@@ -1413,6 +1416,8 @@
 				27E53EB61B8C3BE200A56D53 /* CommentViewController.m */,
 				27E53EB81B8C3D0100A56D53 /* CommentCell.h */,
 				27E53EB91B8C3D0100A56D53 /* CommentCell.m */,
+				27F21B171BA6D6540015913E /* CommentAllViewController.h */,
+				27F21B181BA6D6540015913E /* CommentAllViewController.m */,
 			);
 			name = "评论";
 			sourceTree = "<group>";
@@ -1996,6 +2001,7 @@
 				27F65CFC1B798D7C00EDE656 /* ProductlistViewController.m in Sources */,
 				27E451621B8D733100547DAD /* AddressCell.m in Sources */,
 				27E089A81B904D3A0090C724 /* CouPayViewController.m in Sources */,
+				27F21B191BA6D6540015913E /* CommentAllViewController.m in Sources */,
 				27BA81811B71EA77005B527B /* LoadMoreTableView.m in Sources */,
 				27BA81731B71C6A6005B527B /* SDWebImageDecoder.m in Sources */,
 				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,
