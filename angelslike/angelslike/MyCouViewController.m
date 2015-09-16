@@ -131,7 +131,7 @@
                        if ([Obj intForKey:@"status"] == 1) {
                            NSArray *rs = [[Obj objectForKey:@"data"] objectForKey:@"list"];
                            NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
-                           tempSelf.cdn = ImageLink;// [Obj objectForKey:@"cdn"];
+                           tempSelf.cdn = img1Url;// [Obj objectForKey:@"cdn"];
                            if ([rs count] > 0){
                                tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
                                tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
@@ -223,6 +223,7 @@
 -(void)couCellButtonClick:(id)obj{
     UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:[[AddressViewController alloc]init]];
     UIViewController *viewController = [self findViewController:[self.view superview]];
+    [self hideTabBar];
     [viewController.navigationController.tabBarController presentViewController:nvc animated:YES completion:NULL];
 }
 

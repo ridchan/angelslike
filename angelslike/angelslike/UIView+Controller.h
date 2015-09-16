@@ -10,4 +10,5 @@
 
 @interface UIView (Controller)
 - (UIViewController *)findViewController:(UIView *)sourceView;
+- (void)addline:(CGPoint)point color:(UIColor *)color;
 @end

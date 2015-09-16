@@ -7,6 +7,7 @@
 //
 
 #import "NetWork.h"
+#import "UserInfo.h"
 
 
 
@@ -41,6 +42,8 @@
         }
         
     }
+    [postString appendFormat:@"&loginkey=%@",[[UserInfo shared].info objectForKey:@"loginkey"]];
+    
     NSData *postdata = [postString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSString *postlength = [NSString stringWithFormat:@"%lu",(unsigned long)[postdata length]];
     [request setValue:postlength forHTTPHeaderField:@"Content-Length"];
@@ -50,6 +53,7 @@
     [[BaiduMobStat defaultStat] webviewStartLoadWithRequest:request];
     [self currentThreadAdding];
     if (lock) [RCHub show];
+    __block NetWork *tempSelf = self;
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
@@ -58,9 +62,10 @@
                 block(nil);
             else{
                 id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+                
                 block(obj);
             }
-            [self currentThreadReducing];
+            [tempSelf currentThreadReducing];
         });
         
         
@@ -98,6 +103,7 @@
     
     [[BaiduMobStat defaultStat] webviewStartLoadWithRequest:request];
     [self currentThreadAdding];
+    __block NetWork *tempSlef = self;
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
@@ -106,7 +112,7 @@
             else
                 block([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error]);
             
-            [self currentThreadReducing];
+            [tempSlef currentThreadReducing];
 
         });
         

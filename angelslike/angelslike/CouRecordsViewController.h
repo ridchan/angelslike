@@ -11,9 +11,11 @@
 #import "MJRefresh.h"
 #import "CouRecrodCell.h"
 #import "AnswerView.h"
+#import "CommentAllViewController.h"
 
 @interface CouRecordsViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
     AnswerView *anView;
+    BOOL bload;
 }
 
 @property(nonatomic,strong) LoadMoreTableView *tableView;

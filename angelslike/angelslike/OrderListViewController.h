@@ -11,6 +11,7 @@
 #import "MXPullDownMenu.h"
 #import "MJRefresh.h"
 #import "OrderViewCell.h"
+#import "OrderDetailViewController.h"
 
 @interface OrderListViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,MXPullDownMenuDelegate>{
     CGFloat cellHeight;

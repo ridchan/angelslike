@@ -13,12 +13,14 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self initialSetting];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

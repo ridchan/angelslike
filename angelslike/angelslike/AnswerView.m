@@ -124,8 +124,8 @@
 }
 
 -(void)dismiss{
-    [self removeFromSuperview];
     self.hidden = YES;
+    [self removeFromSuperview];
     self.backgroundColor = [UIColor clearColor];
 }
 

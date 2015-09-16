@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImageView+WebCache.h"
+#import "UIImage+RTTint.h"
 
 typedef void(^ImageBlock)(id Obj);
 
@@ -16,5 +17,6 @@ typedef void(^ImageBlock)(id Obj);
 -(void)setPreImageWithUrl:(NSString *)link;
 -(void)setPreImageWithUrl:(NSString *)link block:(ImageBlock)block;
 -(void)setPreImageWithUrl:(NSString *)link domain:(NSString *)domain;
+-(void)setImageColor:(UIColor *)color;
 
 @end

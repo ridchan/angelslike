@@ -17,11 +17,17 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self initialSetting];
+    if (!viewisAppear) [self initialSetting]; viewisAppear = YES;
 }
+
+-(BOOL)automaticallyAdjustsScrollViewInsets{
+    return NO;
+}
+
 
 -(void)initialSetting{
     CGFloat off = 0;
+    
     
     self.tableView = [[LoadMoreTableView alloc]init];
     [self.view addSubview:self.tableView];
@@ -143,7 +149,7 @@
 
 -(void)loadMoreData:(id)sender{
     __block CommentViewController *tempSelf = self;
-    NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
+    NSString *nPage = [NSString stringWithFormat:@"%ld",(long)self.tableView.currentPage + 1];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.info];
     [dic setObject:nPage forKey:@"page"];
@@ -197,7 +203,29 @@
             UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
             [[self findViewController:self.view] presentViewController:nvc animated:YES completion:NULL];
         }
+    }else if (view.tag == CommentCellType_Praise){
+        CommentCell *cell = (CommentCell *) [self GetSuperCell:view];
+        NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:cell.info];
+        __block CommentViewController *tempSelf = self;
+        [view.layer addAnimation:[self animation] forKey:@"move"];
+        [[NetWork shared] query:PraiseUrl info:@{@"type":@"theme",@"id":[info strForKey:@"id"]} block:^(id Obj) {
+            if ([Obj intForKey:@"status"] == 0) {
+                [tempSelf showMessage:[Obj strForKey:@"info"]];
+            }
+            
+        } lock:NO];
     }
+}
+
+-(CABasicAnimation *)animation{
+    CABasicAnimation *an = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
+    an.duration = 0.35;
+//    an.fromValue = [];
+    an.toValue = [NSNumber numberWithInt:-10];
+    an.removedOnCompletion = YES;
+    an.autoreverses = YES;
+    an.fillMode = kCAFillModeForwards;
+    return an;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

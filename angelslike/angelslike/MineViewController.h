@@ -15,8 +15,13 @@
 #import "MyCouViewController.h"
 #import "AddressViewController.h"
 #import "OrderListViewController.h"
+#import "MyWallentViewController.h"
+#import "EditInfoViewController.h"
 
-@interface MineViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MineViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
+    NSInteger sheetIndex;
+    UIImageView *userImg;
+}
 
 
 @property(nonatomic,strong) UITableView *tableView;

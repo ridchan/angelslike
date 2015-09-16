@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
 
-@interface OrderDetailViewCell : UITableViewCell{
+@interface OrderDetailView : UIView{
     UILabel *order;
     UILabel *statu;
     UIImageView *imageView;
     UILabel *name;
     UILabel *price;
     UILabel *total;
+    UILabel *qty;
     UILabel *time;
     UILabel *paytype;
 }

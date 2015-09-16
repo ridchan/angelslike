@@ -18,6 +18,7 @@
 #import "WXApi.h"
 #import "BaiduMobStat.h"
 
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

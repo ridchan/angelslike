@@ -9,6 +9,12 @@
 #import "AppDelegate.h"
 #import <AlipaySDK/AlipaySDK.h>
 
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+
 #define WXAppID @"wxcb123955cc21a093" //@"wx808df514e9cb4fc0"  公众平台
 #define WXAppSecret @"e1f09700641778a0f00cd2f3b56f2862" // @"72113780a6d46096850d1a93ee5addb3" 公众平台
 
@@ -20,7 +26,7 @@
 @implementation AppDelegate
 
 -(void)initialSetting{
-    [[IQKeyboardManager sharedManager] setEnable:YES];
+    [[IQKeyboardManager sharedManager] setEnable:NO];
     
     
 
@@ -69,6 +75,40 @@
     
 }
 
+-(void)initialShareSDK{
+    [ShareSDK registerApp:@"a6a1e4896170"];//字符串api20为您的ShareSDK的AppKey
+    
+//    //添加新浪微博应用 注册网址 http://open.weibo.com
+//    [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
+//                               appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+//                             redirectUri:@"http://www.sharesdk.cn"];
+//    //当使用新浪微博客户端分享的时候需要按照下面的方法来初始化新浪的平台
+//    [ShareSDK  connectSinaWeiboWithAppKey:@"568898243"
+//                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+//                              redirectUri:@"http://www.sharesdk.cn"
+//                              weiboSDKCls:[WeiboSDK class]];
+//    
+//    //添加腾讯微博应用 注册网址 http://dev.t.qq.com
+//    [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
+//                                  appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
+//                                redirectUri:@"http://www.sharesdk.cn"];
+//    
+//    //添加QQ空间应用  注册网址  http://connect.qq.com/intro/login/
+//    [ShareSDK connectQZoneWithAppKey:@"100371282"
+//                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"
+//                   qqApiInterfaceCls:[QQApiInterface class]
+//                     tencentOAuthCls:[TencentOAuth class]];
+//    
+//    //添加QQ应用  注册网址   http://mobile.qq.com/api/
+//    [ShareSDK connectQQWithQZoneAppKey:@"100371282"
+//                     qqApiInterfaceCls:[QQApiInterface class]
+//                       tencentOAuthCls:[TencentOAuth class]];
+//    
+    [ShareSDK connectWeChatWithAppId:WXAppID
+                           appSecret:WXAppSecret
+                           wechatCls:[WXApi class]];
+}
+
 -(void)baiduMobStat{
     BaiduMobStat* statTracker = [BaiduMobStat defaultStat];
     // 此处(startWithAppId之前)可以设置初始化的可选参数，具体有哪些参数，可详见BaiduMobStat.h文件，例如：
@@ -83,13 +123,12 @@
     [WXApi registerApp:WXAppID];
 
     [self initialSetting];
-
+    [self initialShareSDK];
     return YES;
 }
 
 #pragma mark -
 #pragma mark wx delegate
-
 
 
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
@@ -108,27 +147,36 @@
 }
 
 -(void)onResp:(BaseResp *)resp{
+    
+    if ([resp isKindOfClass:[SendAuthResp class]]) {
+        SendAuthResp *sendResp = (SendAuthResp *)resp;
+        if (!sendResp.code) return;
+        NSString *link = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WXAppID,WXAppSecret,sendResp.code];
+        
+        [[NetWork shared] query:link info:nil block:^(id Obj) {
+            NSDictionary *info = (NSDictionary *)Obj;
+            if (info) {
+                [[NetWork shared] query:AppLoginUrl info:@{@"unionid":[info strForKey:@"unionid"]} block:^(id Obj) {
+                    if ([Obj objForKey:@"data"]) {
+                        [UserInfo shared].info = [Obj objectForKey:@"data"];
+                        [[[UIAlertView alloc]initWithTitle:@"" message:@"登陆成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"LoginSuccess" object:nil];
+                    }else{
+                        [[[UIAlertView alloc]initWithTitle:@"" message:@"没有此用户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+                    }
+                } lock:YES];
+            }
+        } lock:YES];
+        
+        NSLog(@"resp %@",sendResp.code);
+    }else if ([resp isKindOfClass:[SendMessageToWXResp class]]){
+        SendMessageToWXResp *wxResp = (SendMessageToWXResp *)resp;
+        
+    }
+    
 
-    SendAuthResp *sendResp = (SendAuthResp *)resp;
-    if (!sendResp.code) return;
-    NSString *link = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",WXAppID,WXAppSecret,sendResp.code];
 
-    [[NetWork shared] query:link info:nil block:^(id Obj) {
-        NSDictionary *info = (NSDictionary *)Obj;
-        if (info) {
-            [[NetWork shared] query:AppLoginUrl info:@{@"unionid":[info strForKey:@"unionid"]} block:^(id Obj) {
-                if ([Obj objForKey:@"data"]) {
-                    [UserInfo shared].info = [Obj objectForKey:@"data"];
-                    [[[UIAlertView alloc]initWithTitle:@"" message:@"登陆成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"LoginSuccess" object:nil];
-                }else{
-                    [[[UIAlertView alloc]initWithTitle:@"" message:@"没有此用户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
-                }
-            } lock:YES];
-        }
-    } lock:YES];
-
-    NSLog(@"resp %@",sendResp.code);
+    
 }
 
 

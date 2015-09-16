@@ -15,10 +15,98 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [[BaiduMobStat defaultStat] pageviewStartWithName:NSStringFromClass([self class])];
+    
     self.view.backgroundColor = [UIColor getHexColor:@"F1F0F6"];
 //    if ([self.navigationController.viewControllers indexOfObject:self] == 1) {
 //        self.hidesBottomBarWhenPushed = YES;
 //    }
+}
+
+-(void)shareContent:(NSString *)content title:(NSString *)title imagePath:(NSString *)path url:(NSString *)url{
+    NSString *nPath = path;
+    if (![path hasPrefix:@"http"]) {
+        nPath = [img1Url stringByAppendingPathComponent:path];
+    }
+    
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:content
+                                       defaultContent:content
+                                                image:[ShareSDK imageWithUrl:nPath]
+                                                title:title
+                                                  url:url
+                                          description:content
+                                            mediaType:SSPublishContentMediaTypeNews];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPhoneContainerWithViewController:self];
+    
+    //弹出分享菜单
+    [ShareSDK showShareActionSheet:container
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(@"分享成功");
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(@"分享失败,错误码:%ld,错误描述:%@", [error errorCode], [error errorDescription]);
+                                }
+                            }];
+}
+
+-(void)showHudMsg:(NSString *)msg{
+    static UIView *showView = nil;
+    static UILabel *label = nil;
+    static BOOL msgViewShowing = NO;
+    CGRect rect = [msg boundingRectWithSize:CGSizeMake(ScreenWidth - 40, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FontWS(11)} context:nil];
+    
+    dispatch_once_t predicate = 0;
+    dispatch_once(&predicate, ^{
+        label = [[UILabel alloc]initWithFrame:rect];
+        label.font = FontWS(11);
+        label.textColor = [UIColor whiteColor];
+        label.numberOfLines = 0;
+        showView =[[UIView alloc]initWithFrame:CGRectZero];
+        showView.backgroundColor = RGBA(0, 0, 0, 0.5);
+        showView.layer.cornerRadius = 5;
+        showView.layer.masksToBounds = YES;
+        [showView addSubview:label];
+     });
+    
+
+    label.text = msg;
+    showView.frame = RECT((ScreenWidth - rect.size.width - 20) / 2, ScreenHeight -  20 - rect.size.height  -49, rect.size.width + 20, 20 + rect.size.height);
+    label.center = CGPointMake(showView.frame.size.width / 2, showView.frame.size.height / 2);
+    
+    if (!msgViewShowing) {
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        [window addSubview:showView];
+        
+        showView.transform = CGAffineTransformMakeScale(0.6, 0.6);
+        [UIView animateWithDuration:0.35 animations:^{
+            msgViewShowing = YES;
+            showView.hidden = NO;
+            showView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.35 delay:3.0 options:UIViewAnimationOptionAllowAnimatedContent animations:^{
+                showView.transform = CGAffineTransformMakeScale(0.6, 0.6);
+                showView.hidden = YES;
+            } completion:^(BOOL finished) {
+                msgViewShowing = NO;
+            }];
+        }];
+    }else{
+        
+    }
+
+
+    
 }
 
 -(UITableViewCell *)GetSuperCell:(UIView *)view{
@@ -31,6 +119,7 @@
 }
 
 -(void)dealloc{
+    NSLog(@"dealloc %@",NSStringFromClass([self class]) );
     [[BaiduMobStat defaultStat] pageviewEndWithName:NSStringFromClass([self class])];
 }
 
@@ -56,7 +145,7 @@
 }
 
 -(void)hideTabBar{
-    self.hidesBottomBarWhenPushed = YES;
+//    self.hidesBottomBarWhenPushed = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideCustomTabBar" object:nil];
 }
 
@@ -64,7 +153,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"bringCustomTabBarToFront" object:nil];
 }
 
--(void)showNetworkError:(BOOL)err{
+-(BOOL)showNetworkError:(BOOL)err{
     if (err) {
         if (![self.view viewWithTag:reloadTag]) {
             UIView *vg = [[UIView alloc]initWithFrame:self.view.frame];
@@ -85,8 +174,10 @@
 //            [vg addSubview:imageView];
             [self.view addSubview:vg];
         }
+        return YES;
     }else{
         [[self.view viewWithTag:reloadTag] removeFromSuperview];
+        return NO;
     }
 
 

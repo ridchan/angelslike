@@ -106,7 +106,7 @@
             if (data) {
                 id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
                 if (obj) {
-                    tempSelf.cdn = ImageLink;// [obj objectForKey:@"cdn"];
+                    tempSelf.cdn = img1Url;// [obj objectForKey:@"cdn"];
                     tempSelf.infos = [obj objectForKey:@"data"];
                     [tempSelf startDownload];
                 }

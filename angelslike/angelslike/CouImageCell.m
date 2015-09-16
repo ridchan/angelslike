@@ -103,7 +103,7 @@
     __block CouImageCell *tempSelf = self;
     __block UICollectionView *tempView = _collectionView;
     [picker dismissViewControllerAnimated:YES completion:^{
-        NSData *_data = UIImageJPEGRepresentation(image,1.0);
+        NSData *_data = UIImageJPEGRepresentation(newImage,1.0);
         NSString *_encodedImageStr = Format2(@"data:image/png;base64,",[self encodeURL:[_data base64Encoding]]) ;
         [[NetWork shared] query:SaveImageUrl info:@{@"type":@"cou",@"base64":_encodedImageStr} block:^(id Obj) {
             if ([Obj intForKey:@"status"] == 1) {

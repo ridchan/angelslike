@@ -26,36 +26,40 @@
         order = [[UILabel alloc]initWithFrame:RECT(5, 5, ScreenWidth - 10, 20)];
         order.backgroundColor = [UIColor clearColor];
         order.font = FontWS(11);
-        [self addSubview:order];
+        [self.contentView addSubview:order];
         
         statu = [[UILabel alloc]initWithFrame:RECT(5, 5, ScreenWidth - 10, 20)];
         statu.font = FontWS(11);
         statu.textAlignment = NSTextAlignmentRight;
-        [self addSubview:statu];
+        [self.contentView addSubview:statu];
         
         
-        _tableView = [[UITableView alloc]initWithFrame:RECT(0, 25, 0, 0) style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
+        _tableView = [[UIView alloc]initWithFrame:RECT(0, 25, 0, 0)];
+        _tableView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_tableView];
         
         payButton = [RCRoundButton buttonWithType:UIButtonTypeCustom];
+        [payButton setBackgroundColor:[UIColor whiteColor]];
         payButton.layer.borderColor = HexColor(@"F88F19").CGColor;
         [payButton setTitleColor:HexColor(@"F88F19") forState:UIControlStateNormal];
         [payButton setTitle:@"立即支付" forState:UIControlStateNormal];
         payButton.titleLabel.font = FontWS(11);
         payButton.radio = 5;
         payButton.frame = RECT(0, 0, 50, 25);
-        
+        payButton.tag = OrderCellType_Pay;
+        [payButton addTarget:self action:@selector(cellButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:payButton];
         
         detailButton = [RCRoundButton buttonWithType:UIButtonTypeCustom];
+        [detailButton setBackgroundColor:[UIColor whiteColor]];
         detailButton.layer.borderColor = HexColor(@"F88F19").CGColor;
         [detailButton setTitleColor:HexColor(@"F88F19") forState:UIControlStateNormal];
         [detailButton setTitle:@"查看详情" forState:UIControlStateNormal];
         detailButton.titleLabel.font = FontWS(11);
         detailButton.radio = 5;
         detailButton.frame = RECT(0, 0, 50, 25);
+        detailButton.tag = OrderCellType_Detail;
+        [detailButton addTarget:self action:@selector(cellButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:detailButton];
         
@@ -63,6 +67,17 @@
         
     }
     return self;
+}
+
+-(void)addTarget:(id)target action:(SEL)action{
+    tar = target;
+    act = action;
+}
+
+-(void)cellButtonClick:(UIButton *)button{
+    if ([tar respondsToSelector:act]) {
+        [tar performSelector:act withObject:button];
+    }
 }
 
 
@@ -73,36 +88,28 @@
     order.text = Format2(@"订单编号:", [_info strForKey:@"orderid"]);
     statu.text = Format2(@"状态:", [_info strForKey:@"statustext"]);
 
+    
+    [_tableView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [_tableView addline:CGPointMake(0, 1) color:nil];
     _tableView.frame = RECT(0, 25, ScreenWidth, 90 * [[_info objectForKey:@"detail"] count]);
+    [_tableView addline:CGPointMake(0, _tableView.frame.size.height) color:nil];
+    for (int i = 0 ; i < [[_info objectForKey:@"detail"] count] ; i ++ ){
+        OrderDetailView *od = [[OrderDetailView alloc]initWithFrame:RECT(0, 90 * i, ScreenWidth, 90)];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[_info objectForKey:@"detail"][i]];
+        [dic setObject:[_info strForKey:@"time"] forKey:@"time"];
+        [dic setObject:[_info strForKey:@"paytype"] forKey:@"paytype"];
+        od.info = dic;
+        [_tableView addSubview:od];
+    }
     
     payButton.frame = RECT(ScreenWidth - 120, _tableView.frame.size.height + _tableView.frame.origin.y + 5, 50, 25);
     
     detailButton.frame = RECT(ScreenWidth - 60, _tableView.frame.size.height + _tableView.frame.origin.y + 5, 50, 25);
 
-    [_tableView reloadData];
+    self.frame = RECT(0, 0, ScreenWidth, CGRectGetMaxY(detailButton.frame));
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    OrderDetailViewCell *cell =  [_tableView dequeueReusableCellWithIdentifier:@"ODCell"];
-    if (cell == nil) {
-        cell =  [[OrderDetailViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ODCell"];
-    }
-    NSDictionary *dic = [[self.info objectForKey:@"detail"] objectAtIndex:0];
-    cell.info = dic;
-    return cell;
-}
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  [[_info objectForKey:@"detail"] count];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 90;
-}
 
 
 

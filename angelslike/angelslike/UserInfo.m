@@ -51,8 +51,14 @@
 
 -(NSMutableDictionary *)info{
     if ([[NSUserDefaults standardUserDefaults]objectForKey:@"UserInfo"]) {
+        
         NSData *data = [[NSUserDefaults standardUserDefaults]objectForKey:@"UserInfo"];
-        return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        if (data){
+            id ob = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:ob];
+            return dic;
+        }
+        
     }
     return nil;
 }

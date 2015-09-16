@@ -52,7 +52,7 @@
 
     NSMutableString *str = [NSMutableString stringWithString:self.content];
 //    [self reSizeImage:str];
-    [webView loadHTMLString:str baseURL:[NSURL URLWithString:ImageLink]];
+    [webView loadHTMLString:str baseURL:[NSURL URLWithString:img1Url]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewCanMove:) name:@"SubScrollCanMove" object:nil];
     

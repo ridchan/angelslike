@@ -130,6 +130,7 @@
     _info = info;
     r1.hidden = YES;
     r2.hidden = YES;
+    button.hidden = YES;
     if (_info) {
         
         NSString *qty = [NSString stringWithFormat:@"%@份 ",[_info strForKey:@"copies"]];

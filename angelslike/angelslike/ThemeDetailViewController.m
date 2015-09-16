@@ -42,8 +42,23 @@
         CommentViewController *vc =[[CommentViewController alloc]init];
         vc.info = @{@"id":self.strid,@"type":@"0"};
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
-//        [self.navigationController pushViewController:vc animated:YES];
         [self presentViewController:nav animated:YES completion:NULL];
+        
+    }else if(sender.tag == 3){
+        
+        [self shareContent:[self.result strForKey:@"content"]
+                     title:[self.result strForKey:@"title"]
+                 imagePath:[self.result strForKey:@"img"]
+                       url:[ThemeShareUrl stringByAppendingPathComponent:[self.result objectForKey:@"id"]]];
+        
+    }else if (sender.tag == 1){
+        __block ThemeDetailViewController *tempSelf = self;
+        [[NetWork shared] query:PraiseUrl info:@{@"type":@"theme",@"id":[self.result strForKey:@"id"]} block:^(id Obj) {
+            if ([Obj intForKey:@"status"] == 0) {
+                [tempSelf showMessage:[Obj strForKey:@"info"]];
+            }
+            
+        } lock:NO];
     }
 }
 

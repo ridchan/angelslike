@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "HeaderDefiner.h"
-#import "OrderDetailViewCell.h"
+#import "OrderDetailView.h"
 #import "RCRoundButton.h"
 
-@interface OrderViewCell : UITableViewCell<UITableViewDataSource,UITableViewDelegate>{
+typedef enum{
+    OrderCellType_Pay = 1,
+    OrderCellType_Detail = 2
+}OrderCellType;
+
+@interface OrderViewCell : UITableViewCell{
     UILabel *order;
     UILabel *statu;
     UIImageView *imageView;
@@ -21,12 +26,17 @@
     UILabel *time;
     UILabel *paytype;
     
-    UITableView *_tableView;
+    UIView *_tableView;
     
     RCRoundButton *payButton;
     RCRoundButton *detailButton;
+    
+    id tar;
+    SEL act;
 }
 
 @property(nonatomic,strong) NSDictionary *info;
+
+-(void)addTarget:(id)target action:(SEL)action;
 
 @end

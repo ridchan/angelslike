@@ -16,6 +16,7 @@
 @interface CommentViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
     AnswerView *anView;
     NSString *commentType;
+    BOOL viewisAppear;
 }
 
 @property(nonatomic,strong) LoadMoreTableView *tableView;

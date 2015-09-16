@@ -125,6 +125,9 @@
         commentLabel.text = [_info strForKey:@"content"];
         reviewLbl.text = [_info strForKey:@"review"];
         pariseLbl.text = [_info strForKey:@"praise"];
+        r1.hidden = YES;
+        r2.hidden = YES;
+        button.hidden = YES;
         CGRect rect = [commentLabel.text boundingRectWithSize:CGSizeMake(commentLabel.frame.size.width, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:commentLabel.font} context:nil];
         
         commentLabel.frame = CGRectMake(commentLabel.frame.origin.x, commentLabel.frame.origin.y, commentLabel.frame.size.width, rect.size.height + 5);

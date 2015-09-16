@@ -11,6 +11,7 @@
 #import "HeaderDefiner.h"
 #import "NetWork.h"
 #import "RCHub.h"
+#import <ShareSDK/ShareSDK.h>
 
 
 @interface BaseViewController : UIViewController
@@ -20,6 +21,7 @@
 -(CAShapeLayer *)createBound:(CGRect)rect bottom:(NSInteger)txtType;
 
 -(void)showMessage:(NSString *)msg;
+-(void)showHudMsg:(NSString *)msg;
 
 -(void)reSizeImage:(NSMutableString *)result;
 
@@ -27,12 +29,13 @@
 -(void)showTabbar;
 
 -(BOOL)checkScrollView:(UIScrollView *)scrollView;
--(void)showNetworkError:(BOOL)err;
+-(BOOL)showNetworkError:(BOOL)err;
 -(void)refreshClick:(id)sender;
 -(CAShapeLayer *)lineLayer:(CGPoint)position;
 - (UIViewController *)findViewController:(UIView *)sourceView;
 -(void)setBackButtonAction:(SEL)action;
 
 -(UITableViewCell *)GetSuperCell:(UIView *)view;
+-(void)shareContent:(NSString *)content title:(NSString *)title imagePath:(NSString *)path url:(NSString *)url;
 
 @end

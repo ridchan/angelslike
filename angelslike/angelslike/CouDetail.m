@@ -352,7 +352,7 @@
     
 //    if ([_info intForKey:@"type"] == 1) {
         cp.hidden = NO;
-        [cp setImg:[ImageLink stringByAppendingPathComponent:[_info strForKey:@"pimg"]] name:[_info strForKey:@"pname"]  price:[_info strForKey:@"pprice"]  content:[_info strForKey:@"pcontent"] ];
+        [cp setImg:[img1Url stringByAppendingPathComponent:[_info strForKey:@"pimg"]] name:[_info strForKey:@"pname"]  price:[_info strForKey:@"pprice"]  content:[_info strForKey:@"pcontent"] ];
 //    }
     
 

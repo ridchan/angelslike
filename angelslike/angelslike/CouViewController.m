@@ -44,6 +44,10 @@
     barButtonItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = barButtonItem;
     
+    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 200, 44)];
+    searchDisplayController  = [[UISearchDisplayController alloc]initWithSearchBar:_searchBar contentsController:self];
+    
+    /*
     //搜索框
     _navBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, 44)];
 
@@ -65,7 +69,7 @@
     
     [self.navigationController.navigationBar addSubview:_navBar];
     [self.navigationItem setHidesBackButton:YES];
-    
+    */
 
     //table view
     self.result = [NSMutableArray array];
@@ -144,9 +148,9 @@
 
 -(void)loadMoreData:(id)obj{
     __block CouViewController *tempSelf = self;
-    NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
+    NSString *nPage = [NSString stringWithFormat:@"%ld",(long)(self.tableView.currentPage + 1)];
     [self.searchInfo setObject:nPage forKey:@"page"];
-    [self.searchInfo setObject:_textField.text forKey:@"key"];
+//    [self.searchInfo setObject:_textField.text forKey:@"key"];
     
     [[NetWork shared] startQuery:CouUrl
                             info:self.searchInfo
@@ -157,7 +161,7 @@
                        if ([Obj intForKey:@"status"] == 1) {
                            NSArray *rs = [[Obj objectForKey:@"data"] objectForKey:@"list"];
                            NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
-                           tempSelf.cdn = ImageLink;// [Obj objectForKey:@"cdn"];
+                           tempSelf.cdn = img1Url;// [Obj objectForKey:@"cdn"];
                            if ([rs count] > 0){
                                tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
                                tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
@@ -174,14 +178,6 @@
 
 -(void)backClick:(id)sender{
     
-//    self.navigationItem.titleView = seg;
-//
-//    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
-//    barButtonItem.tintColor = [UIColor whiteColor];
-//    self.navigationItem.rightBarButtonItem = barButtonItem;
-//    
-//    _searchBar.text = @"";
-    
     
     _textField.text = @"";
     [_textField resignFirstResponder];
@@ -192,12 +188,41 @@
     [self reloadData];
 }
 
+-(void)dismissSearchBar:(id)sender{
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
+    barButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    self.navigationItem.titleView = seg;
+}
+
+-(CABasicAnimation *)animation{
+    CABasicAnimation *an = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
+    an.duration = 0.35;
+    //    an.fromValue = [];
+    an.toValue = [NSNumber numberWithInt:-10];
+    an.removedOnCompletion = YES;
+    an.autoreverses = YES;
+    an.fillMode = kCAFillModeForwards;
+    return an;
+}
+
 -(void)searchClick:(id)sender{
-    [self.navigationController.navigationBar bringSubviewToFront:_navBar];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    _navBar.frame = CGRectMake(0, 0, ScreenWidth, 44);
-    [UIView commitAnimations];
+
+    
+    
+    SearchViewController *vc = [[SearchViewController alloc] init];
+    
+    [self.navigationController pushViewController:vc animated:NO];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+
+
+    
+//    [self.navigationController.navigationBar bringSubviewToFront:_navBar];
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDuration:0.5];
+//    _navBar.frame = CGRectMake(0, 0, ScreenWidth, 44);
+//    [UIView commitAnimations];
     /*
     self.navigationItem.titleView = _searchBar;
     [_searchBar becomeFirstResponder];

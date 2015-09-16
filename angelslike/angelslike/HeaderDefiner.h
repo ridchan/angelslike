@@ -25,7 +25,9 @@
 //主域名
 #define MainDomain @"http://app.angelslike.com/"
 //图片地址
-#define ImageLink @"http://img1.angelslike.com"
+#define img1Url @"http://img1.angelslike.com"
+#define img2Url @"http://img2.angelslike.com"
+#define img3Url @"http://img3.angelslike.com"
 //广告栏
 #define SliderLink @"http://www.angelslike.com/json/getslider"
 //我的凑分子
@@ -49,7 +51,15 @@
 //评论
 #define CommentsUrl [MainDomain stringByAppendingPathComponent:@"review/lists"]
 #define CommentAddUrl [MainDomain stringByAppendingPathComponent:@"review/add"]
+//点赞
+#define PraiseUrl [MainDomain stringByAppendingPathComponent:@"json/praise"]
 
+
+//我的钱包
+#define MyWallentUrl [MainDomain stringByAppendingPathComponent:@"my/mywallet"]
+
+//支付记录
+#define MyPayRecordUrl [MainDomain stringByAppendingPathComponent:@"my/mypayrecords"]
 
 //立即购买
 #define BuyNowUrl [MainDomain stringByAppendingPathComponent:@"buynow"]
@@ -61,6 +71,15 @@
 #define AddressUrl [MainDomain stringByAppendingPathComponent:@"index/getaddress"]
 
 #define SaveImageUrl @"http://weixin.angelslike.com/json/saveimage"
+
+//主题 路径
+#define ThemeShareUrl @"http://weixin.angelslike.com/theme.html?id="
+//订单详情
+#define OrderDetailUrl [MainDomain stringByAppendingPathComponent:@"my/getorder"]
+
+#define MyInfoUrl [MainDomain stringByAppendingPathComponent:@"my/myinfo"]
+#define UpdateMyInfoUrl [MainDomain stringByAppendingPathComponent:@"my/updatemyinfo"]
+
 
 #define AliPID @"2088911709405062"
 #define AliSID @"2868362748@qq.com"
@@ -78,6 +97,8 @@
 #define CatCellGap 10
 #define CatCellHeight 115
 
+#define MoneySign @"￥"
+
 #import "NSDictionary_IngoreNull.h"
 #import "RCRoundButton.h"
 #import "UserInfo.h"
@@ -85,6 +106,7 @@
 #import "UIImage+RTTint.h"
 #import "UIImageView+PreUrl.h"
 #import "UILabel+Resize.h"
+#import "UIView+Controller.h"
 
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 

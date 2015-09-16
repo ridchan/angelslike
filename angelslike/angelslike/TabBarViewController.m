@@ -73,13 +73,14 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self hideCustomTabBar];
+//    [self hideCustomTabBar];
 }
 
 -(BOOL)tabbarShouldTap:(MTabBarItem *)item atIndex:(NSInteger)index{
     if (index == 2) {
         return NO;
     }else if(index == 4 & [UserInfo shared].info == nil){
+        [self hideCustomTabBar];
         LoginViewController *lvc = [[LoginViewController alloc]init];
         lvc.bvc = self;
         UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:lvc];

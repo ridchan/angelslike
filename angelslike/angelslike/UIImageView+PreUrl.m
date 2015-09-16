@@ -46,6 +46,10 @@
     }
 }
 
+-(void)setImageColor:(UIColor *)color{
+    self.image = [self.image rt_tintedImageWithColor:color];
+}
+
 
 
 @end

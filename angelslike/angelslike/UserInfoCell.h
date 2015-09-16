@@ -16,9 +16,13 @@
     UILabel *nameLabel;
     UILabel *moneyLabel;
     UILabel *depositLabel;
+    
 }
 
 
 @property(nonatomic,strong) NSDictionary *info;
+@property(nonatomic,strong) UIView *wallent;
+@property(nonatomic,strong) UIButton *editButton;
+-(UIImageView *)logo;
 
 @end

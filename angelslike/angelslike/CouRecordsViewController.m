@@ -16,7 +16,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self initialSetting];
+    if (!bload) [self initialSetting]; bload = YES;
 }
 
 -(void)initialSetting{
@@ -142,11 +142,17 @@
 }
 
 -(void)cellClick:(UIView *)view{
+    CouRecrodCell *cell = (CouRecrodCell *) [self GetSuperCell:view];
+    NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:cell.info];
     if (view.tag == CouCellType_Comment) {
-        CouRecrodCell *cell = (CouRecrodCell *) [self GetSuperCell:view];
-        NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:cell.info];
+
         [info setObject:@"5" forKey:@"commentType"];
         [anView showWithObject:info withTitle:@"请输入评论"];
+    }else if (view.tag == CouCellType_More){
+        CommentAllViewController *vc = [[CommentAllViewController alloc]init];
+        vc.info = info;
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+        [[self findViewController:self.view] presentViewController:nav animated:YES completion:NULL];
     }
 }
 

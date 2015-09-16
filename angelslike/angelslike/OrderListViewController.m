@@ -55,6 +55,8 @@
 
 -(void)initailSetting{
     
+    self.navigationItem.title = @"我的订单";
+    
     self.searchInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:[[UserInfo shared].info strForKey:@"loginkey"],@"loginkey",
                        @"new",@"sort",nil];
     
@@ -110,7 +112,15 @@
 }
 
 
-
+-(void)cellClick:(UIButton *)b{
+    if (b.tag == OrderCellType_Detail) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:[self GetSuperCell:b]];
+        
+        OrderDetailViewController *vc = [[OrderDetailViewController alloc]init];
+        vc.orderid = [self.result[indexPath.row] strForKey:@"id"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
 
 #pragma mark table view method
 
@@ -121,10 +131,23 @@
     }
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //
+    }
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    OrderViewCell *cell = (OrderViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (cell == nil) {
+        cell = [[OrderViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    
+    NSDictionary *info = [self.result objectAtIndex:indexPath.row];
+    cell.info = info;
+    return cell.frame.size.height;
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -132,8 +155,9 @@
     OrderViewCell *cell = (OrderViewCell *)[tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
         cell = [[OrderViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-//        cell.backgroundColor =  [UIColor clearColor];
+        cell.backgroundColor =  [UIColor clearColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell addTarget:self action:@selector(cellClick:)];
     }
     
     NSDictionary *info = [self.result objectAtIndex:indexPath.row];
@@ -150,10 +174,6 @@
     return 1;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return cellHeight ;
-    
-}
 /*
 #pragma mark - Navigation
 

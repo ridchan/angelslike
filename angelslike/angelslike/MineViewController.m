@@ -44,6 +44,10 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 -(void)myOrderClick:(id)order{
     OrderListViewController *vc = [[OrderListViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
@@ -59,6 +63,94 @@
     MyCouViewController *vc = [[MyCouViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     vc.ctype = CouViewTypeFromSetting;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+-(void)imageViewTap:(UIGestureRecognizer *)gesture{
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"从相册选择",@"拍照", nil];
+    [sheet showInView:self.view];
+    sheetIndex = -2;
+    while (sheetIndex < -1) {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    }
+    if (sheetIndex < 0 | sheetIndex > 1 ) return;
+    [self hideTabBar];
+    UIImagePickerController *vc = [[UIImagePickerController alloc]init];
+    vc.delegate = self;
+    vc.sourceType = sheetIndex == 0?UIImagePickerControllerSourceTypePhotoLibrary:UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:vc animated:YES completion:NULL];
+    
+}
+
+
+-(void)wallentTap:(UITapGestureRecognizer *)gesture{
+    MyWallentViewController *vc = [[MyWallentViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self showTabbar];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *newImage = [self resizeImage:image];
+    
+//    __block MineViewController *tempSelf = self;
+    __block UIImageView *tempImg = userImg;
+    [picker dismissViewControllerAnimated:YES completion:^{
+        NSData *_data = UIImageJPEGRepresentation(newImage,1.0);
+        NSString *_encodedImageStr = Format2(@"data:image/png;base64,",[self encodeURL:[_data base64Encoding]]) ;
+        [[NetWork shared] query:SaveImageUrl info:@{@"type":@"avatar",@"base64":_encodedImageStr,@"loginkey":[[UserInfo shared].info strForKey:@"loginkey"]} block:^(id Obj) {
+            if ([Obj intForKey:@"status"] == 1) {
+                NSString *link = [[Obj objectForKey:@"data"] strForKey:@"file"];
+                [tempImg setPreImageWithUrl:link  domain:nil];
+                [[UserInfo shared].info setObject:link forKey:@"img"];
+            }else{
+                
+            }
+            
+        } lock:YES];
+    }];
+    [self showTabbar];
+}
+
+- (NSString*)encodeURL:(NSString *)string
+{
+    NSString *newString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes( kCFAllocatorDefault, (CFStringRef)string, NULL, CFSTR(":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`"),kCFStringEncodingUTF8));
+    if (newString) {
+        return newString;
+    }
+    return @"";
+}
+
+-(UIImage *)resizeImage:(UIImage *)image{
+    
+    if (image.size.height > 300 | image.size.width >300) {
+        CGRect rect = CGRectZero;
+        if (image.size.height > image.size.width) {
+            rect.size = CGSizeMake(300 * image.size.width / image.size.height, 300);
+        }else{
+            rect.size = CGSizeMake(300 , 300 * image.size.height / image.size.width );
+        }
+        UIGraphicsBeginImageContext(rect.size);
+        [image drawInRect:rect];
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        return newImage;
+    }else{
+        return image;
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    sheetIndex = buttonIndex;
+}
+
+
+-(void)editButtonClick:(id)obj{
+    EditInfoViewController *vc = [[EditInfoViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -103,6 +195,14 @@
         UserInfoCell *cell = (UserInfoCell *)[tableView dequeueReusableCellWithIdentifier:@"UserCell"];
         if (cell == nil) {
             cell = [[UserInfoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UserCell"];
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap:)];
+            [cell.imageView addGestureRecognizer:tap];
+            userImg = cell.imageView;
+            
+            UITapGestureRecognizer *wallentTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(wallentTap:)];
+            [cell.wallent addGestureRecognizer:wallentTap];
+            
+            [cell.editButton addTarget:self action:@selector(editButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }
         
         cell.info = [UserInfo shared].info;
