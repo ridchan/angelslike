@@ -20,6 +20,10 @@
     [self initialSetting];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+}
 
 -(void)initialSetting{
     
@@ -44,9 +48,6 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-}
 
 -(void)myOrderClick:(id)order{
     OrderListViewController *vc = [[OrderListViewController alloc]init];

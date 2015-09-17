@@ -14,13 +14,23 @@
 #import "BuyNowViewController.h"
 #import "ProductHeader.h"
 #import "StartCouViewViewController.h"
+#import "ProductRecordViewController.h"
+
+
+typedef enum{
+    ButtonType_BuyRecords = 10001,
+    ButtonType_CouRecords = 10002,
+}ButtonType;
 
 @interface ProductDetailViewController : BaseViewController<UIScrollViewDelegate>{
     ProductDetail *pd;
     RCMutileView *mv;
     ProductHeader *header;
+    UIView *bottomView;
     UIScrollView *scView;
     BOOL canMove;
+    
+    
 }
 
 @property(nonatomic,strong) NSDictionary *info;

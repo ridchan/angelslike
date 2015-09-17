@@ -12,11 +12,13 @@
 #import "PickerView.h"
 #import "NetWork.h"
 #import "SGPopSelectView.h"
+#import "MutilePickerView.h"
 
 @interface MyAddressCell : UITableViewCell{
     CheckButton *cb;
     UILabel *label;
     SGPopSelectView *popView;
+    MutilePickerView *mp;
 }
 
 @property(nonatomic) BOOL bCheck;

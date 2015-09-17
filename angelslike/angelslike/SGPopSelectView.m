@@ -174,6 +174,7 @@ static CAAnimation* _hideAnimation()
     }else if (offsetY + height  > view.bounds.size.height - 10) {
         y = point.y - offsetY + view.bounds.size.height - height - 10;
     }
+    y = point.y;
     self.frame = CGRectMake(left, y, width, height);
 }
 

@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "PickerView.h"
 #import "SGPopSelectView.h"
+#import "MutilePickerView.h"
 
 @interface EditInfoViewController : BaseViewController{
     UITextField *nametxt;
@@ -18,7 +19,7 @@
     UITextField *newpass;
     UITextField *comfirmpass;
     
-    SGPopSelectView *popView;
+    MutilePickerView *mp;
 }
 
 @property(nonatomic,strong) NSMutableDictionary *info;

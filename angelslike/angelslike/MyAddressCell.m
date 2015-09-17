@@ -47,6 +47,10 @@
 -(void)setInfo:(NSMutableDictionary *)info{
     _info = info;
     self.bCheck = [_info intForKey:@"Address"] == 1;
+    mp.items = @[[_info strForKey:@"pro"],[_info strForKey:@"city"],[_info strForKey:@"dis"]];
+    [(UITextField *)[self viewWithTag:11] setText:[_info strForKey:@"name"]];
+    [(UITextField *)[self viewWithTag:12] setText:[_info strForKey:@"address"]];
+    [(UITextField *)[self viewWithTag:13] setText:[_info strForKey:@"phone"]];
 }
 
 -(void)initialAddress{
@@ -57,92 +61,20 @@
     
     
     [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 50, self.frame.size.width / 3 * 2 - 10, 30) withTag:11]];
-    [self SelectAddress];
+    
+    mp = [[MutilePickerView alloc]initWithFrame:RECT(self.frame.size.width / 3, 60, self.frame.size.width / 3 * 2 - 10, 40)];
+    mp.items = @[@"省",@"市",@"区"];
+    mp.keys = @[@"pro",@"city",@"dis"];
+    [self addSubview:mp];
 //    [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 90, self.frame.size.width / 3 * 2 - 10, 30)]];
     [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 130, self.frame.size.width / 3 * 2 - 10, 30) withTag:12]];
     [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 170, self.frame.size.width / 3 * 2 - 10, 30) withTag:13]];
 }
 
--(void)SelectAddress{
-    NSArray *arr = @[@"省",@"市",@"区"];
-    CGFloat width = ((self.frame.size.width / 3 * 2 - 10) - 10) / 3;
-    CGFloat left = self.frame.size.width / 3;
-    for (int i  = 0 ; i < 3 ; i ++){
-        PickerView *pk = [[PickerView alloc]initWithFrame:RECT(left + (width + 5) * i , 90, width, 30)];
-        pk.tag = i + 1;
-        pk.text = [arr objectAtIndex:i];
-        [pk addTarget:self action:@selector(addressSelect:)];
-        [self addSubview:pk];
-    }
-}
-
--(void)addressSelect:(PickerView *)pk{
-    NSString *type = @"";
-    if (pk.tag == 1) {
-        type = @"pro";
-    }else if (pk.tag == 2){
-        type = @"city";
-    }else{
-        type = @"dis";
-    }
- 
-    id address = [UserDefault objectForKey:type];
-    if (!address) {
-        [[NetWork shared]query:AddressUrl info:@{@"type":type} block:^(id Obj) {
-            id newAddress = [Obj objectForKey:@"data"];
-            [UserDefault setObject:newAddress forKey:type];
-            
-            if (pk.tag == 1) {
-                [self showSelection:newAddress picker:pk];
-            }else if (pk.tag == 2){
-                PickerView *pk1 = (PickerView *)[self viewWithTag:1];
-                NSArray *newArr = [newAddress objectForKey:pk1.text];
-                [self showSelection:newArr picker:pk];
-            }else{
-                PickerView *pk2 = (PickerView *)[self viewWithTag:2];
-                NSArray *newArr = [newAddress objectForKey:pk2.text];
-                [self showSelection:newArr picker:pk];
-            }
-        } lock:NO];
-    }else{
-        if (pk.tag == 1) {
-            [self showSelection:address picker:pk];
-        }else if (pk.tag == 2){
-            PickerView *pk1 = (PickerView *)[self viewWithTag:1];
-            NSArray *newArr = [address objectForKey:pk1.text];
-            [self showSelection:newArr picker:pk];
-        }else{
-            PickerView *pk2 = (PickerView *)[self viewWithTag:2];
-            NSArray *newArr = [address objectForKey:pk2.text];
-            [self showSelection:newArr picker:pk];
-        }
-    }
-
-}
-
--(void)showSelection:(NSArray *)arr picker:(PickerView *)pk{
-    if (!popView)
-        popView = [[SGPopSelectView alloc] init];
-    popView.selections = arr;
-    __block MyAddressCell *tempSelf = self;
-    __block SGPopSelectView *tempView = popView;
-    popView.selectedHandle = ^(NSInteger selectedIndex){
-        pk.text = tempView.selections[selectedIndex];
-        NSArray *arr = @[@"pro",@"city",@"dis"];
-        [tempSelf.info setObject:pk.text forKey:arr[pk.tag - 1]];
-        [tempView hide:NO];
-    };
-    
-    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-    CGRect rect=[pk convertRect:pk.bounds toView:window];
-    
-    [popView showFromView:window atPoint:rect.origin animated:YES];
-}
 
 -(void)textChange:(UITextField *)textField{
     NSArray *arr = @[@"name",@"address",@"phone"];
     [self.info setObject:textField.text forKey:arr[textField.tag - 11]];
-
     
 }
 

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RCHub.h"
 #import "BaiduMobStat.h"
+#import "UserInfo.h"
 
 typedef void(^NetWorkBlock)(id Obj);
 

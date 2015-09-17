@@ -25,7 +25,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [_searchBar becomeFirstResponder];
+//    [_searchBar becomeFirstResponder];
 }
 
 -(void)initialSetting{
@@ -38,6 +38,7 @@
     _searchBar.barStyle = UIBarStyleDefault;
     _searchBar.backgroundColor = [UIColor clearColor];
     _searchBar.tintColor = [UIColor clearColor];
+
     _searchBar.delegate  = self;
     self.navigationItem.titleView.backgroundColor = [UIColor clearColor];
     self.navigationItem.titleView = _searchBar;

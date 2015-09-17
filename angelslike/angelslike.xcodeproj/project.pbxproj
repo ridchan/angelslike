@@ -107,6 +107,9 @@
 		27E089A51B9030D40090C724 /* iconfont-gouwuche.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E089A41B9030D40090C724 /* iconfont-gouwuche.png */; };
 		27E089A81B904D3A0090C724 /* CouPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E089A71B904D3A0090C724 /* CouPayViewController.m */; };
 		27E089AB1B9054080090C724 /* CouPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E089AA1B9054080090C724 /* CouPay.m */; };
+		27E0BEDD1BAA683400E17E1A /* ProductRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0BEDC1BAA683400E17E1A /* ProductRecordViewController.m */; };
+		27E0BEE01BAA70A000E17E1A /* ProductRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0BEDF1BAA70A000E17E1A /* ProductRecordCell.m */; };
+		27E0BEE31BAA9E3D00E17E1A /* MutilePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0BEE21BAA9E3D00E17E1A /* MutilePickerView.m */; };
 		27E0E3C31B90676E00685760 /* MyCouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E0E3C21B90676E00685760 /* MyCouViewController.m */; };
 		27E0FA301B9C2E0400F1F8EB /* iconfont-dianzan.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */; };
 		27E0FA321B9C320800F1F8EB /* xiaolian.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E0FA311B9C320800F1F8EB /* xiaolian.png */; };
@@ -576,6 +579,12 @@
 		27E089A71B904D3A0090C724 /* CouPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouPayViewController.m; sourceTree = "<group>"; };
 		27E089A91B9054080090C724 /* CouPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouPay.h; sourceTree = "<group>"; };
 		27E089AA1B9054080090C724 /* CouPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouPay.m; sourceTree = "<group>"; };
+		27E0BEDB1BAA683400E17E1A /* ProductRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductRecordViewController.h; sourceTree = "<group>"; };
+		27E0BEDC1BAA683400E17E1A /* ProductRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductRecordViewController.m; sourceTree = "<group>"; };
+		27E0BEDE1BAA70A000E17E1A /* ProductRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductRecordCell.h; sourceTree = "<group>"; };
+		27E0BEDF1BAA70A000E17E1A /* ProductRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductRecordCell.m; sourceTree = "<group>"; };
+		27E0BEE11BAA9E3D00E17E1A /* MutilePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutilePickerView.h; sourceTree = "<group>"; };
+		27E0BEE21BAA9E3D00E17E1A /* MutilePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutilePickerView.m; sourceTree = "<group>"; };
 		27E0E3C11B90676E00685760 /* MyCouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCouViewController.h; sourceTree = "<group>"; };
 		27E0E3C21B90676E00685760 /* MyCouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCouViewController.m; sourceTree = "<group>"; };
 		27E0FA2F1B9C2E0400F1F8EB /* iconfont-dianzan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-dianzan.png"; sourceTree = "<group>"; };
@@ -1207,6 +1216,8 @@
 				27E37AC41B9431990038F8FB /* CheckButton.m */,
 				27E37AC61B94346A0038F8FB /* QtyButton.h */,
 				27E37AC71B94346A0038F8FB /* QtyButton.m */,
+				27E0BEE11BAA9E3D00E17E1A /* MutilePickerView.h */,
+				27E0BEE21BAA9E3D00E17E1A /* MutilePickerView.m */,
 				27E213131BA01757008888BA /* PickerView.h */,
 				27E213141BA01757008888BA /* PickerView.m */,
 				27E106DF1BA18DE600FB6318 /* AnswerView.h */,
@@ -1812,6 +1823,10 @@
 				27E53EAE1B8C23A400A56D53 /* ProductDetailViewController.m */,
 				27E53EC01B8C76B000A56D53 /* WebViewController.h */,
 				27E53EC11B8C76B000A56D53 /* WebViewController.m */,
+				27E0BEDB1BAA683400E17E1A /* ProductRecordViewController.h */,
+				27E0BEDC1BAA683400E17E1A /* ProductRecordViewController.m */,
+				27E0BEDE1BAA70A000E17E1A /* ProductRecordCell.h */,
+				27E0BEDF1BAA70A000E17E1A /* ProductRecordCell.m */,
 			);
 			name = "产品列表";
 			sourceTree = "<group>";
@@ -2101,6 +2116,7 @@
 				27DF59541B8EACFD00E94B06 /* ItemCell.m in Sources */,
 				27E001771BA9171E00CFF4DB /* OrderDetailViewController.m in Sources */,
 				27E6AE021B785658008CE686 /* IQToolbar.m in Sources */,
+				27E0BEE31BAA9E3D00E17E1A /* MutilePickerView.m in Sources */,
 				27EED2771B7495B1009F2DD2 /* ThemeViewController.m in Sources */,
 				27F65D0A1B79A5E300EDE656 /* GuideViewController.m in Sources */,
 				27DD23D81B70514700C61546 /* AppDelegate.m in Sources */,
@@ -2108,6 +2124,7 @@
 				27E16C031B9D997000EE5259 /* CouTitleCell.m in Sources */,
 				27E85B6F1BA7F8D200BE6077 /* MyWallentViewController.m in Sources */,
 				27E6AE041B785658008CE686 /* UIView+Hierarchy.m in Sources */,
+				27E0BEDD1BAA683400E17E1A /* ProductRecordViewController.m in Sources */,
 				27E2AA141B9EE8DE0046D28D /* SGPopSelectView.m in Sources */,
 				27DD24041B705C8400C61546 /* MainCell.m in Sources */,
 				27E0230B1BA2B4750089D1CD /* DataSigner.m in Sources */,
@@ -2140,6 +2157,7 @@
 				274CD7A81B95A062000125EB /* MineView.m in Sources */,
 				27E53EAF1B8C23A400A56D53 /* ProductDetailViewController.m in Sources */,
 				27BA81751B71C6A6005B527B /* SDWebImageDownloaderOperation.m in Sources */,
+				27E0BEE01BAA70A000E17E1A /* ProductRecordCell.m in Sources */,
 				27E089A31B9019EA0090C724 /* ProductHeader.m in Sources */,
 				27BA81411B71ABA3005B527B /* MainTabBar.m in Sources */,
 				27EADA7C1B7C7BBD0084D648 /* CouDetail.m in Sources */,

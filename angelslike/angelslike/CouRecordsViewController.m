@@ -32,6 +32,8 @@
     self.tableView.totalPage = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.showsHorizontalScrollIndicator = NO;
     //    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
     [self.tableView addTarget:self action:@selector(loadMoreData:)];
     [self.view addSubview:self.tableView];
@@ -153,7 +155,30 @@
         vc.info = info;
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
         [[self findViewController:self.view] presentViewController:nav animated:YES completion:NULL];
+    }else{
+    
+        CouRecrodCell *cell = (CouRecrodCell *) [self GetSuperCell:view];
+        NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:cell.info];
+        __block CouRecordsViewController *tempSelf = self;
+        [view.layer addAnimation:[self animation] forKey:@"move"];
+        [[NetWork shared] query:PraiseUrl info:@{@"type":@"cou",@"id":[info strForKey:@"id"]} block:^(id Obj) {
+            if ([Obj intForKey:@"status"] == 0) {
+                [tempSelf showMessage:[Obj strForKey:@"info"]];
+            }
+            
+        } lock:NO];
     }
+}
+
+-(CABasicAnimation *)animation{
+    CABasicAnimation *an = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
+    an.duration = 0.35;
+    //    an.fromValue = [];
+    an.toValue = [NSNumber numberWithInt:-10];
+    an.removedOnCompletion = YES;
+    an.autoreverses = YES;
+    an.fillMode = kCAFillModeForwards;
+    return an;
 }
 
 #pragma mark -

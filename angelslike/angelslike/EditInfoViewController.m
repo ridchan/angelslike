@@ -28,6 +28,7 @@
     nametxt.text = [self.info strForKey:@"name"];
     detailtxt.text = [self.info strForKey:@"address"];
     phonetxt.text = [self.info strForKey:@"phone"];
+    mp.items = @[[self.info strForKey:@"pro"],[self.info strForKey:@"city"],[self.info strForKey:@"dis"]];
 }
 
 
@@ -46,7 +47,14 @@
     
     nametxt = [self textField:CGRectMake(view.frame.size.width / 3, 18, view.frame.size.width / 3 * 2 - 10, 32) withTag:11];
     [view addSubview:nametxt];
-    [self SelectAddress:view];
+//    [self SelectAddress:view];
+    
+    mp = [[MutilePickerView alloc]initWithFrame:RECT(view.frame.size.width / 3, 60, view.frame.size.width / 3 * 2 - 10, 40)];
+    mp.items = @[@"省",@"市",@"区"];
+    mp.keys = @[@"pro",@"city",@"dis"];
+    [view addSubview:mp];
+    
+    
     detailtxt = [self textField:CGRectMake(view.frame.size.width / 3, 112, view.frame.size.width / 3 * 2 - 10, 32) withTag:12];
     [view addSubview:detailtxt];
     phonetxt = [self textField:CGRectMake(view.frame.size.width / 3, 162, view.frame.size.width / 3 * 2 - 10, 32) withTag:13];
@@ -86,11 +94,44 @@
 
 -(void)editbuttonClick:(id)sender{
     __block EditInfoViewController *tempSelf = self;
-    [self.info setObject:newpass.text forKey:@"password"];
-    [[NetWork shared] query:UpdateMyInfoUrl info:self.info block:^(id Obj) {
+    
+    NSMutableDictionary *eidtInfo = [NSMutableDictionary dictionary];
+    if ([nametxt.text length] == 0) {
+        [self showMessage:@"请输入姓名"];
+        return;
+    }
+    
+    if ([detailtxt.text length] == 0) {
+        [self showMessage:@"请输入详细地址"];
+        return;
+    }
+    
+    if ([phonetxt.text length] == 0) {
+        [self showMessage:@"请输入名称"];
+        return;
+    }
+    
+    if ([newpass.text length] > 0 || [comfirmpass.text length] > 0) {
+        if ([newpass.text isEqualToString:comfirmpass.text]) {
+            [self showMessage:@"输入密码不一致"];
+            return;
+        }
+        [eidtInfo setObject:newpass.text forKey:@"password"];
+    }
+    [eidtInfo setObject:nametxt.text forKey:@"name"];
+    [eidtInfo setObject:detailtxt.text forKey:@"address"];
+    [eidtInfo setObject:phonetxt.text forKey:@"phone"];
+    [eidtInfo addEntriesFromDictionary:mp.result];
+    
+    [self.info removeObjectsForKeys:@[@"name",@"address",@"phone",@"pro",@"city",@"dis"]];
+    [self.info addEntriesFromDictionary:eidtInfo];
+
+    [[NetWork shared] query:UpdateMyInfoUrl info:eidtInfo block:^(id Obj) {
         if ([Obj intForKey:@"status"] == 1) {
             [tempSelf showMessage:@"修改成功"];
-            [UserInfo shared].info = tempSelf.info;
+            [UserInfo shared].info = self.info;
+        }else{
+            [tempSelf showMessage:@"修改失败"];
         }
     } lock:YES];
 }
@@ -104,82 +145,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)SelectAddress:(UIView *)view{
-    NSArray *arr = @[@"省",@"市",@"区"];
-    CGFloat width = ((self.view.frame.size.width / 3 * 2 - 10) - 10) / 3;
-    CGFloat left = self.view.frame.size.width / 3;
-    for (int i  = 0 ; i < 3 ; i ++){
-        PickerView *pk = [[PickerView alloc]initWithFrame:RECT(left + (width + 5) * i , 66, width, 32)];
-        pk.tag = i + 1;
-        pk.text = [arr objectAtIndex:i];
-        [pk addTarget:self action:@selector(addressSelect:)];
-        [view addSubview:pk];
-    }
-}
-
--(void)addressSelect:(PickerView *)pk{
-    NSString *type = @"";
-    if (pk.tag == 1) {
-        type = @"pro";
-    }else if (pk.tag == 2){
-        type = @"city";
-    }else{
-        type = @"dis";
-    }
-    
-    id address = [UserDefault objectForKey:type];
-    if (!address) {
-        [[NetWork shared]query:AddressUrl info:@{@"type":type} block:^(id Obj) {
-            id newAddress = [Obj objectForKey:@"data"];
-            [UserDefault setObject:newAddress forKey:type];
-            
-            if (pk.tag == 1) {
-                [self showSelection:newAddress picker:pk];
-            }else if (pk.tag == 2){
-                PickerView *pk1 = (PickerView *)[self.view viewWithTag:1];
-                NSArray *newArr = [newAddress objectForKey:pk1.text];
-                [self showSelection:newArr picker:pk];
-            }else{
-                PickerView *pk2 = (PickerView *)[self.view viewWithTag:2];
-                NSArray *newArr = [newAddress objectForKey:pk2.text];
-                [self showSelection:newArr picker:pk];
-            }
-        } lock:NO];
-    }else{
-        if (pk.tag == 1) {
-            [self showSelection:address picker:pk];
-        }else if (pk.tag == 2){
-            PickerView *pk1 = (PickerView *)[self.view viewWithTag:1];
-            NSArray *newArr = [address objectForKey:pk1.text];
-            [self showSelection:newArr picker:pk];
-        }else{
-            PickerView *pk2 = (PickerView *)[self.view viewWithTag:2];
-            NSArray *newArr = [address objectForKey:pk2.text];
-            [self showSelection:newArr picker:pk];
-        }
-    }
-    
-}
-
--(void)showSelection:(NSArray *)arr picker:(PickerView *)pk{
-    if (!popView)
-        popView = [[SGPopSelectView alloc] init];
-    popView.selections = arr;
-    __block SGPopSelectView *tempView = popView;
-    __block EditInfoViewController *tempSelf = self;
-    popView.selectedHandle = ^(NSInteger selectedIndex){
-        pk.text = tempView.selections[selectedIndex];
-        NSArray *arr = @[@"pro",@"city",@"dis"];
-        [tempSelf.info setObject:pk.text forKey:arr[pk.tag - 1]];
-        [tempView hide:NO];
-    };
-    
-//    CGRect rect=[pk convertRect:pk.frame toView:self.view];
-    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
-    CGRect rect=[pk convertRect:pk.bounds toView:window];
-    
-    [popView showFromView:window atPoint:rect.origin animated:YES];
-}
 
 
 -(UITextField *)textField:(CGRect)frame withTag:(NSInteger)tag{

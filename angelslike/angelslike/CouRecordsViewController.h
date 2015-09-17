@@ -15,6 +15,7 @@
 
 @interface CouRecordsViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
     AnswerView *anView;
+
     BOOL bload;
 }
 

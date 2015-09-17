@@ -221,10 +221,16 @@
 #pragma mark table view method
 
 -(void)couCellButtonClick:(id)obj{
-    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:[[AddressViewController alloc]init]];
-    UIViewController *viewController = [self findViewController:[self.view superview]];
-    [self hideTabBar];
-    [viewController.navigationController.tabBarController presentViewController:nvc animated:YES completion:NULL];
+    if (self.navigationController){
+        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:[[AddressViewController alloc]init]];
+        [self hideTabBar];
+        [self.navigationController.tabBarController presentViewController:nvc animated:YES completion:NULL];
+    }else{
+        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:[[AddressViewController alloc]init]];
+        UIViewController *viewController = [self findViewController:[self.view superview]];
+        [self hideTabBar];
+        [viewController.navigationController.tabBarController presentViewController:nvc animated:YES completion:NULL];
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

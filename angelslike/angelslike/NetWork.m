@@ -33,6 +33,10 @@
     return self;
 }
 
+-(void)userAutoLogin{
+    
+}
+
 -(void)query:(NSString *)link info:(NSDictionary *)info block:(NetWorkBlock)block lock:(BOOL)lock{
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:link]];
     NSMutableString *postString = [NSMutableString string];

@@ -48,6 +48,8 @@
 //产品列表
 #define ProductsUrl [MainDomain stringByAppendingPathComponent:@"product/lists"]
 #define ProductUrl [MainDomain stringByAppendingPathComponent:@"product/detail"]
+#define ProductBuyRecordUrl [MainDomain stringByAppendingPathComponent:@"product/buyrecords"]
+#define ProductCouRecordUrl [MainDomain stringByAppendingPathComponent:@"product/courecords"]
 //评论
 #define CommentsUrl [MainDomain stringByAppendingPathComponent:@"review/lists"]
 #define CommentAddUrl [MainDomain stringByAppendingPathComponent:@"review/add"]

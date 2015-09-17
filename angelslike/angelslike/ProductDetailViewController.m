@@ -45,9 +45,15 @@
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
 
-    CGRect rect = [[change objectForKey:@"new"] CGRectValue];
+//    CGRect rect = [[change objectForKey:@"new"] CGRectValue];
     
-    mv.frame = CGRectMake(0, rect.size.height + rect.origin.y + 10, ScreenWidth, ScreenHeight - 64);
+    
+    bottomView.frame = RECT(0, CGRectGetMaxY(pd.frame) + 10, ScreenWidth, 80);
+    
+    mv.frame = CGRectMake(0, CGRectGetMaxY(bottomView.frame) + 10, ScreenWidth, ScreenHeight - 64);
+    
+    
+    
     scView.contentSize = CGSizeMake(1, mv.frame.origin.y + mv.frame.size.height);
     
 }
@@ -73,11 +79,64 @@
     [pd addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     [scView addSubview:pd];
     
-    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, pd.frame.size.height + pd.frame.origin.y, ScreenWidth, ScreenHeight )];
+
+    
+    
+    bottomView = [[UIView alloc] initWithFrame:RECT(0, CGRectGetMaxY(scView.frame), ScreenWidth, 80)];
+    bottomView.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *button1 = [self buttonWithFrame:RECT(10, 0, ScreenWidth - 20, 40) title:@"购买记录"];
+    [button1 addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    button1.tag = ButtonType_BuyRecords;
+    [bottomView addSubview:button1];
+    
+    [bottomView addline:CGPointMake(0, 40) color:nil];
+    UIButton *button2 = [self buttonWithFrame:RECT(10, 40, ScreenWidth - 20, 40) title:@"凑分子记录"];
+    [button2 addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [button2 setTitle:@"凑分子记录" forState:UIControlStateNormal];
+    button2.tag = ButtonType_CouRecords;
+    [bottomView addSubview:button2];
+    
+    [scView addSubview:bottomView];
+    
+    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(pd.frame), ScreenWidth, ScreenHeight )];
     [scView addSubview:mv];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewCanMove:) name:@"MainScroll" object:nil];
 }
+
+-(void)buttonClick:(UIButton *)button{
+    ProductRecordViewController *vc = [[ProductRecordViewController alloc]init];
+    vc.strid = [self.result strForKey:@"id"];
+    if (button.tag == ButtonType_BuyRecords) {
+        vc.navigationItem.title = @"购买记录";
+        vc.strurl = ProductBuyRecordUrl;
+    }else{
+        vc.navigationItem.title = @"凑分子记录";
+        vc.strurl = ProductCouRecordUrl;
+    }
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(UIButton *)buttonWithFrame:(CGRect)rect title:(NSString *)title{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = rect;
+    UILabel *label1 = [[UILabel alloc]initWithFrame:RECT(10, 0, rect.size.width, rect.size.height)];
+    label1.backgroundColor = [UIColor clearColor];
+    label1.text = title;
+    [button addSubview:label1];
+    
+    UIImageView *imageView =[ [UIImageView alloc]initWithFrame:RECT(rect.size.width - 25, 0, 15, rect.size.height)];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.image = [[UIImage imageNamed:@"iconfont-houtui"] rt_tintedImageWithColor:[UIColor blackColor]];
+    imageView.transform = CGAffineTransformMakeRotation(M_PI);
+    [button addSubview:imageView];
+    
+    return button;
+    
+
+}
+
 
 -(void)scrollViewCanMove:(NSNotification *)obj{
     NSNumber *num = obj.object;
@@ -134,7 +193,7 @@
 
 -(void)counow:(id)sender {
     StartCouViewViewController *vc = [[StartCouViewViewController alloc]init ];
-    vc.P = [NSMutableDictionary dictionaryWithDictionary:self.info];
+    vc.P = [NSMutableDictionary dictionaryWithDictionary:self.result];
     [self.navigationController pushViewController:vc animated:YES];
 
 }
@@ -179,6 +238,8 @@
         scrollView.contentOffset = CGPointMake(0, 0);
     }
 }
+
+
 
 -(void)loadData:(id)sender{
     __block ProductDetailViewController *tempSelf = self;
