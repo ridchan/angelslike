@@ -34,6 +34,8 @@
         [self addSubview:label];
         
         [self initialAddress];
+        
+
     }
     
     return self;
@@ -48,7 +50,7 @@
     _info = info;
     self.bCheck = [_info intForKey:@"Address"] == 1;
     mp.items = @[[_info strForKey:@"pro"],[_info strForKey:@"city"],[_info strForKey:@"dis"]];
-    [(UITextField *)[self viewWithTag:11] setText:[_info strForKey:@"name"]];
+    [(UITextField *)[self viewWithTag:11] setText:[_info strForKey:@"username"]];
     [(UITextField *)[self viewWithTag:12] setText:[_info strForKey:@"address"]];
     [(UITextField *)[self viewWithTag:13] setText:[_info strForKey:@"phone"]];
 }
@@ -62,7 +64,7 @@
     
     [self addSubview:[self textField:CGRectMake(self.frame.size.width / 3, 50, self.frame.size.width / 3 * 2 - 10, 30) withTag:11]];
     
-    mp = [[MutilePickerView alloc]initWithFrame:RECT(self.frame.size.width / 3, 60, self.frame.size.width / 3 * 2 - 10, 40)];
+    mp = [[MutilePickerView alloc]initWithFrame:RECT(self.frame.size.width / 3, 85, self.frame.size.width / 3 * 2 - 10, 40)];
     mp.items = @[@"省",@"市",@"区"];
     mp.keys = @[@"pro",@"city",@"dis"];
     [self addSubview:mp];
@@ -73,7 +75,7 @@
 
 
 -(void)textChange:(UITextField *)textField{
-    NSArray *arr = @[@"name",@"address",@"phone"];
+    NSArray *arr = @[@"username",@"address",@"phone"];
     [self.info setObject:textField.text forKey:arr[textField.tag - 11]];
     
 }

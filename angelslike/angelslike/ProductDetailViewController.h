@@ -30,11 +30,11 @@ typedef enum{
     UIScrollView *scView;
     BOOL canMove;
     
-    
 }
 
 @property(nonatomic,strong) NSDictionary *info;
 @property(nonatomic,strong) NSDictionary *result;
+@property(nonatomic,strong) UITableView *tableView;
 
 
 

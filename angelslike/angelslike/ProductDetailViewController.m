@@ -18,12 +18,15 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+ 
     
     [self initailSetting];
     [self addHeader];
     [self addBottomButton];
     [self loadData:nil];
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBarHidden = YES;
@@ -38,6 +41,14 @@
 -(BOOL)prefersStatusBarHidden{
     return YES;
 }
+
+-(UIView *)headerView{
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
+    view.backgroundColor = [UIColor redColor];
+    return view;
+}
+
+#pragma mark -
 
 
 #pragma mark -
@@ -55,6 +66,8 @@
     
     
     scView.contentSize = CGSizeMake(1, mv.frame.origin.y + mv.frame.size.height);
+    
+    [self.tableView reloadData];
     
 }
 
@@ -79,10 +92,10 @@
     [pd addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     [scView addSubview:pd];
     
-
     
     
-    bottomView = [[UIView alloc] initWithFrame:RECT(0, CGRectGetMaxY(scView.frame), ScreenWidth, 80)];
+    
+    bottomView = [[UIView alloc] initWithFrame:RECT(0, 0, ScreenWidth, 80)];
     bottomView.backgroundColor = [UIColor whiteColor];
     
     UIButton *button1 = [self buttonWithFrame:RECT(10, 0, ScreenWidth - 20, 40) title:@"购买记录"];
@@ -231,7 +244,6 @@
         scrollView.scrollEnabled = NO;
         float off = scrollView.contentOffset.y + 44  - mv.frame.origin.y;
         scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 44);
-        [scrollView resignFirstResponder];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SubScrollCanMove" object:[NSNumber numberWithFloat:off]];
    
     }else if (scrollView.contentOffset.y < 0){

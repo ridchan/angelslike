@@ -17,7 +17,7 @@
 
 #define WXAppID @"wxcb123955cc21a093" //@"wx808df514e9cb4fc0"  公众平台
 #define WXAppSecret @"e1f09700641778a0f00cd2f3b56f2862" // @"72113780a6d46096850d1a93ee5addb3" 公众平台
-
+#define WXMchID     @"1263950201"
 
 @interface AppDelegate ()
 
@@ -26,7 +26,7 @@
 @implementation AppDelegate
 
 -(void)initialSetting{
-    [[IQKeyboardManager sharedManager] setEnable:NO];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
     
     
 
@@ -172,6 +172,9 @@
     }else if ([resp isKindOfClass:[SendMessageToWXResp class]]){
         SendMessageToWXResp *wxResp = (SendMessageToWXResp *)resp;
         
+    }else if ([resp isKindOfClass:[PayResp class]]){
+        PayResp *payResp = (PayResp *)resp;
+        NSLog(@"%@",payResp.returnKey);
     }
     
 

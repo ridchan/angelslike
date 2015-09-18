@@ -62,26 +62,28 @@
 -(void)scrollViewCanMove:(NSNotification *)obj{
     
     if (canMove == NO) {
-        NSNumber *num = obj.object;
-        scView.contentOffset = CGPointMake(0, scView.contentOffset.y + [num floatValue]);
-        if (scView.scrollEnabled == NO)  scView.scrollEnabled = YES;
+//        NSNumber *num = obj.object;
+//        scView.contentOffset = CGPointMake(0, scView.contentOffset.y + [num floatValue]);
+        scView.scrollEnabled = YES;
+        [scView becomeFirstResponder];
     }
 
     
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y <= 0) {
+    float off = scrollView.contentOffset.y;
+    if (scrollView.contentOffset.y <= 10) {
         canMove = NO;
         scrollView.scrollEnabled = NO;
-        float off = scrollView.contentOffset.y;
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"MainScroll" object:[NSNumber numberWithFloat:off]];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MainScroll" object:[NSNumber numberWithFloat:off]];
 
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    NSLog(@"dragging");
     canMove = YES;
 }
 

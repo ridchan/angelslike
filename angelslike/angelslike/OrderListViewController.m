@@ -119,6 +119,17 @@
         OrderDetailViewController *vc = [[OrderDetailViewController alloc]init];
         vc.orderid = [self.result[indexPath.row] strForKey:@"id"];
         [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        PayReq* req             = [[PayReq alloc] init];
+        req.openID              = @"wx808df514e9cb4fc0";//[dict objectForKey:@"appid"];
+        req.partnerId           = @"1243239902";//[dict objectForKey:@"partnerid"];
+        req.prepayId            = @"wx201509181641334c3944c7010019625263";//[dict objectForKey:@"prepayid"];
+        req.nonceStr            = @"p2k0wcsux7neauikbxphcer4502zgrod";//[dict objectForKey:@"noncestr"];
+        req.timeStamp           = 1442565693;//stamp.intValue;
+        req.package             = @"prepay_id=wx201509181641334c3944c7010019625263";//[dict objectForKey:@"package"];
+        req.sign                = @"17C707409A59045A7095DDCE1C3BBBA4";//[dict objectForKey:@"sign"];
+        
+        [WXApi sendReq:req];
     }
 }
 

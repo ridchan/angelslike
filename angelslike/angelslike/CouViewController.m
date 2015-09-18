@@ -45,6 +45,7 @@
     self.navigationItem.rightBarButtonItem = barButtonItem;
     
     _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 200, 44)];
+    _searchBar.tintColor = [UIColor blueColor];
     searchDisplayController  = [[UISearchDisplayController alloc]initWithSearchBar:_searchBar contentsController:self];
     
     /*
@@ -177,8 +178,6 @@
 
 
 -(void)backClick:(id)sender{
-    
-    
     _textField.text = @"";
     [_textField resignFirstResponder];
     [UIView beginAnimations:nil context:nil];
@@ -192,7 +191,15 @@
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
     barButtonItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = barButtonItem;
-    self.navigationItem.titleView = seg;
+    self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, -44);
+    [UIView animateWithDuration:0.35 animations:^{
+        self.navigationItem.titleView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        self.navigationItem.titleView = seg;
+        [UIView animateWithDuration:0.34 animations:^{
+            self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, 44);
+        }];
+    }];
 }
 
 -(CABasicAnimation *)animation{
@@ -206,13 +213,30 @@
     return an;
 }
 
+
+
 -(void)searchClick:(id)sender{
 
     
     
-    SearchViewController *vc = [[SearchViewController alloc] init];
+//    SearchViewController *vc = [[SearchViewController alloc] init];
+//    
+//    [self.navigationController pushViewController:vc animated:NO];
+//    self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, -44);
     
-    [self.navigationController pushViewController:vc animated:NO];
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(dismissSearchBar:)];
+    barButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, -44);
+    [UIView animateWithDuration:0.35 animations:^{
+        self.navigationItem.titleView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        self.navigationItem.titleView = _searchBar;
+        [UIView animateWithDuration:0.35 animations:^{
+             self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, 44);
+        }];
+    }];
+    
 //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
 

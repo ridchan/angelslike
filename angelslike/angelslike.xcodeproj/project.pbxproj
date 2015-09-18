@@ -64,6 +64,8 @@
 		27DF595E1B8EF5B400E94B06 /* UILabel+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DF595D1B8EF5B400E94B06 /* UILabel+Resize.m */; };
 		27E001771BA9171E00CFF4DB /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E001761BA9171E00CFF4DB /* OrderDetailViewController.m */; };
 		27E0017A1BA9510E00CFF4DB /* EditInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E001791BA9510E00CFF4DB /* EditInfoViewController.m */; };
+		27E00A011BABFA6000544B28 /* WeiXinPayObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E00A001BABFA6000544B28 /* WeiXinPayObj.m */; };
+		27E00A041BABFA6900544B28 /* AliPayObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E00A031BABFA6900544B28 /* AliPayObj.m */; };
 		27E022AA1BA2B1420089D1CD /* APAuthV2Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E022A71BA2B1420089D1CD /* APAuthV2Info.m */; };
 		27E022AB1BA2B1420089D1CD /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E022A91BA2B1420089D1CD /* Order.m */; };
 		27E0230A1BA2B4750089D1CD /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E022FA1BA2B4750089D1CD /* base64.m */; };
@@ -425,6 +427,10 @@
 		27E001761BA9171E00CFF4DB /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		27E001781BA9510E00CFF4DB /* EditInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditInfoViewController.h; sourceTree = "<group>"; };
 		27E001791BA9510E00CFF4DB /* EditInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditInfoViewController.m; sourceTree = "<group>"; };
+		27E009FF1BABFA6000544B28 /* WeiXinPayObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiXinPayObj.h; sourceTree = "<group>"; };
+		27E00A001BABFA6000544B28 /* WeiXinPayObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiXinPayObj.m; sourceTree = "<group>"; };
+		27E00A021BABFA6900544B28 /* AliPayObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AliPayObj.h; sourceTree = "<group>"; };
+		27E00A031BABFA6900544B28 /* AliPayObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AliPayObj.m; sourceTree = "<group>"; };
 		27E022A61BA2B1420089D1CD /* APAuthV2Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAuthV2Info.h; sourceTree = "<group>"; };
 		27E022A71BA2B1420089D1CD /* APAuthV2Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAuthV2Info.m; sourceTree = "<group>"; };
 		27E022A81BA2B1420089D1CD /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
@@ -1187,6 +1193,10 @@
 				27DF595D1B8EF5B400E94B06 /* UILabel+Resize.m */,
 				27E2AA0D1B9ED2070046D28D /* UIView+Controller.h */,
 				27E2AA0E1B9ED2070046D28D /* UIView+Controller.m */,
+				27E009FF1BABFA6000544B28 /* WeiXinPayObj.h */,
+				27E00A001BABFA6000544B28 /* WeiXinPayObj.m */,
+				27E00A021BABFA6900544B28 /* AliPayObj.h */,
+				27E00A031BABFA6900544B28 /* AliPayObj.m */,
 			);
 			name = "常用类";
 			sourceTree = "<group>";
@@ -2209,6 +2219,7 @@
 				27EA9A0C1B731777003559C0 /* SearchViewController.m in Sources */,
 				27E066291B85DD4300D94803 /* MJRefreshBackNormalFooter.m in Sources */,
 				27BA816F1B71C6A6005B527B /* MKAnnotationView+WebCache.m in Sources */,
+				27E00A041BABFA6900544B28 /* AliPayObj.m in Sources */,
 				27E85B721BA80A3000BE6077 /* PayRecordsViewController.m in Sources */,
 				27EA9A111B733208003559C0 /* DropDownList.m in Sources */,
 				27E6ADFF1B785658008CE686 /* IQSegmentedNextPrevious.m in Sources */,
@@ -2236,6 +2247,7 @@
 				27E0662A1B85DD4300D94803 /* MJRefreshBackStateFooter.m in Sources */,
 				27E37AC51B9431990038F8FB /* CheckButton.m in Sources */,
 				27BA81781B71C6A6005B527B /* UIButton+WebCache.m in Sources */,
+				27E00A011BABFA6000544B28 /* WeiXinPayObj.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
 				27E089981B8FFF0F0090C724 /* BottomView.m in Sources */,
 				27F65CFC1B798D7C00EDE656 /* ProductlistViewController.m in Sources */,

@@ -112,7 +112,7 @@
     }
     
     if ([newpass.text length] > 0 || [comfirmpass.text length] > 0) {
-        if ([newpass.text isEqualToString:comfirmpass.text]) {
+        if (![newpass.text isEqualToString:comfirmpass.text]) {
             [self showMessage:@"输入密码不一致"];
             return;
         }

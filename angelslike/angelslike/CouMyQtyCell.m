@@ -28,7 +28,7 @@
 }
 
 -(void)setQtyLabel:(NSString *)str{
-    NSString *amount = [NSString stringWithFormat:@"￥%0.2f",[self.info floatForKey:@"everyprice"] * [self.info floatForKey:@"qty"]];
+    NSString *amount = [NSString stringWithFormat:@"￥%0.2f",[self.info floatForKey:@"everyprice"] * [self.info floatForKey:@"mycopies"]];
     [self.info setObject:amount forKey:@"MyCouAmount"];
     NSString *pre = @"合计 ";
     NSMutableString *nstr = [NSMutableString stringWithFormat:@"%@%@",pre,amount];
@@ -46,8 +46,9 @@
         //
         qb = [[QtyButton alloc]initWithFrame:RECT(10, 14, 130, 40)];
         [qb addTarget:self action:@selector(qtyChange:)];
-        qb.qty = @"2";
+
         qb.style = 0;
+        qb.maxValue = 1,
         [self addSubview:qb];
         
         label = [[UILabel alloc]initWithFrame:RECT(10, 14, ScreenWidth - 20, 40)];
@@ -71,8 +72,7 @@
     _info = info;
     qb.qty = [_info strForKey:@"mycopies"];
     [self setQtyLabel:nil];
-//    [_info removeObserver:self forKeyPath:@"everyprice"];
-
+    
     [_info addObserver:self forKeyPath:@"everyprice" options:NSKeyValueObservingOptionNew context:nil];
 }
 

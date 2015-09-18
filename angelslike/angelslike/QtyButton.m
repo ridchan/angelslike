@@ -73,7 +73,7 @@
 
 -(void)button1Click:(id)sender{
     if ([self.qty integerValue] > _minValue) {
-        NSString *nqty = [NSString stringWithFormat:@"%ld",[self.qty integerValue] - 1];
+        NSString *nqty = [NSString stringWithFormat:@"%d",(int)([self.qty integerValue] - 1)];
         self.qty = nqty;
     }
 
@@ -82,7 +82,7 @@
 
 -(void)button2Click:(id)sender{
     if ([self.qty integerValue] < _maxValue) {
-        NSString *nqty = [NSString stringWithFormat:@"%ld",[self.qty integerValue] + 1];
+        NSString *nqty = [NSString stringWithFormat:@"%d",(int)([self.qty integerValue] + 1)];
         self.qty = nqty;
     }
 
@@ -91,7 +91,7 @@
 -(void)setMaxValue:(NSInteger)maxValue{
     _maxValue = maxValue;
     if (_maxValue < [self.qty integerValue]) {
-        NSString *nqty = [NSString stringWithFormat:@"%ld",_maxValue];
+        NSString *nqty = [NSString stringWithFormat:@"%d",(int)_maxValue];
         self.qty = nqty;
     }
 }

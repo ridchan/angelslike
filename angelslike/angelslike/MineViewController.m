@@ -31,6 +31,7 @@
     
     self.infos = @[@[@{@"Name":@"用户信息"}],
                    @[@{@"Name":@"我的凑分子",@"IMG":@"mine_00",@"Action":@"myCouClick:"},
+                     @{@"Name":@"我的礼物",@"IMG":@"mine_00",@"Action":@"myGiftClick:"},
                      @{@"Name":@"我的订单",@"IMG":@"mine_01",@"Action":@"myOrderClick:"},
                      @{@"Name":@"我的购物车",@"IMG":@"mine_002"}
                      ],

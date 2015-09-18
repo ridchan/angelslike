@@ -18,6 +18,7 @@
     BOOL bMoving;
 }
 
+
 @property(nonatomic,strong) NSArray *viewControllers;
 @property(nonatomic,strong) NSArray *titles;
 @property(nonatomic) NSUInteger selectIndex;

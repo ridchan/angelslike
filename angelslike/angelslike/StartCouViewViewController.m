@@ -32,7 +32,12 @@
     [self.P setObject:everyprice forKey:@"MyCouAmount"];
     [self.P setObject:[self.P strForKey:@"id"] forKey:@"pid"];
     
+    [self.P setObject:[[UserInfo shared].info strForKey:@"name"] forKey:@"username"];
+    for (NSString *key in @[@"address",@"phone",@"city",@"pro",@"dis"]){
+        [self.P setObject:[[UserInfo shared].info strForKey:key] forKey:key];
+    }
     
+
     [self initialSetting];
     // Do any additional setup after loading the view.
 }
@@ -65,7 +70,8 @@
     [self.P setObject:[[UserInfo shared].info strForKey:@"loginkey"] forKey:@"loginkey"];
     __block StartCouViewViewController *tempSelf = self;
     [[NetWork shared] query:ComfirmCouUrl info:self.P block:^(id Obj) {
-        [tempSelf payInOrder:[[Obj objectForKey:@"data"] strForKey:@"orderid"]];
+        if ([Obj intForKey:@"status"] == 1)
+            [tempSelf payInOrder:[[Obj objectForKey:@"data"] strForKey:@"orderid"]];
     } lock:YES];
 }
 
@@ -247,6 +253,7 @@
     NSArray *titles = @[@"",@"设置份数",@"支付方式",@"填写收货信息",@"自己先凑(可以多凑几份)",@"更多设置"];
     return titles[section];
 }
+
 
 #pragma mark -
 #pragma mark cell
