@@ -199,7 +199,7 @@
             cell = [[UserInfoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UserCell"];
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap:)];
             [cell.imageView addGestureRecognizer:tap];
-            userImg = cell.imageView;
+            userImg = cell.logo;
             
             UITapGestureRecognizer *wallentTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(wallentTap:)];
             [cell.wallent addGestureRecognizer:wallentTap];

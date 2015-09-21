@@ -31,6 +31,8 @@
         imageView.image = [UIImage imageNamed:@"pieceorder_check_def"];
     }
     _selectIndex = sender.tag - 1;
+    
+    [self.info setObject:[NSString stringWithFormat:@"%d",(int)(_selectIndex + 4)] forKey:@"paytype"];
 }
 
 -(void)setSelectIndex:(NSInteger)selectIndex{
@@ -38,6 +40,7 @@
     UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
     b.tag = _selectIndex + 1;
     [self buttonClick:b];
+    
 }
 
 

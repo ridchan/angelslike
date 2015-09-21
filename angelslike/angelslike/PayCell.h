@@ -13,4 +13,6 @@
 
 @property(nonatomic) NSInteger selectIndex;
 
+@property(nonatomic,weak) NSMutableDictionary *info;
+
 @end

@@ -18,11 +18,9 @@
 #import "HerAddressCell.h"
 #import "OpenCell.h"
 #import "MutileCopiesCell.h"
-#import "Order.h"
-#import "DataSigner.h"
-#import "APAuthV2Info.h"
-#import <AlipaySDK/AlipaySDK.h>
 
+#import "AliPayObj.h"
+#import "WeiXinPayObj.h"
 @interface StartCouViewViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
     SGPopSelectView *popView;
 }

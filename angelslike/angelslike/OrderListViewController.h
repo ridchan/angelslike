@@ -12,7 +12,7 @@
 #import "MJRefresh.h"
 #import "OrderViewCell.h"
 #import "OrderDetailViewController.h"
-#import "WXApi.h"
+#import "WeiXinPayObj.h"
 
 @interface OrderListViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,MXPullDownMenuDelegate>{
     CGFloat cellHeight;

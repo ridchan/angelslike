@@ -140,6 +140,8 @@
 		27E16C091B9D999100EE5259 /* CouImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C081B9D999100EE5259 /* CouImageCell.m */; };
 		27E16C0C1B9D999D00EE5259 /* CouQtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */; };
 		27E16C0F1B9D9AC500EE5259 /* CouMyQtyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */; };
+		27E170F61BAFAFA800386B46 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E170F51BAFAFA800386B46 /* StartViewController.m */; };
+		27E170F81BAFB32F00386B46 /* wcoufenzi.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E170F71BAFB32F00386B46 /* wcoufenzi.png */; };
 		27E213151BA01757008888BA /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E213141BA01757008888BA /* PickerView.m */; };
 		27E213181BA03BAB008888BA /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E213171BA03BAB008888BA /* OrderListViewController.m */; };
 		27E2131B1BA03BE6008888BA /* OrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E2131A1BA03BE6008888BA /* OrderViewCell.m */; };
@@ -633,6 +635,9 @@
 		27E16C0B1B9D999D00EE5259 /* CouQtyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouQtyCell.m; sourceTree = "<group>"; };
 		27E16C0D1B9D9AC500EE5259 /* CouMyQtyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouMyQtyCell.h; sourceTree = "<group>"; };
 		27E16C0E1B9D9AC500EE5259 /* CouMyQtyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouMyQtyCell.m; sourceTree = "<group>"; };
+		27E170F41BAFAFA800386B46 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		27E170F51BAFAFA800386B46 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		27E170F71BAFB32F00386B46 /* wcoufenzi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wcoufenzi.png; sourceTree = "<group>"; };
 		27E213131BA01757008888BA /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
 		27E213141BA01757008888BA /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		27E213161BA03BAB008888BA /* OrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListViewController.h; sourceTree = "<group>"; };
@@ -969,6 +974,7 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				27E170F71BAFB32F00386B46 /* wcoufenzi.png */,
 				27E53EBB1B8C47E900A56D53 /* hui_logo.png */,
 				27685A691B81E00A005234B0 /* Refresh_icon.png */,
 				27685A671B818CDB005234B0 /* wechat-icon-168.png */,
@@ -1891,6 +1897,8 @@
 				27E16BEE1B9D2ACF00EE5259 /* CouRecrodCell.m */,
 				27E16BF01B9D5AA100EE5259 /* ReplayView.h */,
 				27E16BF11B9D5AA100EE5259 /* ReplayView.m */,
+				27E170F41BAFAFA800386B46 /* StartViewController.h */,
+				27E170F51BAFAFA800386B46 /* StartViewController.m */,
 			);
 			name = "凑分子";
 			sourceTree = "<group>";
@@ -2056,6 +2064,7 @@
 				27EFB22F1B73966800A14872 /* duixiang_04.png in Resources */,
 				27E0FA321B9C320800F1F8EB /* xiaolian.png in Resources */,
 				27E85BA71BA82BFF00BE6077 /* Resource.bundle in Resources */,
+				27E170F81BAFB32F00386B46 /* wcoufenzi.png in Resources */,
 				27EFB2641B73970900A14872 /* pinglei_04.png in Resources */,
 				27E16BF41B9D85AA00EE5259 /* mine_002.png in Resources */,
 				27EA453F1B7DD30E004851A2 /* iconfont-wancheng.png in Resources */,
@@ -2257,6 +2266,7 @@
 				27BA81811B71EA77005B527B /* LoadMoreTableView.m in Sources */,
 				27BA81731B71C6A6005B527B /* SDWebImageDecoder.m in Sources */,
 				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,
+				27E170F61BAFAFA800386B46 /* StartViewController.m in Sources */,
 				27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */,
 				27E2131B1BA03BE6008888BA /* OrderViewCell.m in Sources */,
 				27E0230C1BA2B4750089D1CD /* DataVerifier.m in Sources */,

@@ -33,6 +33,8 @@
         nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(100 , 100, 200, 30)];
         nameLabel.backgroundColor = [UIColor clearColor];
         nameLabel.textColor = [UIColor whiteColor];
+        nameLabel.shadowColor = HexColor(@"666666");
+        nameLabel.shadowOffset = CGSizeMake(1, 1);
         [self addSubview:nameLabel];
         
         
@@ -78,6 +80,10 @@
 }
 
 -(UIImageView *)imageView{
+    return logo;
+}
+
+-(UIImageView *)logo{
     return logo;
 }
 

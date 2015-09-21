@@ -101,9 +101,8 @@
 #pragma mark 下拉菜单
 
 -(void)PullDownMenu:(MXPullDownMenu *)pullDownMenu didSelectRowAtColumn:(NSInteger)column row:(NSInteger)row{
-    NSArray *keyArr = @[@"object",@"scenes",@"sort"];
-    NSArray *valueArr = @[@[@"",@"39",@"35",@"36",@"37",@"60",@"38",@"61",@"62"],
-                          @[@"",@"41",@"42",@"44",@"45",@"63",@"46"],
+    NSArray *keyArr = @[@"status",@"sort"];
+    NSArray *valueArr = @[@[@"",@"1",@"2",@"3",@"4",@"5"],
                           @[@"new",@"hot"]];
     NSString *value =  [[valueArr objectAtIndex:column] objectAtIndex:row];
     [self.searchInfo setObject:value forKey:[keyArr objectAtIndex:column]];
@@ -120,16 +119,18 @@
         vc.orderid = [self.result[indexPath.row] strForKey:@"id"];
         [self.navigationController pushViewController:vc animated:YES];
     }else{
-        PayReq* req             = [[PayReq alloc] init];
-        req.openID              = @"wx808df514e9cb4fc0";//[dict objectForKey:@"appid"];
-        req.partnerId           = @"1243239902";//[dict objectForKey:@"partnerid"];
-        req.prepayId            = @"wx201509181641334c3944c7010019625263";//[dict objectForKey:@"prepayid"];
-        req.nonceStr            = @"p2k0wcsux7neauikbxphcer4502zgrod";//[dict objectForKey:@"noncestr"];
-        req.timeStamp           = 1442565693;//stamp.intValue;
-        req.package             = @"prepay_id=wx201509181641334c3944c7010019625263";//[dict objectForKey:@"package"];
-        req.sign                = @"17C707409A59045A7095DDCE1C3BBBA4";//[dict objectForKey:@"sign"];
+//        PayReq* req             = [[PayReq alloc] init];
+//        req.openID              = @"wx808df514e9cb4fc0";//[dict objectForKey:@"appid"];
+//        req.partnerId           = @"1243239902";//[dict objectForKey:@"partnerid"];
+//        req.prepayId            = @"wx201509181641334c3944c7010019625263";//[dict objectForKey:@"prepayid"];
+//        req.nonceStr            = @"p2k0wcsux7neauikbxphcer4502zgrod";//[dict objectForKey:@"noncestr"];
+//        req.timeStamp           = 1442565693;//stamp.intValue;
+//        req.package             = @"prepay_id=wx201509181641334c3944c7010019625263";//[dict objectForKey:@"package"];
+//        req.sign                = @"17C707409A59045A7095DDCE1C3BBBA4";//[dict objectForKey:@"sign"];
+//        
+//        [WXApi sendReq:req];
+
         
-        [WXApi sendReq:req];
     }
 }
 

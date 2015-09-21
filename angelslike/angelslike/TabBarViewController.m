@@ -77,7 +77,15 @@
 }
 
 -(BOOL)tabbarShouldTap:(MTabBarItem *)item atIndex:(NSInteger)index{
+    __block TabBarViewController *tempSelf = self;
+
     if (index == 2) {
+        [self hideCustomTabBar];
+        StartViewController *lvc = [[StartViewController alloc]init];
+        lvc.successblock = ^(id obj){[tempSelf setSelectedIndex:3];[tempSelf bringCustomTabBarToFront];};
+        lvc.failblock = ^(id obj){[tempSelf bringCustomTabBarToFront];};
+        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:lvc];
+        [self presentViewController:nvc animated:YES completion:NULL];
         return NO;
     }else if(index == 4 & [UserInfo shared].info == nil){
         [self hideCustomTabBar];

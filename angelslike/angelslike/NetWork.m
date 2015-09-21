@@ -66,8 +66,7 @@
                 block(nil);
             else{
                 id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-                
-                block(obj);
+                if (block) block(obj);
             }
             [tempSelf currentThreadReducing];
         });
@@ -99,6 +98,9 @@
         }
         
     }
+    
+    [postString appendFormat:@"&loginkey=%@",[[UserInfo shared].info objectForKey:@"loginkey"]];
+    
     NSData *postdata = [postString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSString *postlength = [NSString stringWithFormat:@"%lu",(unsigned long)[postdata length]];
     [request setValue:postlength forHTTPHeaderField:@"Content-Length"];

@@ -16,6 +16,7 @@
 #define isIOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >=8.0
 #define isiPhone4 ([UIScreen mainScreen].bounds.size.height == 480)
 #define FontWS(s) [UIFont systemFontOfSize:s]
+#define BFontWS(s) [UIFont boldSystemFontOfSize:s]
 #define RGBA(r,g,b,a) [UIColor colorWithRed:(float)(r/255.0f)green:(float)(g / 255.0f) blue:(float)(b / 255.0f)alpha:a]
 #define HexColor(hex) [UIColor getHexColor:hex]
 #define HEXCOLOR(c)   [UIColor colorWithRed:((c>>16)&0xFF)/255.0f green:((c>>8)&0xFF)/255.0f blue:(c&0xFF)/255.0f alpha:1.0f];

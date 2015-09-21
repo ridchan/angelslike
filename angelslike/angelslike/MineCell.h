@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HeaderDefiner.h"
 
 @interface MineCell : UITableViewCell{
     UIImageView *imageView;

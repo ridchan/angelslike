@@ -35,4 +35,5 @@ typedef enum{
 @property (strong,nonatomic) NSString *cdn;
 @property (strong,nonatomic) NSMutableDictionary *searchInfo;
 -(void)loadMoreData:(id)obj;
+-(void)reloadData;
 @end

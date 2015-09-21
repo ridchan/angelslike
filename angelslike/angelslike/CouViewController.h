@@ -17,7 +17,7 @@
 #import "MyCouViewController.h"
 #import "LoginViewController.h"
 
-@interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UITextFieldDelegate>{
+@interface CouViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,MXPullDownMenuDelegate,UITextFieldDelegate,UISearchBarDelegate>{
     MXPullDownMenu *downMenu;
     UISearchBar *_searchBar;
     UISegmentedControl *seg;

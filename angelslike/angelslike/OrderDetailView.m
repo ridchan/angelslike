@@ -18,8 +18,9 @@
         imageView.layer.masksToBounds = YES;
         [self addSubview:imageView];
         
-        name = [[UILabel alloc]initWithFrame:RECT(90, 5, ScreenWidth - 140, 30)];
+        name = [[UILabel alloc]initWithFrame:RECT(90, 5, ScreenWidth - 180, 30)];
         name.font = [UIFont boldSystemFontOfSize:11];
+        name.numberOfLines = 2;
         [self addSubview:name];
         
         price = [[UILabel alloc]initWithFrame:RECT(5, 20, ScreenWidth - 10, 20)];

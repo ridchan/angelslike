@@ -31,6 +31,7 @@
     [self.P setObject:@"1" forKey:@"mycopies"];
     [self.P setObject:everyprice forKey:@"MyCouAmount"];
     [self.P setObject:[self.P strForKey:@"id"] forKey:@"pid"];
+    [self.P setObject:@"4" forKey:@"paytype"];
     
     [self.P setObject:[[UserInfo shared].info strForKey:@"name"] forKey:@"username"];
     for (NSString *key in @[@"address",@"phone",@"city",@"pro",@"dis"]){
@@ -66,86 +67,52 @@
     
 }
 
+-(void)weixinpayResult:(NSNotification *)notification{
+    [[NSNotificationCenter defaultCenter]removeObserver:self forKeyPath:@"WeiXinPayResult"];
+    NSDictionary *dic = notification.object;
+    if ([dic intForKey:@"status"] == 0) {
+        [self showMessage:@"支付成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self showMessage:@"支付失败"];
+    }
+    
+}
+
 -(void)couClick:(id)sender{
-    [self.P setObject:[[UserInfo shared].info strForKey:@"loginkey"] forKey:@"loginkey"];
+//    [self.P setObject:[[UserInfo shared].info strForKey:@"loginkey"] forKey:@"loginkey"];
+    if ([[self.P strForKey:@"title"] length] == 0) [self showMessage:@"请输入标题"];
+    if ([[self.P strForKey:@"content"] length] == 0) [self showMessage:@"请输入内容"];
+    
     __block StartCouViewViewController *tempSelf = self;
+    
     [[NetWork shared] query:ComfirmCouUrl info:self.P block:^(id Obj) {
-        if ([Obj intForKey:@"status"] == 1)
-            [tempSelf payInOrder:[[Obj objectForKey:@"data"] strForKey:@"orderid"]];
+        if ([Obj intForKey:@"status"] == 1){
+            [tempSelf payInOrder:[[Obj objectForKey:@"data"] strForKey:@"orderid"] withAmount:[tempSelf.P strForKey:@"MyCouAmount"]];
+        }
+        
     } lock:YES];
 }
 
 
--(void)payInOrder:(NSString *)orderNo{
-    
-    
-    
-    
-     NSMutableString *privateKey = [NSMutableString string];
-     [privateKey appendString:@"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK6PtuuJiEWczsOI\n"];
-     [privateKey appendString:@"X4J1plCApFUqgV5sJfSatHakdO+o0CX/ufM7qHOdp0sLL8Y+DAjNMzJBSqmKgtkB\n"];
-     [privateKey appendString:@"Iz3Ow9JqmfUi4VwhLolYzdiSqhuwSPE8VUYDZvjBP0tNpsbSaFX/Gvn8Qmqz5R0v\n"];
-     [privateKey appendString:@"oIsIfNtt1wnd3uXPExW5E/IMpqYjAgMBAAECgYEAoaP2kBiklUFkvO808csbnIPi\n"];
-     [privateKey appendString:@"p/JaJSMj6mKvJQWYOqwpQmaQu8jMbXLZDMZpELs3zZamB60qA+B81ZEWHw+th0wH\n"];
-     [privateKey appendString:@"K4PfaBq2clFm0IIK1YbH7aFbirrn7gwU6y0u/12aUxWAnuSs3oshKiLFP0cZFEYn\n"];
-     [privateKey appendString:@"kWM90ZAj1dOkrA3u2nECQQDkJlcu4hcYCjfyb8Jc2mhi+rJyWXVtOrG8vGgbf+Hf\n"];
-     [privateKey appendString:@"Y0UJJgoGyuAQD/C4VYQYLBympUoCwVimrQrBg05l/Dm9AkEAw9697KlfvOdqkVTs\n"];
-     [privateKey appendString:@"uPTzdSNvUiZaZqmCpBUK5BW27HLi2HZ1YeyH0Emuenwc1LmviTFDFGE8rbzKeChe\n"];
-     [privateKey appendString:@"hnMtXwJAHiTesggXSwrWl4aipIgK8MD04NznAfaWUzyFeNStsEk6btoCyyD098pT\n"];
-     [privateKey appendString:@"YNeTq2nwoygFnlWTc/o7CJRjwF/R9QJAfv4cz6NlIjo8Wuvf629NpeYKmA2r0SIY\n"];
-     [privateKey appendString:@"RMAr5oO5rQYz07rCEnJkAAS1rk5n9vhJOj8JSd5dlBtyfoNV/gARKwJAc6eBXPNA\n"];
-     [privateKey appendString:@"HC5gLOIZNfqW7/sXhjZR47W3AdQsoKQekmVfHsh6ixq4vKn3TJtC8rbwTNknRLs4\n"];
-     [privateKey appendString:@"ti1V2itso6belw==\n"];
-     
-     
-     
-     //生成订单信息及签名
-     
-     //将商品信息赋予AlixPayOrder的成员变量
-     Order *order = [[Order alloc] init];
-     order.partner = AliPID;
-     order.seller = AliSID;
-     order.tradeNO = orderNo; //订单ID（由商家自行制定）
-     order.productName = @"天使礼客"; //商品标题
-     order.productDescription = @"天使礼客"; //商品描述
-     order.amount = [NSString stringWithFormat:@"%.2f",0.01]; //商品价格
-     order.notifyURL =  @"http://app.angelslike.com/notify/index"; //回调URL
-     
-     order.service = @"mobile.securitypay.pay";
-     order.paymentType = @"1";
-     order.inputCharset = @"utf-8";
-     order.itBPay = @"30m";
-     order.showUrl = @"m.alipay.com";
-     
-     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
-     NSString *appScheme = @"angelslike";
-     
-     //将商品信息拼接成字符串
-     NSString *orderSpec = [order description];
-     NSLog(@"orderSpec = %@",orderSpec);
-     
-     //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
-     id<DataSigner> signer = CreateRSADataSigner(privateKey);
-     NSString *signedString = [signer signString:orderSpec];
-     
-     //将签名成功字符串格式化为订单字符串,请严格按照该格式
-     NSString *orderString = nil;
-     if (signedString != nil) {
-         orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-         orderSpec, signedString, @"RSA"];
-         
-         __block StartCouViewViewController *tempSelf = self;
-         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-             if ([resultDic intForKey:@"resultStatus"] == 9000) {
-                 [tempSelf showMessage:@"支付成功"];
-                 [tempSelf backClick:nil];
-             }else{
-                 [[NetWork shared] query:CancelCouUrl info:@{@"orderid":orderNo} block:nil lock:NO];
-//
-             }
-         }];
-         
-     }
+-(void)payInOrder:(NSString *)orderNo withAmount:(NSString *)amount{
+    __block StartCouViewViewController *tempSelf = self;
+    NSString *amt = [amount stringByReplacingOccurrencesOfString:MoneySign withString:@""];
+    if ([tempSelf.P intForKey:@"paytype"] == 4) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinpayResult:) name:@"WeiXinPayResult" object:nil];
+        NSString *namt = [NSString stringWithFormat:@"%.0f",[amt floatValue] * 100];
+        [WeiXinPayObj payWithInfo:@{@"orderno":orderNo,@"amount":namt} successBlock:nil failBlock:nil];
+        
+//        [[NetWork shared] query:CancelCouUrl info:@{@"orderid":orderNo} block:nil lock:YES];
+    }else{
+        [AliPayObj payWithInfo:@{@"orderno":orderNo,@"amount":amt} successBlock:^(id obj) {
+            [tempSelf showMessage:@"支付成功"];
+            [tempSelf.navigationController popViewControllerAnimated:YES];
+        } failBlock:^(id obj) {
+            [[NetWork shared] query:CancelCouUrl info:@{@"orderid":orderNo} block:nil lock:YES];
+        }];
+    }
+
      
     
 }

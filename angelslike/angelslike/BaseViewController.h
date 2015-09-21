@@ -14,7 +14,12 @@
 #import <ShareSDK/ShareSDK.h>
 
 
+typedef void(^dismissBlock)(id obj);
+
 @interface BaseViewController : UIViewController
+
+@property(copy) dismissBlock successblock;
+@property(copy) dismissBlock failblock;
 
 -(void)setTextFieldAttribute:(UITextField *)textField img:(NSString *)imgName bottom:(NSInteger)txtType;
 

@@ -39,7 +39,7 @@
 }
 
 -(void)valueChange:(id)obj{
-    label.text = [NSString stringWithFormat:@"%ld/20",[text.text length]];
+    label.text = [NSString stringWithFormat:@"%ld/20",(long)[text.text length]];
     [self.info setObject:text.text forKey:@"title"];
 }
 

@@ -110,15 +110,17 @@
 }
 
 
+
+
 -(void)loadMoreData:(id)obj{
     __block MyCouViewController *tempSelf = self;
-    NSLog(@"loading");
-    NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
+
+    NSString *nPage = [NSString stringWithFormat:@"%ld",(long)(self.tableView.currentPage + 1)];
     if ([UserInfo shared].info == nil) {
         return;
     }
     [self.searchInfo setObject:nPage forKey:@"page"];
-    [self.searchInfo setObject:[[UserInfo shared].info strForKey:@"loginkey"] forKey:@"loginkey"];
+
     
 //    [self.searchInfo setObject:_textField.text forKey:@"key"];
     
@@ -155,6 +157,7 @@
     //    self.navigationItem.rightBarButtonItem = barButtonItem;
     //
     //    _searchBar.text = @"";
+    
     _textField.text = @"";
     [_textField resignFirstResponder];
     [UIView beginAnimations:nil context:nil];

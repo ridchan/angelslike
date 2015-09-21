@@ -46,6 +46,7 @@
     
     _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 200, 44)];
     _searchBar.tintColor = [UIColor blueColor];
+    _searchBar.delegate = self;
     searchDisplayController  = [[UISearchDisplayController alloc]initWithSearchBar:_searchBar contentsController:self];
     
     /*
@@ -188,6 +189,15 @@
 }
 
 -(void)dismissSearchBar:(id)sender{
+    if(seg.selectedSegmentIndex == 0){
+        _searchBar.text = @"";
+        [self.searchInfo setObject:@"" forKey:@"key"];
+        [self reloadData];
+    }else{
+        [self.mvc.searchInfo setObject:@"" forKey:@"key"];
+        [self.mvc reloadData];
+    }
+    
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
     barButtonItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = barButtonItem;
@@ -276,7 +286,15 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [_searchBar resignFirstResponder];
-    [self reloadData];
+    
+    if(seg.selectedSegmentIndex == 0){
+        [self.searchInfo setObject:_searchBar.text forKey:@"key"];
+        [self reloadData];
+    }else{
+        [self.mvc.searchInfo setObject:_searchBar.text forKey:@"key"];
+        [self.mvc reloadData];
+    }
+
 }
 
 #pragma mark -

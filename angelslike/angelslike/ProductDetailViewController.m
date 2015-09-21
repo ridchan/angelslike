@@ -249,6 +249,12 @@
     }else if (scrollView.contentOffset.y < 0){
         scrollView.contentOffset = CGPointMake(0, 0);
     }
+    
+    NSLog(@"scrolling");
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    NSLog(@"dragging");
 }
 
 

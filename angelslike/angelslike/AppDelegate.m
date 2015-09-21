@@ -174,7 +174,8 @@
         
     }else if ([resp isKindOfClass:[PayResp class]]){
         PayResp *payResp = (PayResp *)resp;
-        NSLog(@"%@",payResp.returnKey);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WeiXinPayResult" object:@{@"status":[NSNumber numberWithInt:payResp.errCode]}];
+//        NSLog(@"%@",payResp.returnKey);
     }
     
 

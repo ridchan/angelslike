@@ -9,17 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "NetWork.h"
 #import "WXApi.h"
+#import "NSDictionary_IngoreNull.h"
 #import <CommonCrypto/CommonDigest.h>
 
 
 #define GetOrderInfo @"http://weixin.angelslike.com/json/app_weixin_pay"
 
-#define APP_ID          @"" //APPID
-#define APP_SECRET      @"" //appsecret
+#define APP_ID          @"wxcb123955cc21a093" //APPID
+#define APP_SECRET      @"e1f09700641778a0f00cd2f3b56f2862" //appsecret
 //商户号，填写商户对应参数
-#define MCH_ID          @"tianshilike665445699013719146990"
+#define MCH_ID          @"1263950201"
 //商户API密钥，填写相应参数
-#define PARTNER_ID      @"1263950201"
+#define PARTNER_ID      @"tianshilike665445699013719146990"
 //支付结果回调页面
 #define NOTIFY_URL      @"http://wxpay.weixin.qq.com/pub_v2/pay/notify.v2.php"
 //获取服务器端支付数据地址（商户自定义）
@@ -94,11 +95,17 @@
 //签名实例测试
 - ( NSMutableDictionary *)sendPay_demo;
 
+//
+- (NSMutableDictionary *)sendPayWithOrder:(NSString *)orderNO amount:(NSString *)amount;
+
 @end
 
+typedef void(^WeiXinBlock)(id obj);
 
 @interface WeiXinPayObj : NSObject
 
-+(NSDictionary *)GetOrderInfoFromID:(NSString *)strID;
+
+
++(void)payWithInfo:(NSDictionary *)info successBlock:(WeiXinBlock)sblock failBlock:(WeiXinBlock)fblock;
 
 @end

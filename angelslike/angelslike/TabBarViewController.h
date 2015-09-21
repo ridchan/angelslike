@@ -11,6 +11,7 @@
 #import "HeaderDefiner.h"
 #import "LoginViewController.h"
 #import "GuideViewController.h"
+#import "StartViewController.h"
 
 @interface TabBarViewController : UITabBarController<MainTabBarDelgate,UINavigationControllerDelegate>{
     MainTabBar *tabbar;
