@@ -38,6 +38,7 @@
 #define CouDetailUrl [MainDomain stringByAppendingPathComponent:@"cou/detail"]
 #define MyOrderUrl [MainDomain stringByAppendingPathComponent:@"my/myorder"]
 #define ComfirmCouUrl [MainDomain stringByAppendingPathComponent:@"cou/confirmcou"]
+#define CouPayUrl  [MainDomain stringByAppendingPathComponent:@"cou/couinfopay"] //http://app.angelslike.com/cou/couinfopay
 //主题
 #define ListLink [MainDomain stringByAppendingPathComponent:@"theme/lists"]
 #define ThemeUrl [MainDomain stringByAppendingPathComponent:@"theme/detail"]
@@ -69,7 +70,7 @@
 //取消订单
 #define CancelOrderUrl [MainDomain stringByAppendingPathComponent:@"index/cancelOrder"]
 //取消凑分子
-#define CancelCouUrl [MainDomain stringByAppendingPathComponent:@"index/click_order"]
+#define CancelCouUrl [MainDomain stringByAppendingPathComponent:@"index/cancelOrder"]
 //获取地址
 #define AddressUrl [MainDomain stringByAppendingPathComponent:@"index/getaddress"]
 

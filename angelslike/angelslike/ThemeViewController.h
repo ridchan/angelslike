@@ -24,4 +24,6 @@
 @property(nonatomic,strong) NSString *cdn;
 @property (strong,nonatomic) NSMutableDictionary *searchInfo;
 
+-(void)reloadData;
+
 @end

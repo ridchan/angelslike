@@ -45,23 +45,74 @@
     [self.view addSubview:downMenu];
     
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 25, 25);
-    [button setImage:[UIImage imageNamed:@"iconfont-houtui"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = barItem;
+    [self setBackButtonAction:@selector(backClick:)];
     
     self.result = [NSMutableArray array];
     page =  1;
     self.info = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                  [self.dic strForKey:@"ID"],@"id",
                  [self.dic strForKey:@"Type"],@"type",
-                 [NSString stringWithFormat:@"%ld",page],@"page",
+                 [NSString stringWithFormat:@"%ld",(long)page],@"page",
                  nil];
     
-    bloading = NO;
+    
     [self refreshClick:nil];
+    
+    
+    //搜索
+    _searchBar = [[UISearchBar alloc] init];
+    _searchBar.delegate = self;
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
+    barButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    
+    bloading = NO;
+    
+}
+
+-(void)searchClick:(id)sender{
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(dismissSearchBar:)];
+    barButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, -44);
+    [UIView animateWithDuration:0.35 animations:^{
+        self.navigationItem.titleView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        self.navigationItem.titleView = _searchBar;
+        [UIView animateWithDuration:0.35 animations:^{
+            self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, 44);
+        }];
+    }];
+}
+
+-(void)dismissSearchBar:(id)sender{
+    _searchBar.text = @"";
+    
+
+    [self.info setObject:@"" forKey:@"key"];
+    [self refreshClick:nil];
+
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
+    barButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, -44);
+    [UIView animateWithDuration:0.35 animations:^{
+        self.navigationItem.titleView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        self.navigationItem.titleView = nil;
+        [UIView animateWithDuration:0.34 animations:^{
+            self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, 44);
+        }];
+    }];
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [_searchBar resignFirstResponder];
+
+    [self.info setObject:_searchBar.text forKey:@"key"];
+    [self refreshClick:nil];
+    
 }
 
 
@@ -98,8 +149,11 @@
 -(void)refreshClick:(id)sender{
     [self.info setObject:@"1" forKey:@"page"];
     [self.result removeAllObjects];
+    [self.collectionView reloadData];
     [self loadData:nil];
 }
+
+
 
 -(void)backClick:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
@@ -112,7 +166,7 @@
     if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height - 20))){
         if (page < totalPage & bloading  == NO) {
             bloading = YES;
-            [self.info setObject:[NSString stringWithFormat:@"%ld",page + 1] forKey:@"page"];
+            [self.info setObject:[NSString stringWithFormat:@"%ld",(long)page + 1] forKey:@"page"];
             [self loadData:nil];
         }
     }

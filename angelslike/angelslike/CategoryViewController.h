@@ -12,7 +12,10 @@
 #import "ThemeViewController.h"
 #import "ProductlistViewController.h"
 
-@interface CategoryViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,CategoryCellDelegate>
+@interface CategoryViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,CategoryCellDelegate,UISearchBarDelegate>{
+    UISegmentedControl *seg;
+    UISearchBar *_searchBar;
+}
 
 @property (strong,nonatomic) LoadMoreTableView *tableView;
 @property (strong,nonatomic) NSDictionary *infos;

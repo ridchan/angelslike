@@ -82,6 +82,7 @@
     vc.delegate = self;
     vc.sourceType = sheetIndex == 0?UIImagePickerControllerSourceTypePhotoLibrary:UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:vc animated:YES completion:NULL];
+    [self hideTabBar];
     
 }
 
@@ -92,6 +93,7 @@
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:NULL];
     [self showTabbar];
 }
 
@@ -108,7 +110,9 @@
             if ([Obj intForKey:@"status"] == 1) {
                 NSString *link = [[Obj objectForKey:@"data"] strForKey:@"file"];
                 [tempImg setPreImageWithUrl:link  domain:nil];
-                [[UserInfo shared].info setObject:link forKey:@"img"];
+                NSMutableDictionary *dic = [UserInfo shared].info;
+                [dic setObject:link forKey:@"img"];
+                [UserInfo shared].info = dic;
             }else{
                 
             }
@@ -198,7 +202,7 @@
         if (cell == nil) {
             cell = [[UserInfoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UserCell"];
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap:)];
-            [cell.imageView addGestureRecognizer:tap];
+            [cell.logo addGestureRecognizer:tap];
             userImg = cell.logo;
             
             UITapGestureRecognizer *wallentTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(wallentTap:)];

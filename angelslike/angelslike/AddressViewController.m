@@ -45,6 +45,7 @@
 }
 
 -(void)backClick:(id)sender{
+    [self showTabbar];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

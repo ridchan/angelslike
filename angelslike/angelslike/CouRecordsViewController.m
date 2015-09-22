@@ -19,7 +19,21 @@
     if (!bload) [self initialSetting]; bload = YES;
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)commentScrollViewMove:(NSNotification *)obj{
+    
+    self.tableView.scrollEnabled = YES;
+    [self.tableView becomeFirstResponder];
+}
+
+
+
 -(void)initialSetting{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentScrollViewMove:) name:@"commentScrollViewMove" object:nil];
     
     self.heights = [NSMutableDictionary dictionary];
     
@@ -96,7 +110,7 @@
 
 -(void)loadMoreData:(id)sender{
     __block CouRecordsViewController *tempSelf = self;
-    NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
+    NSString *nPage = [NSString stringWithFormat:@"%ld",(long)self.tableView.currentPage + 1];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.info];
     [dic setObject:nPage forKey:@"page"];
@@ -146,8 +160,8 @@
 -(void)cellClick:(UIView *)view{
     CouRecrodCell *cell = (CouRecrodCell *) [self GetSuperCell:view];
     NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:cell.info];
+    
     if (view.tag == CouCellType_Comment) {
-
         [info setObject:@"5" forKey:@"commentType"];
         [anView showWithObject:info withTitle:@"请输入评论"];
     }else if (view.tag == CouCellType_More){
@@ -188,6 +202,12 @@
     if([self checkScrollView:scrollView]){
         [self.tableView loadDataBegin];
     }
+    if (scrollView.contentOffset.y < 0) {
+        [scrollView resignFirstResponder];
+        scrollView.scrollEnabled = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"couDetailScrollViewMove" object:nil];
+    }
+
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

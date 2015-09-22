@@ -45,12 +45,7 @@
 //    self.adds = [NSMutableArray arrayWithArray:@[@"姓名",@"地址",@"详细地址",@"电话",@"备注"]];
     
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 25, 25);
-    [button setImage:[[UIImage imageNamed:@"iconfont-houtui"] rt_tintedImageWithColor:[UIColor blackColor]] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = barItem;
+    [self setBackButtonAction:@selector(backClick:)];
     
     av = [[AreaView alloc]init];
     [self.view addSubview:av];
@@ -130,7 +125,7 @@
         [info setObject:[dic strForKey:@"id"] forKey:@"id"];//产品id
         [info setObject:[dic strForKey:@"qty"] forKey:@"qty"];//产品数量
     }
-    [info setObject:[[UserInfo shared].info strForKey:@"loginkey"] forKey:@"loginkey"];
+    
     [info setObject:@"4" forKey:@"paytype"];
     
     __block BuyNowViewController *tempSelf = self;
@@ -151,70 +146,6 @@
 }
 
 
--(void)payInOrder:(NSString *)orderNo{
-    /*
-    NSMutableString *privateKey = [NSMutableString string];
-    [privateKey appendString:@"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK6PtuuJiEWczsOI\n"];
-    [privateKey appendString:@"X4J1plCApFUqgV5sJfSatHakdO+o0CX/ufM7qHOdp0sLL8Y+DAjNMzJBSqmKgtkB\n"];
-    [privateKey appendString:@"Iz3Ow9JqmfUi4VwhLolYzdiSqhuwSPE8VUYDZvjBP0tNpsbSaFX/Gvn8Qmqz5R0v\n"];
-    [privateKey appendString:@"oIsIfNtt1wnd3uXPExW5E/IMpqYjAgMBAAECgYEAoaP2kBiklUFkvO808csbnIPi\n"];
-    [privateKey appendString:@"p/JaJSMj6mKvJQWYOqwpQmaQu8jMbXLZDMZpELs3zZamB60qA+B81ZEWHw+th0wH\n"];
-    [privateKey appendString:@"K4PfaBq2clFm0IIK1YbH7aFbirrn7gwU6y0u/12aUxWAnuSs3oshKiLFP0cZFEYn\n"];
-    [privateKey appendString:@"kWM90ZAj1dOkrA3u2nECQQDkJlcu4hcYCjfyb8Jc2mhi+rJyWXVtOrG8vGgbf+Hf\n"];
-    [privateKey appendString:@"Y0UJJgoGyuAQD/C4VYQYLBympUoCwVimrQrBg05l/Dm9AkEAw9697KlfvOdqkVTs\n"];
-    [privateKey appendString:@"uPTzdSNvUiZaZqmCpBUK5BW27HLi2HZ1YeyH0Emuenwc1LmviTFDFGE8rbzKeChe\n"];
-    [privateKey appendString:@"hnMtXwJAHiTesggXSwrWl4aipIgK8MD04NznAfaWUzyFeNStsEk6btoCyyD098pT\n"];
-    [privateKey appendString:@"YNeTq2nwoygFnlWTc/o7CJRjwF/R9QJAfv4cz6NlIjo8Wuvf629NpeYKmA2r0SIY\n"];
-    [privateKey appendString:@"RMAr5oO5rQYz07rCEnJkAAS1rk5n9vhJOj8JSd5dlBtyfoNV/gARKwJAc6eBXPNA\n"];
-    [privateKey appendString:@"HC5gLOIZNfqW7/sXhjZR47W3AdQsoKQekmVfHsh6ixq4vKn3TJtC8rbwTNknRLs4\n"];
-    [privateKey appendString:@"ti1V2itso6belw==\n"];
-    
-    
- 
-    //生成订单信息及签名
- 
-    //将商品信息赋予AlixPayOrder的成员变量
-    Order *order = [[Order alloc] init];
-    order.partner = AliPID;
-    order.seller = AliSID;
-    order.tradeNO = orderNo; //订单ID（由商家自行制定）
-    order.productName = @"天使礼客"; //商品标题
-    order.productDescription = @"天使礼客"; //商品描述
-    order.amount = [NSString stringWithFormat:@"%.2f",0.2]; //商品价格
-    order.notifyURL =  @"http://www.xxx.com"; //回调URL
-    
-    order.service = @"mobile.securitypay.pay";
-    order.paymentType = @"1";
-    order.inputCharset = @"utf-8";
-    order.itBPay = @"30m";
-    order.showUrl = @"m.alipay.com";
-    
-    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
-    NSString *appScheme = @"alisdkdemo";
-    
-    //将商品信息拼接成字符串
-    NSString *orderSpec = [order description];
-    NSLog(@"orderSpec = %@",orderSpec);
-    
-    获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
-    id<DataSigner> signer = CreateRSADataSigner(privateKey);
-    NSString *signedString = [signer signString:orderSpec];
-    
-    //将签名成功字符串格式化为订单字符串,请严格按照该格式
-    NSString *orderString = nil;
-    if (signedString != nil) {
-        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                       orderSpec, signedString, @"RSA"];
-        
-        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-            NSLog(@"reslut = %@",resultDic);
-        }];
-        
-
-    }
-    */
- 
-}
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     [self setTotalLabel];
@@ -225,15 +156,15 @@
 #pragma mark table view delegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return [@[@"22",@"22"][section] floatValue];
+    return [@[@"22",@"22",@"22"][section] floatValue];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @[@"",@"支付方式"][section];
+    return @[@"",@"送货方式",@"支付方式"][section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 || (indexPath.section == 2 & indexPath.row == 1)) {
         return 90;
     }else{
         return 44;
@@ -241,7 +172,7 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 
@@ -251,6 +182,8 @@
             return [self.products count];
         case 1:
             return 1;
+        case 2:
+            return 2;
         default:
             return 0;
             break;
@@ -267,15 +200,26 @@
         }
         cell.info = [self.products objectAtIndex:indexPath.row];
         return cell;
-//    }else if (indexPath.section == 1){
-//        AddressCell *cell = (AddressCell *)[tableView dequeueReusableCellWithIdentifier:@"AddressCell"];
-//        if (cell == nil) {
-//            cell = [[AddressCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddressCell"];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        }
-//
-//        cell.textLabel.text = [self.adds objectAtIndex:indexPath.row];
-//        return cell;
+    }else if (indexPath.section == 2){
+        if (indexPath.row == 0){
+            MyAddressCell *cell = (MyAddressCell *)[tableView dequeueReusableCellWithIdentifier:@"MyAddressCell"];
+            if (cell == nil) {
+                cell = [[MyAddressCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyAddressCell"];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+
+    //        cell.textLabel.text = [self.adds objectAtIndex:indexPath.row];
+            return cell;
+        }else{
+            HerAddressCell *cell = (HerAddressCell *)[tableView dequeueReusableCellWithIdentifier:@"HerAddressCell"];
+            if (cell == nil) {
+                cell = [[HerAddressCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HerAddressCell"];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            //        cell.textLabel.text = [self.adds objectAtIndex:indexPath.row];
+            return cell;
+        }
     }else{
         PayCell *cell = (PayCell *) [tableView dequeueReusableCellWithIdentifier:@"PayCell"];
         if (cell == nil) {

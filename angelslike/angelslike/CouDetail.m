@@ -227,11 +227,23 @@
         inviteButton.backgroundColor = HexColor(@"3AB356");
         [inviteButton setTitleShadowColor:HexColor(@"309647") forState:UIControlStateNormal];
         [scView addSubview:inviteButton];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(couDetailScrollViewMove:) name:@"couDetailScrollViewMove" object:nil];
     }
     
     return self;
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+-(void)couDetailScrollViewMove:(NSNotification *)obj{
+    scView.scrollEnabled = YES;
+    [scView becomeFirstResponder];
+    [scView becomeFirstResponder];
+}
 
 
 -(void)addToView:(UIView *)view{
@@ -247,7 +259,13 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView.contentOffset.y + 64 > tempView.frame.origin.y ) {
         scrollView.contentOffset  = CGPointMake(0, tempView.frame.origin.y - 64);
+        if (scView.scrollEnabled) {
+            [scView resignFirstResponder];
+            scView.scrollEnabled = NO;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"commentScrollViewMove" object:nil];
+        }
     }
+
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{

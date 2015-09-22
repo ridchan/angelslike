@@ -80,7 +80,7 @@
     [self.tableView reloadData];
     
     //顶部配置
-    UISegmentedControl *seg = [[UISegmentedControl alloc]initWithItems:@[@"礼物分类",@"主题分类"]];
+    seg = [[UISegmentedControl alloc]initWithItems:@[@"礼物分类",@"主题分类"]];
     seg.frame = CGRectMake(0, 6 , 200, 32);
     seg.tintColor = [UIColor whiteColor];
     seg.selectedSegmentIndex = 0;
@@ -96,6 +96,10 @@
     self.tvc.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
     [self.view addSubview:self.tvc.view];
     self.tvc.view.hidden = YES;
+    
+    //搜索栏
+    _searchBar = [[UISearchBar alloc]init];
+    _searchBar.delegate = self;
 }
 
 #pragma mark -
@@ -125,7 +129,53 @@
 }
 
 -(void)searchClick:(id)sender{
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(dismissSearchBar:)];
+    barButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, -44);
+    [UIView animateWithDuration:0.35 animations:^{
+        self.navigationItem.titleView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        self.navigationItem.titleView = _searchBar;
+        [UIView animateWithDuration:0.35 animations:^{
+            self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, 44);
+        }];
+    }];}
+
+-(void)dismissSearchBar:(id)sender{
+    if(seg.selectedSegmentIndex == 0){
+        _searchBar.text = @"";
+
+    }else{
+        [self.tvc.searchInfo setObject:@"" forKey:@"key"];
+        [self.tvc reloadData];
+    }
     
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchClick:)];
+    barButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, -44);
+    [UIView animateWithDuration:0.35 animations:^{
+        self.navigationItem.titleView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        self.navigationItem.titleView = seg;
+        [UIView animateWithDuration:0.34 animations:^{
+            self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, 44);
+        }];
+    }];
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [_searchBar resignFirstResponder];
+    
+    if(seg.selectedSegmentIndex == 0){
+        ProductlistViewController *vc = [[ProductlistViewController alloc]init];
+        vc.dic = @{@"key":_searchBar.text};
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        [self.tvc.searchInfo setObject:_searchBar.text forKey:@"key"];
+        [self.tvc reloadData];
+    }
 }
 
 
@@ -142,7 +192,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString *identify = [NSString stringWithFormat:@"Cell%ld",indexPath.row];
+    NSString *identify = [NSString stringWithFormat:@"Cell%ld",(long)indexPath.row];
     CategoryCell *cell = (CategoryCell *)[tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
         cell = [[CategoryCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];

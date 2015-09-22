@@ -12,11 +12,12 @@
 #import "ProductDetailViewController.h"
 #import "MXPullDownMenu.h"
 
-@interface ProductlistViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,MXPullDownMenuDelegate>{
+@interface ProductlistViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,MXPullDownMenuDelegate,UISearchBarDelegate>{
     NSInteger page;
     NSInteger totalPage;
     BOOL bloading ;
     MXPullDownMenu *downMenu;
+    UISearchBar *_searchBar;
 }
 
 @property(nonatomic,strong) UICollectionView *collectionView;

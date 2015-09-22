@@ -62,9 +62,7 @@
     
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-}
+
 
 -(BOOL)checkUser{
     return ([[self.info strForKey:@"uid"] isEqualToString:[[UserInfo shared].info strForKey:@"id"]]);
@@ -74,42 +72,31 @@
     UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight - 54, ScreenWidth, 54)];
     v.backgroundColor = [UIColor whiteColor];
     [v.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
-//    if ([self.info intForKey:@"type"] == 2) {
-//        RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-//        b1.frame = CGRectMake(10, 10, ScreenWidth - 20, 34);
-//        [b1 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
-//        b1.titleLabel.font = FontWS(16);
-//        if ([self checkUser])
-//            [b1 setTitle:@"补齐余额" forState:UIControlStateNormal];
-//        else
-//            [b1 setTitle:@"我也要凑" forState:UIControlStateNormal];
-//        [b1 setTitleShadowColor:[UIColor getHexColor:@"F7356A"] forState:UIControlStateNormal];
-//        [v addSubview:b1];
-//    }else if ([self.info intForKey:@"type"] == 1){
-        RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-        b1.frame = CGRectMake(10, 10, ScreenWidth / 2 - 15, 34);
-        [b1 setBackgroundColor:[UIColor getHexColor:@"FAC116"]];
-        [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
-        [b1 addTarget:self action:@selector(productClick:) forControlEvents:UIControlEventTouchUpInside];
-        if ([self checkUser])
-            [b1 setTitle:@"编辑" forState:UIControlStateNormal];
-        else
-            [b1 setTitle:@"我要发起" forState:UIControlStateNormal];
-        b1.titleLabel.font = FontWS(16);
-        [v addSubview:b1];
-        
-        RCRoundButton *b2 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-        b2.frame = CGRectMake(ScreenWidth / 2 + 5, 10, ScreenWidth / 2 - 15, 34);
-        b2.titleLabel.font = FontWS(16);
-        [b2 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
-        if ([self checkUser])
-            [b2 setTitle:@"补齐余额" forState:UIControlStateNormal];
-        else
-            [b2 setTitle:@"我也要凑" forState:UIControlStateNormal];
-        [b2 setTitleShadowColor:[UIColor getHexColor:@"F7356A"] forState:UIControlStateNormal];
-        [b2 addTarget:self action:@selector(couPayClick:) forControlEvents:UIControlEventTouchUpInside];
-        [v addSubview:b2];
-//    }
+
+    RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
+    b1.frame = CGRectMake(10, 10, ScreenWidth / 2 - 15, 34);
+    [b1 setBackgroundColor:[UIColor getHexColor:@"FAC116"]];
+    [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
+    [b1 addTarget:self action:@selector(productClick:) forControlEvents:UIControlEventTouchUpInside];
+    if ([self checkUser])
+        [b1 setTitle:@"编辑" forState:UIControlStateNormal];
+    else
+        [b1 setTitle:@"我要发起" forState:UIControlStateNormal];
+    b1.titleLabel.font = FontWS(16);
+    [v addSubview:b1];
+    
+    RCRoundButton *b2 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
+    b2.frame = CGRectMake(ScreenWidth / 2 + 5, 10, ScreenWidth / 2 - 15, 34);
+    b2.titleLabel.font = FontWS(16);
+    [b2 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
+    if ([self checkUser])
+        [b2 setTitle:@"补齐余额" forState:UIControlStateNormal];
+    else
+        [b2 setTitle:@"我也要凑" forState:UIControlStateNormal];
+    [b2 setTitleShadowColor:[UIColor getHexColor:@"F7356A"] forState:UIControlStateNormal];
+    [b2 addTarget:self action:@selector(couPayClick:) forControlEvents:UIControlEventTouchUpInside];
+    [v addSubview:b2];
+
     
     [self.view addSubview:v];
 }
@@ -133,6 +120,37 @@
 
 }
 
+-(void)weixinpayResult:(NSNotification *)notification{
+    [[NSNotificationCenter defaultCenter]removeObserver:self forKeyPath:@"WeiXinPayResult"];
+    NSDictionary *dic = notification.object;
+    if ([dic intForKey:@"status"] == 0) {
+        [self showMessage:@"支付成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self showMessage:@"支付失败"];
+    }
+}
+
+-(void)submitClick:(NSDictionary *)dic{
+    [[NetWork shared] query:CouPayUrl info:dic block:^(id Obj) {
+        if ([Obj intForKey:@"status"] == 1) {
+            NSDictionary *orderInfo = [Obj objectForKey:@"data"];
+            if ([dic intForKey:@"paytype"] == 4) {
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinpayResult:) name:@"WeiXinPayResult" object:nil];
+                NSString *namt = [NSString stringWithFormat:@"%.0f",[[orderInfo strForKey:@"mPrice"] floatValue] * 100];
+                [WeiXinPayObj payWithInfo:@{@"orderno":[orderInfo strForKey:@"orderid"],@"amount":namt} successBlock:nil failBlock:nil];
+            }else{
+                
+                [AliPayObj payWithInfo:@{@"orderno":[orderInfo strForKey:@"orderid"],@"amount":[orderInfo strForKey:@"mPrice"]} successBlock:^(id obj) {
+                    [cp dismiss];
+                } failBlock:^(id obj) {
+                    [[NetWork shared] query:CancelOrderUrl info:@{@"orderno":[orderInfo strForKey:@"orderid"]} block:nil lock:NO];
+                }];
+            }
+        }
+    } lock:YES];
+}
+
 -(void)productClick:(id)obj{
     CouDetail *cd  = (CouDetail *)[self.view viewWithTag:99];
     ProductDetailViewController *vc = [[ProductDetailViewController alloc] init];
@@ -141,7 +159,21 @@
 }
 
 -(void)couPayClick:(id)sender{
-    cp.info = [NSMutableDictionary dictionaryWithObject:[self.info strForKey:@"everyprice"] forKey:@"price"];
+    if ([self checkUser]) {
+        NSInteger cop = [self.info intForKey:@"copies"] - [self.info intForKey:@"currentcopies"];
+        cp.info = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                   [self.info strForKey:@"everyprice"],@"price",
+                   [self.info strForKey:@"id"],@"id",
+                   [[NSNumber numberWithInteger:cop] stringValue],@"maxValue",
+                   [[NSNumber numberWithInteger:cop] stringValue],@"minValue",
+                   nil];
+    }else{
+        cp.info = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                   [self.info strForKey:@"everyprice"],@"price",
+                   [self.info strForKey:@"id"],@"id",
+                   nil];
+    }
+    [cp addTarget:self action:@selector(submitClick:)];
     [cp show];
 }
 

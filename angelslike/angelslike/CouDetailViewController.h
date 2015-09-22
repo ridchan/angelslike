@@ -13,6 +13,8 @@
 #import "ProductDetailViewController.h"
 #import "CommentViewController.h"
 #import "CouRecordsViewController.h"
+#import "WeiXinPayObj.h"
+#import "AliPayObj.h"
 
 @interface CouDetailViewController : BaseViewController<UIScrollViewDelegate,CouDetailDelegate>{
     CouPay *cp;

@@ -77,7 +77,7 @@
     if ([self objectForKey:aKey] && !([self objectForKey:aKey]==[NSNull null])) {
 		return [[self objectForKey:aKey] integerValue];
 	}else {
-		return NSNotFound;
+		return 0;
 	}
 }
 

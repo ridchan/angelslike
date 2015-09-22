@@ -86,6 +86,10 @@
 
 }
 
+-(void)reloadData{
+    [self refreshClick:nil];
+}
+
 -(void)refreshClick:(id)sender{
     //重新加载数据
     [self.result removeAllObjects];

@@ -151,11 +151,6 @@
 }
 
 
--(void)scrollViewCanMove:(NSNotification *)obj{
-    NSNumber *num = obj.object;
-    scView.scrollEnabled = YES;
-    scView.contentOffset = CGPointMake(0, scView.contentOffset.y + [num floatValue]);
-}
 
 
 -(void)addHeader{
@@ -237,25 +232,35 @@
     mv.viewControllers = @[vc1,vc2];
 }
 
+-(void)scrollViewCanMove:(NSNotification *)obj{
+    canMove = NO;
+    scView.scrollEnabled = YES;
+    [scView becomeFirstResponder];
+}
+
+
+
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     header.alpha = scrollView.contentOffset.y / 200;
+    
 
     if (scrollView.contentOffset.y + 44  > mv.frame.origin.y) {
-        scrollView.scrollEnabled = NO;
-        float off = scrollView.contentOffset.y + 44  - mv.frame.origin.y;
         scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 44);
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"SubScrollCanMove" object:[NSNumber numberWithFloat:off]];
+        if(scrollView.scrollEnabled){
+            scrollView.scrollEnabled = NO;
+            [scrollView resignFirstResponder];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"SubScrollCanMove" object:nil];
+        }
    
     }else if (scrollView.contentOffset.y < 0){
         scrollView.contentOffset = CGPointMake(0, 0);
     }
     
-    NSLog(@"scrolling");
+    
 }
 
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    NSLog(@"dragging");
-}
+
 
 
 

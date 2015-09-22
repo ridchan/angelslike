@@ -146,6 +146,26 @@
 
 
 -(void)submitClick:(id)sender{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:[_info strForKey:@"id"],@"id", nil];
+
+    //是否匿名
+    CheckButton *cb1 = (CheckButton *)[self viewWithTag:1];
+    [dic setObject:[NSNumber numberWithBool:cb1.selected].stringValue forKey:@"is_show"];
+    //支付方式
+    CheckButton *cb23 = (CheckButton *)[self viewWithTag:2];
+    NSString *paytype = cb23.selected ? @"4" : @"5";
+    [dic setObject:paytype forKey:@"paytype"];
+    //留言
+    UITextField *textField = (UITextField *)[self viewWithTag:4];
+    if ([textField.text length] == 0) return;
+    [dic setObject:textField.text forKey:@"msg"];
+    //数量
+    QtyButton *qb = (QtyButton *)[self viewWithTag:5];
+    [dic setObject:qb.qty forKey:@"qty"];
+    
+    if ([tar respondsToSelector:act]) {
+        [tar performSelector:act withObject:dic];
+    }
     
 }
 
@@ -156,6 +176,10 @@
 
 -(void)setInfo:(NSMutableDictionary *)info{
     _info = info;
+    QtyButton *qb = (QtyButton *)[self viewWithTag:5];
+    qb.maxValue = [[_info strForKey:@"maxValue"] integerValue];
+    qb.minValue = [[_info strForKey:@"minValue"] integerValue];
+    qb.qty = [_info strForKey:@"maxValue"];
     [self numChange:nil];
 }
 
