@@ -102,6 +102,9 @@
 
 typedef void(^WeiXinBlock)(id obj);
 
+
+#define WeiXinPayNotification @"WeiXinPayNotification"
+
 @interface WeiXinPayObj : NSObject
 
 

@@ -226,13 +226,6 @@
 
 
 -(void)searchClick:(id)sender{
-
-    
-    
-//    SearchViewController *vc = [[SearchViewController alloc] init];
-//    
-//    [self.navigationController pushViewController:vc animated:NO];
-//    self.navigationItem.titleView.transform = CGAffineTransformMakeTranslation(0, -44);
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(dismissSearchBar:)];
     barButtonItem.tintColor = [UIColor whiteColor];
@@ -247,24 +240,6 @@
         }];
     }];
     
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-
-
-    
-//    [self.navigationController.navigationBar bringSubviewToFront:_navBar];
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:0.5];
-//    _navBar.frame = CGRectMake(0, 0, ScreenWidth, 44);
-//    [UIView commitAnimations];
-    /*
-    self.navigationItem.titleView = _searchBar;
-    [_searchBar becomeFirstResponder];
-
-    
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backClick:)];
-    self.navigationItem.rightBarButtonItem = barButtonItem;
-    */
 }
 
 -(void)reloadData{

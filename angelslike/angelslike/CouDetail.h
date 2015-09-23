@@ -36,7 +36,7 @@
 @end
 
 @interface CouDetail : UIView<UIWebViewDelegate,CouProductDelegate,UIScrollViewDelegate>{
-    UIScrollView *scView;
+    
     
     UIImageView *imageView;
     UILabel *nameLabel;
@@ -67,7 +67,6 @@
 
 @property(nonatomic,strong) NSDictionary *info;
 @property(nonatomic) id<CouDetailDelegate> delegate;
--(void)addToView:(UIView *)view;
 
 
 @end

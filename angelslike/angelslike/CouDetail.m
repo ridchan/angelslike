@@ -105,38 +105,34 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        
-        scView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        scView.backgroundColor = [UIColor whiteColor];
-        scView.delegate = self;
-        [self addSubview:scView];
-        
+
+        self.backgroundColor = [UIColor whiteColor];
         if (!imageView) {
             imageView =  [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 70, 70)];
             imageView.layer.cornerRadius = 35.0;
             imageView.layer.masksToBounds = YES;
-            [scView addSubview:imageView];
+            [self addSubview:imageView];
         }
         
         if (!nameLabel) {
             nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 5, frame.size.width - 160, 30)];
             nameLabel.font = FontWS(14);
             nameLabel.backgroundColor = [UIColor clearColor];
-            [scView addSubview:nameLabel];
+            [self addSubview:nameLabel];
         }
         
         if (!timeStartLabel) {
             timeStartLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 35, frame.size.width - 160, 20)];
             timeStartLabel.font = FontWS(11);
             timeStartLabel.backgroundColor = [UIColor clearColor];
-            [scView addSubview:timeStartLabel];
+            [self addSubview:timeStartLabel];
         }
         
         if (!timeEndLabel) {
             timeEndLabel = [[UILabel alloc]initWithFrame:CGRectMake(90, 55, frame.size.width - 160, 20)];
             timeEndLabel.font = FontWS(11);
             timeEndLabel.backgroundColor = [UIColor clearColor];
-            [scView addSubview:timeEndLabel];
+            [self addSubview:timeEndLabel];
         }
         
         
@@ -151,13 +147,13 @@
             statuLabel.layer.masksToBounds = YES;
             statuLabel.layer.cornerRadius = 4;
             statuLabel.layer.borderColor = statuLabel.textColor.CGColor;
-            [scView addSubview:statuLabel];
+            [self addSubview:statuLabel];
         }
         
         
         
         CALayer *line1 = [self lineLayer:CGPointMake(0, 90)];
-        [scView.layer addSublayer:line1];
+        [self.layer addSublayer:line1];
         
         
         
@@ -165,26 +161,26 @@
         targetLabel.font = FontWS(11);
         targetLabel.backgroundColor = [UIColor clearColor];
         targetLabel.textAlignment = NSTextAlignmentCenter;
-        [scView addSubview:targetLabel];
+        [self addSubview:targetLabel];
         
         priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth / 3, 90, ScreenWidth / 3, 30)];
         priceLabel.backgroundColor = [UIColor clearColor];
         priceLabel.textAlignment = NSTextAlignmentCenter;
         priceLabel.font = FontWS(11);
-        [scView addSubview:priceLabel];
+        [self addSubview:priceLabel];
         
         totalLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenWidth / 3 * 2, 90, ScreenWidth / 3, 30)];
         totalLabel.backgroundColor = [UIColor clearColor];
         totalLabel.textAlignment = NSTextAlignmentCenter;
         totalLabel.font = FontWS(11);
-        [scView addSubview:totalLabel];
+        [self addSubview:totalLabel];
         
         CALayer *line2 = [self lineLayer:CGPointMake(0, 120)];
-        [scView.layer addSublayer:line2];
+        [self.layer addSublayer:line2];
         
         iconView = [[IconView alloc]initWithFrame:CGRectMake(frame.size.width - 200, 10, 195, 20)];
         iconView.hidden = YES;
-        [scView addSubview:iconView];
+        [self addSubview:iconView];
         
         
         //
@@ -193,20 +189,20 @@
         daylabel.textColor = [UIColor whiteColor];
         daylabel.font = FontWS(14);
         daylabel.textAlignment = NSTextAlignmentCenter;
-        [scView addSubview:daylabel];
+        [self addSubview:daylabel];
         
         titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 130, frame.size.width - 85, 45)];
         titlelabel.backgroundColor = [UIColor clearColor];
         titlelabel.font = [UIFont boldSystemFontOfSize:15];
         titlelabel.numberOfLines = 2;
-        [scView addSubview:titlelabel];
+        [self addSubview:titlelabel];
         //
         
         _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 175, frame.size.width , 1)];//frame.size.height - 160)];
         _webView.delegate = self;
         _webView.scalesPageToFit = NO;
         _webView.scrollView.scrollEnabled = NO;
-        [scView addSubview:_webView];
+        [self addSubview:_webView];
         
         
 
@@ -215,10 +211,10 @@
         cp = [[CouProduct alloc]initWithFrame:CGRectMake(0, 175, frame.size.width, 1)];
         cp.hidden = YES;
         cp.delegate = self;
-        [scView addSubview:cp];
+        [self addSubview:cp];
         
         process = [[CouProcess alloc]initWithFrame:CGRectMake(0, 150, frame.size.width, 150)];
-        [scView addSubview:process];
+        [self addSubview:process];
         
         inviteButton =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
         [inviteButton setTitle:@"邀请朋友来凑" forState:UIControlStateNormal];
@@ -226,9 +222,8 @@
         inviteButton.titleLabel.font = FontWS(18);
         inviteButton.backgroundColor = HexColor(@"3AB356");
         [inviteButton setTitleShadowColor:HexColor(@"309647") forState:UIControlStateNormal];
-        [scView addSubview:inviteButton];
+        [self addSubview:inviteButton];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(couDetailScrollViewMove:) name:@"couDetailScrollViewMove" object:nil];
     }
     
     return self;
@@ -238,35 +233,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
--(void)couDetailScrollViewMove:(NSNotification *)obj{
-    scView.scrollEnabled = YES;
-    [scView becomeFirstResponder];
-    [scView becomeFirstResponder];
-}
-
-
--(void)addToView:(UIView *)view{
-    CGRect rect = CGRectZero;
-    rect.origin = CGPointMake(0 , 350);
-    rect.size = view.frame.size;
-    tempView = view;
-    tempView.frame = rect;
-    [tempView.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
-    [scView addSubview:tempView];
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y + 64 > tempView.frame.origin.y ) {
-        scrollView.contentOffset  = CGPointMake(0, tempView.frame.origin.y - 64);
-        if (scView.scrollEnabled) {
-            [scView resignFirstResponder];
-            scView.scrollEnabled = NO;
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"commentScrollViewMove" object:nil];
-        }
-    }
-
-}
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     CGRect rect = webView.frame;
@@ -279,10 +245,12 @@
 
     inviteButton.frame = CGRectMake(inviteButton.frame.origin.x, process.frame.origin.y + process.frame.size.height, inviteButton.frame.size.width, inviteButton.frame.size.height);
     
-    tempView.frame = CGRectMake(tempView.frame.origin.x, inviteButton.frame.origin.y + inviteButton.frame.size.height + 10, tempView.frame.size.width, tempView.frame.size.height);
     
+    rect = CGRectZero;
+    rect.origin = self.frame.origin;
+    rect.size = CGSizeMake(self.frame.size.width, CGRectGetMaxY(inviteButton.frame));
     
-    scView.contentSize = CGSizeMake(1, tempView.frame.origin.y + tempView.frame.size.height);
+    self.frame = rect;
 
 }
 

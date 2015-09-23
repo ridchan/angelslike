@@ -22,15 +22,16 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         //
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 100)];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 145)];
         [self.contentView addSubview:imageView];
         
-        nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 100, self.frame.size.width - 10, 25)];
-        nameLabel.font = FontWS(12);
+        nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 150, self.frame.size.width - 10, 25)];
+        nameLabel.font = FontWS(16);
+        nameLabel.numberOfLines = 2;
         [self.contentView addSubview:nameLabel];
         
-        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 125, self.frame.size.width - 10, 25)];
-        priceLabel.font = FontWS(11);
+        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 175, self.frame.size.width - 10, 25)];
+        priceLabel.font = FontWS(14);
         priceLabel.textColor = [UIColor redColor];
         [self.contentView addSubview:priceLabel];
         

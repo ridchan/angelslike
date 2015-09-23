@@ -68,7 +68,7 @@
 }
 
 -(void)weixinpayResult:(NSNotification *)notification{
-    [[NSNotificationCenter defaultCenter]removeObserver:self forKeyPath:@"WeiXinPayResult"];
+    [[NSNotificationCenter defaultCenter]removeObserver:self forKeyPath:WeiXinPayNotification];
     NSDictionary *dic = notification.object;
     if ([dic intForKey:@"status"] == 0) {
         [self showMessage:@"支付成功"];
@@ -99,7 +99,7 @@
     __block StartCouViewViewController *tempSelf = self;
     NSString *amt = [amount stringByReplacingOccurrencesOfString:MoneySign withString:@""];
     if ([tempSelf.P intForKey:@"paytype"] == 4) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinpayResult:) name:@"WeiXinPayResult" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinpayResult:) name:WeiXinPayNotification object:nil];
         NSString *namt = [NSString stringWithFormat:@"%.0f",[amt floatValue] * 100];
         [WeiXinPayObj payWithInfo:@{@"orderno":orderNo,@"amount":namt} successBlock:nil failBlock:nil];
         

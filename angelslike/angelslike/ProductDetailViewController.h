@@ -20,14 +20,16 @@
 typedef enum{
     ButtonType_BuyRecords = 10001,
     ButtonType_CouRecords = 10002,
+    ButtonType_Comments   = 10003,
 }ButtonType;
 
-@interface ProductDetailViewController : BaseViewController<UIScrollViewDelegate>{
+@interface ProductDetailViewController : BaseViewController<UIScrollViewDelegate,UIWebViewDelegate>{
     ProductDetail *pd;
     RCMutileView *mv;
     ProductHeader *header;
     UIView *bottomView;
     UIScrollView *scView;
+    UIWebView *_webView;
     BOOL canMove;
     
 }

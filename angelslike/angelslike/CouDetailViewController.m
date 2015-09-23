@@ -10,6 +10,14 @@
 
 @implementation CouDetailViewController
 
+
+-(void)dealloc{
+  
+    CouDetail *v = (CouDetail *)[_scrollView viewWithTag:99];
+
+    [v removeObserver:self forKeyPath:@"frame"];
+}
+
 -(void)viewDidLoad{
     
     [super viewDidLoad];
@@ -43,21 +51,37 @@
 }
 
 -(void)addViewController{
+
+//    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, v.frame.size.height, ScreenWidth, ScreenHeight - 64)];
+//    mv.titles = @[@"谁在凑",@"凑热闹"];
     
-    CouDetail *v = (CouDetail *)[self.view viewWithTag:99];
-//    v.delegate = self;
-    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, v.frame.size.height, ScreenWidth, ScreenHeight - 64)];
-    mv.titles = @[@"谁在凑",@"凑热闹"];
+    vc1Button = [UIButton buttonWithType:UIButtonTypeCustom];
+    vc1Button.frame =  RECT(0, 500, ScreenWidth / 2, 50);
+    [vc1Button setTitle:@"凑分子" forState:UIControlStateNormal];
+    [vc1Button setBackgroundColor:[UIColor whiteColor]];
+    [vc1Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [vc1Button addline:CGPointMake(0, 0) color:nil];
+    [vc1Button addline:CGPointMake(0, 49) color:nil];
     
-    CouRecordsViewController *vc1 = [[CouRecordsViewController alloc]init];
+    vc2Button = [UIButton buttonWithType:UIButtonTypeCustom];
+    vc2Button.frame =  RECT(ScreenWidth / 2, 500, ScreenWidth / 2, 50);
+    [vc2Button setTitle:@"凑热闹" forState:UIControlStateNormal];
+    [vc2Button setBackgroundColor:[UIColor whiteColor]];
+    [vc2Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [vc2Button addline:CGPointMake(0, 0) color:nil];
+    [vc2Button addline:CGPointMake(0, 49) color:nil];
+    
+    [_scrollView addSubview:vc1Button];
+    [_scrollView addSubview:vc2Button];
+    
+    vc1 = [[CouRecordsViewController alloc]init];
     vc1.info = @{@"id":[self.info strForKey:@"id"],@"type":@"2"};
-    
-    CommentViewController *vc2 = [[CommentViewController alloc]init];
-    vc2.info = @{@"id":[self.info strForKey:@"id"],@"type":@"2"};
-    mv.viewControllers = @[vc1,vc2];
-    
-    
-    [v addToView:mv];
+    [_scrollView addSubview:vc1.view];
+    [vc1 viewDidAppear:YES];
+//
+//    vc2 = [[CommentViewController alloc]init];
+//    vc2.info = @{@"id":[self.info strForKey:@"id"],@"type":@"2"};
+//    [_scrollView addSubview:vc2.view];
     
     
 }
@@ -101,11 +125,37 @@
     [self.view addSubview:v];
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    CGRect rect = [[change objectForKey:@"new"] CGRectValue];
+    NSLog(@"object %@",object);
+    
+    vc1Button.frame = RECT(0, CGRectGetMaxY(rect) + 10, ScreenWidth / 2, 50);
+    vc2Button.frame = RECT(ScreenWidth / 2, CGRectGetMaxY(rect) + 10, ScreenWidth / 2, 50);
+    
+    vc1.view.frame = RECT(0, CGRectGetMaxY(vc1Button.frame), ScreenWidth, 300);
+    vc2.view.frame = RECT(0, CGRectGetMaxY(vc2Button.frame), ScreenWidth, 300);
+
+    _scrollView.contentSize = CGSizeMake(1, CGRectGetMaxY(vc1.view.frame) + 50 );
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y > CGRectGetMaxY(vc1Button.frame)) {
+//        vc1.tableView.contentOffset = CGPointMake(0, <#CGFloat y#>)
+    }
+}
+
+
 -(void)initialSetting{
-    CouDetail *v = [[CouDetail alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight )];
+    
+    _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
+    [self.view addSubview:_scrollView];
+    
+    CouDetail *v = [[CouDetail alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 0)];
     v.hidden = YES;
     v.tag = 99;
-    [self.view addSubview:v];
+    [v addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [_scrollView addSubview:v];
     
     
     cp = [[CouPay alloc]init];
@@ -121,7 +171,7 @@
 }
 
 -(void)weixinpayResult:(NSNotification *)notification{
-    [[NSNotificationCenter defaultCenter]removeObserver:self forKeyPath:@"WeiXinPayResult"];
+    [[NSNotificationCenter defaultCenter]removeObserver:self forKeyPath:WeiXinPayNotification];
     NSDictionary *dic = notification.object;
     if ([dic intForKey:@"status"] == 0) {
         [self showMessage:@"支付成功"];
@@ -136,7 +186,7 @@
         if ([Obj intForKey:@"status"] == 1) {
             NSDictionary *orderInfo = [Obj objectForKey:@"data"];
             if ([dic intForKey:@"paytype"] == 4) {
-                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinpayResult:) name:@"WeiXinPayResult" object:nil];
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinpayResult:) name:WeiXinPayNotification object:nil];
                 NSString *namt = [NSString stringWithFormat:@"%.0f",[[orderInfo strForKey:@"mPrice"] floatValue] * 100];
                 [WeiXinPayObj payWithInfo:@{@"orderno":[orderInfo strForKey:@"orderid"],@"amount":namt} successBlock:nil failBlock:nil];
             }else{
@@ -152,7 +202,7 @@
 }
 
 -(void)productClick:(id)obj{
-    CouDetail *cd  = (CouDetail *)[self.view viewWithTag:99];
+    CouDetail *cd  = (CouDetail *)[_scrollView viewWithTag:99];
     ProductDetailViewController *vc = [[ProductDetailViewController alloc] init];
     vc.info = [NSDictionary dictionaryWithObject:[cd.info strForKey:@"pid"] forKey:@"id"];
     [self.navigationController pushViewController:vc animated:YES];
@@ -182,7 +232,7 @@
 }
 
 -(void)refreshClick:(id)sender{
-    __block CouDetail *tempView = (CouDetail *)[self.view viewWithTag:99];
+    __block CouDetail *tempView = (CouDetail *)[_scrollView viewWithTag:99];
     __block CouDetailViewController *tempSelf = self;
     
     NSDictionary *dic = @{@"id":[self.info strForKey:@"id"]};

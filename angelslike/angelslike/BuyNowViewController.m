@@ -160,7 +160,7 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @[@"",@"送货方式",@"支付方式"][section];
+    return @[@"",@"支付方式",@"送货方式"][section];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

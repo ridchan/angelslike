@@ -12,6 +12,14 @@
 
 @synthesize selectIndex = _selectIndex;
 
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        _selectIndex = 0;
+        [self initialSetting];
+    }
+    return self;
+}
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self initialSetting];

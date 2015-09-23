@@ -106,7 +106,11 @@
 }
 
 -(void)backClick:(id)obj{
-    [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+    if ([self.navigationController.viewControllers indexOfObject:self] > 0){
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self.navigationController dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
 
 -(void)commentClick:(id)obj{

@@ -19,6 +19,13 @@
 @interface CouDetailViewController : BaseViewController<UIScrollViewDelegate,CouDetailDelegate>{
     CouPay *cp;
     RCMutileView *mv;
+    UIScrollView *_scrollView;
+    
+    CouRecordsViewController *vc1;
+    CommentViewController *vc2;
+    
+    UIButton *vc1Button;
+    UIButton *vc2Button;
 }
 
 @property(nonatomic,strong) NSDictionary *info;

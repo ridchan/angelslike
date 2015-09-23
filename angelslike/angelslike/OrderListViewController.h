@@ -13,6 +13,7 @@
 #import "OrderViewCell.h"
 #import "OrderDetailViewController.h"
 #import "WeiXinPayObj.h"
+#import "PayNowViewController.h"
 
 @interface OrderListViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource,MXPullDownMenuDelegate>{
     CGFloat cellHeight;

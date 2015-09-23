@@ -54,18 +54,28 @@
 #pragma mark -
 #pragma mark init
 
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    CGSize size = webView.scrollView.contentSize;
+    CGRect rect = CGRectZero;
+    rect.origin = webView.frame.origin;
+    rect.size = size;
+    webView.frame = rect;
+    webView.scrollView.scrollEnabled = NO;
+    scView.contentSize = CGSizeMake(1, CGRectGetMaxY(webView.frame));
+}
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
 
 //    CGRect rect = [[change objectForKey:@"new"] CGRectValue];
     
     
-    bottomView.frame = RECT(0, CGRectGetMaxY(pd.frame) + 10, ScreenWidth, 80);
+    bottomView.frame = RECT(0, CGRectGetMaxY(pd.frame) + 10, ScreenWidth, 120);
     
-    mv.frame = CGRectMake(0, CGRectGetMaxY(bottomView.frame) + 10, ScreenWidth, ScreenHeight - 64);
+    _webView.frame = CGRectMake(0, CGRectGetMaxY(bottomView.frame) + 10, ScreenWidth, ScreenHeight - 64);
     
+    [_webView loadHTMLString:[self.result strForKey:@"desc"] baseURL:[NSURL URLWithString:img1Url]];
     
-    
-    scView.contentSize = CGSizeMake(1, mv.frame.origin.y + mv.frame.size.height);
+    scView.contentSize = CGSizeMake(1, CGRectGetMaxY(_webView.frame));
     
     [self.tableView reloadData];
     
@@ -95,7 +105,7 @@
     
     
     
-    bottomView = [[UIView alloc] initWithFrame:RECT(0, 0, ScreenWidth, 80)];
+    bottomView = [[UIView alloc] initWithFrame:RECT(0, 0, ScreenWidth, 120)];
     bottomView.backgroundColor = [UIColor whiteColor];
     
     UIButton *button1 = [self buttonWithFrame:RECT(10, 0, ScreenWidth - 20, 40) title:@"购买记录"];
@@ -110,25 +120,48 @@
     button2.tag = ButtonType_CouRecords;
     [bottomView addSubview:button2];
     
+    [bottomView addline:CGPointMake(0, 80) color:nil];
+    UIButton *button3 = [self buttonWithFrame:RECT(10, 80, ScreenWidth - 20, 40) title:@"评论"];
+    [button3 addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [button3 setTitle:@"评论" forState:UIControlStateNormal];
+    button3.tag = ButtonType_Comments;
+    [bottomView addSubview:button3];
+    
+    
+    
     [scView addSubview:bottomView];
     
-    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(pd.frame), ScreenWidth, ScreenHeight )];
-    [scView addSubview:mv];
+//    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(pd.frame), ScreenWidth, ScreenHeight )];
+//    [scView addSubview:mv];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewCanMove:) name:@"MainScroll" object:nil];
+    _webView = [[UIWebView alloc]initWithFrame:RECT(0, CGRectGetMaxY(pd.frame), ScreenWidth, 0)];
+    _webView.delegate = self;
+    [scView addSubview:_webView];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewCanMove:) name:@"MainScroll" object:nil];
 }
 
 -(void)buttonClick:(UIButton *)button{
-    ProductRecordViewController *vc = [[ProductRecordViewController alloc]init];
-    vc.strid = [self.result strForKey:@"id"];
-    if (button.tag == ButtonType_BuyRecords) {
-        vc.navigationItem.title = @"购买记录";
-        vc.strurl = ProductBuyRecordUrl;
+    if (button.tag  == ButtonType_Comments) {
+        CommentViewController *vc2 = [[CommentViewController alloc]init];
+        vc2.info = [NSDictionary dictionaryWithObjectsAndKeys:
+                    [self.result strForKey:@"id"],@"id",
+                    @"1",@"type",
+                    nil];
+        vc2.navigationItem.title = @"";
+        [self.navigationController pushViewController:vc2 animated:YES];
     }else{
-        vc.navigationItem.title = @"凑分子记录";
-        vc.strurl = ProductCouRecordUrl;
+    
+        ProductRecordViewController *vc = [[ProductRecordViewController alloc]init];
+        vc.strid = [self.result strForKey:@"id"];
+        if (button.tag == ButtonType_BuyRecords) {
+            vc.navigationItem.title = @"购买记录";
+            vc.strurl = ProductBuyRecordUrl;
+        }else{
+            vc.navigationItem.title = @"凑分子记录";
+            vc.strurl = ProductCouRecordUrl;
+        }
+        [self.navigationController pushViewController:vc animated:YES];
     }
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(UIButton *)buttonWithFrame:(CGRect)rect title:(NSString *)title{
@@ -217,19 +250,21 @@
 
 -(void)setSubView{
     
+    
+    
     [pd setInfo:self.result];
     
-    WebViewController *vc1 = [[WebViewController alloc]init];
-    mv.titles = @[@"图文介绍",@"评论"];
-    vc1.content = [self.result strForKey:@"desc"];
-    
-    CommentViewController *vc2 = [[CommentViewController alloc]init];
-    vc2.info = [NSDictionary dictionaryWithObjectsAndKeys:
-                [self.result strForKey:@"id"],@"id",
-                @"1",@"type",
-                nil];
-
-    mv.viewControllers = @[vc1,vc2];
+//    WebViewController *vc1 = [[WebViewController alloc]init];
+//    mv.titles = @[@"图文介绍",@"评论"];
+//    vc1.content = [self.result strForKey:@"desc"];
+//    
+//    CommentViewController *vc2 = [[CommentViewController alloc]init];
+//    vc2.info = [NSDictionary dictionaryWithObjectsAndKeys:
+//                [self.result strForKey:@"id"],@"id",
+//                @"1",@"type",
+//                nil];
+//
+//    mv.viewControllers = @[vc1,vc2];
 }
 
 -(void)scrollViewCanMove:(NSNotification *)obj{
@@ -245,18 +280,18 @@
     header.alpha = scrollView.contentOffset.y / 200;
     
 
-    if (scrollView.contentOffset.y + 44  > mv.frame.origin.y) {
-        scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 44);
-        if(scrollView.scrollEnabled){
-            scrollView.scrollEnabled = NO;
-            [scrollView resignFirstResponder];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"SubScrollCanMove" object:nil];
-        }
-   
-    }else if (scrollView.contentOffset.y < 0){
-        scrollView.contentOffset = CGPointMake(0, 0);
-    }
-    
+//    if (scrollView.contentOffset.y + 44  > mv.frame.origin.y) {
+//        scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 44);
+//        if(scrollView.scrollEnabled){
+//            scrollView.scrollEnabled = NO;
+//            [scrollView resignFirstResponder];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"SubScrollCanMove" object:nil];
+//        }
+//   
+//    }else if (scrollView.contentOffset.y < 0){
+//        scrollView.contentOffset = CGPointMake(0, 0);
+//    }
+//    
     
 }
 

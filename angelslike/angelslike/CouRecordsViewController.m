@@ -23,17 +23,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)commentScrollViewMove:(NSNotification *)obj{
-    
-    self.tableView.scrollEnabled = YES;
-    [self.tableView becomeFirstResponder];
-}
 
 
 
 -(void)initialSetting{
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentScrollViewMove:) name:@"commentScrollViewMove" object:nil];
     
     self.heights = [NSMutableDictionary dictionary];
     
@@ -202,12 +196,6 @@
     if([self checkScrollView:scrollView]){
         [self.tableView loadDataBegin];
     }
-    if (scrollView.contentOffset.y < 0) {
-        [scrollView resignFirstResponder];
-        scrollView.scrollEnabled = NO;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"couDetailScrollViewMove" object:nil];
-    }
-
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

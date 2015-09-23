@@ -114,8 +114,9 @@
 
 
 -(void)backButtonClick:(id)sender{
+    __block LoginViewController *tempSelf = self;
     [self dismissViewControllerAnimated:YES completion:^{
-
+        [tempSelf showTabbar];
     }];
 }
 
