@@ -47,7 +47,7 @@
         [self addSubview:button1];
         [self addSubview:img1];
         
-        //
+        /*
         button2 = [RCRoundButton buttonWithType:UIButtonTypeCustom];
         button2.tag = 2;
         button2.bRound = YES;
@@ -62,7 +62,7 @@
         
         [self addSubview:button2];
         [self addSubview:img2];
-        //
+        */
         button3 = [RCRoundButton buttonWithType:UIButtonTypeCustom];
         button3.tag = 3;
         button3.bRound = YES;
@@ -73,7 +73,7 @@
         img3 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 18, 18)];
         img3.contentMode = UIViewContentModeScaleAspectFit;
         img3.center = button3.center;
-        img3.image = [[UIImage imageNamed:@"iconfont-kongxi"] rt_tintedImageWithColor:[UIColor getHexColor:@"2B2B2B"]];
+        img3.image = [[UIImage imageNamed:@"iconfont-guanzhu"] rt_tintedImageWithColor:[UIColor getHexColor:@"2B2B2B"]];
         
         [self addSubview:button3];
         [self addSubview:img3];

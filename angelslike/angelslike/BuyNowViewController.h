@@ -19,6 +19,7 @@
 @interface BuyNowViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
     AreaView *av;
     UILabel *totalLabel;
+    NSUInteger addSelect;
 }
 
 
@@ -29,5 +30,7 @@
 @property(nonatomic,strong) NSMutableArray *adds;
 
 @property(nonatomic,strong) NSMutableArray *paytypes;
+
+@property(nonatomic,strong) NSMutableDictionary *addInfo;
 
 @end

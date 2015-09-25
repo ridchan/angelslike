@@ -35,7 +35,7 @@
 //    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
 //    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
-    [[UINavigationBar appearance] setBarTintColor:[UIColor getHexColor:@"ff6969"]];
+    [[UINavigationBar appearance] setBarTintColor:HexColor(@"FD5454")];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,

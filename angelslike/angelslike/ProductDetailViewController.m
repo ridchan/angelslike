@@ -68,14 +68,13 @@
 
 //    CGRect rect = [[change objectForKey:@"new"] CGRectValue];
     
+    bottomView.frame = RECT(0, MaxY(pd) + 10, ScreenWidth, 120);
     
-    bottomView.frame = RECT(0, CGRectGetMaxY(pd.frame) + 10, ScreenWidth, 120);
-    
-    _webView.frame = CGRectMake(0, CGRectGetMaxY(bottomView.frame) + 10, ScreenWidth, ScreenHeight - 64);
+    _webView.frame = CGRectMake(0, MaxY(bottomView) + 10, ScreenWidth, ScreenHeight - 64);
     
     [_webView loadHTMLString:[self.result strForKey:@"desc"] baseURL:[NSURL URLWithString:img1Url]];
     
-    scView.contentSize = CGSizeMake(1, CGRectGetMaxY(_webView.frame));
+    scView.contentSize = CGSizeMake(1, MaxY(_webView));
     
     [self.tableView reloadData];
     
@@ -101,7 +100,6 @@
     pd = [[ProductDetail alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 507 / 640)];
     [pd addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     [scView addSubview:pd];
-    
     
     
     
@@ -134,7 +132,7 @@
 //    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(pd.frame), ScreenWidth, ScreenHeight )];
 //    [scView addSubview:mv];
     
-    _webView = [[UIWebView alloc]initWithFrame:RECT(0, CGRectGetMaxY(pd.frame), ScreenWidth, 0)];
+    _webView = [[UIWebView alloc]initWithFrame:RECT(0, MaxY(pd), ScreenWidth, 0)];
     _webView.delegate = self;
     [scView addSubview:_webView];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewCanMove:) name:@"MainScroll" object:nil];
@@ -229,6 +227,8 @@
     if (sender.tag == 1) {
         self.navigationController.navigationBarHidden = NO;
         [self.navigationController popViewControllerAnimated:YES];
+    }else if (sender.tag == 4){
+        [self shareContent:[self.result strForKey:@"content"] title:[self.result strForKey:@"name"] imagePath:[self.result strForKey:@"img"] url:[ProductShareUrl stringByAppendingString:[self.result strForKey:@"id"]]];
     }
 }
 

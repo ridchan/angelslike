@@ -77,13 +77,16 @@
 #define SaveImageUrl @"http://weixin.angelslike.com/json/saveimage"
 
 //主题 路径
-#define ThemeShareUrl @"http://weixin.angelslike.com/theme.html?id="
+
 //订单详情
 #define OrderDetailUrl [MainDomain stringByAppendingPathComponent:@"my/getorder"]
 
 #define MyInfoUrl [MainDomain stringByAppendingPathComponent:@"my/myinfo"]
 #define UpdateMyInfoUrl [MainDomain stringByAppendingPathComponent:@"my/updatemyinfo"]
 
+//分享
+#define ThemeShareUrl @"http://weixin.angelslike.com/theme.html?id="
+#define ProductShareUrl @"http://weixin.angelslike.com/product.html?id="
 
 #define AliPID @"2088911709405062"
 #define AliSID @"2868362748@qq.com"
@@ -137,5 +140,7 @@
 #define Format3(a,b,c) [NSString stringWithFormat:@"%@%@%@",a,b,c]
 #define IMAGE(n) [UIImage imageNamed:n]
 #define UserDefault [NSUserDefaults standardUserDefaults]
+
+#define MaxY(a) CGRectGetMaxY(a.frame)
 
 #endif//

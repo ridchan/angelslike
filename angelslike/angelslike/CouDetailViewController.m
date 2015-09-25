@@ -14,8 +14,11 @@
 -(void)dealloc{
   
     CouDetail *v = (CouDetail *)[_scrollView viewWithTag:99];
-
+    _scrollView.delegate = nil;
     [v removeObserver:self forKeyPath:@"frame"];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [vc1.tableView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
 -(void)viewDidLoad{
@@ -51,39 +54,29 @@
 }
 
 -(void)addViewController{
+    
+    CouDetail *v = (CouDetail *)[_scrollView viewWithTag:99];
 
-//    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, v.frame.size.height, ScreenWidth, ScreenHeight - 64)];
-//    mv.titles = @[@"谁在凑",@"凑热闹"];
-    
-    vc1Button = [UIButton buttonWithType:UIButtonTypeCustom];
-    vc1Button.frame =  RECT(0, 500, ScreenWidth / 2, 50);
-    [vc1Button setTitle:@"凑分子" forState:UIControlStateNormal];
-    [vc1Button setBackgroundColor:[UIColor whiteColor]];
-    [vc1Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [vc1Button addline:CGPointMake(0, 0) color:nil];
-    [vc1Button addline:CGPointMake(0, 49) color:nil];
-    
-    vc2Button = [UIButton buttonWithType:UIButtonTypeCustom];
-    vc2Button.frame =  RECT(ScreenWidth / 2, 500, ScreenWidth / 2, 50);
-    [vc2Button setTitle:@"凑热闹" forState:UIControlStateNormal];
-    [vc2Button setBackgroundColor:[UIColor whiteColor]];
-    [vc2Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [vc2Button addline:CGPointMake(0, 0) color:nil];
-    [vc2Button addline:CGPointMake(0, 49) color:nil];
-    
-    [_scrollView addSubview:vc1Button];
-    [_scrollView addSubview:vc2Button];
-    
+    mv = [[RCMutileView alloc]initWithFrame:CGRectMake(0, v.frame.size.height, ScreenWidth, ScreenHeight - 64)];
+    mv.titles = @[@"谁在凑",@"凑热闹"];
     vc1 = [[CouRecordsViewController alloc]init];
+    vc1.view.userInteractionEnabled = NO;
     vc1.info = @{@"id":[self.info strForKey:@"id"],@"type":@"2"};
-    [_scrollView addSubview:vc1.view];
-    [vc1 viewDidAppear:YES];
-//
-//    vc2 = [[CommentViewController alloc]init];
-//    vc2.info = @{@"id":[self.info strForKey:@"id"],@"type":@"2"};
-//    [_scrollView addSubview:vc2.view];
+    vc2 = [[CommentViewController alloc]init];
+    vc2.info = @{@"id":[self.info strForKey:@"id"],@"type":@"2"};
+    mv.viewControllers = @[vc1,vc2];
+    
+    [_scrollView addSubview:mv];
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(move:) name:@"MoveMoveMove" object:nil];
+//    [vc1.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    
+}
+
+-(void)move:(id)obj{
+    _scrollView.scrollEnabled = YES;
+    vc1.view.userInteractionEnabled = NO;
 }
 
 
@@ -125,22 +118,29 @@
     [self.view addSubview:v];
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    CGRect rect = [[change objectForKey:@"new"] CGRectValue];
-    NSLog(@"object %@",object);
-    
-    vc1Button.frame = RECT(0, CGRectGetMaxY(rect) + 10, ScreenWidth / 2, 50);
-    vc2Button.frame = RECT(ScreenWidth / 2, CGRectGetMaxY(rect) + 10, ScreenWidth / 2, 50);
-    
-    vc1.view.frame = RECT(0, CGRectGetMaxY(vc1Button.frame), ScreenWidth, 300);
-    vc2.view.frame = RECT(0, CGRectGetMaxY(vc2Button.frame), ScreenWidth, 300);
 
-    _scrollView.contentSize = CGSizeMake(1, CGRectGetMaxY(vc1.view.frame) + 50 );
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    if ([object isKindOfClass:[CouDetail class]]){
+        CGRect rect = [[change objectForKey:@"new"] CGRectValue];
+        mv.frame = CGRectMake(0, CGRectGetMaxY(rect), ScreenWidth, ScreenHeight - 64);
+        _scrollView.contentSize = CGSizeMake(1, MaxY(mv));
+    }
+    
+    if ([object isKindOfClass:[UITableView class]]) {
+        CGPoint point = [[change objectForKey:@"new"] CGPointValue];
+        if (point.y < 0) {
+            _scrollView.scrollEnabled = YES;
+            vc1.view.userInteractionEnabled = NO;
+        }
+    }
 }
 
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y > CGRectGetMaxY(vc1Button.frame)) {
-//        vc1.tableView.contentOffset = CGPointMake(0, <#CGFloat y#>)
+    if (scrollView.contentOffset.y > mv.frame.origin.y - 64) {
+        scrollView.scrollEnabled = NO;
+        vc1.view.userInteractionEnabled = YES;
+        scrollView.contentOffset = CGPointMake(1, mv.frame.origin.y - 64);
     }
 }
 
@@ -148,6 +148,7 @@
 -(void)initialSetting{
     
     _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
+    _scrollView.delegate = self;
     [self.view addSubview:_scrollView];
     
     CouDetail *v = [[CouDetail alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 0)];

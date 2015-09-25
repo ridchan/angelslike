@@ -19,6 +19,7 @@
     
     [self initailSetting];
     [self addBottomButton];
+    self.addInfo = [NSMutableDictionary dictionaryWithObject:@"-1" forKey:@"Address"];
     // Do any additional setup after loading the view.
 }
 
@@ -43,7 +44,7 @@
     
 
 //    self.adds = [NSMutableArray arrayWithArray:@[@"姓名",@"地址",@"详细地址",@"电话",@"备注"]];
-    
+    addSelect = -1;
     
     [self setBackButtonAction:@selector(backClick:)];
     
@@ -155,6 +156,28 @@
 #pragma mark -
 #pragma mark table view delegate
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 2) {
+        MyAddressCell *mcell = (MyAddressCell *) [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+        HerAddressCell *hcell = (HerAddressCell *) [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:3]];
+        if (indexPath.row == 0) {
+            if (!mcell.bCheck){
+                [self.addInfo setObject:@"1" forKey:@"Address"];
+                mcell.bCheck = YES;
+                hcell.bCheck = NO;
+                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:2]] withRowAnimation:UITableViewRowAnimationNone];
+            }
+        }else{
+            if (!hcell.bCheck) {
+                [self.addInfo setObject:@"2" forKey:@"Address"];
+                mcell.bCheck = NO;
+                hcell.bCheck = YES;
+                [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:2]] withRowAnimation:UITableViewRowAnimationNone];
+            }
+        }
+    }
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return [@[@"22",@"22",@"22"][section] floatValue];
 }
@@ -166,6 +189,8 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0 || (indexPath.section == 2 & indexPath.row == 1)) {
         return 90;
+    }else if (indexPath.section == 2 & indexPath.row == 0 & addSelect == 0){
+        return 210;
     }else{
         return 44;
     }
@@ -207,7 +232,7 @@
                 cell = [[MyAddressCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MyAddressCell"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
-
+            cell.info = self.addInfo;
     //        cell.textLabel.text = [self.adds objectAtIndex:indexPath.row];
             return cell;
         }else{
@@ -217,7 +242,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             
-            //        cell.textLabel.text = [self.adds objectAtIndex:indexPath.row];
+            //cell.textLabel.text = [self.adds objectAtIndex:indexPath.row];
             return cell;
         }
     }else{

@@ -173,6 +173,8 @@
 }
 
 
+
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return  ceilf([self.result count] / 2);

@@ -118,9 +118,15 @@
     }];
 }
 
+//-(void)setInfos:(NSArray *)infos{
+//    _infos = infos;
+//    [self startDownload];
+//}
+
 //按数据设置图片
 
 -(void)startDownload{
+
     if ([self.infos count] > 0) {
         NSMutableArray * nArr = [NSMutableArray arrayWithArray:self.infos];
         [nArr insertObject:[self.infos objectAtIndex:[self.infos count] - 1] atIndex:0];

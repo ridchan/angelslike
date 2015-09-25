@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "angelslike/BuyNowViewController.m"
-            timestampString = "464598576.691513"
+            timestampString = "464841378.944075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "-comfirmPay:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "angelslike/BuyNowViewController.m"
-            timestampString = "464598576.691513"
+            timestampString = "464841378.944075"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "-cancelOrder:"
             landmarkType = "5">
          </BreakpointContent>
@@ -208,22 +208,6 @@
             startingLineNumber = "102"
             endingLineNumber = "102"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "angelslike/BaseViewController.m"
-            timestampString = "464062180.342141"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "-shareContent:title:imagePath:url:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -457,13 +441,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "angelslike/BaseViewController.m"
-            timestampString = "464684510.734771"
+            filePath = "angelslike/CouRecordsViewController.m"
+            timestampString = "464776340.614139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "-shareContent:title:imagePath:url:"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-loadMoreData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -473,13 +457,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "angelslike/CouRecordsViewController.m"
-            timestampString = "464695255.431055"
+            filePath = "angelslike/CouDetailViewController.m"
+            timestampString = "464840723.776792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -489,13 +473,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "angelslike/CouRecordsViewController.m"
-            timestampString = "464697188.9831"
+            filePath = "angelslike/ProductDetail.m"
+            timestampString = "464869372.77191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "-scrollViewDidScroll:"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-setInfo:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

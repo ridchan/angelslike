@@ -25,4 +25,6 @@
 @property(nonatomic,strong) NSDictionary *info;
 @property(nonatomic,strong) NSMutableDictionary *heights;
 
+-(void)loadMoreData:(id)sender;
+
 @end

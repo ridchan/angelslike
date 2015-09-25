@@ -35,6 +35,7 @@
 @property(nonatomic) BOOL autoRun;
 
 -(void)start:(NSString *)link;
+-(void)startDownload;
 
 -(void)addTarget:(id)target selector:(SEL)selector;
 

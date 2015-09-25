@@ -20,6 +20,9 @@
     UILabel *namelabel;
     UILabel *pricelabel;
     UIWebView *content;
+    UILabel *lbl1;
+    UILabel *lbl2;
+    UILabel *lbl3;
 }
 
 -(void)setInfo:(NSDictionary *)info;

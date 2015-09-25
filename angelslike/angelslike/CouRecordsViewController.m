@@ -192,7 +192,14 @@
 #pragma mark -
 #pragma mark tableview delegate
 
+
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y <= 0){
+        self.view.userInteractionEnabled = NO;
+        [self.view resignFirstResponder];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MoveMoveMove" object:nil];
+    }
     if([self checkScrollView:scrollView]){
         [self.tableView loadDataBegin];
     }

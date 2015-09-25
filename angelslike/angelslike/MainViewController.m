@@ -21,9 +21,9 @@
     scrolerHeight = ScreenWidth * 9 / 16;
     cellHeight = (ScreenWidth - MainCellMargin * 2) * 49 / 108 + MainCellGap; // 108:49
     
-    [self initailSetting];
+    [self initailNewSetting];
     
-    [self loadMoreData:nil];
+//    [self loadMoreData:nil];
     
     // Do any additional setup after loading the view.
 }
@@ -35,7 +35,7 @@
 
 -(void)loadMoreData:(id)obj{
     __block MainViewController *tempSelf = self;
-    NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
+    NSString *nPage = [NSString stringWithFormat:@"%ld",(long)(self.tableView.currentPage + 1)];
     [[NetWork shared] startQuery:ListLink
                             info:@{@"page":nPage,@"sort":@"new"}
                    completeBlock:^(id Obj) {
@@ -69,7 +69,7 @@
     [self.tableView addTarget:self action:@selector(loadMoreData:)];
     [self.view addSubview:self.tableView];
     
-    scroller =  [[ImageScroller alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, scrolerHeight)];
+    scroller =  [[ImageScroller alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 0.45)];
     [scroller start:SliderLink];
     
     banner = [[Banner alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 60)];
@@ -82,9 +82,246 @@
     
 }
 
+-(void)initailNewSetting{
+    self.navigationItem.title = @"天使礼客";
+    
+    _scrollView =  [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
+    [self.view addSubview:_scrollView];
+    
+    scroller =  [[ImageScroller alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenWidth * 0.45)];
+//    [scroller start:SliderLink];
+    [_scrollView addSubview:scroller];
+    
+    banner = [[Banner alloc]initWithFrame:RECT(0,MaxY(scroller), ScreenWidth, ScreenWidth / 4)];
+    [_scrollView addSubview:banner];
+    
+    __block MainViewController *tempSelf = self;
+    [[NetWork shared]query:@"http://app.angelslike.com/index/homeshow" info:nil block:^(id Obj) {
+        if ([Obj intForKey:@"status"] == 1){
+            
+            tempSelf.infos = [Obj objectForKey:@"data"];
+            
+            scroller.infos = [tempSelf.infos objectForKey:@"slider"];
+            [scroller startDownload];
+            
+            UIView *sv = [tempSelf bondedView:RECT(0, MaxY(banner), ScreenWidth, 800)];
+            [_scrollView addSubview:sv];
+            UIView *dv = [tempSelf dealView:RECT(0, MaxY(sv), ScreenWidth, 800)];
+            [_scrollView addSubview:dv];
+            UIView *bv = [tempSelf buyOneView:RECT(0, MaxY(dv), ScreenWidth, 800)];
+            [_scrollView addSubview:bv];
+
+            
+            
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:RECT(0, MaxY(bv) + 10, ScreenWidth, ScreenWidth * 57 / 320)];
+            imageView.image = IMAGE(@"home-end-bg");
+            [_scrollView addSubview:imageView];
+            _scrollView.contentSize = CGSizeMake(1, MaxY(imageView));
+        }
+    } lock:NO];
+    
+    
+
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+#pragma mark 自定义 Cell
+
+
+-(UIView *)dealView:(CGRect)rect{
+    UIView *view = [[UIView alloc]initWithFrame:rect];
+    
+    UILabel *label  =  [[UILabel alloc]initWithFrame:RECT(10, 0, rect.size.width - 20, 30)];
+//    label.textColor = RGBA(178,177,182,.9);
+    label.textColor = HexColor(@"3c3c3c");
+    label.font = FontWS(15);
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:@"限量特供 一折起"];
+    [attrString addAttribute:NSFontAttributeName value:FontWS(12) range:NSMakeRange([@"限量特供 " length], [@"一折起" length])];
+    [attrString addAttribute:NSForegroundColorAttributeName value:HexColor(@"808080") range:NSMakeRange([@"限量特供 " length], [@"一折起" length])];
+    label.attributedText = attrString;
+    [view addSubview:label];
+    
+    UILabel *label2  =  [[UILabel alloc]initWithFrame:RECT(10, 0, rect.size.width - 20, 30)];
+    label2.textAlignment = NSTextAlignmentRight;
+    label2.textColor = HexColor(@"AFAFAF");
+    label2.font = FontWS(12);
+    label2.text = @"厂家试用体验商品";
+    [view addSubview:label2];
+    
+    [view addline:CGPointMake(0, 30) color:nil];
+    
+    NSArray *array = [self.infos objectForKey:@"discount"];
+    CGFloat width = ScreenWidth / 2 - 15;
+    CGFloat height = 230;
+    CGFloat y = 0;
+    for (int i = 0 ; i < [array count] ; i ++ ){
+        int row = floorf(i / 2);
+        int column = i  - row * 2;
+        DealView *dv = [[DealView alloc]initWithFrame:RECT(10 + (10 + width) * column, MaxY(label) + 10 + (10 + height) * row  , width, height)];
+        dv.type = CellType_Deal;
+        dv.info = [array objectAtIndex:i];
+        [view addSubview:dv];
+        y = MaxY(dv);
+    }
+    
+    UIButton *moreButton = [self buttonWithFrame:RECT(rect.size.width - 60, y, 50, 30)];
+    [view addSubview:moreButton];
+    
+    view.frame = RECT(rect.origin.x, rect.origin.y, rect.size.width, MaxY(moreButton));
+    
+    NSArray *advs = [self.infos objectForKey:@"advert"];
+    if ([advs count] > 0) {
+        NSDictionary *dic = advs[0];
+        UIImageView *imageView = [self adverImageView:RECT(0, MaxY(moreButton), ScreenWidth, ScreenWidth * 5 / 32) url:[dic strForKey:@"img"]];
+        [view addSubview:imageView];
+        
+        view.frame = RECT(rect.origin.x, rect.origin.y, rect.size.width, MaxY(imageView));
+    }
+    return view;
+}
+
+
+
+
+-(UIView *)buyOneView:(CGRect)rect{
+    UIView *view = [[UIView alloc]initWithFrame:rect];
+    
+    UILabel *label  =  [[UILabel alloc]initWithFrame:RECT(10, 0, rect.size.width - 20, 30)];
+    label.textColor = HexColor(@"3c3c3c");
+    label.font = FontWS(15);
+    label.text = @"买一送一";
+    [view addSubview:label];
+    
+    [view addline:CGPointMake(0, 30) color:nil];
+    
+    NSArray *array = [self.infos objectForKey:@"buyone"];
+    CGFloat width = ScreenWidth / 2 - 15;
+    CGFloat height = 230;
+    
+    CGFloat y = 0;
+    for (int i = 0 ; i < [array count] ; i ++ ){
+        int row = floorf(i / 2);
+        int column = i  - row * 2;
+        
+        
+        DealView *dv = [[DealView alloc]initWithFrame:RECT(10 + (10 + width) * column, MaxY(label) + 10 + (10 + height) * row  , width, height)];
+        dv.type = CellType_BuyOne;
+        dv.info = [array objectAtIndex:i];
+        [view addSubview:dv];
+        y = MaxY(dv);
+    }
+    
+    UIButton *moreButton = [self buttonWithFrame:RECT(rect.size.width - 60, y, 50, 30)];
+    [view addSubview:moreButton];
+    
+    view.frame = RECT(rect.origin.x, rect.origin.y, rect.size.width, MaxY(moreButton));
+    
+    NSArray *advs = [self.infos objectForKey:@"advert"];
+    if ([advs count] > 1) {
+        NSDictionary *dic = advs[1];
+        UIImageView *imageView = [self adverImageView:RECT(0, MaxY(moreButton), ScreenWidth, ScreenWidth * 5 / 32) url:[dic strForKey:@"img"]];
+        [view addSubview:imageView];
+        
+        view.frame = RECT(rect.origin.x, rect.origin.y, rect.size.width, MaxY(imageView));
+    }
+    return view;
+}
+
+-(UIView *)bondedView:(CGRect)rect{
+    UIView *view = [[UIView alloc]initWithFrame:rect];
+    
+    UILabel *label  =  [[UILabel alloc]initWithFrame:RECT(10, 0, rect.size.width - 20, 30)];
+    label.textColor = HexColor(@"3c3c3c");
+    label.font = FontWS(15);
+    label.text = @"海关保税仓直供";
+    [view addSubview:label];
+    
+    [view addline:CGPointMake(0, 30) color:nil];
+    
+    UIView *notifyView =[self notifyView:RECT(0, MaxY(label), ScreenWidth, 72)];
+    [view addSubview:notifyView];
+    
+    NSArray *array = [self.infos objectForKey:@"discount"];
+    CGFloat width = ScreenWidth / 2 - 15;
+    CGFloat height = 230;
+    
+    CGFloat y =  0;
+    for (int i = 0 ; i < [array count] ; i ++ ){
+        int row = floorf(i / 2);
+        int column = i  - row * 2;
+        
+        
+        DealView *dv = [[DealView alloc]initWithFrame:RECT(10 + (10 + width) * column, MaxY(notifyView) + 10 + (10 + height) * row  , width, height)];
+        dv.type = CellType_Bound;
+        dv.info = [array objectAtIndex:i];
+        [view addSubview:dv];
+        y = MaxY(dv);
+    }
+    
+    UIButton *moreButton = [self buttonWithFrame:RECT(rect.size.width - 60, y, 50, 30)];
+    [view addSubview:moreButton];
+    
+    view.frame = RECT(rect.origin.x, rect.origin.y, rect.size.width, MaxY(moreButton));
+    
+    NSArray *advs = [self.infos objectForKey:@"advert"];
+    if ([advs count] > 2) {
+        NSDictionary *dic = advs[2];
+        UIImageView *imageView = [self adverImageView:RECT(0, MaxY(moreButton), ScreenWidth, ScreenWidth * 5 / 32) url:[dic strForKey:@"img"]];
+        [view addSubview:imageView];
+        
+        view.frame = RECT(rect.origin.x, rect.origin.y, rect.size.width, MaxY(imageView));
+    }
+    
+    
+    
+    return view;
+}
+
+-(UIView *)notifyView:(CGRect)rect{
+    UIView *view = [[UIView alloc]initWithFrame:rect];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    CGFloat width = rect.size.width / 4;
+    NSArray *titles = @[@"合法报关",@"检疫检验",@"保税仓直供",@"品质保证"];
+    NSArray *imgs = @[@"bonded2",@"inspection",@"legal",@"security"];
+    
+    for (int i = 0 ; i < [titles count] ; i ++){
+        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+        imageView.center = CGPointMake(width * i + width / 2, rect.size.height / 2 - 5);
+        imageView.image = IMAGE(imgs[i]);
+        
+        UILabel *label = [[UILabel alloc]initWithFrame:RECT(width * i, MaxY(imageView), width, 14)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = FontWS(12);
+        
+        label.text = titles[i];
+        [view addSubview:imageView];
+        [view addSubview:label];
+    }
+    
+    return view;
+}
+
+-(UIImageView *)adverImageView:(CGRect)rect url:(NSString *)url{
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
+    [imageView setPreImageWithUrl:url];
+    return imageView;
+}
+
+-(UIButton *)buttonWithFrame:(CGRect)rect{
+    UIButton *moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [moreButton setTitle:@"更多" forState:UIControlStateNormal];
+    moreButton.titleLabel.font = FontWS(13);
+    moreButton.frame = rect;
+    [moreButton setTitleColor:HexColor(@"7c7c7c") forState:UIControlStateNormal];
+    
+    return moreButton;
 }
 
 /*
@@ -180,7 +417,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return scrolerHeight ;// banner  16:9
+        return ScreenWidth * 0.45 ;// banner  16:9
     }else if(indexPath.row == 1) {
         return 70;
     }else{
