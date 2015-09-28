@@ -17,7 +17,12 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if (!viewisAppear) [self initialSetting]; viewisAppear = YES;
+    if (!viewisAppear) [self initialSetting];
+}
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [self initialSetting];
 }
 
 -(BOOL)automaticallyAdjustsScrollViewInsets{
@@ -28,7 +33,7 @@
 -(void)initialSetting{
     CGFloat off = 0;
     
-    
+    viewisAppear = YES;
     self.tableView = [[LoadMoreTableView alloc]init];
     [self.view addSubview:self.tableView];
     if(self.navigationController){

@@ -32,17 +32,18 @@
     
     //tableview
 
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0 , ScreenWidth, ScreenHeight - 44) style:UITableViewStyleGrouped];
-
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-
+//    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0 , ScreenWidth, ScreenHeight - 44) style:UITableViewStyleGrouped];
+//
+//    self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
+//    self.tableView.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:self.tableView];
     
-    self.tableView.backgroundColor = [UIColor clearColor];
-
-    [self.view addSubview:self.tableView];
     
-
+    _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight - 44)];
+    [self.view addSubview:_scrollView];
+    
+    [self addBasicInfo];
 //    self.adds = [NSMutableArray arrayWithArray:@[@"姓名",@"地址",@"详细地址",@"电话",@"备注"]];
     addSelect = -1;
     
@@ -51,6 +52,47 @@
     av = [[AreaView alloc]init];
     [self.view addSubview:av];
     
+}
+
+-(void)addBasicInfo{
+    BuyView *bv = [[BuyView alloc]initWithFrame:RECT(0, 10, ScreenWidth, 90)];
+    bv.info = [self.products objectAtIndex:0];
+    [bv addObserver:self forKeyPath:@"info.qty" options:NSKeyValueObservingOptionNew context:nil];
+    [_scrollView addSubview:bv];
+    
+    UILabel *label1 = [self normalLabel:RECT(10, MaxY(bv), ScreenWidth - 20, 38) title:@"支付方式"];
+    [_scrollView addSubview:label1];
+    
+    PayView *pv = [[PayView alloc]initWithFrame:RECT(0, MaxY(label1), ScreenWidth, 44)];
+    pv.selectIndex = 0;
+    [_scrollView addSubview:pv];
+    
+    UILabel *label2 = [self normalLabel:RECT(10, MaxY(pv), ScreenWidth - 20, 38) title:@"收货方式"];
+    [_scrollView addSubview:label2];
+    
+    MyAddressView *mv = [[MyAddressView alloc]initWithFrame:RECT(0, MaxY(label2), ScreenWidth, 44)];
+    [_scrollView addSubview:mv];
+    HerAddressView *hv = [[HerAddressView alloc]initWithFrame:RECT(0, MaxY(mv), ScreenWidth, 80)];
+    [_scrollView addSubview:hv];
+    _scrollView.contentSize = CGSizeMake(1, MaxY(hv));
+    
+    mv.block = ^(id obj){
+        hv.bCheck = ![obj boolValue];
+    };
+    hv.block = ^(id obj){
+        mv.bCheck = ![obj boolValue];
+    };
+    
+    
+}
+
+-(UILabel *)normalLabel:(CGRect)rect title:(NSString *)title{
+    UILabel *label = [[UILabel alloc]initWithFrame:rect];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = FontWS(14);
+    label.textColor = HexColor(@"666666");
+    label.text = title;
+    return label;
 }
 
 
@@ -96,6 +138,7 @@
     NSString *str1 = @"合计: ￥";
     NSString *str2 = [self getTotal];
     totalLabel.attributedText = [self setColorText:[NSString stringWithFormat:@"%@%@",str1,str2] range:NSMakeRange([str1 length], [str2 length])];
+    
 }
 
 -(NSString *)getTotal{

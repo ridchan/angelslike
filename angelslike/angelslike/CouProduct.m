@@ -98,12 +98,13 @@
 //    __block UILabel *tempPrice = priceLabel;
 //    __block UIImageView *tempImage = imageView;
 //    __block UIWebView *tempContent = contentLabel;
-    [imageView setPreImageWithUrl:link block:^(id Obj) {
+    [imageView setPreImageWithUrl:link];
+//    [imageView setPreImageWithUrl:link block:^(id Obj) {
 //        (10, 215, frame.size.width - 20, 30)
 //        tempName.frame = CGRectMake(10, tempImage.frame.size.height + tempImage.frame.origin.y + 5, tempImage.frame.size.width, tempImage.frame.size.height);
 //        tempPrice.frame = CGRectMake(10, tempName.frame.size.height + tempName.frame.origin.y + 5, tempName.frame.size.width, tempName.frame.size.height);
 //        tempContent.frame = CGRectMake(10, tempName.frame.size.height + tempName.frame.origin.y + 5, tempName.frame.size.width, tempName.frame.size.height);
-    }];
+//    }];
     
     nameLabel.text = name;
     priceLabel.text = [NSString stringWithFormat:@"￥%@",price];

@@ -31,15 +31,6 @@
                              @{@"Name":@"文化办公",@"IMG":@"pinglei_07.png",@"ID":@"132",@"Type":@"pt"},
                              @{@"Name":@"爱车萌宠",@"IMG":@"pinglei_08.png",@"ID":@"136",@"Type":@"pt"}
                             ],
-                   @"对象":@[@{@"Name":@"送长辈",@"IMG":@"duixiang_00.png",@"ID":@"39",@"Type":@"ob"},
-                           @{@"Name":@"送恋人",@"IMG":@"duixiang_01.png",@"ID":@"35",@"Type":@"ob"},
-                           @{@"Name":@"送同事",@"IMG":@"duixiang_02.png",@"ID":@"36",@"Type":@"ob"},
-                           @{@"Name":@"送朋友",@"IMG":@"duixiang_03.png",@"ID":@"37",@"Type":@"ob"},
-                           @{@"Name":@"送老师",@"IMG":@"duixiang_04.png",@"ID":@"60",@"Type":@"ob"},
-                           @{@"Name":@"送儿童",@"IMG":@"duixiang_05.png",@"ID":@"38",@"Type":@"ob"},
-                           @{@"Name":@"送亲人",@"IMG":@"duixiang_06.png",@"ID":@"61",@"Type":@"ob"},
-                           @{@"Name":@"送嘉宾",@"IMG":@"duixiang_07.png",@"ID":@"62",@"Type":@"ob"}
-                           ],
                    @"场合":@[@{@"Name":@"亲情礼",@"IMG":@"changhe_00.png",@"ID":@"41",@"Type":@"se"},
                            @{@"Name":@"爱情礼",@"IMG":@"changhe_01.png",@"ID":@"42",@"Type":@"se"},
                            @{@"Name":@"人情礼",@"IMG":@"changhe_02.png",@"ID":@"44",@"Type":@"se"},
@@ -52,16 +43,26 @@
                            @{@"Name":@"¥200-500",@"IMG":@"jiage_02.png",@"ID":@"3",@"Type":@"pp"},
                            @{@"Name":@"¥500-1000",@"IMG":@"jiage_03.png",@"ID":@"4",@"Type":@"pp"},
                            @{@"Name":@"¥1000以上",@"IMG":@"jiage_04.png",@"ID":@"5",@"Type":@"pp"}
-                           ],
-                   @"个性":@[@{@"Name":@"高逼格",@"IMG":@"gexin_00.png",@"ID":@"4",@"Type":@"ct"},
-                           @{@"Name":@"清新美物",@"IMG":@"gexin_01.png",@"ID":@"5",@"Type":@"ct"},
-                           @{@"Name":@"整蛊搞笑",@"IMG":@"gexin_02.png",@"ID":@"6",@"Type":@"ct"},
-                           @{@"Name":@"科技苑",@"IMG":@"gexin_03.png",@"ID":@"7",@"Type":@"ct"},
-                           @{@"Name":@"低调宅",@"IMG":@"gexin_04.png",@"ID":@"8",@"Type":@"ct"},
-                           @{@"Name":@"中国风",@"IMG":@"gexin_05.png",@"ID":@"9",@"Type":@"ct"},
-                           @{@"Name":@"文化范",@"IMG":@"gexin_06.png",@"ID":@"10",@"Type":@"ct"}
                            ]
+
                    };
+//    @"对象":@[@{@"Name":@"送长辈",@"IMG":@"duixiang_00.png",@"ID":@"39",@"Type":@"ob"},
+//            @{@"Name":@"送恋人",@"IMG":@"duixiang_01.png",@"ID":@"35",@"Type":@"ob"},
+//            @{@"Name":@"送同事",@"IMG":@"duixiang_02.png",@"ID":@"36",@"Type":@"ob"},
+//            @{@"Name":@"送朋友",@"IMG":@"duixiang_03.png",@"ID":@"37",@"Type":@"ob"},
+//            @{@"Name":@"送老师",@"IMG":@"duixiang_04.png",@"ID":@"60",@"Type":@"ob"},
+//            @{@"Name":@"送儿童",@"IMG":@"duixiang_05.png",@"ID":@"38",@"Type":@"ob"},
+//            @{@"Name":@"送亲人",@"IMG":@"duixiang_06.png",@"ID":@"61",@"Type":@"ob"},
+//            @{@"Name":@"送嘉宾",@"IMG":@"duixiang_07.png",@"ID":@"62",@"Type":@"ob"}
+//            ],
+//    @"个性":@[@{@"Name":@"高逼格",@"IMG":@"gexin_00.png",@"ID":@"4",@"Type":@"ct"},
+//            @{@"Name":@"清新美物",@"IMG":@"gexin_01.png",@"ID":@"5",@"Type":@"ct"},
+//            @{@"Name":@"整蛊搞笑",@"IMG":@"gexin_02.png",@"ID":@"6",@"Type":@"ct"},
+//            @{@"Name":@"科技苑",@"IMG":@"gexin_03.png",@"ID":@"7",@"Type":@"ct"},
+//            @{@"Name":@"低调宅",@"IMG":@"gexin_04.png",@"ID":@"8",@"Type":@"ct"},
+//            @{@"Name":@"中国风",@"IMG":@"gexin_05.png",@"ID":@"9",@"Type":@"ct"},
+//            @{@"Name":@"文化范",@"IMG":@"gexin_06.png",@"ID":@"10",@"Type":@"ct"}
+//            ]
 }
 
 

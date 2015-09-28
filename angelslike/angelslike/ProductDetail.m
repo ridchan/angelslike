@@ -28,12 +28,12 @@
         [self addSubview:pricelabel];
         
         
-        lbl1 = [[UILabel alloc]initWithFrame:CGRectMake(10, MaxY(namelabel) , frame.size.width - 20, 30)];
+        lbl1 = [[UILabel alloc]initWithFrame:CGRectMake(10, MaxY(pricelabel) , frame.size.width - 20, 30)];
         lbl1.backgroundColor = [UIColor clearColor];
         lbl1.textAlignment = NSTextAlignmentRight;
         lbl1.textColor = HexColor(@"f44236");
         lbl1.font = FontWS(15);
-        [self addSubview:pricelabel];
+        [self addSubview:lbl1 ];
         
         lbl2 = [[UILabel alloc]initWithFrame:CGRectMake(10, MaxY(pricelabel) , frame.size.width - 20, 30)];
         lbl2.backgroundColor = [UIColor clearColor];
@@ -104,6 +104,8 @@
     if (showType == 1 || showType == 2){
         NSString *disPrice = Format2(MoneySign, [info strForKey:@"otherprice"]);
         NSMutableAttributedString *disString = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"原价: %@   %@折",disPrice,[info strForKey:@"discount"]]];
+        if (showType == 2)
+            disString = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"原价: %@ /1件",disPrice]];
         [disString addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange([@"原价: " length], [disPrice length])];
         lbl2.attributedText = disString;
         

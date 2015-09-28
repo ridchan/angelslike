@@ -134,6 +134,13 @@
 #pragma mark 自定义 Cell
 
 
+-(void)viewClick:(NSDictionary *)dic{
+    ProductDetailViewController *vc = [[ProductDetailViewController alloc]init];
+    vc.info = dic;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 -(UIView *)dealView:(CGRect)rect{
     UIView *view = [[UIView alloc]initWithFrame:rect];
     
@@ -166,6 +173,7 @@
         DealView *dv = [[DealView alloc]initWithFrame:RECT(10 + (10 + width) * column, MaxY(label) + 10 + (10 + height) * row  , width, height)];
         dv.type = CellType_Deal;
         dv.info = [array objectAtIndex:i];
+        [dv addTarget:self action:@selector(viewClick:)];
         [view addSubview:dv];
         y = MaxY(dv);
     }
@@ -176,8 +184,8 @@
     view.frame = RECT(rect.origin.x, rect.origin.y, rect.size.width, MaxY(moreButton));
     
     NSArray *advs = [self.infos objectForKey:@"advert"];
-    if ([advs count] > 0) {
-        NSDictionary *dic = advs[0];
+    if ([advs count] > 1) {
+        NSDictionary *dic = advs[1];
         UIImageView *imageView = [self adverImageView:RECT(0, MaxY(moreButton), ScreenWidth, ScreenWidth * 5 / 32) url:[dic strForKey:@"img"]];
         [view addSubview:imageView];
         
@@ -213,6 +221,7 @@
         DealView *dv = [[DealView alloc]initWithFrame:RECT(10 + (10 + width) * column, MaxY(label) + 10 + (10 + height) * row  , width, height)];
         dv.type = CellType_BuyOne;
         dv.info = [array objectAtIndex:i];
+        [dv addTarget:self action:@selector(viewClick:)];
         [view addSubview:dv];
         y = MaxY(dv);
     }
@@ -223,8 +232,8 @@
     view.frame = RECT(rect.origin.x, rect.origin.y, rect.size.width, MaxY(moreButton));
     
     NSArray *advs = [self.infos objectForKey:@"advert"];
-    if ([advs count] > 1) {
-        NSDictionary *dic = advs[1];
+    if ([advs count] > 2) {
+        NSDictionary *dic = advs[2];
         UIImageView *imageView = [self adverImageView:RECT(0, MaxY(moreButton), ScreenWidth, ScreenWidth * 5 / 32) url:[dic strForKey:@"img"]];
         [view addSubview:imageView];
         
@@ -244,10 +253,10 @@
     
     [view addline:CGPointMake(0, 30) color:nil];
     
-    UIView *notifyView =[self notifyView:RECT(0, MaxY(label), ScreenWidth, 72)];
+    UIView *notifyView =[self notifyView:RECT(0, MaxY(label) + 10, ScreenWidth, 30 * ScreenWidth  / 320)];
     [view addSubview:notifyView];
     
-    NSArray *array = [self.infos objectForKey:@"discount"];
+    NSArray *array = [self.infos objectForKey:@"bonded"];
     CGFloat width = ScreenWidth / 2 - 15;
     CGFloat height = 230;
     
@@ -260,6 +269,7 @@
         DealView *dv = [[DealView alloc]initWithFrame:RECT(10 + (10 + width) * column, MaxY(notifyView) + 10 + (10 + height) * row  , width, height)];
         dv.type = CellType_Bound;
         dv.info = [array objectAtIndex:i];
+        [dv addTarget:self action:@selector(viewClick:)];
         [view addSubview:dv];
         y = MaxY(dv);
     }
@@ -270,8 +280,8 @@
     view.frame = RECT(rect.origin.x, rect.origin.y, rect.size.width, MaxY(moreButton));
     
     NSArray *advs = [self.infos objectForKey:@"advert"];
-    if ([advs count] > 2) {
-        NSDictionary *dic = advs[2];
+    if ([advs count] > 0) {
+        NSDictionary *dic = advs[0];
         UIImageView *imageView = [self adverImageView:RECT(0, MaxY(moreButton), ScreenWidth, ScreenWidth * 5 / 32) url:[dic strForKey:@"img"]];
         [view addSubview:imageView];
         
@@ -283,29 +293,31 @@
     return view;
 }
 
--(UIView *)notifyView:(CGRect)rect{
-    UIView *view = [[UIView alloc]initWithFrame:rect];
-    view.backgroundColor = [UIColor whiteColor];
+-(UIImageView *)notifyView:(CGRect)rect{
+//    UIView *view = [[UIView alloc]initWithFrame:rect];
+//    view.backgroundColor = [UIColor whiteColor];
+//    
+//    CGFloat width = rect.size.width / 4;
+//    NSArray *titles = @[@"合法报关",@"检疫检验",@"保税仓直供",@"品质保证"];
+//    NSArray *imgs = @[@"bonded2",@"inspection",@"legal",@"security"];
+//    
+//    for (int i = 0 ; i < [titles count] ; i ++){
+//        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+//        imageView.center = CGPointMake(width * i + width / 2, rect.size.height / 2 - 5);
+//        imageView.image = IMAGE(imgs[i]);
+//        
+//        UILabel *label = [[UILabel alloc]initWithFrame:RECT(width * i, MaxY(imageView), width, 14)];
+//        label.textAlignment = NSTextAlignmentCenter;
+//        label.font = FontWS(12);
+//        
+//        label.text = titles[i];
+//        [view addSubview:imageView];
+//        [view addSubview:label];
+//    }
     
-    CGFloat width = rect.size.width / 4;
-    NSArray *titles = @[@"合法报关",@"检疫检验",@"保税仓直供",@"品质保证"];
-    NSArray *imgs = @[@"bonded2",@"inspection",@"legal",@"security"];
-    
-    for (int i = 0 ; i < [titles count] ; i ++){
-        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
-        imageView.center = CGPointMake(width * i + width / 2, rect.size.height / 2 - 5);
-        imageView.image = IMAGE(imgs[i]);
-        
-        UILabel *label = [[UILabel alloc]initWithFrame:RECT(width * i, MaxY(imageView), width, 14)];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = FontWS(12);
-        
-        label.text = titles[i];
-        [view addSubview:imageView];
-        [view addSubview:label];
-    }
-    
-    return view;
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
+    imageView.image = IMAGE(@"page1");
+    return imageView;
 }
 
 -(UIImageView *)adverImageView:(CGRect)rect url:(NSString *)url{

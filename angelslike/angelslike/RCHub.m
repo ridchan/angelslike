@@ -145,7 +145,7 @@
             CGPoint point = CGPointMake(width * (i + 1), bv.frame.size.height / 2);
             [pointsArr addObject:[NSValue valueWithCGPoint:point]];
         }
-        NSArray *colors = @[[UIColor redColor],[UIColor greenColor],[UIColor blueColor]];
+        NSArray *colors = @[[UIColor whiteColor],[UIColor whiteColor],[UIColor whiteColor]];
 
         
         CALayer *layer = [CALayer new];

@@ -56,9 +56,23 @@
         logo.image = IMAGE(@"deals");
         [self addSubview:logo];
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(viewClick:)];
+        [self addGestureRecognizer:tap];
+        
     }
     
     return self;
+}
+
+-(void)addTarget:(id)target action:(SEL)action{
+    tar = target;
+    act = action;
+}
+
+-(void)viewClick:(id)sender{
+    if ([tar respondsToSelector:act]) {
+        [tar performSelector:act withObject:_info];
+    }
 }
 
 -(void)setType:(CellType )type{
@@ -114,6 +128,14 @@
         NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:strPrice];
         [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor getHexColor:@"f0460e"] range:NSMakeRange(0, [price length])];
         priceLbl.attributedText = attrString;
+        
+        
+//        NSString *price2 = Format2(MoneySign, [_info strForKey:@"oldprice"]);
+//        NSString *strPrice2 = Format2(price2, @"含税");
+//        NSMutableAttributedString *attrString2 = [[NSMutableAttributedString alloc] initWithString:strPrice2];
+//        [attrString2 addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [price2 length])];
+//        lbl2.attributedText = attrString2;
+
         
     
         disLbl.text = @"保税品每人每天限购500元";

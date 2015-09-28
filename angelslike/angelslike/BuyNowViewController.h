@@ -14,12 +14,18 @@
 #import "PayCell.h"
 #import "MyAddressCell.h"
 #import "HerAddressCell.h"
-#import <AlipaySDK/AlipaySDK.h> 
+
+#import "PayView.h"
+#import "BuyView.h"
+#import "MyAddressView.h"
+#import "HerAddressView.h"
+
 
 @interface BuyNowViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
     AreaView *av;
     UILabel *totalLabel;
     NSUInteger addSelect;
+    UIScrollView *_scrollView;
 }
 
 

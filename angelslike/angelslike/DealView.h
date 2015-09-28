@@ -24,7 +24,13 @@ typedef enum {
     UILabel *lbl2;
     UILabel *disLbl;
     UILabel *stockLbl;
+    
+    id tar;
+    SEL act;
 }
+
+
+-(void)addTarget:(id)target action:(SEL)action;
 
 @property(nonatomic) CellType type;
 

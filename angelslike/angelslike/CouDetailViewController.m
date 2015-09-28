@@ -126,13 +126,6 @@
         _scrollView.contentSize = CGSizeMake(1, MaxY(mv));
     }
     
-    if ([object isKindOfClass:[UITableView class]]) {
-        CGPoint point = [[change objectForKey:@"new"] CGPointValue];
-        if (point.y < 0) {
-            _scrollView.scrollEnabled = YES;
-            vc1.view.userInteractionEnabled = NO;
-        }
-    }
 }
 
 

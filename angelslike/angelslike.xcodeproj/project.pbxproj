@@ -166,6 +166,12 @@
 		27E37AC81B94346A0038F8FB /* QtyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E37AC71B94346A0038F8FB /* QtyButton.m */; };
 		27E3B05C1B969BA200BA6254 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E3B05B1B969BA200BA6254 /* CircleButton.m */; };
 		27E3E4C71BB252D900FCF658 /* PayNowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E3E4C61BB252D900FCF658 /* PayNowViewController.m */; };
+		27E439051BB8D1B000E7E970 /* page1.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E439041BB8D1B000E7E970 /* page1.png */; settings = {ASSET_TAGS = (); }; };
+		27E439081BB8F4CD00E7E970 /* EditCouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E439071BB8F4CD00E7E970 /* EditCouViewController.m */; settings = {ASSET_TAGS = (); }; };
+		27E4390B1BB9341000E7E970 /* BuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4390A1BB9341000E7E970 /* BuyView.m */; settings = {ASSET_TAGS = (); }; };
+		27E4390E1BB9354300E7E970 /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4390D1BB9354300E7E970 /* PayView.m */; settings = {ASSET_TAGS = (); }; };
+		27E439111BB9464500E7E970 /* HerAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E439101BB9464500E7E970 /* HerAddressView.m */; settings = {ASSET_TAGS = (); }; };
+		27E439141BB9465E00E7E970 /* MyAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E439131BB9465E00E7E970 /* MyAddressView.m */; settings = {ASSET_TAGS = (); }; };
 		27E4515C1B8D5CE800547DAD /* AreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4515B1B8D5CE800547DAD /* AreaView.m */; };
 		27E4515F1B8D732100547DAD /* BuyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4515E1B8D732000547DAD /* BuyCell.m */; };
 		27E451621B8D733100547DAD /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E451611B8D733100547DAD /* AddressCell.m */; };
@@ -692,6 +698,17 @@
 		27E3B05B1B969BA200BA6254 /* CircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleButton.m; sourceTree = "<group>"; };
 		27E3E4C51BB252D900FCF658 /* PayNowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayNowViewController.h; sourceTree = "<group>"; };
 		27E3E4C61BB252D900FCF658 /* PayNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayNowViewController.m; sourceTree = "<group>"; };
+		27E439041BB8D1B000E7E970 /* page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page1.png; sourceTree = "<group>"; };
+		27E439061BB8F4CD00E7E970 /* EditCouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCouViewController.h; sourceTree = "<group>"; };
+		27E439071BB8F4CD00E7E970 /* EditCouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCouViewController.m; sourceTree = "<group>"; };
+		27E439091BB9341000E7E970 /* BuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyView.h; sourceTree = "<group>"; };
+		27E4390A1BB9341000E7E970 /* BuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyView.m; sourceTree = "<group>"; };
+		27E4390C1BB9354300E7E970 /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayView.h; sourceTree = "<group>"; };
+		27E4390D1BB9354300E7E970 /* PayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayView.m; sourceTree = "<group>"; };
+		27E4390F1BB9464500E7E970 /* HerAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerAddressView.h; sourceTree = "<group>"; };
+		27E439101BB9464500E7E970 /* HerAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HerAddressView.m; sourceTree = "<group>"; };
+		27E439121BB9465E00E7E970 /* MyAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddressView.h; sourceTree = "<group>"; };
+		27E439131BB9465E00E7E970 /* MyAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressView.m; sourceTree = "<group>"; };
 		27E4515A1B8D5CE800547DAD /* AreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaView.h; sourceTree = "<group>"; };
 		27E4515B1B8D5CE800547DAD /* AreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaView.m; sourceTree = "<group>"; };
 		27E4515D1B8D732000547DAD /* BuyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCell.h; sourceTree = "<group>"; };
@@ -1005,6 +1022,7 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				27E439041BB8D1B000E7E970 /* page1.png */,
 				27E34AE61BB3A38700944E52 /* buyone.png */,
 				27E34AE71BB3A38700944E52 /* deals.png */,
 				27E34AE41BB39E3E00944E52 /* bonded.png */,
@@ -1543,6 +1561,14 @@
 			children = (
 				2E3D95441B8CD5D600E69706 /* BuyNowViewController.h */,
 				2E3D95451B8CD5D600E69706 /* BuyNowViewController.m */,
+				27E4390F1BB9464500E7E970 /* HerAddressView.h */,
+				27E439101BB9464500E7E970 /* HerAddressView.m */,
+				27E439121BB9465E00E7E970 /* MyAddressView.h */,
+				27E439131BB9465E00E7E970 /* MyAddressView.m */,
+				27E439091BB9341000E7E970 /* BuyView.h */,
+				27E4390A1BB9341000E7E970 /* BuyView.m */,
+				27E4390C1BB9354300E7E970 /* PayView.h */,
+				27E4390D1BB9354300E7E970 /* PayView.m */,
 				27E4515A1B8D5CE800547DAD /* AreaView.h */,
 				27E4515B1B8D5CE800547DAD /* AreaView.m */,
 				27E451631B8DAC1F00547DAD /* PayCell.h */,
@@ -1582,6 +1608,8 @@
 				27E2AA051B9EC6F90046D28D /* OpenCell.m */,
 				27E2AA071B9EC7100046D28D /* MutileCopiesCell.h */,
 				27E2AA081B9EC7100046D28D /* MutileCopiesCell.m */,
+				27E439061BB8F4CD00E7E970 /* EditCouViewController.h */,
+				27E439071BB8F4CD00E7E970 /* EditCouViewController.m */,
 			);
 			name = "凑分子";
 			sourceTree = "<group>";
@@ -2080,6 +2108,7 @@
 				27E16BF81B9D8AAE00EE5259 /* pieceorder_check_press.png in Resources */,
 				27E6AE111B787F25008CE686 /* iconfont-shouji.png in Resources */,
 				27EFB2531B73970100A14872 /* jiage_01.png in Resources */,
+				27E439051BB8D1B000E7E970 /* page1.png in Resources */,
 				27F65D101B79DA6900EDE656 /* error.png in Resources */,
 				27E2A9FA1B9E8E1A0046D28D /* download.png in Resources */,
 				27EFB24B1B7396F600A14872 /* gexin_05.png in Resources */,
@@ -2199,6 +2228,7 @@
 				27F65D0A1B79A5E300EDE656 /* GuideViewController.m in Sources */,
 				27DD23D81B70514700C61546 /* AppDelegate.m in Sources */,
 				27E16C0F1B9D9AC500EE5259 /* CouMyQtyCell.m in Sources */,
+				27E4390E1BB9354300E7E970 /* PayView.m in Sources */,
 				27E16C031B9D997000EE5259 /* CouTitleCell.m in Sources */,
 				27E85B6F1BA7F8D200BE6077 /* MyWallentViewController.m in Sources */,
 				27E6AE041B785658008CE686 /* UIView+Hierarchy.m in Sources */,
@@ -2218,8 +2248,10 @@
 				272B6DAD1B709CF1006CCFE6 /* ImageScroller.m in Sources */,
 				27E3B05C1B969BA200BA6254 /* CircleButton.m in Sources */,
 				27E53EB71B8C3BE200A56D53 /* CommentViewController.m in Sources */,
+				27E439141BB9465E00E7E970 /* MyAddressView.m in Sources */,
 				27DD23D51B70514700C61546 /* main.m in Sources */,
 				27E6ADE51B7855EA008CE686 /* LoginViewController.m in Sources */,
+				27E439111BB9464500E7E970 /* HerAddressView.m in Sources */,
 				27DF594E1B8EAC4200E94B06 /* ThemeDetailViewController.m in Sources */,
 				27E0662F1B85DD4300D94803 /* MJRefreshConst.m in Sources */,
 				27E6AE011B785658008CE686 /* IQTitleBarButtonItem.m in Sources */,
@@ -2299,6 +2331,7 @@
 				27E85B751BA80B3600BE6077 /* PayRecordCell.m in Sources */,
 				27BA81791B71C6A6005B527B /* UIImage+GIF.m in Sources */,
 				27E0662C1B85DD4300D94803 /* MJRefreshNormalHeader.m in Sources */,
+				27E439081BB8F4CD00E7E970 /* EditCouViewController.m in Sources */,
 				27E95A121BA7B8B900D61AF6 /* SubCommentCell.m in Sources */,
 				27E3E4C71BB252D900FCF658 /* PayNowViewController.m in Sources */,
 				27E022AB1BA2B1420089D1CD /* Order.m in Sources */,
@@ -2320,6 +2353,7 @@
 				27BA81781B71C6A6005B527B /* UIButton+WebCache.m in Sources */,
 				27E00A011BABFA6000544B28 /* WeiXinPayObj.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
+				27E4390B1BB9341000E7E970 /* BuyView.m in Sources */,
 				27E089981B8FFF0F0090C724 /* BottomView.m in Sources */,
 				27F65CFC1B798D7C00EDE656 /* ProductlistViewController.m in Sources */,
 				27E451621B8D733100547DAD /* AddressCell.m in Sources */,
