@@ -111,6 +111,8 @@
 }
 
 -(void)showSelection:(NSArray *)arr picker:(PickerView *)pk{
+        
+    
     if (!popView)
         popView = [[SGPopSelectView alloc] init];
     popView.selections = arr;

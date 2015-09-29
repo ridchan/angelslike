@@ -203,6 +203,10 @@
 		27E6AE0F1B787C30008CE686 /* iconfont-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E6AE0D1B787C30008CE686 /* iconfont-user.png */; };
 		27E6AE111B787F25008CE686 /* iconfont-shouji.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E6AE101B787F25008CE686 /* iconfont-shouji.png */; };
 		27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E6AE131B78861C008CE686 /* RegisterViewController.m */; };
+		27E761101BBA3AE8007E3D1D /* BoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E7610F1BBA3AE8007E3D1D /* BoundView.m */; settings = {ASSET_TAGS = (); }; };
+		27E761131BBA8C5C007E3D1D /* AddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E761121BBA8C5C007E3D1D /* AddressView.m */; settings = {ASSET_TAGS = (); }; };
+		27E761151BBA936B007E3D1D /* giftCover.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E761141BBA936B007E3D1D /* giftCover.png */; settings = {ASSET_TAGS = (); }; };
+		27E761171BBA9C2E007E3D1D /* product-box.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E761161BBA9C2E007E3D1D /* product-box.png */; settings = {ASSET_TAGS = (); }; };
 		27E85B6F1BA7F8D200BE6077 /* MyWallentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E85B6E1BA7F8D200BE6077 /* MyWallentViewController.m */; };
 		27E85B721BA80A3000BE6077 /* PayRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E85B711BA80A3000BE6077 /* PayRecordsViewController.m */; };
 		27E85B751BA80B3600BE6077 /* PayRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E85B741BA80B3600BE6077 /* PayRecordCell.m */; };
@@ -766,6 +770,12 @@
 		27E6AE101B787F25008CE686 /* iconfont-shouji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-shouji.png"; sourceTree = "<group>"; };
 		27E6AE121B78861C008CE686 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		27E6AE131B78861C008CE686 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		27E7610E1BBA3AE8007E3D1D /* BoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundView.h; sourceTree = "<group>"; };
+		27E7610F1BBA3AE8007E3D1D /* BoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundView.m; sourceTree = "<group>"; };
+		27E761111BBA8C5C007E3D1D /* AddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressView.h; sourceTree = "<group>"; };
+		27E761121BBA8C5C007E3D1D /* AddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressView.m; sourceTree = "<group>"; };
+		27E761141BBA936B007E3D1D /* giftCover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = giftCover.png; sourceTree = "<group>"; };
+		27E761161BBA9C2E007E3D1D /* product-box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product-box.png"; sourceTree = "<group>"; };
 		27E85B6D1BA7F8D200BE6077 /* MyWallentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWallentViewController.h; sourceTree = "<group>"; };
 		27E85B6E1BA7F8D200BE6077 /* MyWallentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWallentViewController.m; sourceTree = "<group>"; };
 		27E85B701BA80A3000BE6077 /* PayRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayRecordsViewController.h; sourceTree = "<group>"; };
@@ -1022,6 +1032,8 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				27E761161BBA9C2E007E3D1D /* product-box.png */,
+				27E761141BBA936B007E3D1D /* giftCover.png */,
 				27E439041BB8D1B000E7E970 /* page1.png */,
 				27E34AE61BB3A38700944E52 /* buyone.png */,
 				27E34AE71BB3A38700944E52 /* deals.png */,
@@ -1565,10 +1577,14 @@
 				27E439101BB9464500E7E970 /* HerAddressView.m */,
 				27E439121BB9465E00E7E970 /* MyAddressView.h */,
 				27E439131BB9465E00E7E970 /* MyAddressView.m */,
+				27E761111BBA8C5C007E3D1D /* AddressView.h */,
+				27E761121BBA8C5C007E3D1D /* AddressView.m */,
 				27E439091BB9341000E7E970 /* BuyView.h */,
 				27E4390A1BB9341000E7E970 /* BuyView.m */,
 				27E4390C1BB9354300E7E970 /* PayView.h */,
 				27E4390D1BB9354300E7E970 /* PayView.m */,
+				27E7610E1BBA3AE8007E3D1D /* BoundView.h */,
+				27E7610F1BBA3AE8007E3D1D /* BoundView.m */,
 				27E4515A1B8D5CE800547DAD /* AreaView.h */,
 				27E4515B1B8D5CE800547DAD /* AreaView.m */,
 				27E451631B8DAC1F00547DAD /* PayCell.h */,
@@ -2122,6 +2138,7 @@
 				27EFB2461B7396F600A14872 /* gexin_00.png in Resources */,
 				27EFB2661B73970900A14872 /* pinglei_06.png in Resources */,
 				27EFB2621B73970900A14872 /* pinglei_02.png in Resources */,
+				27E761151BBA936B007E3D1D /* giftCover.png in Resources */,
 				27EFB23D1B7396E700A14872 /* changhe_04.png in Resources */,
 				27EFB2301B73966800A14872 /* duixiang_05.png in Resources */,
 				27EFB2391B7396E700A14872 /* changhe_00.png in Resources */,
@@ -2164,6 +2181,7 @@
 				27EFB2541B73970100A14872 /* jiage_02.png in Resources */,
 				27E34AE31BB3973000944E52 /* home-end-bg.png in Resources */,
 				27E85BAF1BA82BFF00BE6077 /* ShareSDKFlatShareViewUI.bundle in Resources */,
+				27E761171BBA9C2E007E3D1D /* product-box.png in Resources */,
 				27E0899E1B90012D0090C724 /* iconfont-fenxiang-r.png in Resources */,
 				27F337EB1BB3DC2100BF8AC4 /* security.png in Resources */,
 				27EFB2681B73970900A14872 /* pinglei_08.png in Resources */,
@@ -2284,6 +2302,7 @@
 				27E16BFB1B9D8E1200EE5259 /* StartCouViewViewController.m in Sources */,
 				27E0230D1BA2B4750089D1CD /* MD5DataSigner.m in Sources */,
 				274CD7AB1B95A081000125EB /* HerView.m in Sources */,
+				27E761101BBA3AE8007E3D1D /* BoundView.m in Sources */,
 				27E2AA031B9EC6B60046D28D /* ValDayCell.m in Sources */,
 				27E0662D1B85DD4300D94803 /* MJRefreshStateHeader.m in Sources */,
 				27BA81441B71B508005B527B /* UIImage+Color.m in Sources */,
@@ -2294,6 +2313,7 @@
 				27E065F21B85736400D94803 /* RCRefresher.m in Sources */,
 				27E0230A1BA2B4750089D1CD /* base64.m in Sources */,
 				27BA81491B71B671005B527B /* UIImage+RTTint.m in Sources */,
+				27E761131BBA8C5C007E3D1D /* AddressView.m in Sources */,
 				27BA81761B71C6A6005B527B /* SDWebImageManager.m in Sources */,
 				27E066221B85DD4300D94803 /* MJRefreshComponent.m in Sources */,
 				27E066261B85DD4300D94803 /* MJRefreshAutoNormalFooter.m in Sources */,

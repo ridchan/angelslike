@@ -37,6 +37,7 @@
         
         [self hideRealTabBar];
         tabbar = [[MainTabBar alloc]init];
+        [self.view addSubview:tabbar];
         tabbar.delegate = self;
 
         
@@ -64,7 +65,6 @@
     if (idx == 0) {
         [self bringCustomTabBarToFront];
     }else if (idx == 1){
-//        viewController.hidesBottomBarWhenPushed = YES;
         [self hideCustomTabBar];
     }
 }
@@ -87,7 +87,7 @@
         UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:lvc];
         [self presentViewController:nvc animated:YES completion:NULL];
         return NO;
-    }else if(index == 4 & [UserInfo shared].info == nil){
+    }else if((index == 4 | index == 2 ) && [UserInfo shared].info == nil){
         [self hideCustomTabBar];
         LoginViewController *lvc = [[LoginViewController alloc]init];
         lvc.bvc = self;

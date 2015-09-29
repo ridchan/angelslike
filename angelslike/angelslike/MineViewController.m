@@ -52,16 +52,17 @@
 
 -(void)myOrderClick:(id)order{
     OrderListViewController *vc = [[OrderListViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)settingClick:(id)sender{
     SettingViewController *vc = [[SettingViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)myCouClick:(id)sender{
-//    AddressViewController *vc = [[AddressViewController alloc] init];
     MyCouViewController *vc = [[MyCouViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     vc.ctype = CouViewTypeFromSetting;
@@ -77,12 +78,11 @@
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
     }
     if (sheetIndex < 0 | sheetIndex > 1 ) return;
-    [self hideTabBar];
+    
     UIImagePickerController *vc = [[UIImagePickerController alloc]init];
     vc.delegate = self;
     vc.sourceType = sheetIndex == 0?UIImagePickerControllerSourceTypePhotoLibrary:UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:vc animated:YES completion:NULL];
-    [self hideTabBar];
     
 }
 
@@ -94,14 +94,12 @@
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    [self showTabbar];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     UIImage *newImage = [self resizeImage:image];
     
-//    __block MineViewController *tempSelf = self;
     __block UIImageView *tempImg = userImg;
     [picker dismissViewControllerAnimated:YES completion:^{
         NSData *_data = UIImageJPEGRepresentation(newImage,1.0);
@@ -119,7 +117,6 @@
             
         } lock:YES];
     }];
-    [self showTabbar];
 }
 
 - (NSString*)encodeURL:(NSString *)string

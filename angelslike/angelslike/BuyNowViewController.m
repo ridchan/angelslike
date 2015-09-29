@@ -40,10 +40,10 @@
 //    [self.view addSubview:self.tableView];
     
     
-    _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight - 44)];
+    _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
     [self.view addSubview:_scrollView];
     
-    [self addBasicInfo];
+    
 //    self.adds = [NSMutableArray arrayWithArray:@[@"姓名",@"地址",@"详细地址",@"电话",@"备注"]];
     addSelect = -1;
     
@@ -51,6 +51,22 @@
     
     av = [[AreaView alloc]init];
     [self.view addSubview:av];
+    
+    
+    switch ([self.products[0] intForKey:@"show"]) {
+        case 0:
+        case 1:
+            [self addBasicInfo];
+            break;
+        case 2:
+            [self addBuyOneView];
+            break;
+        case 3:
+            [self addBoundView];
+            break;
+        default:
+            break;
+    }
     
 }
 
@@ -76,15 +92,204 @@
     [_scrollView addSubview:hv];
     _scrollView.contentSize = CGSizeMake(1, MaxY(hv));
     
+    
+    __block MyAddressView *tempMV = mv;
+    __block HerAddressView *tempHV = hv;
+    
     mv.block = ^(id obj){
         hv.bCheck = ![obj boolValue];
+        [UIView animateWithDuration:0.35 animations:^{
+            tempMV.frame = RECT(tempMV.frame.origin.x, tempMV.frame.origin.y, ScreenWidth, 220);
+            tempHV.frame = RECT(0, MaxY(tempMV), ScreenWidth, 80);
+            _scrollView.contentSize = CGSizeMake(1, MaxY(tempHV));
+            
+        }];
+
     };
+    
+    __block BuyNowViewController *tempSelf = self;
     hv.block = ^(id obj){
         mv.bCheck = ![obj boolValue];
+        
+        [UIView animateWithDuration:0.35 animations:^{
+            tempMV.frame = RECT(tempMV.frame.origin.x, tempMV.frame.origin.y, ScreenWidth, 44);
+            tempHV.frame = RECT(0, MaxY(tempMV), ScreenWidth, 80);
+            UIView *anView = [tempSelf animationView:RECT(0, MaxY(tempHV), ScreenWidth, 320)];
+            [_scrollView addSubview:anView];
+            _scrollView.contentSize = CGSizeMake(1, MaxY(anView));
+        }];
+
     };
-    
-    
 }
+
+
+-(UIView *)animationView:(CGRect)rect{
+    UIView *view = [[UIView alloc] initWithFrame:rect];
+    UILabel *label = [[UILabel alloc] initWithFrame:RECT(0, 0, rect.size.width, 44)];
+    label.backgroundColor = RGBA(241, 241, 247, 1.0);
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = @"收礼人收到的礼物是这样的,很贴心吧?";
+    [view addSubview:label];
+    
+
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:RECT((ScreenWidth - 250) / 2, 60, 250, 250)];
+    UIImageView *coverView = [[UIImageView alloc]initWithFrame:imageView.frame];
+    coverView.image =  IMAGE(@"giftCover");
+    UIImageView *borderView = [[UIImageView alloc]initWithFrame:imageView.frame];
+    borderView.image =  IMAGE(@"product-box");
+    
+    
+    [imageView setPreImageWithUrl:[self.products[0] strForKey:@"imgs"] block:^(id Obj) {
+        [coverView.layer addAnimation:[self animation] forKey:nil];
+    }];
+    
+    [view addSubview:imageView];
+    [view addSubview:borderView];
+    [view addSubview:coverView];
+    
+    return view;
+}
+
+
+-(CABasicAnimation *)animation{
+    CABasicAnimation *an = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
+    an.duration = 0.35;
+    //    an.fromValue = [];
+    an.toValue = [NSNumber numberWithInt:-100];
+    an.removedOnCompletion = YES;
+    an.autoreverses = YES;
+    an.fillMode = kCAFillModeForwards;
+    an.repeatCount = 9999;
+    return an;
+}
+
+//保税品
+
+-(void)addBoundView{
+    BuyView *bv = [[BuyView alloc]initWithFrame:RECT(0, 10, ScreenWidth, 90)];
+    bv.info = [self.products objectAtIndex:0];
+    [bv addObserver:self forKeyPath:@"info.qty" options:NSKeyValueObservingOptionNew context:nil];
+    [_scrollView addSubview:bv];
+    
+    UILabel *label1 = [self normalLabel:RECT(10, MaxY(bv), ScreenWidth - 20, 38) title:@"收货信息"];
+    [_scrollView addSubview:label1];
+    
+    UIView *notice = [self noticeView:RECT(0, MaxY(label1), ScreenWidth, 80) title:@"本品为海关监管保税品，合法报关享受免税，需验证客户真实身份信息。\n相关信息直接对接公安机关系统，严格加密，他人无法盗用，请您放心。"];
+    [notice addline:CGPointMake(0, 80) color:nil];
+
+    [_scrollView addSubview:notice];
+    
+    BoundView *bnv = [[BoundView alloc]initWithFrame:RECT(0, MaxY(notice), ScreenWidth, 210)];
+    [_scrollView addSubview:bnv];
+    
+    UILabel *label2 = [self normalLabel:RECT(10, MaxY(bnv), ScreenWidth - 20, 38) title:@"运费"];
+    [_scrollView addSubview:label2];
+    
+    UIView *postage = [self postageView:RECT(0, MaxY(label2), ScreenWidth, 44)];
+    [_scrollView addSubview:postage];
+    
+    
+    UILabel *label3 = [self normalLabel:RECT(10, MaxY(postage), ScreenWidth - 20, 38) title:@"支付方式"];
+    [_scrollView addSubview:label3];
+    
+    PayView *pv = [[PayView alloc]initWithFrame:RECT(0, MaxY(label3), ScreenWidth, 44)];
+    pv.selectIndex = 0;
+    [_scrollView addSubview:pv];
+    
+    _scrollView.contentSize = CGSizeMake(1, MaxY(pv));
+//    _scrollView.contentSize = CGSizeMake(1, MaxY(hv));
+}
+
+
+
+
+
+-(UIView *)noticeView:(CGRect)rect title:(NSString *)title{
+    UIView *view = [[UIView alloc]initWithFrame:rect];
+    view.backgroundColor = [UIColor whiteColor];
+    UILabel *notice = [[UILabel alloc]initWithFrame:RECT(10, 5, ScreenWidth - 20, rect.size.height - 10)];
+    notice.numberOfLines = 10;
+    notice.font = FontWS(11);
+    notice.textColor = HexColor(@"ff6969");
+    notice.text = title;
+    [view addSubview:notice];
+    return view;
+}
+
+-(UIView *)postageView:(CGRect)rect{
+    UIView *view = [[UIView alloc]initWithFrame:rect];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:RECT(10, 0, ScreenWidth - 20, rect.size.height)];
+    
+    NSString *price = Format2(MoneySign, @"8.00");
+    NSMutableAttributedString *att = [[NSMutableAttributedString alloc]initWithString:price];
+    [att addAttribute:NSForegroundColorAttributeName value:HexColor(@"ff6969") range:NSMakeRange(1, 4)];
+    label.attributedText = att;
+    
+    [view addSubview:label];
+    return view;
+}
+
+
+//买一送一
+
+-(void)addBuyOneView{
+    BuyView *bv = [[BuyView alloc]initWithFrame:RECT(0, 10, ScreenWidth, 90)];
+    bv.info = [self.products objectAtIndex:0];
+    [bv addObserver:self forKeyPath:@"info.qty" options:NSKeyValueObservingOptionNew context:nil];
+    [_scrollView addSubview:bv];
+    
+    
+    
+    UILabel *label1 = [self normalLabel:RECT(10, MaxY(bv), ScreenWidth - 20, 38) title:@"支付方式"];
+    [_scrollView addSubview:label1];
+    
+    PayView *pv = [[PayView alloc]initWithFrame:RECT(0, MaxY(label1), ScreenWidth, 44)];
+    pv.selectIndex = 0;
+    [_scrollView addSubview:pv];
+    
+    
+    UILabel *label2 = [self normalLabel:RECT(10, MaxY(pv), ScreenWidth - 20, 38) title:@"填写收货信息"];
+    [_scrollView addSubview:label2];
+    
+    AddressView *adv = [[AddressView alloc]initWithFrame:RECT(0, MaxY(label2), ScreenWidth, 180)];
+    [_scrollView addSubview:adv];
+    
+    UIView *notice = [self noticeView:RECT(0, MaxY(adv), ScreenWidth, 44) title:@"付款后把收礼物页面发送给你的闺蜜，让Ta填上收货信息，才能完成此订单。"];
+    [notice addline:CGPointMake(0, 0) color:nil];
+    [_scrollView addSubview:notice];
+    
+
+    
+    UILabel *label3 = [self normalLabel:RECT(10, MaxY(notice), ScreenWidth - 20, 38) title:@"给客服留言"];
+    [_scrollView addSubview:label3];
+    
+    UIView *remark = [self customerTextView:RECT(0, MaxY(label3), ScreenWidth, 95)];
+    [_scrollView addSubview:remark];
+    
+    
+
+    
+    _scrollView.contentSize = CGSizeMake(1, MaxY(remark));
+    //    _scrollView.contentSize = CGSizeMake(1, MaxY(hv));
+}
+
+-(UIView *)customerTextView:(CGRect)rect{
+    UIView *view = [[UIView alloc]initWithFrame:rect];
+    view.backgroundColor = [UIColor whiteColor];
+    UITextView *textView = [[UITextView alloc]initWithFrame:RECT(10, 5, rect.size.width - 20, rect.size.height - 10)];
+    textView.backgroundColor = RGBA(247, 247, 247, 1);
+    textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    textView.layer.borderWidth = 1.0;
+    textView.layer.cornerRadius = 5;
+    textView.layer.masksToBounds = YES;
+    [view addSubview:textView];
+    return view;
+}
+
+
+///
 
 -(UILabel *)normalLabel:(CGRect)rect title:(NSString *)title{
     UILabel *label = [[UILabel alloc]initWithFrame:rect];

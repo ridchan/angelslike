@@ -70,6 +70,7 @@
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(move:) name:@"MoveMoveMove" object:nil];
+    
 //    [vc1.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     
 }

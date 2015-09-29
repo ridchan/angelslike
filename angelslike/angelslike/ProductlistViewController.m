@@ -163,7 +163,8 @@
 #pragma mark- Source Delegate
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if( scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height - 20))){
+
+    if([self checkScrollView:scrollView]){
         if (page < totalPage & bloading  == NO) {
             bloading = YES;
             [self.info setObject:[NSString stringWithFormat:@"%ld",(long)page + 1] forKey:@"page"];

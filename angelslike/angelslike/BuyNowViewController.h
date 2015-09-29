@@ -19,6 +19,8 @@
 #import "BuyView.h"
 #import "MyAddressView.h"
 #import "HerAddressView.h"
+#import "BoundView.h"
+#import "AddressView.h"
 
 
 @interface BuyNowViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{

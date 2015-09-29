@@ -199,7 +199,7 @@
         cell = [[CategoryCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         cell.backgroundColor =  [UIColor clearColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        cell.title = [[self.infos allKeys] objectAtIndex:indexPath.row];
+        cell.title = [@[@"品类",@"场合",@"价格"] objectAtIndex:indexPath.row];
         cell.buttonInfos = [self.infos objectForKey:cell.title];
         cell.delegate = self;
     }

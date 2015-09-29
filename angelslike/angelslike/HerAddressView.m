@@ -16,6 +16,7 @@
         //
         self.backgroundColor = [UIColor whiteColor];
         cb = [[CheckButton alloc]initWithFrame:RECT(10, 8, 30, 30)];
+        cb.canUnselected = NO;
         cb.userInteractionEnabled = NO;
         [self addSubview:cb];
         
@@ -40,15 +41,16 @@
 }
 
 -(void)viewTap:(id)obj{
+    if (!cb.canUnselected & _bCheck) return;
     [self setBCheck:!_bCheck];
+    if (_block) {
+        _block([NSNumber numberWithBool:_bCheck]);
+    }
 }
 
 -(void)setBCheck:(BOOL)bCheck{
     _bCheck = bCheck;
     cb.selected = _bCheck;
-    if (_block) {
-        _block([NSNumber numberWithBool:bCheck]);
-    }
 }
 
 @end
