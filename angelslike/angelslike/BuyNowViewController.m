@@ -138,9 +138,10 @@
     UIImageView *borderView = [[UIImageView alloc]initWithFrame:imageView.frame];
     borderView.image =  IMAGE(@"product-box");
     
+    [coverView.layer addAnimation:[self animation] forKey:nil];
     
     [imageView setPreImageWithUrl:[self.products[0] strForKey:@"imgs"] block:^(id Obj) {
-        [coverView.layer addAnimation:[self animation] forKey:nil];
+        
     }];
     
     [view addSubview:imageView];
