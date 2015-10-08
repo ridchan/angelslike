@@ -104,16 +104,18 @@
             scroller.infos = [tempSelf.infos objectForKey:@"slider"];
             [scroller startDownload];
             
-            UIView *sv = [tempSelf bondedView:RECT(0, MaxY(banner), ScreenWidth, 800)];
-            [_scrollView addSubview:sv];
-            UIView *dv = [tempSelf dealView:RECT(0, MaxY(sv), ScreenWidth, 800)];
+            
+        
+            UIView *dv = [tempSelf dealView:RECT(0, MaxY(banner), ScreenWidth, 800)];
             [_scrollView addSubview:dv];
             UIView *bv = [tempSelf buyOneView:RECT(0, MaxY(dv), ScreenWidth, 800)];
             [_scrollView addSubview:bv];
+            UIView *sv = [tempSelf bondedView:RECT(0, MaxY(bv), ScreenWidth, 800)];
+            [_scrollView addSubview:sv];
 
             
             
-            UIImageView *imageView = [[UIImageView alloc]initWithFrame:RECT(0, MaxY(bv) + 10, ScreenWidth, ScreenWidth * 57 / 320)];
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:RECT(0, MaxY(sv) + 10, ScreenWidth, ScreenWidth * 57 / 320)];
             imageView.image = IMAGE(@"home-end-bg");
             [_scrollView addSubview:imageView];
             _scrollView.contentSize = CGSizeMake(1, MaxY(imageView));
@@ -164,13 +166,11 @@
     [view addline:CGPointMake(0, 30) color:nil];
     
     NSArray *array = [self.infos objectForKey:@"discount"];
-    CGFloat width = ScreenWidth / 2 - 15;
-    CGFloat height = 230;
-    CGFloat y = 0;
+    CGFloat width = ScreenWidth  ;
+    CGFloat height = 200;
+    CGFloat y = MaxY(label) + 5;
     for (int i = 0 ; i < [array count] ; i ++ ){
-        int row = floorf(i / 2);
-        int column = i  - row * 2;
-        DealView *dv = [[DealView alloc]initWithFrame:RECT(10 + (10 + width) * column, MaxY(label) + 10 + (10 + height) * row  , width, height)];
+        DealView *dv = [[DealView alloc]initWithFrame:RECT(0, y + 5  , width, height)];
         dv.type = CellType_Deal;
         dv.info = [array objectAtIndex:i];
         [dv addTarget:self action:@selector(viewClick:)];
@@ -253,7 +253,7 @@
     
     [view addline:CGPointMake(0, 30) color:nil];
     
-    UIView *notifyView =[self notifyView:RECT(0, MaxY(label) + 10, ScreenWidth, 30 * ScreenWidth  / 320)];
+    UIView *notifyView =[self notifyView:RECT(0, MaxY(label) + 10, ScreenWidth, 19 * ScreenWidth  / 320)];
     [view addSubview:notifyView];
     
     NSArray *array = [self.infos objectForKey:@"bonded"];

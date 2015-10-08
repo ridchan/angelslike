@@ -28,6 +28,7 @@
     UILabel *totalLabel;
     NSUInteger addSelect;
     UIScrollView *_scrollView;
+    __block UIImageView *tempCover ;
 }
 
 

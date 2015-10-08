@@ -14,6 +14,7 @@
 
 @implementation BuyNowViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -99,6 +100,8 @@
     mv.block = ^(id obj){
         hv.bCheck = ![obj boolValue];
         [UIView animateWithDuration:0.35 animations:^{
+            [[self.view viewWithTag:9099] removeFromSuperview];
+            tempCover = nil;
             tempMV.frame = RECT(tempMV.frame.origin.x, tempMV.frame.origin.y, ScreenWidth, 220);
             tempHV.frame = RECT(0, MaxY(tempMV), ScreenWidth, 80);
             _scrollView.contentSize = CGSizeMake(1, MaxY(tempHV));
@@ -110,15 +113,14 @@
     __block BuyNowViewController *tempSelf = self;
     hv.block = ^(id obj){
         mv.bCheck = ![obj boolValue];
-        
-        [UIView animateWithDuration:0.35 animations:^{
-            tempMV.frame = RECT(tempMV.frame.origin.x, tempMV.frame.origin.y, ScreenWidth, 44);
-            tempHV.frame = RECT(0, MaxY(tempMV), ScreenWidth, 80);
-            UIView *anView = [tempSelf animationView:RECT(0, MaxY(tempHV), ScreenWidth, 320)];
-            [_scrollView addSubview:anView];
-            _scrollView.contentSize = CGSizeMake(1, MaxY(anView));
-        }];
-
+        tempMV.frame = RECT(tempMV.frame.origin.x, tempMV.frame.origin.y, ScreenWidth, 44);
+        tempHV.frame = RECT(0, MaxY(tempMV), ScreenWidth, 80);
+        UIView *anView = [tempSelf animationView:RECT(0, MaxY(tempHV), ScreenWidth, 320)];
+        anView.tag = 9099;
+        _scrollView.contentSize = CGSizeMake(1, MaxY(anView));
+        [_scrollView scrollRectToVisible:RECT(0, MaxY(anView), ScreenWidth, 1) animated:NO];
+        [_scrollView addSubview:anView];
+        [anView.layer addAnimation:[tempSelf animation] forKey:nil];
     };
 }
 
@@ -131,37 +133,64 @@
     label.text = @"收礼人收到的礼物是这样的,很贴心吧?";
     [view addSubview:label];
     
-
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:RECT((ScreenWidth - 250) / 2, 60, 250, 250)];
+    UIView *scaleView = [[UIView alloc]initWithFrame:RECT((ScreenWidth - 250) / 2, 60, 250, 250)];
+    
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:RECT(0, 0, 250, 250)];
     UIImageView *coverView = [[UIImageView alloc]initWithFrame:imageView.frame];
     coverView.image =  IMAGE(@"giftCover");
     UIImageView *borderView = [[UIImageView alloc]initWithFrame:imageView.frame];
     borderView.image =  IMAGE(@"product-box");
     
-    [coverView.layer addAnimation:[self animation] forKey:nil];
+    [scaleView addSubview:imageView];
+    [scaleView addSubview:borderView];
+    [scaleView addSubview:coverView];
     
+    [view addSubview:scaleView];
+    
+    tempCover = coverView;
+
     [imageView setPreImageWithUrl:[self.products[0] strForKey:@"imgs"] block:^(id Obj) {
         
     }];
     
-    [view addSubview:imageView];
-    [view addSubview:borderView];
-    [view addSubview:coverView];
-    
     return view;
 }
 
+-(void)runViewAnimation{
+    if (tempCover == nil) return;
+    __block BuyNowViewController *tempSelf = self;
+    [UIView animateWithDuration:1.5 animations:^{
+        tempCover.center = CGPointMake(tempCover.center.x - 200, tempCover.center.y);
+        tempCover.alpha = 0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:1.0 animations:^{
+            tempCover.center = CGPointMake(tempCover.center.x + 200, tempCover.center.y);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.7 animations:^{
+                tempCover.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                [tempSelf runViewAnimation];
+            }];
+        }];
+    }];
+
+}
 
 -(CABasicAnimation *)animation{
-    CABasicAnimation *an = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
+    CABasicAnimation *an = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     an.duration = 0.35;
-    //    an.fromValue = [];
-    an.toValue = [NSNumber numberWithInt:-100];
+    an.fromValue = [NSNumber numberWithFloat:0.5];
+    an.toValue = [NSNumber numberWithFloat:1.0];
     an.removedOnCompletion = YES;
-    an.autoreverses = YES;
+    an.delegate = self;
     an.fillMode = kCAFillModeForwards;
-    an.repeatCount = 9999;
     return an;
+}
+
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    if (flag) {
+        [self runViewAnimation];
+    }
 }
 
 //保税品

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		271773271BC618A60098B4DC /* page1.png in Resources */ = {isa = PBXBuildFile; fileRef = 271773261BC618A60098B4DC /* page1.png */; settings = {ASSET_TAGS = (); }; };
 		272B6DAD1B709CF1006CCFE6 /* ImageScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B6DAC1B709CF1006CCFE6 /* ImageScroller.m */; };
 		272B6DB01B70A73F006CCFE6 /* UIImageView+NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B6DAF1B70A73F006CCFE6 /* UIImageView+NetWork.m */; };
 		274CD7A01B95973E000125EB /* sendmy.png in Resources */ = {isa = PBXBuildFile; fileRef = 274CD79E1B95973E000125EB /* sendmy.png */; };
@@ -166,7 +167,6 @@
 		27E37AC81B94346A0038F8FB /* QtyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E37AC71B94346A0038F8FB /* QtyButton.m */; };
 		27E3B05C1B969BA200BA6254 /* CircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E3B05B1B969BA200BA6254 /* CircleButton.m */; };
 		27E3E4C71BB252D900FCF658 /* PayNowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E3E4C61BB252D900FCF658 /* PayNowViewController.m */; };
-		27E439051BB8D1B000E7E970 /* page1.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E439041BB8D1B000E7E970 /* page1.png */; settings = {ASSET_TAGS = (); }; };
 		27E439081BB8F4CD00E7E970 /* EditCouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E439071BB8F4CD00E7E970 /* EditCouViewController.m */; settings = {ASSET_TAGS = (); }; };
 		27E4390B1BB9341000E7E970 /* BuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4390A1BB9341000E7E970 /* BuyView.m */; settings = {ASSET_TAGS = (); }; };
 		27E4390E1BB9354300E7E970 /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E4390D1BB9354300E7E970 /* PayView.m */; settings = {ASSET_TAGS = (); }; };
@@ -350,6 +350,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		271773261BC618A60098B4DC /* page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page1.png; sourceTree = "<group>"; };
 		272B6DAB1B709CF0006CCFE6 /* ImageScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScroller.h; sourceTree = "<group>"; };
 		272B6DAC1B709CF1006CCFE6 /* ImageScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScroller.m; sourceTree = "<group>"; };
 		272B6DAE1B70A73F006CCFE6 /* UIImageView+NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NetWork.h"; sourceTree = "<group>"; };
@@ -702,7 +703,6 @@
 		27E3B05B1B969BA200BA6254 /* CircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleButton.m; sourceTree = "<group>"; };
 		27E3E4C51BB252D900FCF658 /* PayNowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayNowViewController.h; sourceTree = "<group>"; };
 		27E3E4C61BB252D900FCF658 /* PayNowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayNowViewController.m; sourceTree = "<group>"; };
-		27E439041BB8D1B000E7E970 /* page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page1.png; sourceTree = "<group>"; };
 		27E439061BB8F4CD00E7E970 /* EditCouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCouViewController.h; sourceTree = "<group>"; };
 		27E439071BB8F4CD00E7E970 /* EditCouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCouViewController.m; sourceTree = "<group>"; };
 		27E439091BB9341000E7E970 /* BuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyView.h; sourceTree = "<group>"; };
@@ -1032,9 +1032,9 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				271773261BC618A60098B4DC /* page1.png */,
 				27E761161BBA9C2E007E3D1D /* product-box.png */,
 				27E761141BBA936B007E3D1D /* giftCover.png */,
-				27E439041BB8D1B000E7E970 /* page1.png */,
 				27E34AE61BB3A38700944E52 /* buyone.png */,
 				27E34AE71BB3A38700944E52 /* deals.png */,
 				27E34AE41BB39E3E00944E52 /* bonded.png */,
@@ -2094,6 +2094,7 @@
 			files = (
 				27EA9A0E1B731AE7003559C0 /* iconfont-houtui.png in Resources */,
 				27EFB2551B73970100A14872 /* jiage_03.png in Resources */,
+				271773271BC618A60098B4DC /* page1.png in Resources */,
 				27E0FA301B9C2E0400F1F8EB /* iconfont-dianzan.png in Resources */,
 				27BA813B1B71AADF005B527B /* iconfont-shouye.png in Resources */,
 				27EFB23C1B7396E700A14872 /* changhe_03.png in Resources */,
@@ -2124,7 +2125,6 @@
 				27E16BF81B9D8AAE00EE5259 /* pieceorder_check_press.png in Resources */,
 				27E6AE111B787F25008CE686 /* iconfont-shouji.png in Resources */,
 				27EFB2531B73970100A14872 /* jiage_01.png in Resources */,
-				27E439051BB8D1B000E7E970 /* page1.png in Resources */,
 				27F65D101B79DA6900EDE656 /* error.png in Resources */,
 				27E2A9FA1B9E8E1A0046D28D /* download.png in Resources */,
 				27EFB24B1B7396F600A14872 /* gexin_05.png in Resources */,

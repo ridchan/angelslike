@@ -10,13 +10,18 @@
 #import "PickerView.h"
 #import "NetWork.h"
 #import "SGPopSelectView.h"
-@interface MutilePickerView : UIView{
+#import "objc/runtime.h"
+
+@interface MutilePickerView : UIView<UITableViewDataSource,UITableViewDelegate>{
     SGPopSelectView *popView;
+    UITableView *_tableView;
+    UIView *_tbView;
 }
 
 
 @property(nonatomic,strong) NSArray *items; //初始化选择
 @property(nonatomic,strong) NSArray *keys;
 @property(nonatomic,strong) NSMutableDictionary *result;//选择结果
+
 
 @end
