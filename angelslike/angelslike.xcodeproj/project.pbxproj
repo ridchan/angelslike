@@ -10,6 +10,14 @@
 		271773271BC618A60098B4DC /* page1.png in Resources */ = {isa = PBXBuildFile; fileRef = 271773261BC618A60098B4DC /* page1.png */; settings = {ASSET_TAGS = (); }; };
 		272B6DAD1B709CF1006CCFE6 /* ImageScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B6DAC1B709CF1006CCFE6 /* ImageScroller.m */; };
 		272B6DB01B70A73F006CCFE6 /* UIImageView+NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B6DAF1B70A73F006CCFE6 /* UIImageView+NetWork.m */; };
+		273ADCD31BC75CB000006230 /* BoundCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCD21BC75CB000006230 /* BoundCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		273ADCD61BC75D2B00006230 /* BoundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCD51BC75D2B00006230 /* BoundsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		273ADCD91BC767C600006230 /* BuyOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCD81BC767C600006230 /* BuyOneViewController.m */; settings = {ASSET_TAGS = (); }; };
+		273ADCDD1BC76CF000006230 /* BuyOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCDC1BC76CF000006230 /* BuyOneCell.m */; settings = {ASSET_TAGS = (); }; };
+		273ADCE01BC7948900006230 /* BuyOneDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCDF1BC7948900006230 /* BuyOneDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		273ADCE31BC7956E00006230 /* RCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCE21BC7956E00006230 /* RCButton.m */; settings = {ASSET_TAGS = (); }; };
+		273ADCE61BC79F9A00006230 /* RCWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCE51BC79F9A00006230 /* RCWebView.m */; settings = {ASSET_TAGS = (); }; };
+		273ADCE91BC7A5AE00006230 /* BuyOneDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCE81BC7A5AE00006230 /* BuyOneDetailView.m */; settings = {ASSET_TAGS = (); }; };
 		274CD7A01B95973E000125EB /* sendmy.png in Resources */ = {isa = PBXBuildFile; fileRef = 274CD79E1B95973E000125EB /* sendmy.png */; };
 		274CD7A11B95973E000125EB /* sendta.png in Resources */ = {isa = PBXBuildFile; fileRef = 274CD79F1B95973E000125EB /* sendta.png */; };
 		274CD7A51B959B2B000125EB /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CD7A41B959B2B000125EB /* AddressViewController.m */; };
@@ -355,6 +363,22 @@
 		272B6DAC1B709CF1006CCFE6 /* ImageScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScroller.m; sourceTree = "<group>"; };
 		272B6DAE1B70A73F006CCFE6 /* UIImageView+NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NetWork.h"; sourceTree = "<group>"; };
 		272B6DAF1B70A73F006CCFE6 /* UIImageView+NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+NetWork.m"; sourceTree = "<group>"; };
+		273ADCD11BC75CB000006230 /* BoundCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundCollectionViewCell.h; sourceTree = "<group>"; };
+		273ADCD21BC75CB000006230 /* BoundCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundCollectionViewCell.m; sourceTree = "<group>"; };
+		273ADCD41BC75D2B00006230 /* BoundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundsViewController.h; sourceTree = "<group>"; };
+		273ADCD51BC75D2B00006230 /* BoundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundsViewController.m; sourceTree = "<group>"; };
+		273ADCD71BC767C600006230 /* BuyOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyOneViewController.h; sourceTree = "<group>"; };
+		273ADCD81BC767C600006230 /* BuyOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyOneViewController.m; sourceTree = "<group>"; };
+		273ADCDB1BC76CF000006230 /* BuyOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyOneCell.h; sourceTree = "<group>"; };
+		273ADCDC1BC76CF000006230 /* BuyOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyOneCell.m; sourceTree = "<group>"; };
+		273ADCDE1BC7948900006230 /* BuyOneDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyOneDetailViewController.h; sourceTree = "<group>"; };
+		273ADCDF1BC7948900006230 /* BuyOneDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyOneDetailViewController.m; sourceTree = "<group>"; };
+		273ADCE11BC7956E00006230 /* RCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCButton.h; sourceTree = "<group>"; };
+		273ADCE21BC7956E00006230 /* RCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCButton.m; sourceTree = "<group>"; };
+		273ADCE41BC79F9A00006230 /* RCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCWebView.h; sourceTree = "<group>"; };
+		273ADCE51BC79F9A00006230 /* RCWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCWebView.m; sourceTree = "<group>"; };
+		273ADCE71BC7A5AE00006230 /* BuyOneDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyOneDetailView.h; sourceTree = "<group>"; };
+		273ADCE81BC7A5AE00006230 /* BuyOneDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyOneDetailView.m; sourceTree = "<group>"; };
 		274CD79E1B95973E000125EB /* sendmy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendmy.png; sourceTree = "<group>"; };
 		274CD79F1B95973E000125EB /* sendta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendta.png; sourceTree = "<group>"; };
 		274CD7A31B959B2B000125EB /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
@@ -1243,6 +1267,18 @@
 				27DD24031B705C8400C61546 /* MainCell.m */,
 				27DD23F91B70565700C61546 /* MainViewController.h */,
 				27DD23FA1B70565700C61546 /* MainViewController.m */,
+				273ADCD41BC75D2B00006230 /* BoundsViewController.h */,
+				273ADCD51BC75D2B00006230 /* BoundsViewController.m */,
+				273ADCD11BC75CB000006230 /* BoundCollectionViewCell.h */,
+				273ADCD21BC75CB000006230 /* BoundCollectionViewCell.m */,
+				273ADCD71BC767C600006230 /* BuyOneViewController.h */,
+				273ADCD81BC767C600006230 /* BuyOneViewController.m */,
+				273ADCDB1BC76CF000006230 /* BuyOneCell.h */,
+				273ADCDC1BC76CF000006230 /* BuyOneCell.m */,
+				273ADCDE1BC7948900006230 /* BuyOneDetailViewController.h */,
+				273ADCDF1BC7948900006230 /* BuyOneDetailViewController.m */,
+				273ADCE71BC7A5AE00006230 /* BuyOneDetailView.h */,
+				273ADCE81BC7A5AE00006230 /* BuyOneDetailView.m */,
 				27E34AEA1BB3A41D00944E52 /* DealView.h */,
 				27E34AEB1BB3A41D00944E52 /* DealView.m */,
 				27E34AED1BB3B3F200944E52 /* BuyOneView.h */,
@@ -1314,6 +1350,10 @@
 				27E213141BA01757008888BA /* PickerView.m */,
 				27E106DF1BA18DE600FB6318 /* AnswerView.h */,
 				27E106E01BA18DE600FB6318 /* AnswerView.m */,
+				273ADCE11BC7956E00006230 /* RCButton.h */,
+				273ADCE21BC7956E00006230 /* RCButton.m */,
+				273ADCE41BC79F9A00006230 /* RCWebView.h */,
+				273ADCE51BC79F9A00006230 /* RCWebView.m */,
 			);
 			name = "自定义控件";
 			sourceTree = "<group>";
@@ -2233,6 +2273,7 @@
 				27E4515C1B8D5CE800547DAD /* AreaView.m in Sources */,
 				27BA817B1B71C6A6005B527B /* UIImage+WebP.m in Sources */,
 				27EED2661B7480C2009F2DD2 /* MineCell.m in Sources */,
+				273ADCE91BC7A5AE00006230 /* BuyOneDetailView.m in Sources */,
 				27E37AC81B94346A0038F8FB /* QtyButton.m in Sources */,
 				27EFB2151B73518D00A14872 /* MXPullDownMenu.m in Sources */,
 				27EAFA991B7B033400DF60E9 /* UserInfoCell.m in Sources */,
@@ -2263,6 +2304,7 @@
 				27E022AA1BA2B1420089D1CD /* APAuthV2Info.m in Sources */,
 				27E0017A1BA9510E00CFF4DB /* EditInfoViewController.m in Sources */,
 				27E066211B85DD4300D94803 /* MJRefreshBackFooter.m in Sources */,
+				273ADCE31BC7956E00006230 /* RCButton.m in Sources */,
 				272B6DAD1B709CF1006CCFE6 /* ImageScroller.m in Sources */,
 				27E3B05C1B969BA200BA6254 /* CircleButton.m in Sources */,
 				27E53EB71B8C3BE200A56D53 /* CommentViewController.m in Sources */,
@@ -2299,6 +2341,7 @@
 				2E7A78BF1B77CA65004A58AB /* RMDownloadIndicator.m in Sources */,
 				27E16C091B9D999100EE5259 /* CouImageCell.m in Sources */,
 				27E6AE051B785658008CE686 /* UIView+IQKeyboardToolbar.m in Sources */,
+				273ADCD91BC767C600006230 /* BuyOneViewController.m in Sources */,
 				27E16BFB1B9D8E1200EE5259 /* StartCouViewViewController.m in Sources */,
 				27E0230D1BA2B4750089D1CD /* MD5DataSigner.m in Sources */,
 				274CD7AB1B95A081000125EB /* HerView.m in Sources */,
@@ -2315,6 +2358,7 @@
 				27BA81491B71B671005B527B /* UIImage+RTTint.m in Sources */,
 				27E761131BBA8C5C007E3D1D /* AddressView.m in Sources */,
 				27BA81761B71C6A6005B527B /* SDWebImageManager.m in Sources */,
+				273ADCE01BC7948900006230 /* BuyOneDetailViewController.m in Sources */,
 				27E066221B85DD4300D94803 /* MJRefreshComponent.m in Sources */,
 				27E066261B85DD4300D94803 /* MJRefreshAutoNormalFooter.m in Sources */,
 				27E4516C1B8DD37800547DAD /* AbountUsViewController.m in Sources */,
@@ -2344,6 +2388,7 @@
 				27E00A041BABFA6900544B28 /* AliPayObj.m in Sources */,
 				27E85B721BA80A3000BE6077 /* PayRecordsViewController.m in Sources */,
 				27EA9A111B733208003559C0 /* DropDownList.m in Sources */,
+				273ADCE61BC79F9A00006230 /* RCWebView.m in Sources */,
 				27E6ADFF1B785658008CE686 /* IQSegmentedNextPrevious.m in Sources */,
 				27EAFA961B7AFBC200DF60E9 /* RCHub.m in Sources */,
 				27E066281B85DD4300D94803 /* MJRefreshBackGifFooter.m in Sources */,
@@ -2360,6 +2405,7 @@
 				27DF595E1B8EF5B400E94B06 /* UILabel+Resize.m in Sources */,
 				2E7A78BE1B77CA65004A58AB /* RMDisplayLabel.m in Sources */,
 				27DD23FB1B70565700C61546 /* MainViewController.m in Sources */,
+				273ADCDD1BC76CF000006230 /* BuyOneCell.m in Sources */,
 				27E0230E1BA2B4750089D1CD /* NSDataEx.m in Sources */,
 				27E106E11BA18DE600FB6318 /* AnswerView.m in Sources */,
 				27BA81771B71C6A6005B527B /* SDWebImagePrefetcher.m in Sources */,
@@ -2372,6 +2418,7 @@
 				27E37AC51B9431990038F8FB /* CheckButton.m in Sources */,
 				27BA81781B71C6A6005B527B /* UIButton+WebCache.m in Sources */,
 				27E00A011BABFA6000544B28 /* WeiXinPayObj.m in Sources */,
+				273ADCD31BC75CB000006230 /* BoundCollectionViewCell.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
 				27E4390B1BB9341000E7E970 /* BuyView.m in Sources */,
 				27E089981B8FFF0F0090C724 /* BottomView.m in Sources */,
@@ -2384,6 +2431,7 @@
 				2E5AB33C1B726D7300E65D5D /* TabBarViewController.m in Sources */,
 				27E170F61BAFAFA800386B46 /* StartViewController.m in Sources */,
 				27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */,
+				273ADCD61BC75D2B00006230 /* BoundsViewController.m in Sources */,
 				27E2131B1BA03BE6008888BA /* OrderViewCell.m in Sources */,
 				27E0230C1BA2B4750089D1CD /* DataVerifier.m in Sources */,
 				27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */,

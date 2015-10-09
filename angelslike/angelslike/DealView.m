@@ -16,13 +16,17 @@
         self.backgroundColor = [UIColor whiteColor];
         self.layer.shadowColor = [UIColor lightGrayColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(1, 1);
-        
+//        [self initialSetting];
     }
     
     return self;
 }
 
 -(void)initialSetting{
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(viewClick:)];
+    [self addGestureRecognizer:tap];
+    
     if (_type == CellType_Deal){
         imageView = [[UIImageView alloc]initWithFrame:RECT(0, 0, self.frame.size.width, self.frame.size.width * 29 / 64)];
     }else{
@@ -78,8 +82,7 @@
     logo.image = IMAGE(@"deals");
     [self addSubview:logo];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(viewClick:)];
-    [self addGestureRecognizer:tap];
+
 }
 
 -(void)addTarget:(id)target action:(SEL)action{
@@ -95,14 +98,15 @@
 
 -(void)setType:(CellType )type{
     _type = type;
+    [self initialSetting];
     if (_type == CellType_Deal) {
-//        logo.image = IMAGE(@"deals");
+        logo.image = IMAGE(@"deals");
     }else if (_type == CellType_BuyOne){
         logo.image = IMAGE(@"buyone");
     }else if (_type == CellType_Bound){
         logo.image = IMAGE(@"bonded");
     }
-    [self initialSetting];
+    
 }
 
 -(void)setInfo:(NSDictionary *)info{

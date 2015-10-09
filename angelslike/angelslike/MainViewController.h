@@ -18,12 +18,12 @@
 #import "MJRefresh.h"
 #import "ThemeDetailViewController.h"
 #import "DealView.h"
-#import "BuyOneView.h"
+#import "BuyOneViewController.h"
+#import "BoundsViewController.h"
 
 
 @interface MainViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
     ImageScroller *scroller;
-    Banner *banner;
     UIScrollView *_scrollView;
     CGFloat scrolerHeight ;
     CGFloat cellHeight;

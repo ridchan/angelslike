@@ -74,6 +74,12 @@
 //获取地址
 #define AddressUrl [MainDomain stringByAppendingPathComponent:@"index/getaddress"]
 
+//保税仓，买一送一
+#define MPUrl [MainDomain stringByAppendingPathComponent:@"json/getList"]
+//买一送一明细
+#define BuyOneDetail [MainDomain stringByAppendingPathComponent:@"json/special"]
+
+
 #define SaveImageUrl @"http://weixin.angelslike.com/json/saveimage"
 
 //主题 路径
@@ -114,6 +120,9 @@
 #import "UIImageView+PreUrl.h"
 #import "UILabel+Resize.h"
 #import "UIView+Controller.h"
+
+#import "RCWebView.h"
+#import "RCButton.h"
 
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 

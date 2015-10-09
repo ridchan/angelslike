@@ -59,26 +59,24 @@
 -(void)initailSetting{
     self.navigationItem.title = @"天使礼客";
     self.result = [NSMutableArray array];
-    self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.currentPage = 0;
-    self.tableView.totalPage = 0;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor clearColor];
-    [self.tableView addTarget:self action:@selector(loadMoreData:)];
-    [self.view addSubview:self.tableView];
+//    self.tableView = [[LoadMoreTableView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+//    self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
+//    self.tableView.currentPage = 0;
+//    self.tableView.totalPage = 0;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.backgroundColor = [UIColor clearColor];
+//    [self.tableView addTarget:self action:@selector(loadMoreData:)];
+//    [self.view addSubview:self.tableView];
     
     scroller =  [[ImageScroller alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * 0.45)];
     [scroller start:SliderLink];
     
-    banner = [[Banner alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 60)];
     
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
-//    [header setBackgroundColor:[UIColor getHexColor:@"ff6969"]];
     header.automaticallyChangeAlpha = YES;
     header.lastUpdatedTimeLabel.hidden = YES;
-    self.tableView.header = header;
+    _scrollView.header = header;
     
 }
 
@@ -89,11 +87,8 @@
     [self.view addSubview:_scrollView];
     
     scroller =  [[ImageScroller alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenWidth * 0.45)];
-//    [scroller start:SliderLink];
     [_scrollView addSubview:scroller];
     
-    banner = [[Banner alloc]initWithFrame:RECT(0,MaxY(scroller), ScreenWidth, ScreenWidth / 4)];
-    [_scrollView addSubview:banner];
     
     __block MainViewController *tempSelf = self;
     [[NetWork shared]query:@"http://app.angelslike.com/index/homeshow" info:nil block:^(id Obj) {
@@ -104,7 +99,8 @@
             scroller.infos = [tempSelf.infos objectForKey:@"slider"];
             [scroller startDownload];
             
-            
+            UIView *banner = [tempSelf bannerView:RECT(0,MaxY(scroller), ScreenWidth, ScreenWidth / 4)];
+            [_scrollView addSubview:banner];
         
             UIView *dv = [tempSelf dealView:RECT(0, MaxY(banner), ScreenWidth, 800)];
             [_scrollView addSubview:dv];
@@ -136,12 +132,50 @@
 #pragma mark 自定义 Cell
 
 
+
 -(void)viewClick:(NSDictionary *)dic{
     ProductDetailViewController *vc = [[ProductDetailViewController alloc]init];
     vc.info = dic;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)bannerleft:(id)obj{
+    BoundsViewController *vc = [[BoundsViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)bannerRight:(id)obj{
+    BuyOneViewController *vc = [[BuyOneViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(UIView *)bannerView:(CGRect)rect{
+    UIView *view = [[UIView alloc]initWithFrame:rect];
+    view.layer.borderWidth =  0.5;
+    view.layer.borderColor = HexColor(@"e0e0e0").CGColor;
+    view.backgroundColor = [UIColor whiteColor];
+    
+    UITapGestureRecognizer *leftTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bannerleft:)];
+    UIImageView *leftImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, rect.size.width / 2  , rect.size.height)];
+    leftImage.userInteractionEnabled = YES;
+    leftImage.image = [UIImage imageNamed:@"home-1"];
+    [leftImage addGestureRecognizer:leftTap];
+    [view addSubview:leftImage];
+    
+    
+    UITapGestureRecognizer *rightTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bannerRight:)];
+    UIImageView *rightImage = [[UIImageView alloc]initWithFrame:CGRectMake(rect.size.width / 2, 0, rect.size.width / 2  , rect.size.height)];
+    rightImage.userInteractionEnabled = YES;
+    rightImage.image = [UIImage imageNamed:@"home-2"];
+    [rightImage addGestureRecognizer:rightTap];
+    [view addSubview:rightImage];
+    
+    UIView *midline = [[UIView alloc]initWithFrame:CGRectMake(rect.size.width/2, 0, 0.5, rect.size.height)];
+    midline.backgroundColor = HexColor(@"e0e0e0");
+    [view addSubview:midline];
+    
+    return view;
+}
 
 -(UIView *)dealView:(CGRect)rect{
     UIView *view = [[UIView alloc]initWithFrame:rect];
@@ -253,7 +287,7 @@
     
     [view addline:CGPointMake(0, 30) color:nil];
     
-    UIView *notifyView =[self notifyView:RECT(0, MaxY(label) + 10, ScreenWidth, 19 * ScreenWidth  / 320)];
+    UIView *notifyView =[self notifyView:RECT(5, MaxY(label) + 10, ScreenWidth - 10, 19 * ScreenWidth  / 320)];
     [view addSubview:notifyView];
     
     NSArray *array = [self.infos objectForKey:@"bonded"];
@@ -293,28 +327,7 @@
     return view;
 }
 
--(UIImageView *)notifyView:(CGRect)rect{
-//    UIView *view = [[UIView alloc]initWithFrame:rect];
-//    view.backgroundColor = [UIColor whiteColor];
-//    
-//    CGFloat width = rect.size.width / 4;
-//    NSArray *titles = @[@"合法报关",@"检疫检验",@"保税仓直供",@"品质保证"];
-//    NSArray *imgs = @[@"bonded2",@"inspection",@"legal",@"security"];
-//    
-//    for (int i = 0 ; i < [titles count] ; i ++){
-//        UIImageView *imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
-//        imageView.center = CGPointMake(width * i + width / 2, rect.size.height / 2 - 5);
-//        imageView.image = IMAGE(imgs[i]);
-//        
-//        UILabel *label = [[UILabel alloc]initWithFrame:RECT(width * i, MaxY(imageView), width, 14)];
-//        label.textAlignment = NSTextAlignmentCenter;
-//        label.font = FontWS(12);
-//        
-//        label.text = titles[i];
-//        [view addSubview:imageView];
-//        [view addSubview:label];
-//    }
-    
+-(UIImageView *)notifyView:(CGRect)rect{    
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:rect];
     imageView.image = IMAGE(@"page1");
     return imageView;
@@ -395,7 +408,6 @@
         UITableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"Banner"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Banner"];
-            [cell addSubview:banner];
             cell.backgroundColor =  [UIColor clearColor];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
