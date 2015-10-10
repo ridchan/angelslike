@@ -69,6 +69,12 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)myGiftClick:(id)sender{
+    MyGiftViewController *vc = [[MyGiftViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 -(void)imageViewTap:(UIGestureRecognizer *)gesture{
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"从相册选择",@"拍照", nil];

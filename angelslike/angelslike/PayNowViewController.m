@@ -14,6 +14,10 @@
 
 @implementation PayNowViewController
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -21,7 +25,7 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinPayResult:) name:WeiXinPayNotification object:nil];
     [self addBottomButton];
     // Do any additional setup after loading the view.
 }
@@ -69,20 +73,30 @@
 }
 
 -(void)comfirmPay:(id)sender{
+    
     PayCell *cell = (PayCell *)[_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    if (cell.selectIndex == 0) {
-        //微信支付
-        NSString *namt = [NSString stringWithFormat:@"%.0f",[self.price floatValue] * 100];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinPayResult:) name:WeiXinPayNotification object:nil];
-        [WeiXinPayObj payWithInfo:@{@"orderno":self.orderid,@"amount":self.price} successBlock:nil failBlock:nil];
-    }else{
-        //支付宝支付
-        [AliPayObj payWithInfo:@{@"orderno":self.orderid,@"amount":self.price} successBlock:^(id obj) {
+    
+    NSInteger idx = cell.selectIndex;
+    
+    [[NetWork shared] query:BuyNowUrl  info:@{} block:^(id Obj) {
+        if (idx == 0) {
+            //微信支付
+            NSString *namt = [NSString stringWithFormat:@"%.0f",[self.price floatValue] * 100];
             
-        } failBlock:^(id obj) {
-            
-        }];
-    }
+            [WeiXinPayObj payWithInfo:@{@"orderno":self.orderid,@"amount":namt} successBlock:nil failBlock:nil];
+        }else{
+            //支付宝支付
+            __weak PayNowViewController *tempSelf = self;
+            [AliPayObj payWithInfo:@{@"orderno":self.orderid,@"amount":self.price} successBlock:^(id obj) {
+                [tempSelf showMessage:@"支付成功"];
+                [tempSelf.navigationController popViewControllerAnimated:YES];
+            } failBlock:^(id obj) {
+                
+            }];
+        }
+    } lock:YES];
+    
+
 }
 
 

@@ -98,9 +98,10 @@
 
 -(void)buttonClick:(UIButton *)obj{
     [self dismiss];
-    if (self.block) {
+    __block UIButton *tempButton = obj;
+    if (_block) {
         NSDictionary *dic = @{@"object":object,@"content":textView.text};
-        self.block(dic,(AnswerViewType)obj.tag);
+        _block(dic,(AnswerViewType)tempButton.tag);
     }
 }
 
@@ -126,7 +127,7 @@
 -(void)dismiss{
     self.hidden = YES;
     [self removeFromSuperview];
-    self.backgroundColor = [UIColor clearColor];
+//    self.backgroundColor = [UIColor clearColor];
 }
 
 

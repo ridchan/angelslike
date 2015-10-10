@@ -18,6 +18,9 @@
 		273ADCE31BC7956E00006230 /* RCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCE21BC7956E00006230 /* RCButton.m */; settings = {ASSET_TAGS = (); }; };
 		273ADCE61BC79F9A00006230 /* RCWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCE51BC79F9A00006230 /* RCWebView.m */; settings = {ASSET_TAGS = (); }; };
 		273ADCE91BC7A5AE00006230 /* BuyOneDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273ADCE81BC7A5AE00006230 /* BuyOneDetailView.m */; settings = {ASSET_TAGS = (); }; };
+		273FB1251BC8BABA0026F157 /* iconfont-shanchu.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FB1241BC8BABA0026F157 /* iconfont-shanchu.png */; settings = {ASSET_TAGS = (); }; };
+		273FB1281BC8E4980026F157 /* MyGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273FB1271BC8E4980026F157 /* MyGiftViewController.m */; settings = {ASSET_TAGS = (); }; };
+		273FB12B1BC8E5670026F157 /* MyGiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 273FB12A1BC8E5670026F157 /* MyGiftCell.m */; settings = {ASSET_TAGS = (); }; };
 		274CD7A01B95973E000125EB /* sendmy.png in Resources */ = {isa = PBXBuildFile; fileRef = 274CD79E1B95973E000125EB /* sendmy.png */; };
 		274CD7A11B95973E000125EB /* sendta.png in Resources */ = {isa = PBXBuildFile; fileRef = 274CD79F1B95973E000125EB /* sendta.png */; };
 		274CD7A51B959B2B000125EB /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CD7A41B959B2B000125EB /* AddressViewController.m */; };
@@ -379,6 +382,11 @@
 		273ADCE51BC79F9A00006230 /* RCWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCWebView.m; sourceTree = "<group>"; };
 		273ADCE71BC7A5AE00006230 /* BuyOneDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyOneDetailView.h; sourceTree = "<group>"; };
 		273ADCE81BC7A5AE00006230 /* BuyOneDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyOneDetailView.m; sourceTree = "<group>"; };
+		273FB1241BC8BABA0026F157 /* iconfont-shanchu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-shanchu.png"; sourceTree = "<group>"; };
+		273FB1261BC8E4980026F157 /* MyGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGiftViewController.h; sourceTree = "<group>"; };
+		273FB1271BC8E4980026F157 /* MyGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGiftViewController.m; sourceTree = "<group>"; };
+		273FB1291BC8E5670026F157 /* MyGiftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGiftCell.h; sourceTree = "<group>"; };
+		273FB12A1BC8E5670026F157 /* MyGiftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGiftCell.m; sourceTree = "<group>"; };
 		274CD79E1B95973E000125EB /* sendmy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendmy.png; sourceTree = "<group>"; };
 		274CD79F1B95973E000125EB /* sendta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendta.png; sourceTree = "<group>"; };
 		274CD7A31B959B2B000125EB /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
@@ -1056,6 +1064,7 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				273FB1241BC8BABA0026F157 /* iconfont-shanchu.png */,
 				271773261BC618A60098B4DC /* page1.png */,
 				27E761161BBA9C2E007E3D1D /* product-box.png */,
 				27E761141BBA936B007E3D1D /* giftCover.png */,
@@ -1881,6 +1890,10 @@
 				27E85B741BA80B3600BE6077 /* PayRecordCell.m */,
 				27E3E4C51BB252D900FCF658 /* PayNowViewController.h */,
 				27E3E4C61BB252D900FCF658 /* PayNowViewController.m */,
+				273FB1261BC8E4980026F157 /* MyGiftViewController.h */,
+				273FB1271BC8E4980026F157 /* MyGiftViewController.m */,
+				273FB1291BC8E5670026F157 /* MyGiftCell.h */,
+				273FB12A1BC8E5670026F157 /* MyGiftCell.m */,
 			);
 			name = "我的页";
 			sourceTree = "<group>";
@@ -2196,6 +2209,7 @@
 				27DF595A1B8EB88200E94B06 /* leftcon.png in Resources */,
 				27BA813E1B71AB1B005B527B /* iconfont-jia.png in Resources */,
 				27EADA761B7C3A790084D648 /* iconfont-jilu.png in Resources */,
+				273FB1251BC8BABA0026F157 /* iconfont-shanchu.png in Resources */,
 				27EFB23A1B7396E700A14872 /* changhe_01.png in Resources */,
 				27BA813C1B71AADF005B527B /* iconfont-wode.png in Resources */,
 				27DD23E01B70514700C61546 /* Images.xcassets in Resources */,
@@ -2308,6 +2322,7 @@
 				272B6DAD1B709CF1006CCFE6 /* ImageScroller.m in Sources */,
 				27E3B05C1B969BA200BA6254 /* CircleButton.m in Sources */,
 				27E53EB71B8C3BE200A56D53 /* CommentViewController.m in Sources */,
+				273FB12B1BC8E5670026F157 /* MyGiftCell.m in Sources */,
 				27E439141BB9465E00E7E970 /* MyAddressView.m in Sources */,
 				27DD23D51B70514700C61546 /* main.m in Sources */,
 				27E6ADE51B7855EA008CE686 /* LoginViewController.m in Sources */,
@@ -2401,6 +2416,7 @@
 				27E3E4C71BB252D900FCF658 /* PayNowViewController.m in Sources */,
 				27E022AB1BA2B1420089D1CD /* Order.m in Sources */,
 				27E2AA0F1B9ED2070046D28D /* UIView+Controller.m in Sources */,
+				273FB1281BC8E4980026F157 /* MyGiftViewController.m in Sources */,
 				27E023101BA2B4750089D1CD /* RSADataSigner.m in Sources */,
 				27DF595E1B8EF5B400E94B06 /* UILabel+Resize.m in Sources */,
 				2E7A78BE1B77CA65004A58AB /* RMDisplayLabel.m in Sources */,

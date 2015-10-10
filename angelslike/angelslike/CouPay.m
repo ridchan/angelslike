@@ -179,7 +179,7 @@
     QtyButton *qb = (QtyButton *)[self viewWithTag:5];
     qb.maxValue = [[_info strForKey:@"maxValue"] integerValue];
     qb.minValue = [[_info strForKey:@"minValue"] integerValue];
-    qb.qty = [_info strForKey:@"maxValue"];
+    qb.qty = [_info strForKey:@"minValue"];
     [self numChange:nil];
 }
 

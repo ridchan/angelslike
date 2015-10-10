@@ -26,6 +26,8 @@
     
     UIButton *vc1Button;
     UIButton *vc2Button;
+    
+    NSString *orderid;
 }
 
 @property(nonatomic,strong) NSDictionary *info;

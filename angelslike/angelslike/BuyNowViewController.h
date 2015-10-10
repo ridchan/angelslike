@@ -35,6 +35,7 @@
 @property(nonatomic,strong) UITableView *tableView;
 
 @property(nonatomic,strong) NSMutableArray *products;
+@property(nonatomic,strong) NSMutableDictionary *product;
 
 @property(nonatomic,strong) NSMutableArray *adds;
 

@@ -40,14 +40,15 @@
 -(void)query:(NSString *)link info:(NSDictionary *)info block:(NetWorkBlock)block lock:(BOOL)lock{
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:link]];
     NSMutableString *postString = [NSMutableString string];
-    if (info!=nil) {
-        for (NSString *key in [info allKeys]) {
-            [postString appendFormat:@"&%@=%@",key,[info objectForKey:key]];
+    if (![link hasPrefix:@"https://api.weixin.qq.com"]){
+        if (info!=nil) {
+            for (NSString *key in [info allKeys]) {
+                [postString appendFormat:@"&%@=%@",key,[info objectForKey:key]];
+            }
+            
         }
-        
+        [postString appendFormat:@"&loginkey=%@",[[UserInfo shared].info objectForKey:@"loginkey"]];
     }
-    [postString appendFormat:@"&loginkey=%@",[[UserInfo shared].info objectForKey:@"loginkey"]];
-    
     NSData *postdata = [postString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSString *postlength = [NSString stringWithFormat:@"%lu",(unsigned long)[postdata length]];
     [request setValue:postlength forHTTPHeaderField:@"Content-Length"];

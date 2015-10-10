@@ -78,6 +78,7 @@
 #define MPUrl [MainDomain stringByAppendingPathComponent:@"json/getList"]
 //买一送一明细
 #define BuyOneDetail [MainDomain stringByAppendingPathComponent:@"json/special"]
+#define BuyingUrl [MainDomain stringByAppendingPathComponent:@"json/buyinglist"]
 
 
 #define SaveImageUrl @"http://weixin.angelslike.com/json/saveimage"
@@ -151,5 +152,6 @@
 #define UserDefault [NSUserDefaults standardUserDefaults]
 
 #define MaxY(a) CGRectGetMaxY(a.frame)
+#define MaxX(a) CGRectGetMaxX(a.frame)
 
 #endif//

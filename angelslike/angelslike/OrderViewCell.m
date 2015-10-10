@@ -38,6 +38,7 @@
         _tableView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_tableView];
         
+        
         payButton = [RCRoundButton buttonWithType:UIButtonTypeCustom];
         [payButton setBackgroundColor:[UIColor whiteColor]];
         payButton.layer.borderColor = HexColor(@"F88F19").CGColor;
@@ -105,7 +106,7 @@
     payButton.frame = RECT(ScreenWidth - 120, _tableView.frame.size.height + _tableView.frame.origin.y + 5, 50, 25);
     
     detailButton.frame = RECT(ScreenWidth - 60, _tableView.frame.size.height + _tableView.frame.origin.y + 5, 50, 25);
-
+    if ([_info intForKey:@"status"] != 1) payButton.hidden = YES;
     self.frame = RECT(0, 0, ScreenWidth, CGRectGetMaxY(detailButton.frame));
 }
 

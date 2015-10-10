@@ -141,7 +141,11 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //
+        NSDictionary *dic = self.result[indexPath.row];
+        [[NetWork shared] query:CancelOrderUrl info:@{@"orderid":[dic strForKey:@"orderid"]} block:^(id Obj) {
+            [self.result removeObjectAtIndex:indexPath.row];
+            [self.tableView reloadData];
+        } lock:YES];
     }
 }
 

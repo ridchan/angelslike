@@ -13,7 +13,8 @@
 
 typedef enum{
     OrderCellType_Pay = 1,
-    OrderCellType_Detail = 2
+    OrderCellType_Detail = 2,
+    OrderCellType_Delete = 3
 }OrderCellType;
 
 @interface OrderViewCell : UITableViewCell{
@@ -30,6 +31,7 @@ typedef enum{
     
     RCRoundButton *payButton;
     RCRoundButton *detailButton;
+    UIButton *delButton;
     
     id tar;
     SEL act;

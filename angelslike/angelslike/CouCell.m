@@ -90,18 +90,18 @@
             [bg addSubview:progress];
         }
         
-        if (!addButton) {
-            addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            addButton.frame = CGRectMake(ScreenWidth - 70, 0, 70, 25);
-            [addButton setTitle:@"填写收货地址" forState:UIControlStateNormal];
-            addButton.titleLabel.font = FontWS(9);
-            [addButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            addButton.layer.borderWidth =  1.0;
-            addButton.layer.borderColor = [UIColor getHexColor:@"E0E0E0"].CGColor;
-            addButton.hidden = YES;
-            [addButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:addButton];
-        }
+//        if (!addButton) {
+//            addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//            addButton.frame = CGRectMake(ScreenWidth - 70, 0, 70, 25);
+//            [addButton setTitle:@"填写收货地址" forState:UIControlStateNormal];
+//            addButton.titleLabel.font = FontWS(9);
+//            [addButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//            addButton.layer.borderWidth =  1.0;
+//            addButton.layer.borderColor = [UIColor getHexColor:@"E0E0E0"].CGColor;
+//            addButton.hidden = YES;
+//            [addButton addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+//            [self addSubview:addButton];
+//        }
         
         
     }

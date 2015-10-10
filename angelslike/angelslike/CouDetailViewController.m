@@ -18,6 +18,7 @@
     [v removeObserver:self forKeyPath:@"frame"];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+
 //    [vc1.tableView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
@@ -28,14 +29,20 @@
     [self initialSetting];
     [self addBottomButton];
     [self addViewController];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinpayResult:) name:WeiXinPayNotification object:nil];
 
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    [self initialSetting];
     
 }
+
 
 
 -(CAShapeLayer *)lineLayer:(CGPoint)position{
@@ -166,12 +173,12 @@
 }
 
 -(void)weixinpayResult:(NSNotification *)notification{
-    [[NSNotificationCenter defaultCenter]removeObserver:self forKeyPath:WeiXinPayNotification];
+    
     NSDictionary *dic = notification.object;
     if ([dic intForKey:@"status"] == 0) {
         [self showMessage:@"支付成功"];
-        [self.navigationController popViewControllerAnimated:YES];
     }else{
+        [[NetWork shared] query:CancelOrderUrl info:@{@"orderno":orderid} block:nil lock:NO];
         [self showMessage:@"支付失败"];
     }
 }
@@ -180,8 +187,8 @@
     [[NetWork shared] query:CouPayUrl info:dic block:^(id Obj) {
         if ([Obj intForKey:@"status"] == 1) {
             NSDictionary *orderInfo = [Obj objectForKey:@"data"];
+            orderid = [orderInfo strForKey:@"orderid"];
             if ([dic intForKey:@"paytype"] == 4) {
-                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinpayResult:) name:WeiXinPayNotification object:nil];
                 NSString *namt = [NSString stringWithFormat:@"%.0f",[[orderInfo strForKey:@"mPrice"] floatValue] * 100];
                 [WeiXinPayObj payWithInfo:@{@"orderno":[orderInfo strForKey:@"orderid"],@"amount":namt} successBlock:nil failBlock:nil];
             }else{
@@ -213,9 +220,12 @@
                    [[NSNumber numberWithInteger:cop] stringValue],@"minValue",
                    nil];
     }else{
+        NSInteger cop = [self.info intForKey:@"copies"] - [self.info intForKey:@"currentcopies"];
         cp.info = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                    [self.info strForKey:@"everyprice"],@"price",
                    [self.info strForKey:@"id"],@"id",
+                   @"1",@"minValue",
+                   [[NSNumber numberWithInteger:cop] stringValue],@"maxValue",
                    nil];
     }
     [cp addTarget:self action:@selector(submitClick:)];

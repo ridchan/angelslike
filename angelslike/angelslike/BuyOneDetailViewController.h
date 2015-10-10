@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "RCWebView.h"
 #import "BuyOneDetailView.h"
+#import "LoadMoreTableView.h"
 
 @interface BuyOneDetailViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
     UIScrollView *_scrollView;
@@ -17,6 +18,8 @@
 
 @property(nonatomic,strong) NSDictionary *info;
 @property(nonatomic,strong) NSString *strid;
-@property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong) LoadMoreTableView *tableView;
+
+@property(nonatomic,strong) NSMutableArray *result;
 
 @end

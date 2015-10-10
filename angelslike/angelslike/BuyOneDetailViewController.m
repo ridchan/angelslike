@@ -20,6 +20,7 @@
     [self loadData];
     [self setBackButtonAction:@selector(backClick:)];
     [self addBottomButton];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -30,13 +31,13 @@
 -(void)initailSetting{
 //    _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
 //    _scrollView.backgroundColor = HexColor(@"F1F0F6");
-    
-    _tableView = [[UITableView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
+    self.result = [NSMutableArray array];
+    _tableView = [[LoadMoreTableView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = [UIColor clearColor];
-    
-    
+    _tableView.currentPage = 0;
+    [self.tableView addTarget:self action:@selector(loadRecords)];
     [self.view addSubview:_tableView];
     
     
@@ -53,15 +54,15 @@
         cell.backgroundColor =  [UIColor clearColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"row %d",(int)indexPath.row];
+    NSDictionary *dic = self.result[indexPath.row];
+    cell.textLabel.text = [dic strForKey:@"name"];
     
     return cell;
     
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  20;
+    return  [self.result count];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -75,15 +76,45 @@
 
 -(void)loadData{
     __weak BuyOneDetailViewController *tempSelf =self;
-    __weak UITableView *tempTableView = _tableView;
+    __weak LoadMoreTableView *tempTableView = _tableView;
     [[NetWork shared] query:BuyOneDetail info:@{@"id":self.strid} block:^(id Obj) {
         if ([Obj intForKey:@"status"] == 1){
             tempSelf.info = [Obj objectForKey:@"data"];
             tempTableView.tableHeaderView = [tempSelf headerView];
-            [tempTableView reloadData];
+            
+            
+            [[NetWork shared] query:BuyingUrl info:@{@"id":[tempSelf.info strForKey:@"product"]} block:^(id Obj) {
+                if ([Obj intForKey:@"status"] == 1){
+                    [tempSelf.result addObjectsFromArray:[[Obj objectForKey:@"data"] objectForKey:@"list"]];
+                    [tempSelf loadRecords];
+                }
+            } lock:NO];
         }
 
     } lock:YES];
+    
+
+}
+
+-(void)loadRecords{
+    
+    NSString *npage = [NSString stringWithFormat:@"%d",(int)self.tableView.currentPage + 1];
+    __weak BuyOneDetailViewController *tempSelf =self;
+    [[NetWork shared] query:BuyingUrl info:@{@"id":[self.info strForKey:@"product"],@"page":npage} block:^(id Obj) {
+        if ([Obj intForKey:@"status"] == 1){
+            NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
+            tempSelf.tableView.currentPage = [pageInfo intForKey:@"page"];
+            tempSelf.tableView.totalPage = [pageInfo intForKey:@"maxpage"];
+            [tempSelf.result addObjectsFromArray:[[Obj objectForKey:@"data"] objectForKey:@"list"]];
+            [tempSelf.tableView loadDataEnd];
+        }
+    } lock:NO];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if ([self checkScrollView:scrollView]) {
+        [self.tableView loadDataBegin];
+    }
 }
 
 -(UIView *)headerView{
@@ -93,6 +124,8 @@
     RCWebView *webView = [[RCWebView alloc]initWithFrame:RECT(0, 0, ScreenWidth, 0)];
     webView.userInteractionEnabled = NO;
     [view addSubview:webView];
+    
+    
     
     UIView *anView = [self animationView:RECT(0, 0, ScreenWidth, 250)];
     [view addSubview:anView];
@@ -113,6 +146,18 @@
         [_tableView reloadData];
     };
     
+//    NSLayoutConstraint *l = [NSLayoutConstraint constraintWithItem:webView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1.0 constant:1.0];
+//    
+//    NSLayoutConstraint *l1 = [NSLayoutConstraint constraintWithItem:anView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:webView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:1.0];
+//    
+//    NSLayoutConstraint *l2 = [NSLayoutConstraint constraintWithItem:bdv attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:anView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:1.0];
+//    [view addConstraints:@[l,l1,l2]];
+//    
+//    if (isIOS8){
+//        l.active = YES;
+//        l1.active = YES;
+//        l2.active = YES;
+//    }
     
     [webView setText:[self.info strForKey:@"desc"]];
     bdv.info = self.info;
@@ -134,7 +179,7 @@
     [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
 //    [b1 addTarget:self action:@selector(:) forControlEvents:UIControlEventTouchUpInside];
  
-    [b1 setTitle:@"前往购买" forState:UIControlStateNormal];
+    [b1 setTitle:@"立即抢购" forState:UIControlStateNormal];
     b1.titleLabel.font = FontWS(16);
     [v addSubview:b1];
     

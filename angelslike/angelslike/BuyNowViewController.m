@@ -48,6 +48,8 @@
 //    self.adds = [NSMutableArray arrayWithArray:@[@"姓名",@"地址",@"详细地址",@"电话",@"备注"]];
     addSelect = -1;
     
+    self.product = [NSMutableDictionary dictionaryWithDictionary:self.products[0]];
+    
     [self setBackButtonAction:@selector(backClick:)];
     
     av = [[AreaView alloc]init];
@@ -411,9 +413,37 @@
     [[NetWork shared] query:BuyNowUrl info:info block:^(id Obj) {
         if ([Obj intForKey:@"status"] == 1) {
             NSDictionary *data = [Obj objectForKey:@"data"];
+            
+            
             [tempSelf cancelOrder:[data strForKey:@"orderid"]];
         }
     } lock:YES];
+}
+
+-(BOOL)checkInfo{
+    //检查填写信息
+    NSInteger pt = [self.product intForKey:@"show"];// 0 1 基本 2 买一送一  3 保税品
+    NSArray *checkArr = nil;
+    NSDictionary *showInfo = @{@"realname":@"请填写真实姓名",@"idcard":@"请填写身份证号码",@"phone":@"请填写手机号码",@"address":@"请填写详细地址",@"name":@"请填写收货人姓名"};
+    switch (pt) {
+        case 0:
+        case 1:
+            checkArr = @[@"address",@"name",@"phone"];
+            break;
+        case 2:
+            checkArr = @[@"address",@"name",@"phone"];
+            [self.product setObject:@"1" forKey:@"is_buyone"];
+            break;
+        case 3:
+            checkArr = @[@"address",@"realname",@"phone",@"idcard"];
+            [self.product setObject:@"1" forKey:@"bonded"];
+            break;
+        default:
+            break;
+    }
+    
+    return NO;
+    
 }
 
 -(void)cancelOrder:(NSString *)orderid{
