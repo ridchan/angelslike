@@ -19,6 +19,15 @@
     }
 }
 
+-(void)setPreImageWithUrl:(NSString *)link placeHolderImage:(NSString *)name{
+    if ([link hasPrefix:@"http"]) {
+        [self sd_setImageWithURL:[NSURL URLWithString:link] placeholderImage:[UIImage imageNamed:name] ];
+    }else{
+        NSURL *url = [NSURL URLWithString:[@"http://img1.angelslike.com" stringByAppendingPathComponent:link]];
+        [self sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:name]];
+    }
+}
+
 -(void)setPreImageWithUrl:(NSString *)link block:(ImageBlock)block{
     __block UIImageView *tempSelf = self;
     if ([link hasPrefix:@"http"]) {

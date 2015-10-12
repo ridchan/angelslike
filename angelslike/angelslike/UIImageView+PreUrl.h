@@ -15,6 +15,7 @@ typedef void(^ImageBlock)(id Obj);
 @interface UIImageView (PreUrl)
 
 -(void)setPreImageWithUrl:(NSString *)link;
+-(void)setPreImageWithUrl:(NSString *)link placeHolderImage:(NSString *)name;
 -(void)setPreImageWithUrl:(NSString *)link block:(ImageBlock)block;
 -(void)setPreImageWithUrl:(NSString *)link domain:(NSString *)domain;
 -(void)setImageColor:(UIColor *)color;

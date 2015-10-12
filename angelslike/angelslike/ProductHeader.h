@@ -28,6 +28,7 @@
     SEL action;
 }
 
+@property(nonatomic) BOOL collect;
 
 -(void)addTarget:(id)tar action:(SEL)act;
 

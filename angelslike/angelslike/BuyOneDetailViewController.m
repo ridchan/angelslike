@@ -131,18 +131,21 @@
     [view addSubview:anView];
     [self runViewAnimation];
     
-    BuyOneDetailView *bdv = [[BuyOneDetailView alloc]initWithFrame:RECT(0, 0, ScreenWidth, 250)];
+    BuyOneDetailView *bdv = [[BuyOneDetailView alloc]initWithFrame:RECT(0, 0, ScreenWidth, 270)];
     [view addSubview:bdv];
     
+    __block UIView *tempAnView = anView;
+    __block BuyOneDetailView *tempBDV = bdv;
+    __block UIView *tempView = view;
     webView.block = ^(id obj){
-        anView.frame = RECT(0, [obj floatValue], ScreenWidth, 250);
-        bdv.frame = RECT(0, MaxY(anView) + 50, ScreenWidth, 250);
-        view.frame = RECT(0, 0, ScreenWidth, MaxY(bdv));
+        tempAnView.frame = RECT(0, [obj floatValue], ScreenWidth, 250);
+        tempBDV.frame = RECT(0, MaxY(tempAnView) + 50, ScreenWidth, tempBDV.frame.size.height);
+        tempView.frame = RECT(0, 0, ScreenWidth, MaxY(tempBDV));
         [_tableView reloadData];
     };
     
     bdv.block = ^(id obj){
-        view.frame = RECT(0, 0, ScreenWidth, [obj floatValue]);
+        tempView.frame = RECT(0, 0, ScreenWidth, [obj floatValue]);
         [_tableView reloadData];
     };
     
@@ -175,8 +178,8 @@
     
     RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
     b1.frame = CGRectMake(10, 10, ScreenWidth - 20 , 34);
-    [b1 setBackgroundColor:[UIColor getHexColor:@"FAC116"]];
-    [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
+    [b1 setBackgroundColor:RGBA(248, 92, 133, 1)];
+//    [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
 //    [b1 addTarget:self action:@selector(:) forControlEvents:UIControlEventTouchUpInside];
  
     [b1 setTitle:@"立即抢购" forState:UIControlStateNormal];
@@ -190,12 +193,13 @@
 
 -(UIView *)animationView:(CGRect)rect{
     UIView *view = [[UIView alloc] initWithFrame:rect];
-    view.backgroundColor = [UIColor whiteColor];
+    view.clipsToBounds = YES;
+    view.backgroundColor = [UIColor blueColor];
     
     UIView *scaleView = [[UIView alloc]initWithFrame:RECT((ScreenWidth - 250) / 2, 10, 250, 250)];
     scaleView.backgroundColor = [UIColor whiteColor];
     
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:RECT(0, 10, 250, 250)];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:RECT(0, 0, 250, 250)];
     UIImageView *coverView = [[UIImageView alloc]initWithFrame:imageView.frame];
     coverView.image =  IMAGE(@"giftCover");
     UIImageView *borderView = [[UIImageView alloc]initWithFrame:imageView.frame];
@@ -212,7 +216,7 @@
     [imageView setPreImageWithUrl:[self.info strForKey:@"giftimg"] block:^(id Obj) {
         
     }];
-    
+    view.frame = ResizeHeight(view, MaxY(scaleView) + 10);
     return view;
 }
 

@@ -100,6 +100,13 @@
     return self;
 }
 
+-(void)setCollect:(BOOL)collect{
+    _collect = collect;
+    img3.image =
+    _collect ? [[UIImage imageNamed:@"iconfont-guanzhu_f"] rt_tintedImageWithColor:[UIColor getHexColor:@"2B2B2B"]]
+             : [[UIImage imageNamed:@"iconfont-guanzhu"] rt_tintedImageWithColor:[UIColor getHexColor:@"2B2B2B"]];
+}
+
 -(void)buttonClick:(id)sender{
     if ([target respondsToSelector:action]) {
         [target performSelector:action withObject:sender];

@@ -235,22 +235,25 @@
 
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
-    CGRect rect = webView.frame;
-
-    NSString *htmlHeight = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"];
-    webView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, [htmlHeight floatValue]);
-    cp.frame = CGRectMake(cp.frame.origin.x, webView.frame.origin.y + webView.frame.size.height , cp.frame.size.width, cp.frame.size.height);
-    process.frame = CGRectMake(process.frame.origin.x, cp.frame.origin.y + cp.frame.size.height, process.frame.size.width, process.frame.size.height);
     
-
-    inviteButton.frame = CGRectMake(inviteButton.frame.origin.x, process.frame.origin.y + process.frame.size.height, inviteButton.frame.size.width, inviteButton.frame.size.height);
-    
-    
-    rect = CGRectZero;
-    rect.origin = self.frame.origin;
-    rect.size = CGSizeMake(self.frame.size.width, CGRectGetMaxY(inviteButton.frame));
-    
-    self.frame = rect;
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect rect = webView.frame;
+        NSString *htmlHeight = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"];
+        webView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, [htmlHeight floatValue]);
+        cp.frame = CGRectMake(cp.frame.origin.x, webView.frame.origin.y + webView.frame.size.height , cp.frame.size.width, cp.frame.size.height);
+        process.frame = CGRectMake(process.frame.origin.x, cp.frame.origin.y + cp.frame.size.height, process.frame.size.width, process.frame.size.height);
+        
+        
+        inviteButton.frame = CGRectMake(inviteButton.frame.origin.x, process.frame.origin.y + process.frame.size.height, inviteButton.frame.size.width, inviteButton.frame.size.height);
+        
+        
+        rect = CGRectZero;
+        rect.origin = self.frame.origin;
+        rect.size = CGSizeMake(self.frame.size.width, CGRectGetMaxY(inviteButton.frame));
+        
+        self.frame = rect;
+    }];
+ 
 
 }
 

@@ -7,6 +7,8 @@
 //
 
 #import "MyGiftViewController.h"
+#import "ProductDetailViewController.h"
+#import "GiftSendViewController.h"
 
 @interface MyGiftViewController ()
 
@@ -17,8 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initialSetting];
+    [self setBackButtonAction:@selector(backClick:)];
     [self refreshClick:nil];
     // Do any additional setup after loading the view.
+}
+
+-(void)backClick:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,7 +37,7 @@
 
     //顶部配置
     self.navigationItem.title = @"送出的礼物";
-    seg = [[UISegmentedControl alloc]initWithItems:@[@"送出的礼物",@"收到的礼物"]];
+    seg = [[UISegmentedControl alloc]initWithItems:@[@"送出的",@"收到的"]];
     seg.frame = CGRectMake(0, 6 , 200, 32);
     seg.tintColor = [UIColor whiteColor];
     seg.selectedSegmentIndex = 0;
@@ -47,6 +54,7 @@
     self.tableView.totalPage = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
+    
     [self.tableView addTarget:self action:@selector(loadMoreData:)];
     [self.view addSubview:self.tableView];
     
@@ -79,18 +87,46 @@
 -(void)loadMoreData:(id)obj{
     __block MyGiftViewController *tempSelf = self;
     NSString *nPage = [NSString stringWithFormat:@"%ld",(long)(self.tableView.currentPage + 1)];
-
+    NSString *type = seg.selectedSegmentIndex == 0?@"list_gift_send":@"list_gift_get";
     
-    [[NetWork shared] startQuery:MPUrl
-                            info:@{@"page":nPage,@"type":@"list_gift_send"}
-                   completeBlock:^(id Obj) {
+    [[NetWork shared] query:MPUrl
+                       info:@{@"page":nPage,@"type":type}
+                      block:^(id Obj) {
+                          
+                          [tempSelf showNetworkError:[Obj intForKey:@"status"] == 0];
+                          
+                          if ([Obj intForKey:@"status"] == 1) {
+                              NSArray *rs = [[Obj objForKey:@"data"] objForKey:@"list"];
+                              NSDictionary *pageInfo = [[Obj objForKey:@"data"] objForKey:@"pageinfo"];
+                              
+                              if ([rs count] > 0){
+                                  tempSelf.tableView.totalPage = [[pageInfo objForKey:@"maxpage"] integerValue];
+                                  tempSelf.tableView.currentPage = [[pageInfo objForKey:@"page"] integerValue];
+                                  [tempSelf.result addObjectsFromArray:rs];
+                              }
+                              
+                          }
+                          [tempSelf.tableView reloadData];
+                          [tempSelf.tableView.header endRefreshing];
+                          [tempSelf.tableView loadDataEnd];
+                      } lock:NO];
+}
+
+-(void)viewChange:(id)obj{
+    __block MyGiftViewController *tempSelf = self;
+    NSString *nPage = @"1";
+    NSString *type = seg.selectedSegmentIndex == 0?@"list_gift_send":@"list_gift_get";
+    [self.result removeAllObjects];
+    [[NetWork shared] query:MPUrl
+                       info:@{@"page":nPage,@"type":type}
+                       block:^(id Obj) {
                        
                        [tempSelf showNetworkError:[Obj intForKey:@"status"] == 0];
                        
                        if ([Obj intForKey:@"status"] == 1) {
-                           NSArray *rs = [[Obj objectForKey:@"data"] objectForKey:@"list"];
-                           NSDictionary *pageInfo = [[Obj objectForKey:@"data"] objectForKey:@"pageinfo"];
-
+                           NSArray *rs = [[Obj objForKey:@"data"] objForKey:@"list"];
+                           NSDictionary *pageInfo = [[Obj objForKey:@"data"] objForKey:@"pageinfo"];
+                           
                            if ([rs count] > 0){
                                tempSelf.tableView.totalPage = [[pageInfo objectForKey:@"maxpage"] integerValue];
                                tempSelf.tableView.currentPage = [[pageInfo objectForKey:@"page"] integerValue];
@@ -101,11 +137,21 @@
                        [tempSelf.tableView reloadData];
                        [tempSelf.tableView.header endRefreshing];
                        [tempSelf.tableView loadDataEnd];
-                   }];
+                   } lock:YES];
 }
 
--(void)viewChange:(id)obj{
-    
+-(void)cellTap:(MyGiftCell *)cell{
+    if (cell.isLeft) {
+        if ([[cell.info strForKey:@"pid"] length] > 0){
+            ProductDetailViewController *vc = [[ProductDetailViewController alloc]init];
+            vc.info = @{@"id":[cell.info strForKey:@"pid"]};
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }else if (seg.selectedSegmentIndex == 0){
+        GiftSendViewController *vc = [[GiftSendViewController alloc]init];
+        vc.info = cell.info;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 
@@ -117,8 +163,10 @@
         cell = [[MyGiftCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         cell.backgroundColor =  [UIColor whiteColor];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell addTarget:self action:@selector(cellTap:)];
     }
     
+    cell.type = seg.selectedSegmentIndex;
     cell.info = [self.result objectAtIndex:indexPath.row];
     
     return cell;

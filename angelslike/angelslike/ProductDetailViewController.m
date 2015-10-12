@@ -20,9 +20,7 @@
     
  
     
-    [self initailSetting];
-    [self addHeader];
-    [self addBottomButton];
+
     [self loadData:nil];
 }
 
@@ -195,24 +193,34 @@
     v.backgroundColor = [UIColor whiteColor];
     [v.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
 
-    
-    RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-    b1.titleLabel.font = FontWS(16);
-    b1.frame = CGRectMake(10, 10, ScreenWidth / 2 - 15, 34);
-    [b1 setBackgroundColor:[UIColor getHexColor:@"FAC116"]];
-    [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
-    [b1 setTitle:@"凑分子购买" forState:UIControlStateNormal];
-    [b1 addTarget:self action:@selector(counow:) forControlEvents:UIControlEventTouchUpInside];
-    [v addSubview:b1];
-    
-    RCRoundButton *b2 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
-    b2.titleLabel.font = FontWS(16);
-    b2.frame = CGRectMake(ScreenWidth / 2 + 5, 10, ScreenWidth / 2 - 15, 34);
-    [b2 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
-    [b2 setTitleShadowColor:[UIColor getHexColor:@"F7356A"] forState:UIControlStateNormal];
-    [b2 setTitle:@"立即购买" forState:UIControlStateNormal];
-    [b2 addTarget:self action:@selector(buynow:) forControlEvents:UIControlEventTouchUpInside];
-    [v addSubview:b2];
+    if ([self.result intForKey:@"show"] > 0){
+        RCRoundButton *b2 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
+        b2.titleLabel.font = FontWS(16);
+        b2.frame = CGRectMake(10, 10, ScreenWidth - 20, 34);
+        [b2 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
+        [b2 setTitleShadowColor:[UIColor getHexColor:@"F7356A"] forState:UIControlStateNormal];
+        [b2 setTitle:@"立即购买" forState:UIControlStateNormal];
+        [b2 addTarget:self action:@selector(buynow:) forControlEvents:UIControlEventTouchUpInside];
+        [v addSubview:b2];
+    }else{
+        RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
+        b1.titleLabel.font = FontWS(16);
+        b1.frame = CGRectMake(10, 10, ScreenWidth / 2 - 15, 34);
+        [b1 setBackgroundColor:[UIColor getHexColor:@"FAC116"]];
+        [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
+        [b1 setTitle:@"凑分子购买" forState:UIControlStateNormal];
+        [b1 addTarget:self action:@selector(counow:) forControlEvents:UIControlEventTouchUpInside];
+        [v addSubview:b1];
+        
+        RCRoundButton *b2 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
+        b2.titleLabel.font = FontWS(16);
+        b2.frame = CGRectMake(ScreenWidth / 2 + 5, 10, ScreenWidth / 2 - 15, 34);
+        [b2 setBackgroundColor:[UIColor getHexColor:@"F85C85"]];
+        [b2 setTitleShadowColor:[UIColor getHexColor:@"F7356A"] forState:UIControlStateNormal];
+        [b2 setTitle:@"立即购买" forState:UIControlStateNormal];
+        [b2 addTarget:self action:@selector(buynow:) forControlEvents:UIControlEventTouchUpInside];
+        [v addSubview:b2];
+    }
     
     
     [self.view addSubview:v];
@@ -227,6 +235,15 @@
     if (sender.tag == 1) {
         self.navigationController.navigationBarHidden = NO;
         [self.navigationController popViewControllerAnimated:YES];
+    }else if (sender.tag == 3){
+        __block ProductDetailViewController *tempSelf = self;
+        NSString *action = header.collect ? @"0" : @"1";
+        [[NetWork shared] query:CollectUrl info:@{@"type":@"0",@"action":action,@"pid":[self.result strForKey:@"id"]} block:^(id Obj) {
+            [tempSelf showMessage:[Obj strForKey:@"info"]];
+            if ([Obj intForKey:@"status"] == 1) {
+                header.collect =  ! header.collect;
+            }
+        } lock:NO];
     }else if (sender.tag == 4){
         [self shareContent:[self.result strForKey:@"content"] title:[self.result strForKey:@"name"] imagePath:[self.result strForKey:@"img"] url:[ProductShareUrl stringByAppendingString:[self.result strForKey:@"id"]]];
     }
@@ -253,7 +270,7 @@
     
     
     [pd setInfo:self.result];
-    
+    header.collect = [self.result intForKey:@"collect"] > 0;
 //    WebViewController *vc1 = [[WebViewController alloc]init];
 //    mv.titles = @[@"图文介绍",@"评论"];
 //    vc1.content = [self.result strForKey:@"desc"];
@@ -305,9 +322,17 @@
     [[NetWork shared] query:ProductUrl info:dic block:^(id Obj) {
         if ([Obj intForKey:@"status"] == 1) {
             tempSelf.result = [Obj objectForKey:@"data"];
-            [tempSelf setSubView];
+            
+            [UIView animateWithDuration:0.35 animations:^{
+                [tempSelf initailSetting];
+                [tempSelf setSubView];
+            }];
+            [tempSelf addHeader];
+            [tempSelf addBottomButton];
+
         }else{
             [tempSelf showMessage:[Obj strForKey:@"info"]];
+            [tempSelf.navigationController popViewControllerAnimated:YES];
         }
 
     } lock:YES];

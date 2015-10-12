@@ -48,7 +48,7 @@
         [self addSubview:lbl3];
         
         
-        content = [[UIWebView alloc]initWithFrame:CGRectMake(10, MaxY(lbl3) , frame.size.width - 20, 30)];
+        content = [[UIWebView alloc]initWithFrame:CGRectMake(10, MaxY(lbl3) , frame.size.width - 20, 1)];
         content.scrollView.scrollEnabled = NO;
         content.delegate = self;
         [self addSubview:content];

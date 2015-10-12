@@ -70,7 +70,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:RECT(0, 10, rect.size.width, rect.size.height / 2)];
     label.backgroundColor = [UIColor clearColor];
     label.textColor = RGBA(0, 0, 0, 0.85);
-    label.text = [NSString stringWithFormat:@"￥%@",price];
+    label.text = [NSString stringWithFormat:@"￥%0.2f",[price floatValue]];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = FontWS(14);
     [view addSubview:label];

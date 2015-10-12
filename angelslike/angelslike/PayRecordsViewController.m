@@ -43,7 +43,7 @@
 -(void)loadMoreData:(id)obj{
     __block PayRecordsViewController *tempSelf = self;
   
-    NSString *nPage = [NSString stringWithFormat:@"%ld",self.tableView.currentPage + 1];
+    NSString *nPage = [NSString stringWithFormat:@"%d",(int)self.tableView.currentPage + 1];
 
     [[NetWork shared] startQuery:MyPayRecordUrl
                             info:@{@"loginkey":[[UserInfo shared].info strForKey:@"loginkey"],@"page":nPage}

@@ -63,6 +63,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
             if (lock) [RCHub dismiss];
+            
             if (data == nil)
                 block(nil);
             else{

@@ -27,6 +27,9 @@
 		274CD7A81B95A062000125EB /* MineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CD7A71B95A062000125EB /* MineView.m */; };
 		274CD7AB1B95A081000125EB /* HerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CD7AA1B95A081000125EB /* HerView.m */; };
 		274CD7AD1B95A182000125EB /* receiving-round.png in Resources */ = {isa = PBXBuildFile; fileRef = 274CD7AC1B95A182000125EB /* receiving-round.png */; };
+		275596141BCB4B0B0090F139 /* null_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 275596131BCB4B0B0090F139 /* null_user.png */; settings = {ASSET_TAGS = (); }; };
+		275596171BCB56AE0090F139 /* GiftSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275596161BCB56AD0090F139 /* GiftSendViewController.m */; settings = {ASSET_TAGS = (); }; };
+		275596191BCB69AC0090F139 /* iconfont-guanzhu_f.png in Resources */ = {isa = PBXBuildFile; fileRef = 275596181BCB69AC0090F139 /* iconfont-guanzhu_f.png */; settings = {ASSET_TAGS = (); }; };
 		27685A681B818CDB005234B0 /* wechat-icon-168.png in Resources */ = {isa = PBXBuildFile; fileRef = 27685A671B818CDB005234B0 /* wechat-icon-168.png */; };
 		27685A6A1B81E00A005234B0 /* Refresh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27685A691B81E00A005234B0 /* Refresh_icon.png */; };
 		27BA81381B71AADF005B527B /* iconfont-cfz.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA81331B71AADF005B527B /* iconfont-cfz.png */; };
@@ -396,6 +399,10 @@
 		274CD7A91B95A081000125EB /* HerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HerView.h; sourceTree = "<group>"; };
 		274CD7AA1B95A081000125EB /* HerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HerView.m; sourceTree = "<group>"; };
 		274CD7AC1B95A182000125EB /* receiving-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "receiving-round.png"; sourceTree = "<group>"; };
+		275596131BCB4B0B0090F139 /* null_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = null_user.png; sourceTree = "<group>"; };
+		275596151BCB56AD0090F139 /* GiftSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftSendViewController.h; sourceTree = "<group>"; };
+		275596161BCB56AD0090F139 /* GiftSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftSendViewController.m; sourceTree = "<group>"; };
+		275596181BCB69AC0090F139 /* iconfont-guanzhu_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-guanzhu_f.png"; sourceTree = "<group>"; };
 		27685A671B818CDB005234B0 /* wechat-icon-168.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat-icon-168.png"; sourceTree = "<group>"; };
 		27685A691B81E00A005234B0 /* Refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Refresh_icon.png; sourceTree = "<group>"; };
 		27BA81331B71AADF005B527B /* iconfont-cfz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-cfz.png"; sourceTree = "<group>"; };
@@ -1064,6 +1071,7 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				275596131BCB4B0B0090F139 /* null_user.png */,
 				273FB1241BC8BABA0026F157 /* iconfont-shanchu.png */,
 				271773261BC618A60098B4DC /* page1.png */,
 				27E761161BBA9C2E007E3D1D /* product-box.png */,
@@ -1115,6 +1123,7 @@
 				27E089991B90012D0090C724 /* iconfont-kongxi.png */,
 				27E0899A1B90012D0090C724 /* iconfont-fenxiang-r.png */,
 				27E9F34B1BB550E00040BC6A /* iconfont-guanzhu.png */,
+				275596181BCB69AC0090F139 /* iconfont-guanzhu_f.png */,
 				27E0899B1B90012D0090C724 /* iconfont-pinglun.png */,
 				27E0899C1B90012D0090C724 /* iconfont-xin.png */,
 				27E089A41B9030D40090C724 /* iconfont-gouwuche.png */,
@@ -1892,6 +1901,8 @@
 				27E3E4C61BB252D900FCF658 /* PayNowViewController.m */,
 				273FB1261BC8E4980026F157 /* MyGiftViewController.h */,
 				273FB1271BC8E4980026F157 /* MyGiftViewController.m */,
+				275596151BCB56AD0090F139 /* GiftSendViewController.h */,
+				275596161BCB56AD0090F139 /* GiftSendViewController.m */,
 				273FB1291BC8E5670026F157 /* MyGiftCell.h */,
 				273FB12A1BC8E5670026F157 /* MyGiftCell.m */,
 			);
@@ -2199,9 +2210,11 @@
 				27EED2721B7489F7009F2DD2 /* mine_05.png in Resources */,
 				27EFB2491B7396F600A14872 /* gexin_03.png in Resources */,
 				27E85BAC1BA82BFF00BE6077 /* WeiboSDK.bundle in Resources */,
+				275596191BCB69AC0090F139 /* iconfont-guanzhu_f.png in Resources */,
 				27EED2711B7489F7009F2DD2 /* mine_04.png in Resources */,
 				27EFB22D1B73966800A14872 /* duixiang_02.png in Resources */,
 				27EA9A081B7313C6003559C0 /* Default-568h@2x.png in Resources */,
+				275596141BCB4B0B0090F139 /* null_user.png in Resources */,
 				27EAFAA51B7B429900DF60E9 /* read_me.txt in Resources */,
 				27E85BAA1BA82BFF00BE6077 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				27EA453D1B7DD2F0004851A2 /* iconfont-mubiao.png in Resources */,
@@ -2449,6 +2462,7 @@
 				27E6AE141B78861C008CE686 /* RegisterViewController.m in Sources */,
 				273ADCD61BC75D2B00006230 /* BoundsViewController.m in Sources */,
 				27E2131B1BA03BE6008888BA /* OrderViewCell.m in Sources */,
+				275596171BCB56AE0090F139 /* GiftSendViewController.m in Sources */,
 				27E0230C1BA2B4750089D1CD /* DataVerifier.m in Sources */,
 				27EED2561B7462B1009F2DD2 /* MineViewController.m in Sources */,
 				27E451651B8DAC2000547DAD /* PayCell.m in Sources */,

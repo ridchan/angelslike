@@ -57,8 +57,8 @@
 #define CommentAddUrl [MainDomain stringByAppendingPathComponent:@"review/add"]
 //点赞
 #define PraiseUrl [MainDomain stringByAppendingPathComponent:@"json/praise"]
-
-
+//收藏
+#define CollectUrl [MainDomain stringByAppendingPathComponent:@"json/collect"]
 //我的钱包
 #define MyWallentUrl [MainDomain stringByAppendingPathComponent:@"my/mywallet"]
 
@@ -79,6 +79,7 @@
 //买一送一明细
 #define BuyOneDetail [MainDomain stringByAppendingPathComponent:@"json/special"]
 #define BuyingUrl [MainDomain stringByAppendingPathComponent:@"json/buyinglist"]
+#define SetGiftUrl [MainDomain stringByAppendingPathComponent:@"json/setgiftkey"]
 
 
 #define SaveImageUrl @"http://weixin.angelslike.com/json/saveimage"
@@ -94,6 +95,7 @@
 //分享
 #define ThemeShareUrl @"http://weixin.angelslike.com/theme.html?id="
 #define ProductShareUrl @"http://weixin.angelslike.com/product.html?id="
+#define GiftUrl @"http://weixin.angelslike.com/yougift.html?k="
 
 #define AliPID @"2088911709405062"
 #define AliSID @"2868362748@qq.com"
@@ -153,5 +155,9 @@
 
 #define MaxY(a) CGRectGetMaxY(a.frame)
 #define MaxX(a) CGRectGetMaxX(a.frame)
+
+#define ResizeHeight(a,h) CGRectMake(a.frame.origin.x, a.frame.origin.y, a.frame.size.width, h)
+#define ResizeWidth(a,w) CGRectMake(a.frame.origin.x, a.frame.origin.y, w, a.frame.size.height)
+#define ResizeY(a,y) CGRectMake(a.frame.origin.x, y, a.frame.size.width, a.frame.size.height)
 
 #endif//

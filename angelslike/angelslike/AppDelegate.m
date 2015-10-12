@@ -99,11 +99,9 @@
 //                   qqApiInterfaceCls:[QQApiInterface class]
 //                     tencentOAuthCls:[TencentOAuth class]];
 //    
-//    //添加QQ应用  注册网址   http://mobile.qq.com/api/
-//    [ShareSDK connectQQWithQZoneAppKey:@"100371282"
-//                     qqApiInterfaceCls:[QQApiInterface class]
-//                       tencentOAuthCls:[TencentOAuth class]];
-//    
+    //添加QQ应用  注册网址   http://mobile.qq.com/api/
+    [ShareSDK connectQQWithAppId:@"1104904476" qqApiCls:[QQApiInterface class]];
+//
     [ShareSDK connectWeChatWithAppId:WXAppID
                            appSecret:WXAppSecret
                            wechatCls:[WXApi class]];
