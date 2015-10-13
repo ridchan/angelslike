@@ -41,7 +41,7 @@
 //    [self.view addSubview:self.tableView];
     
     
-    _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
+    _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight - 49)];
     [self.view addSubview:_scrollView];
     
     

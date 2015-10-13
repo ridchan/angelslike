@@ -7,8 +7,10 @@
 //
 
 #import "BuyOneDetailViewController.h"
+#import "ProductRecordCell.h"
+#import "CouDetail.h"
 
-@interface BuyOneDetailViewController ()
+@interface BuyOneDetailViewController ()<BuyOneDetailDelegate>
 
 @end
 
@@ -18,21 +20,16 @@
     [super viewDidLoad];
     [self initailSetting];
     [self loadData];
-    [self setBackButtonAction:@selector(backClick:)];
     [self addBottomButton];
     
     // Do any additional setup after loading the view.
 }
 
--(void)backClick:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 -(void)initailSetting{
-//    _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
-//    _scrollView.backgroundColor = HexColor(@"F1F0F6");
+    
     self.result = [NSMutableArray array];
-    _tableView = [[LoadMoreTableView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
+    _tableView = [[LoadMoreTableView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight - 54)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = [UIColor clearColor];
@@ -43,19 +40,18 @@
     
 }
 
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 62;
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *identify = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    ProductRecordCell *cell = (ProductRecordCell *)[tableView dequeueReusableCellWithIdentifier:identify];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-        cell.backgroundColor =  [UIColor clearColor];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        cell = [[ProductRecordCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-    NSDictionary *dic = self.result[indexPath.row];
-    cell.textLabel.text = [dic strForKey:@"name"];
+    cell.info = self.result[indexPath.row];
     
     return cell;
     
@@ -76,13 +72,13 @@
 
 -(void)loadData{
     __weak BuyOneDetailViewController *tempSelf =self;
-    __weak LoadMoreTableView *tempTableView = _tableView;
+    
     [[NetWork shared] query:BuyOneDetail info:@{@"id":self.strid} block:^(id Obj) {
         if ([Obj intForKey:@"status"] == 1){
             tempSelf.info = [Obj objectForKey:@"data"];
-            tempTableView.tableHeaderView = [tempSelf headerView];
             
-            
+            [tempSelf setHeaderView];
+            [tempSelf setFooterView];
             [[NetWork shared] query:BuyingUrl info:@{@"id":[tempSelf.info strForKey:@"product"]} block:^(id Obj) {
                 if ([Obj intForKey:@"status"] == 1){
                     [tempSelf.result addObjectsFromArray:[[Obj objectForKey:@"data"] objectForKey:@"list"]];
@@ -106,8 +102,9 @@
             tempSelf.tableView.currentPage = [pageInfo intForKey:@"page"];
             tempSelf.tableView.totalPage = [pageInfo intForKey:@"maxpage"];
             [tempSelf.result addObjectsFromArray:[[Obj objectForKey:@"data"] objectForKey:@"list"]];
-            [tempSelf.tableView loadDataEnd];
         }
+        [tempSelf.tableView reloadData];
+        [tempSelf.tableView loadDataEnd];
     } lock:NO];
 }
 
@@ -117,8 +114,12 @@
     }
 }
 
--(UIView *)headerView{
-    UIView *view = [[UIView alloc]initWithFrame:RECT(0, 0, ScreenWidth, 1000)];
+-(void)checkButtonClick:(id)sender{
+    
+}
+
+-(void)setHeaderView{
+    UIView *view = [[UIView alloc]initWithFrame:RECT(0, 0, ScreenWidth, 1500)];
     view.clipsToBounds = YES;
     view.backgroundColor = [UIColor clearColor];
     RCWebView *webView = [[RCWebView alloc]initWithFrame:RECT(0, 0, ScreenWidth, 0)];
@@ -132,43 +133,56 @@
     [self runViewAnimation];
     
     BuyOneDetailView *bdv = [[BuyOneDetailView alloc]initWithFrame:RECT(0, 0, ScreenWidth, 270)];
+    bdv.delegate = self;
     [view addSubview:bdv];
     
+    
+    __block BuyOneDetailViewController *tempSelf = self;
     __block UIView *tempAnView = anView;
     __block BuyOneDetailView *tempBDV = bdv;
     __block UIView *tempView = view;
+    __block UITableView *tempTableView = _tableView;
+    
     webView.block = ^(id obj){
-        tempAnView.frame = RECT(0, [obj floatValue], ScreenWidth, 250);
-        tempBDV.frame = RECT(0, MaxY(tempAnView) + 50, ScreenWidth, tempBDV.frame.size.height);
-        tempView.frame = RECT(0, 0, ScreenWidth, MaxY(tempBDV));
-        [_tableView reloadData];
+        tempAnView.frame = RECT(0, [obj floatValue], ScreenWidth, tempAnView.frame.size.height);
+        tempBDV.frame = RECT(0, MaxY(tempAnView) + 10, ScreenWidth, tempBDV.frame.size.height);
+        
+        tempBDV.block = ^(id obj){
+            tempView.frame = RECT(0, 0, ScreenWidth, MaxY(tempBDV) + 10);
+            tempTableView.tableHeaderView = tempView;
+        };
+        
+        tempBDV.info = tempSelf.info;
     };
-    
-    bdv.block = ^(id obj){
-        tempView.frame = RECT(0, 0, ScreenWidth, [obj floatValue]);
-        [_tableView reloadData];
-    };
-    
-//    NSLayoutConstraint *l = [NSLayoutConstraint constraintWithItem:webView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1.0 constant:1.0];
-//    
-//    NSLayoutConstraint *l1 = [NSLayoutConstraint constraintWithItem:anView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:webView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:1.0];
-//    
-//    NSLayoutConstraint *l2 = [NSLayoutConstraint constraintWithItem:bdv attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:anView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:1.0];
-//    [view addConstraints:@[l,l1,l2]];
-//    
-//    if (isIOS8){
-//        l.active = YES;
-//        l1.active = YES;
-//        l2.active = YES;
-//    }
-    
     [webView setText:[self.info strForKey:@"desc"]];
-    bdv.info = self.info;
     
-    
-    return view;
 }
 
+-(void)setFooterView{
+    UIView *view = [[UIView alloc]initWithFrame:RECT(0, 0, ScreenWidth, 80)];
+    view.clipsToBounds = YES;
+    view.backgroundColor = [UIColor whiteColor];
+    
+    IconView *icview = [[IconView alloc]initWithFrame:RECT(0, 0, ScreenWidth, 40)];
+    [icview setFavitor:@"22" share:@"33" views:@"44"];
+    [view addSubview:icview];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = RECT(0, 40, ScreenWidth, 40);
+    button.titleLabel.textAlignment = NSTextAlignmentLeft;
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setBackgroundColor:HexColor(@"f1f1f7")];
+    [button setTitle:@"往期产品" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(oldProductClick:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:button];
+    
+    self.tableView.tableFooterView = view;
+
+}
+
+-(void)oldProductClick:(id)sender{
+    
+}
 
 
 -(void)addBottomButton{
@@ -179,6 +193,7 @@
     RCRoundButton *b1 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
     b1.frame = CGRectMake(10, 10, ScreenWidth - 20 , 34);
     [b1 setBackgroundColor:RGBA(248, 92, 133, 1)];
+    
 //    [b1 setTitleShadowColor:[UIColor getHexColor:@"E4AD05"] forState:UIControlStateNormal];
 //    [b1 addTarget:self action:@selector(:) forControlEvents:UIControlEventTouchUpInside];
  
@@ -194,7 +209,7 @@
 -(UIView *)animationView:(CGRect)rect{
     UIView *view = [[UIView alloc] initWithFrame:rect];
     view.clipsToBounds = YES;
-    view.backgroundColor = [UIColor blueColor];
+    view.backgroundColor = [UIColor whiteColor];
     
     UIView *scaleView = [[UIView alloc]initWithFrame:RECT((ScreenWidth - 250) / 2, 10, 250, 250)];
     scaleView.backgroundColor = [UIColor whiteColor];

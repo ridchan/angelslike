@@ -16,6 +16,7 @@
     SGPopSelectView *popView;
     UITableView *_tableView;
     UIView *_tbView;
+    UIView *_toolView;
 }
 
 

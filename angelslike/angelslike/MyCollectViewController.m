@@ -1,18 +1,19 @@
 //
-//  BoundsViewController.m
+//  MyCollectViewController.m
 //  angelslike
 //
-//  Created by angelslike on 15/10/9.
+//  Created by angelslike on 15/10/13.
 //  Copyright © 2015年 angelslike. All rights reserved.
 //
 
-#import "BoundsViewController.h"
+#import "MyCollectViewController.h"
+#import "ProductDetailViewController.h"
 
-@interface BoundsViewController ()
+@interface MyCollectViewController ()
 
 @end
 
-@implementation BoundsViewController
+@implementation MyCollectViewController
 
 -(void)dealloc{
     self.collectionView.delegate = nil;
@@ -26,7 +27,7 @@
 }
 
 -(void)initailSetting{
-    self.navigationItem.title = @"保税商品";
+    self.navigationItem.title = @"收藏列表";
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     
@@ -34,44 +35,48 @@
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource  = self;
-
     
-    [self.collectionView registerClass:[BoundCollectionViewCell class] forCellWithReuseIdentifier:@"BoundCell"];
+    [self.collectionView registerClass:[ProductCell class] forCellWithReuseIdentifier:@"ProductCell"];
     [self.view addSubview:self.collectionView];
     
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshClick:)];
     
-//    header.automaticallyChangeAlpha = YES;
+    header.automaticallyChangeAlpha = YES;
     header.lastUpdatedTimeLabel.hidden = YES;
     self.collectionView.header = header;
     
-
     
     
     [self setBackButtonAction:@selector(backClick:)];
     
     self.result = [NSMutableArray array];
     page =  1;
-
+    self.info = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                 @"list_collect_product",@"type",
+                 [NSString stringWithFormat:@"%ld",(long)page],@"page",
+                 nil];
     
     
     [self refreshClick:nil];
     
-    
+
 
     
     bloading = NO;
     
 }
 
--(void)backClick:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
+
+
+
+
 
 -(void)loadData:(id)sender{
-    __block BoundsViewController *tempSelf = self;
+    __block MyCollectViewController *tempSelf = self;
     
-    [[NetWork shared]query:MPUrl info:@{@"type":@"home_list_bonded",@"page":[NSString stringWithFormat:@"%d",(int)page]} block:^(id Obj) {
+    
+    [[NetWork shared]query:MPUrl info:self.info block:^(id Obj) {
         [tempSelf showNetworkError:[Obj intForKey:@"status"] == 0];
         
         if ([Obj intForKey:@"status"] == 1) {
@@ -92,25 +97,34 @@
 }
 
 -(void)refreshClick:(id)sender{
+    [self.info setObject:@"1" forKey:@"page"];
     [self.result removeAllObjects];
     [self.collectionView reloadData];
     [self loadData:nil];
 }
 
 
-#pragma mark -
-#pragma mark  collection view
+
+-(void)backClick:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+#pragma mark- Source Delegate
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     if([self checkScrollView:scrollView]){
         if (page < totalPage & bloading  == NO) {
             bloading = YES;
-            page ++;
+            [self.info setObject:[NSString stringWithFormat:@"%ld",(long)page + 1] forKey:@"page"];
             [self loadData:nil];
         }
     }
 }
+
+
+
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -128,7 +142,7 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    BoundCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"BoundCell" forIndexPath:indexPath];
+    ProductCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"ProductCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     NSDictionary *p = [self.result objectAtIndex:indexPath.section * 2 + indexPath.row];
     [cell setInfo:p];
@@ -159,21 +173,5 @@
     return UIEdgeInsetsMake(5, 5, 5, 5);
 }
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -14,8 +14,23 @@
 
 @implementation GiftSendViewController
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)wxShareResult:(NSNotification *)notification{
+    NSDictionary *dic = notification.object;
+    if ([dic intForKey:@"status"] == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxShareResult:) name:@"WXShareNotification" object:nil];
     
     _scrollView = [[UIScrollView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
     [self.view addSubview:_scrollView];
@@ -87,7 +102,10 @@
     __block GiftSendViewController *tempSelf = self;
     [[NetWork shared] query:SetGiftUrl info:@{@"orderid":[self.info strForKey:@"oid"],@"message":textView.text,@"is_buyone":@"1"} block:^(id Obj) {
         if ([Obj intForKey:@"status"] == 1) {
-            [tempSelf shareContent:[tempSelf.info strForKey:@"pname"] title:nil imagePath:[tempSelf.info strForKey:@"pimg"] url:nil];
+            [tempSelf shareContent:[tempSelf.info strForKey:@"pname"]
+                             title:nil
+                         imagePath:[tempSelf.info strForKey:@"pimg"]
+                               url:[GiftUrl stringByAppendingString:[[Obj objForKey:@"data"] strForKey:@"key"]]];
         }
     } lock:YES];
 

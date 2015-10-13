@@ -148,6 +148,7 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
     }else if (seg.selectedSegmentIndex == 0){
+        if ([[cell.info strForKey:@"uname"] length] > 0) return;
         GiftSendViewController *vc = [[GiftSendViewController alloc]init];
         vc.info = cell.info;
         [self.navigationController pushViewController:vc animated:YES];

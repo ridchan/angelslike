@@ -7,8 +7,7 @@
 //
 
 #import "CouDetail.h"
-#define iconr 12
-#define iconGap 3
+
 
 @implementation DayLabel
 
@@ -32,69 +31,94 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if ( self = [super initWithFrame:frame]) {
-        UIColor *color = RGBA(0, 0, 0, 0.6);
-        
-        self.backgroundColor = [UIColor clearColor];
-        imgView1 = [[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
-        imgView1.image = [[UIImage imageNamed:@"iconfont-wodexiangqingyanjing"] rt_tintedImageWithColor:color];
-        imgView1.contentMode = UIViewContentModeScaleAspectFit;
-
-        
-        imgView2 = [[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
-        imgView2.image = [[UIImage imageNamed:@"iconfont-fenxiang"] rt_tintedImageWithColor:color];
-        imgView2.contentMode = UIViewContentModeScaleAspectFit;
-        
-        imgView3 = [[UIImageView alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
-        imgView3.image = [[UIImage imageNamed:@"iconfont-zhuanfa"] rt_tintedImageWithColor:color];
-        imgView3.contentMode = UIViewContentModeScaleAspectFit;
-        
-        label1 = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
-        label1.backgroundColor = [UIColor clearColor];
-        label1.textColor = color;
-        label1.font = FontWS(9);
-        
-        label2 = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
-        label2.backgroundColor = [UIColor clearColor];
-        label2.textColor = color;
-        label2.font = FontWS(9);
-        
-        label3 = [[UILabel alloc]initWithFrame:CGRectMake(frame.size.width, 0, iconr, iconr)];
-        label3.backgroundColor = [UIColor clearColor];
-        label3.textColor = color;
-        label3.font = FontWS(9);
-        
-        [self addSubview:imgView1];
-        [self addSubview:imgView2];
-        [self addSubview:imgView3];
-        [self addSubview:label1];
-        [self addSubview:label2];
-        [self addSubview:label3];
+        _iconr = 12 ;
+        _iconGap = 3 ;
+        _fontSize = 9 ;
+        [self createView];
     }
     
     return self;
 }
 
+-(void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    [self createView];
+}
+
+-(void)createView{
+    UIColor *color = RGBA(0, 0, 0, 0.6);
+    
+    
+    self.backgroundColor = [UIColor clearColor];
+    imgView1 = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width, 0, _iconr, _iconr)];
+    imgView1.image = [[UIImage imageNamed:@"iconfont-wodexiangqingyanjing"] rt_tintedImageWithColor:color];
+    imgView1.contentMode = UIViewContentModeScaleAspectFit;
+    
+    
+    imgView2 = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width, 0, _iconr, _iconr)];
+    imgView2.image = [[UIImage imageNamed:@"iconfont-fenxiang"] rt_tintedImageWithColor:color];
+    imgView2.contentMode = UIViewContentModeScaleAspectFit;
+    
+    imgView3 = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width, 0, _iconr, _iconr)];
+    imgView3.image = [[UIImage imageNamed:@"iconfont-zhuanfa"] rt_tintedImageWithColor:color];
+    imgView3.contentMode = UIViewContentModeScaleAspectFit;
+    
+    label1 = [[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width, 0, _iconr, _iconr)];
+    label1.backgroundColor = [UIColor clearColor];
+    label1.textColor = color;
+    label1.font = FontWS(_fontSize);
+    
+    label2 = [[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width, 0, _iconr, _iconr)];
+    label2.backgroundColor = [UIColor clearColor];
+    label2.textColor = color;
+    label2.font = FontWS(_fontSize);
+    
+    label3 = [[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width, 0, _iconr, _iconr)];
+    label3.backgroundColor = [UIColor clearColor];
+    label3.textColor = color;
+    label3.font = FontWS(_fontSize);
+    
+    [self addSubview:imgView1];
+    [self addSubview:imgView2];
+    [self addSubview:imgView3];
+    [self addSubview:label1];
+    [self addSubview:label2];
+    [self addSubview:label3];
+}
+
 -(void)setFavitor:(NSString *)forward share:(NSString *)share views:(NSString *)views{
-    CGSize size3 = [forward sizeWithAttributes:@{NSFontAttributeName:FontWS(9)}];
-    CGSize size2 = [share sizeWithAttributes:@{NSFontAttributeName:FontWS(9)}];
-    CGSize size1 = [views sizeWithAttributes:@{NSFontAttributeName:FontWS(9)}];
+    CGSize size3 = [forward sizeWithAttributes:@{NSFontAttributeName:FontWS(_fontSize)}];
+    CGSize size2 = [share sizeWithAttributes:@{NSFontAttributeName:FontWS(_fontSize)}];
+    CGSize size1 = [views sizeWithAttributes:@{NSFontAttributeName:FontWS(_fontSize)}];
+    
+    
+    
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5];
+    
+    
+    
     label3.text = forward;
-    label3.frame = CGRectMake(self.frame.size.width - size3.width, 0, size3.width, iconr);
-    imgView3.frame = CGRectMake(label3.frame.origin.x - iconr - iconGap, 0, iconr, iconr);
+    label3.frame = CGRectMake(self.frame.size.width - size3.width, 0, size3.width, _iconr);
+    imgView3.frame = CGRectMake(label3.frame.origin.x - _iconr - _iconGap, 0, _iconr, _iconr);
     
     label2.text = share;
-    label2.frame = CGRectMake(imgView3.frame.origin.x - size2.width - iconGap, 0, size2.width, iconr);
-    imgView2.frame = CGRectMake(label2.frame.origin.x - iconr - iconGap, 0, iconr, iconr);
+    label2.frame = CGRectMake(imgView3.frame.origin.x - size2.width - _iconGap, 0, size2.width, _iconr);
+    imgView2.frame = CGRectMake(label2.frame.origin.x - _iconr - _iconGap, 0, _iconr, _iconr);
     
     label1.text = views;
-    label1.frame = CGRectMake(imgView2.frame.origin.x - size1.width - iconGap, 0, size1.width,iconr);
-    imgView1.frame = CGRectMake(label1.frame.origin.x - iconr - iconGap, 0, iconr, iconr);
+    label1.frame = CGRectMake(imgView2.frame.origin.x - size1.width - _iconGap, 0, size1.width,_iconr);
+    imgView1.frame = CGRectMake(label1.frame.origin.x - _iconr - _iconGap, 0, _iconr, _iconr);
+    
+    
     [UIView commitAnimations];
     
-    
+    if (_bInCenter){
+        self.frame = RECT(0, 0, MaxX(label3) - MinX(imgView1), self.frame.size.height);
+        if (self.superview)
+            self.center = CGPointMake(self.center.y, self.superview.frame.size.width / 2);
+    }
 }
 
 @end

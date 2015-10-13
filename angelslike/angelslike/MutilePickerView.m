@@ -8,6 +8,7 @@
 
 #import "MutilePickerView.h"
 #define TagOff  5566
+#define ViewTag 9875
 
 @implementation MutilePickerView
 
@@ -27,9 +28,16 @@ static const char tableViewDataSourceTag;
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger tag = [self tableviewDataSourceTag];
     [self setText:[self tableviewDataSource][indexPath.row] tag:[self tableviewDataSourceTag]];
     [self setDefaultFromTag:[self tableviewDataSourceTag]];
-    [self dismissSelectTable];
+    
+    if (tag < self.keys.count - 1){
+        PickerView *pk = (PickerView *)[self viewWithTag:tag + 1 + TagOff];
+        [self addressSelect:pk];
+    }else{
+        [self dismissSelectTable];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -47,17 +55,41 @@ static const char tableViewDataSourceTag;
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
     cell.textLabel.text = [self tableviewDataSource][indexPath.row];
+    cell.accessoryType = [cell.textLabel.text isEqualToString:[self getText:[self tableviewDataSourceTag]]]?UITableViewCellAccessoryCheckmark:UITableViewCellAccessoryNone;
     return cell;
 }
 
 -(void)showSelectTable{
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:_tbView];
+    if (![window viewWithTag:ViewTag]){
+        [window addSubview:_tbView];
+        _toolView.transform = CGAffineTransformMakeTranslation(0, _tableView.frame.size.height);
+        _tableView.transform = CGAffineTransformMakeTranslation(0, _tableView.frame.size.height);
+        [UIView animateWithDuration:0.35 animations:^{
+            _toolView.transform = CGAffineTransformMakeTranslation(0, 0);
+            _tableView.transform = CGAffineTransformMakeTranslation(0, 0);
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
     [_tableView reloadData];
+    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+    
+    
+    
 }
 
+
+
 -(void)dismissSelectTable{
-    [_tbView removeFromSuperview];
+    [UIView animateWithDuration:0.35 animations:^{
+        _toolView.transform = CGAffineTransformMakeTranslation(0, _tableView.frame.size.height);
+        _tableView.transform = CGAffineTransformMakeTranslation(0, _tableView.frame.size.height);
+    } completion:^(BOOL finished) {
+        
+        [_tbView removeFromSuperview];
+    }];
+    
 }
 
 -(id)tableviewDataSource{
@@ -84,12 +116,29 @@ static const char tableViewDataSourceTag;
         self.result = [NSMutableDictionary dictionary];
         _tbView = [[UIView alloc]initWithFrame:RECT(0, 0, ScreenWidth, ScreenHeight)];
         _tbView.backgroundColor = RGBA(0, 0, 0, 0.5);
+        _tbView.tag = ViewTag;
+        
+        _toolView = [[UIView alloc]initWithFrame:RECT(0, ScreenHeight - 250 - 44, ScreenWidth, 44)];
+        _toolView.backgroundColor = HexColor(@"F1F0F6");
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = RECT(ScreenWidth - 60 , 7, 50, 30);
+        [button setTitle:@"完成" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(cancelButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_toolView addSubview:button];
+        
         _tableView = [[UITableView alloc]initWithFrame:RECT(0, ScreenHeight - 250, ScreenWidth, 250) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        
+        [_tbView addSubview:_toolView];
         [_tbView addSubview:_tableView];
     }
     return self;
+}
+
+-(void)cancelButtonClick:(id)sender{
+    [self dismissSelectTable];
 }
 
 -(void)setItems:(NSArray *)items{
@@ -108,6 +157,7 @@ static const char tableViewDataSourceTag;
 
     }
 }
+
 
 -(void)setKeys:(NSArray *)keys{
     _keys = keys;
@@ -131,8 +181,6 @@ static const char tableViewDataSourceTag;
 }
 
 -(void)addressSelect:(PickerView *)pk{
-    
-    
     
     NSInteger idx = pk.tag - TagOff;
     NSString *type = [self.keys objectAtIndex:idx];
@@ -196,24 +244,6 @@ static const char tableViewDataSourceTag;
     [self setTableViewDataSource:arr];
     [self showSelectTable];
     
-//    if (!popView)
-//        popView = [[SGPopSelectView alloc] init];
-//    popView.selections = arr;
-//    
-//    __block SGPopSelectView *tempView = popView;
-//    __block MutilePickerView *tempSelf = self;
-//    
-//    popView.selectedHandle = ^(NSInteger selectedIndex){
-//        pk.text = tempView.selections[selectedIndex];
-//        [tempSelf setDefaultFromTag:pk.tag];
-//        [tempView hide:NO];
-//    };
-//    
-//
-//    UIViewController *vc = [self findViewController:self];
-//    CGRect rect=[pk convertRect:pk.bounds toView:vc.view];
-//    
-//    [popView showFromView:vc.view atPoint:CGPointMake(CGRectGetMinX(rect), CGRectGetMaxY(rect)) animated:YES];
 
 }
 

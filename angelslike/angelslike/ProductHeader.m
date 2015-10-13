@@ -73,7 +73,8 @@
         img3 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 18, 18)];
         img3.contentMode = UIViewContentModeScaleAspectFit;
         img3.center = button3.center;
-        img3.image = [[UIImage imageNamed:@"iconfont-guanzhu"] rt_tintedImageWithColor:[UIColor getHexColor:@"2B2B2B"]];
+//        [self setCollect:_collect];
+//        img3.image = [[UIImage imageNamed:@"iconfont-guanzhu"] rt_tintedImageWithColor:[UIColor getHexColor:@"2B2B2B"]];
         
         [self addSubview:button3];
         [self addSubview:img3];

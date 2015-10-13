@@ -11,8 +11,10 @@
 
 @protocol BuyOneDetailDelegate <NSObject>
 
--(void)beResize:(CGRect)rect;
 -(void)checkButtonClick:(id)sender;
+@optional
+-(void)beResize:(CGRect)rect;
+
 
 @end
 

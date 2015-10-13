@@ -28,7 +28,6 @@ typedef void(^dismissBlock)(id obj);
 -(void)showMessage:(NSString *)msg;
 -(void)showHudMsg:(NSString *)msg;
 
--(void)reSizeImage:(NSMutableString *)result;
 
 -(void)hideTabBar;
 -(void)showTabbar;

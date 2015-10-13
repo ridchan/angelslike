@@ -19,6 +19,8 @@
 #define WXAppSecret @"e1f09700641778a0f00cd2f3b56f2862" // @"72113780a6d46096850d1a93ee5addb3" 公众平台
 #define WXMchID     @"1263950201"
 
+#import "BaseNavigationViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -45,19 +47,19 @@
                    initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MainViewController *vc1 = [[MainViewController alloc]init];
-    UINavigationController *nvc1 = [[UINavigationController alloc]initWithRootViewController:vc1];
+    BaseNavigationViewController *nvc1 = [[BaseNavigationViewController alloc]initWithRootViewController:vc1];
 
     
     CouViewController *vc2 = [[CouViewController alloc]init];
-    UINavigationController *nvc2 = [[UINavigationController alloc]initWithRootViewController:vc2];
+    BaseNavigationViewController *nvc2 = [[BaseNavigationViewController alloc]initWithRootViewController:vc2];
     
     UINavigationController *nvc3 = [[UINavigationController alloc]init];//空白页
     
     CategoryViewController *vc4 = [[CategoryViewController alloc]init];
-    UINavigationController *nvc4 = [[UINavigationController alloc]initWithRootViewController:vc4];
+    BaseNavigationViewController *nvc4 = [[BaseNavigationViewController alloc]initWithRootViewController:vc4];
     
     MineViewController *vc5 = [[MineViewController alloc]init];
-    UINavigationController *nvc5 = [[UINavigationController alloc]initWithRootViewController:vc5];
+    BaseNavigationViewController *nvc5 = [[BaseNavigationViewController alloc]initWithRootViewController:vc5];
     
     
     TabBarViewController *tbc = [[TabBarViewController alloc]init];
@@ -169,11 +171,13 @@
         NSLog(@"resp %@",sendResp.code);
     }else if ([resp isKindOfClass:[SendMessageToWXResp class]]){
         SendMessageToWXResp *wxResp = (SendMessageToWXResp *)resp;
-        
+        if (wxResp.errCode == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"WXShareNotification" object:[NSNumber numberWithInt:wxResp.errCode]];
+        }
     }else if ([resp isKindOfClass:[PayResp class]]){
         PayResp *payResp = (PayResp *)resp;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WeiXinPayNotification" object:@{@"status":[NSNumber numberWithInt:payResp.errCode]}];
-//        NSLog(@"%@",payResp.returnKey);
+        
     }
     
 

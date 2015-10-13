@@ -17,7 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"编辑资料";
-    [self setBackButtonAction:@selector(backClick:)];
     [self initialSetting];
     // Do any additional setup after loading the view.
     self.info = [NSMutableDictionary dictionaryWithDictionary:[UserInfo shared].info];
@@ -136,9 +135,6 @@
     } lock:YES];
 }
 
--(void)backClick:(id)obj{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -35,7 +35,8 @@
                      @{@"Name":@"我的订单",@"IMG":@"mine_01",@"Action":@"myOrderClick:"},
                      @{@"Name":@"我的购物车",@"IMG":@"mine_002"}
                      ],
-                   @[@{@"Name":@"达人专区",@"IMG":@"mine_03"},
+                   @[@{@"Name":@"我的收藏",@"IMG":@"mine_03",@"Action":@"myCollectClick:"},
+                     @{@"Name":@"达人专区",@"IMG":@"mine_03"},
                      @{@"Name":@"邀请朋友",@"IMG":@"mine_04"},
                      @{@"Name":@"设置",@"IMG":@"mine_05",@"Action":@"settingClick:"}
                      ]
@@ -58,20 +59,22 @@
 
 -(void)settingClick:(id)sender{
     SettingViewController *vc = [[SettingViewController alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)myCouClick:(id)sender{
     MyCouViewController *vc = [[MyCouViewController alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
     vc.ctype = CouViewTypeFromSetting;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)myGiftClick:(id)sender{
     MyGiftViewController *vc = [[MyGiftViewController alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)myCollectClick:(id)sender{
+    MyCollectViewController *vc = [[MyCollectViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

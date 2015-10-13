@@ -21,6 +21,8 @@
 		273FB1251BC8BABA0026F157 /* iconfont-shanchu.png in Resources */ = {isa = PBXBuildFile; fileRef = 273FB1241BC8BABA0026F157 /* iconfont-shanchu.png */; settings = {ASSET_TAGS = (); }; };
 		273FB1281BC8E4980026F157 /* MyGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273FB1271BC8E4980026F157 /* MyGiftViewController.m */; settings = {ASSET_TAGS = (); }; };
 		273FB12B1BC8E5670026F157 /* MyGiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 273FB12A1BC8E5670026F157 /* MyGiftCell.m */; settings = {ASSET_TAGS = (); }; };
+		27448DFD1BCCA030005A7028 /* BaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27448DFC1BCCA030005A7028 /* BaseNavigationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		27448E001BCCAA20005A7028 /* MyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27448DFF1BCCAA20005A7028 /* MyCollectViewController.m */; settings = {ASSET_TAGS = (); }; };
 		274CD7A01B95973E000125EB /* sendmy.png in Resources */ = {isa = PBXBuildFile; fileRef = 274CD79E1B95973E000125EB /* sendmy.png */; };
 		274CD7A11B95973E000125EB /* sendta.png in Resources */ = {isa = PBXBuildFile; fileRef = 274CD79F1B95973E000125EB /* sendta.png */; };
 		274CD7A51B959B2B000125EB /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274CD7A41B959B2B000125EB /* AddressViewController.m */; };
@@ -32,6 +34,7 @@
 		275596191BCB69AC0090F139 /* iconfont-guanzhu_f.png in Resources */ = {isa = PBXBuildFile; fileRef = 275596181BCB69AC0090F139 /* iconfont-guanzhu_f.png */; settings = {ASSET_TAGS = (); }; };
 		27685A681B818CDB005234B0 /* wechat-icon-168.png in Resources */ = {isa = PBXBuildFile; fileRef = 27685A671B818CDB005234B0 /* wechat-icon-168.png */; };
 		27685A6A1B81E00A005234B0 /* Refresh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27685A691B81E00A005234B0 /* Refresh_icon.png */; };
+		27A4290A1BCCBAD500E85C7C /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A429091BCCBAD500E85C7C /* back@2x.png */; settings = {ASSET_TAGS = (); }; };
 		27BA81381B71AADF005B527B /* iconfont-cfz.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA81331B71AADF005B527B /* iconfont-cfz.png */; };
 		27BA81391B71AADF005B527B /* iconfont-fenlei.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA81341B71AADF005B527B /* iconfont-fenlei.png */; };
 		27BA813B1B71AADF005B527B /* iconfont-shouye.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BA81361B71AADF005B527B /* iconfont-shouye.png */; };
@@ -390,6 +393,10 @@
 		273FB1271BC8E4980026F157 /* MyGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGiftViewController.m; sourceTree = "<group>"; };
 		273FB1291BC8E5670026F157 /* MyGiftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGiftCell.h; sourceTree = "<group>"; };
 		273FB12A1BC8E5670026F157 /* MyGiftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGiftCell.m; sourceTree = "<group>"; };
+		27448DFB1BCCA030005A7028 /* BaseNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationViewController.h; sourceTree = "<group>"; };
+		27448DFC1BCCA030005A7028 /* BaseNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationViewController.m; sourceTree = "<group>"; };
+		27448DFE1BCCAA20005A7028 /* MyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectViewController.h; sourceTree = "<group>"; };
+		27448DFF1BCCAA20005A7028 /* MyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectViewController.m; sourceTree = "<group>"; };
 		274CD79E1B95973E000125EB /* sendmy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendmy.png; sourceTree = "<group>"; };
 		274CD79F1B95973E000125EB /* sendta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendta.png; sourceTree = "<group>"; };
 		274CD7A31B959B2B000125EB /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
@@ -405,6 +412,7 @@
 		275596181BCB69AC0090F139 /* iconfont-guanzhu_f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-guanzhu_f.png"; sourceTree = "<group>"; };
 		27685A671B818CDB005234B0 /* wechat-icon-168.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat-icon-168.png"; sourceTree = "<group>"; };
 		27685A691B81E00A005234B0 /* Refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Refresh_icon.png; sourceTree = "<group>"; };
+		27A429091BCCBAD500E85C7C /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		27BA81331B71AADF005B527B /* iconfont-cfz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-cfz.png"; sourceTree = "<group>"; };
 		27BA81341B71AADF005B527B /* iconfont-fenlei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-fenlei.png"; sourceTree = "<group>"; };
 		27BA81361B71AADF005B527B /* iconfont-shouye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-shouye.png"; sourceTree = "<group>"; };
@@ -1071,6 +1079,7 @@
 		27BA81321B71AACB005B527B /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				27A429091BCCBAD500E85C7C /* back@2x.png */,
 				275596131BCB4B0B0090F139 /* null_user.png */,
 				273FB1241BC8BABA0026F157 /* iconfont-shanchu.png */,
 				271773261BC618A60098B4DC /* page1.png */,
@@ -1844,6 +1853,8 @@
 				27EA9A011B72F662003559C0 /* BaseViewController.m */,
 				2E5AB33A1B726D7300E65D5D /* TabBarViewController.h */,
 				2E5AB33B1B726D7300E65D5D /* TabBarViewController.m */,
+				27448DFB1BCCA030005A7028 /* BaseNavigationViewController.h */,
+				27448DFC1BCCA030005A7028 /* BaseNavigationViewController.m */,
 			);
 			name = "基本配置类";
 			sourceTree = "<group>";
@@ -1903,6 +1914,8 @@
 				273FB1271BC8E4980026F157 /* MyGiftViewController.m */,
 				275596151BCB56AD0090F139 /* GiftSendViewController.h */,
 				275596161BCB56AD0090F139 /* GiftSendViewController.m */,
+				27448DFE1BCCAA20005A7028 /* MyCollectViewController.h */,
+				27448DFF1BCCAA20005A7028 /* MyCollectViewController.m */,
 				273FB1291BC8E5670026F157 /* MyGiftCell.h */,
 				273FB12A1BC8E5670026F157 /* MyGiftCell.m */,
 			);
@@ -2173,6 +2186,7 @@
 				27E451671B8DAE2E00547DAD /* iconfont-check.png in Resources */,
 				27E6AE0E1B787C30008CE686 /* iconfont-suo.png in Resources */,
 				27EFB23E1B7396E700A14872 /* changhe_05.png in Resources */,
+				27A4290A1BCCBAD500E85C7C /* back@2x.png in Resources */,
 				27DF595B1B8EB88200E94B06 /* rightcon.png in Resources */,
 				27EFB2671B73970900A14872 /* pinglei_07.png in Resources */,
 				27BA81381B71AADF005B527B /* iconfont-cfz.png in Resources */,
@@ -2329,6 +2343,7 @@
 				27E53EB21B8C25DA00A56D53 /* ProductDetail.m in Sources */,
 				27E2AA001B9EC2DE0046D28D /* HerAddressCell.m in Sources */,
 				27E022AA1BA2B1420089D1CD /* APAuthV2Info.m in Sources */,
+				27448DFD1BCCA030005A7028 /* BaseNavigationViewController.m in Sources */,
 				27E0017A1BA9510E00CFF4DB /* EditInfoViewController.m in Sources */,
 				27E066211B85DD4300D94803 /* MJRefreshBackFooter.m in Sources */,
 				273ADCE31BC7956E00006230 /* RCButton.m in Sources */,
@@ -2450,6 +2465,7 @@
 				273ADCD31BC75CB000006230 /* BoundCollectionViewCell.m in Sources */,
 				27BA817A1B71C6A6005B527B /* UIImage+MultiFormat.m in Sources */,
 				27E4390B1BB9341000E7E970 /* BuyView.m in Sources */,
+				27448E001BCCAA20005A7028 /* MyCollectViewController.m in Sources */,
 				27E089981B8FFF0F0090C724 /* BottomView.m in Sources */,
 				27F65CFC1B798D7C00EDE656 /* ProductlistViewController.m in Sources */,
 				27E451621B8D733100547DAD /* AddressCell.m in Sources */,

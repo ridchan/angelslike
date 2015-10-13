@@ -153,8 +153,10 @@
 #define IMAGE(n) [UIImage imageNamed:n]
 #define UserDefault [NSUserDefaults standardUserDefaults]
 
-#define MaxY(a) CGRectGetMaxY(a.frame)
 #define MaxX(a) CGRectGetMaxX(a.frame)
+#define MinX(a) CGRectGetMinX(a.frame)
+#define MaxY(a) CGRectGetMaxY(a.frame)
+#define MinY(a) CGRectGetMinY(a.frame)
 
 #define ResizeHeight(a,h) CGRectMake(a.frame.origin.x, a.frame.origin.y, a.frame.size.width, h)
 #define ResizeWidth(a,w) CGRectMake(a.frame.origin.x, a.frame.origin.y, w, a.frame.size.height)

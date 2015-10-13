@@ -24,6 +24,11 @@
     UILabel *label3;
 }
 
+@property(nonatomic) BOOL bInCenter;
+@property(nonatomic) CGFloat iconr;
+@property(nonatomic) CGFloat fontSize;
+@property(nonatomic) CGFloat iconGap;
+
 -(void)setFavitor:(NSString *)forward share:(NSString *)share views:(NSString *)views;
 
 @end

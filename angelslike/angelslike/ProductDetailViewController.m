@@ -193,7 +193,7 @@
     v.backgroundColor = [UIColor whiteColor];
     [v.layer addSublayer:[self lineLayer:CGPointMake(0, 0)]];
 
-    if ([self.result intForKey:@"show"] > 0){
+    if ([self.result intForKey:@"show"] > 1){
         RCRoundButton *b2 =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
         b2.titleLabel.font = FontWS(16);
         b2.frame = CGRectMake(10, 10, ScreenWidth - 20, 34);
@@ -267,21 +267,9 @@
 
 -(void)setSubView{
     
-    
-    
     [pd setInfo:self.result];
     header.collect = [self.result intForKey:@"collect"] > 0;
-//    WebViewController *vc1 = [[WebViewController alloc]init];
-//    mv.titles = @[@"图文介绍",@"评论"];
-//    vc1.content = [self.result strForKey:@"desc"];
-//    
-//    CommentViewController *vc2 = [[CommentViewController alloc]init];
-//    vc2.info = [NSDictionary dictionaryWithObjectsAndKeys:
-//                [self.result strForKey:@"id"],@"id",
-//                @"1",@"type",
-//                nil];
-//
-//    mv.viewControllers = @[vc1,vc2];
+    
 }
 
 -(void)scrollViewCanMove:(NSNotification *)obj{
@@ -296,20 +284,6 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     header.alpha = scrollView.contentOffset.y / 200;
     
-
-//    if (scrollView.contentOffset.y + 44  > mv.frame.origin.y) {
-//        scrollView.contentOffset  = CGPointMake(0, mv.frame.origin.y - 44);
-//        if(scrollView.scrollEnabled){
-//            scrollView.scrollEnabled = NO;
-//            [scrollView resignFirstResponder];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"SubScrollCanMove" object:nil];
-//        }
-//   
-//    }else if (scrollView.contentOffset.y < 0){
-//        scrollView.contentOffset = CGPointMake(0, 0);
-//    }
-//    
-    
 }
 
 
@@ -323,12 +297,13 @@
         if ([Obj intForKey:@"status"] == 1) {
             tempSelf.result = [Obj objectForKey:@"data"];
             
-            [UIView animateWithDuration:0.35 animations:^{
-                [tempSelf initailSetting];
-                [tempSelf setSubView];
-            }];
+            [tempSelf initailSetting];
             [tempSelf addHeader];
             [tempSelf addBottomButton];
+            [UIView animateWithDuration:0.35 animations:^{
+                [tempSelf setSubView];
+            }];
+
 
         }else{
             [tempSelf showMessage:[Obj strForKey:@"info"]];

@@ -29,6 +29,11 @@
         priceLabel.font = FontWS(20);
         [self addSubview:priceLabel];
         
+        stockLabel = [[UILabel alloc]initWithFrame:RECT(10, MaxY(priceLabel), frame.size.width - 20, 30)];
+        stockLabel.backgroundColor = [UIColor clearColor];
+        stockLabel.font = FontWS(14);
+        [self addSubview:stockLabel];
+        
         UIColor *color = [UIColor getHexColor:@"F34336"];
         RCRoundButton *viewButton  =  [RCRoundButton buttonWithType:UIButtonTypeCustom];
         viewButton.radio = 20;
@@ -63,7 +68,9 @@
     
     [imageView setPreImageWithUrl:[_info strForKey:@"img"]];
     nameLabel.text = [_info strForKey:@"productname"];
-    priceLabel.text = [NSString stringWithFormat:@"￥%@",[_info strForKey:@"price"]];
+    priceLabel.text = [NSString stringWithFormat:@"￥%@/两件",[_info strForKey:@"price"]];
+    stockLabel.text = [NSString stringWithFormat:@"限量: %@   剩余: %d",[_info strForKey:@"qtylimit"],(int)([_info intForKey:@"qtylimit"] - [_info intForKey:@"salesqty"])];
+    
     [contentLabel setText:[_info strForKey:@"sharetext"]];
     contentLabel.block = ^(id obj){
         tempSelf.frame = RECT(tempSelf.frame.origin.x, tempSelf.frame.origin.y, tempSelf.frame.size.width, [obj floatValue]);

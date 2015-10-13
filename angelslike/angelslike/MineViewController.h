@@ -18,6 +18,7 @@
 #import "MyWallentViewController.h"
 #import "EditInfoViewController.h"
 #import "MyGiftViewController.h"
+#import "MyCollectViewController.h"
 
 @interface MineViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>{
     NSInteger sheetIndex;

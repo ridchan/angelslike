@@ -20,6 +20,17 @@
 //    if ([self.navigationController.viewControllers indexOfObject:self] == 1) {
 //        self.hidesBottomBarWhenPushed = YES;
 //    }
+    
+    if ([self.navigationController.viewControllers indexOfObject:self]>0){
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(0, 0, 25, 25);
+        [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];//iconfont-houtui
+        [button addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+        self.navigationItem.leftBarButtonItem = barItem;
+    }
+    
+    
 }
 
 -(void)shareContent:(NSString *)content title:(NSString *)title imagePath:(NSString *)path url:(NSString *)url{
@@ -55,7 +66,7 @@
                                 }
                                 else if (state == SSResponseStateFail)
                                 {
-                                    NSLog(@"分享失败,错误码:%ld,错误描述:%@", [error errorCode], [error errorDescription]);
+                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", (int)[error errorCode], [error errorDescription]);
                                 }
                             }];
 }
@@ -124,12 +135,14 @@
 }
 
 -(void)setBackButtonAction:(SEL)action{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 25, 25);
-    [button setImage:[UIImage imageNamed:@"iconfont-houtui"] forState:UIControlStateNormal];
-    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = barItem;
+    
+    self.navigationItem.leftBarButtonItem.action = action;
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(0, 0, 25, 25);
+//    [button setImage:[UIImage imageNamed:@"iconfont-houtui"] forState:UIControlStateNormal];
+//    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+//    self.navigationItem.leftBarButtonItem = barItem;
 }
 
 - (UIViewController *)findViewController:(UIView *)sourceView
@@ -145,7 +158,6 @@
 }
 
 -(void)hideTabBar{
-//    self.hidesBottomBarWhenPushed = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"hideCustomTabBar" object:nil];
 }
 
@@ -334,53 +346,6 @@
 }
 
 
--(void)reSizeImage:(NSMutableString *)result{
-    BOOL find = YES;
-    NSInteger loc = 0;
-    NSInteger length = [result length];
-    NSMutableArray *arr = [NSMutableArray array];
-    NSRange curRange;
-    while (find) {
-        curRange = NSMakeRange(loc, length - loc - 1);
-        NSRange imgStart = [result rangeOfString:@"<img" options:NSCaseInsensitiveSearch range:curRange];
-        loc = imgStart.location;
-        //        length = length - imgStart.location;
-        
-        if (imgStart.location != NSNotFound) {
-            @try {
-                curRange = NSMakeRange(loc, length - loc - 1);
-                NSRange pngEnd = [result rangeOfString:@"png\"" options:NSCaseInsensitiveSearch range:curRange];
-                NSRange jpgEnd = [result rangeOfString:@"jpg\"" options:NSCaseInsensitiveSearch range:curRange];
-                if (pngEnd.location < jpgEnd.location) {
-                    loc = pngEnd.location;
-                    //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%ld",pngEnd.location + 4] ]; // 4  为 jpg" 偏移量
-                }else{
-                    loc = jpgEnd.location;
-                    //                    length = length - imgEnd.location;
-                    [arr addObject:[NSString stringWithFormat:@"%ld",jpgEnd.location + 4] ]; // 4  为 jpg" 偏移量
-                }
- 
-                
-            }
-            @catch (NSException *exception) {
-                NSLog(@"exception %@",exception);
-                find = NO;
-            }
-        }else{
-            find = NO;
-        }
-        
-    }
-    NSString *add = [NSString stringWithFormat:@" width=\"100%%\""];
-    NSUInteger offset = 0;
-    for (NSString *lc in arr){
-        [result insertString:add
-                     atIndex:[lc integerValue] + offset ];
-        offset += [add length];
-    }
-    
-}
 
 -(CAShapeLayer *)lineLayer:(CGPoint)position{
     CAShapeLayer *layer = [CAShapeLayer new];
